@@ -21,3 +21,6 @@ reference:
 - title: Package overview
   contents:
   - gp3bayes-package
+- title: Model contracts
+  contents:
+  - create_model_contract
