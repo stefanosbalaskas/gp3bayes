@@ -15,3 +15,9 @@
   and pkgdown deployment.
 - Added canonical repository, issue-tracker, and pkgdown website
   metadata.
+- Added
+  [`create_model_contract()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_contract.md)
+  for the two approved initial model families with neutral column
+  mappings and explicit methodological specifications.
+- Added a concise `gp3bayes_model_contract` print method and
+  deterministic validation tests.

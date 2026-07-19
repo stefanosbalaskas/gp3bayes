@@ -74,6 +74,32 @@
 <p>The core package will not require Gazepoint hardware, Gazepoint exports, <code>gp3tools</code>, proprietary software, private data, or a Bayesian backend.</p>
 </div>
 <div class="section level2">
+<h2 id="model-contracts">Model contracts<a class="anchor" aria-label="anchor" href="#model-contracts"></a>
+</h2>
+<p><code><a href="reference/create_model_contract.html">create_model_contract()</a></code> records the approved methodological specification and neutral column mappings for one initial model family. Creating a contract does not validate data, fit a model, or establish model adequacy.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">binary_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
+<span>  family <span class="op">=</span> <span class="st">"binary"</span>,</span>
+<span>  outcome_col <span class="op">=</span> <span class="st">"selected"</span>,</span>
+<span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
+<span>  item_col <span class="op">=</span> <span class="st">"stimulus_id"</span>,</span>
+<span>  trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span>
+<span>  condition_col <span class="op">=</span> <span class="st">"condition"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_contract</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_model_contract&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="do">##   Family: binary</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="do">##   Likelihood: Bernoulli</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="do">##   Link: logit</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="do">##   Outcome: selected</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="do">##   Participant: participant_id</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="do">##   Item: stimulus_id</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="do">##   Condition: condition</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="do">##   Random slope requested: FALSE</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="do">##   Fitting performed: FALSE</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="development-status">Development status<a class="anchor" aria-label="anchor" href="#development-status"></a>
 </h2>
 <p><code>gp3bayes</code> is currently at development version <code>0.0.0.9000</code>.</p>
