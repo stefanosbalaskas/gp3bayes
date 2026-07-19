@@ -30,6 +30,37 @@ The initial development scope is restricted to:
 The core package will not require Gazepoint hardware, Gazepoint exports,
 `gp3tools`, proprietary software, private data, or a Bayesian backend.
 
+## Model contracts
+
+`create_model_contract()` records the approved methodological
+specification and neutral column mappings for one initial model family.
+Creating a contract does not validate data, fit a model, or establish
+model adequacy.
+
+``` r
+binary_contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "stimulus_id",
+  trial_col = "trial_id",
+  condition_col = "condition"
+)
+
+binary_contract
+```
+
+    ## <gp3bayes_model_contract>
+    ##   Family: binary
+    ##   Likelihood: Bernoulli
+    ##   Link: logit
+    ##   Outcome: selected
+    ##   Participant: participant_id
+    ##   Item: stimulus_id
+    ##   Condition: condition
+    ##   Random slope requested: FALSE
+    ##   Fitting performed: FALSE
+
 ## Development status
 
 `gp3bayes` is currently at development version `0.0.0.9000`.

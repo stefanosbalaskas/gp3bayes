@@ -11,3 +11,8 @@
 * Added standard GitHub Actions workflows for cross-platform R CMD check
   and pkgdown deployment.
 * Added canonical repository, issue-tracker, and pkgdown website metadata.
+* Added `create_model_contract()` for the two approved initial model
+  families with neutral column mappings and explicit methodological
+  specifications.
+* Added a concise `gp3bayes_model_contract` print method and deterministic
+  validation tests.
