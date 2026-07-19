@@ -61,6 +61,40 @@ binary_contract
 ##   Fitting performed: FALSE
 ```
 
+## Readiness audits
+
+[`audit_model_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_model_readiness.md)
+evaluates observable data requirements before formula construction or
+model fitting. Failures block progression, whereas warnings identify
+structures requiring review.
+
+``` r
+
+binary_data <- data.frame(
+  participant_id = rep(c("p1", "p2"), each = 4),
+  stimulus_id = rep(paste0("s", 1:4), times = 2),
+  trial_id = rep(1:4, times = 2),
+  condition = rep(c("control", "treatment"), times = 4),
+  selected = c(0, 1, 0, 1, 1, 0, 1, 0)
+)
+
+readiness_audit <- audit_model_readiness(
+  binary_data,
+  binary_contract
+)
+
+readiness_audit
+```
+
+``` R
+## <gp3bayes_readiness_audit>
+##   Family: binary
+##   Rows: 8
+##   Status: ready
+##   Ready: TRUE
+##   Checks: 18 passed, 0 warnings, 0 failures
+```
+
 ## Development status
 
 `gp3bayes` is currently at development version `0.0.0.9000`.
@@ -96,4 +130,9 @@ design and target estimand justify causal interpretation.
 
 - [`create_model_contract()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_contract.md)
   : Create an Approved Bayesian Model Contract
+
+## Readiness audits
+
+- [`audit_model_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_model_readiness.md)
+  : Audit Data Readiness for an Approved Model Contract
 
