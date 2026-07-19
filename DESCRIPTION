@@ -1,0 +1,27 @@
+Package: gp3bayes
+Title: Contract-First Bayesian Workflows for Hierarchical Behavioural Data
+Version: 0.0.0.9000
+Authors@R:
+    person(
+      given = "Stefanos",
+      family = "Balaskas",
+      email = "s.balaskas@ac.upatras.gr",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0003-2444-9796")
+    )
+Description: Provides transparent, contract-first infrastructure for
+    Bayesian analysis of repeated-measures and hierarchical behavioural
+    data. It supports explicit data and model contracts, readiness audits,
+    deterministic simulation, inspectable prior specifications, diagnostic
+    assessment, sensitivity analysis, and conservative reporting for
+    approved model families. Optional Bayesian backends are not required
+    for package installation or core validation.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

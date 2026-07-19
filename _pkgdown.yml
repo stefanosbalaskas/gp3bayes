@@ -1,0 +1,21 @@
+template:
+  bootstrap: 5
+
+development:
+  mode: auto
+
+home:
+  title: gp3bayes
+  description: >
+    Contract-first Bayesian workflows for repeated-measures and
+    hierarchical behavioural data.
+
+navbar:
+  structure:
+    left: [reference, news]
+    right: [search]
+
+reference:
+- title: Package overview
+  contents:
+  - gp3bayes-package
