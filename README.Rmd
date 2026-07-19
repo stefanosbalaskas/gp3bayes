@@ -63,6 +63,29 @@ binary_contract <- create_model_contract(
 binary_contract
 ```
 
+## Readiness audits
+
+`audit_model_readiness()` evaluates observable data requirements before
+formula construction or model fitting. Failures block progression, whereas
+warnings identify structures requiring review.
+
+```{r readiness-audit-example}
+binary_data <- data.frame(
+  participant_id = rep(c("p1", "p2"), each = 4),
+  stimulus_id = rep(paste0("s", 1:4), times = 2),
+  trial_id = rep(1:4, times = 2),
+  condition = rep(c("control", "treatment"), times = 4),
+  selected = c(0, 1, 0, 1, 1, 0, 1, 0)
+)
+
+readiness_audit <- audit_model_readiness(
+  binary_data,
+  binary_contract
+)
+
+readiness_audit
+```
+
 ## Development status
 
 `gp3bayes` is currently at development version `0.0.0.9000`.

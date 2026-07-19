@@ -24,3 +24,6 @@ reference:
 - title: Model contracts
   contents:
   - create_model_contract
+- title: Readiness audits
+  contents:
+  - audit_model_readiness
