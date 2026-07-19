@@ -16,3 +16,9 @@
   specifications.
 * Added a concise `gp3bayes_model_contract` print method and deterministic
   validation tests.
+* Added `audit_model_readiness()` for backend-independent assessment of
+  outcome validity, declared columns, missingness, repeated measurements,
+  item and trial structure, predictors, interactions, time terms, and
+  requested participant-level random slopes.
+* Added structured `gp3bayes_readiness_audit` results with explicit pass,
+  warning, and failure statuses and a concise print method.
