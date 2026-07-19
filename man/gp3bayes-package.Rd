@@ -40,6 +40,15 @@ or other latent psychological states. Associations must not be described
 as causal effects unless the design and estimand justify that language.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://stefanosbalaskas.github.io/gp3bayes/}
+  \item \url{https://github.com/stefanosbalaskas/gp3bayes}
+  \item Report bugs at \url{https://github.com/stefanosbalaskas/gp3bayes/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Stefanos Balaskas \email{s.balaskas@ac.upatras.gr} (\href{https://orcid.org/0000-0003-2444-9796}{ORCID})
 

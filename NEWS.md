@@ -8,3 +8,6 @@
 * Added package-level documentation and explicit interpretation boundaries.
 * Added the initial deterministic scope test using testthat edition 3.
 * Added the MIT licence.
+* Added standard GitHub Actions workflows for cross-platform R CMD check
+  and pkgdown deployment.
+* Added canonical repository, issue-tracker, and pkgdown website metadata.
