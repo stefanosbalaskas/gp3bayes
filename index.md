@@ -1,0 +1,50 @@
+# gp3bayes
+
+`gp3bayes` is an independent R package under development for
+transparent, contract-first Bayesian workflows for repeated-measures and
+hierarchical behavioural data.
+
+## Scope
+
+The package is designed around:
+
+- explicit data and model contracts;
+- model-readiness audits;
+- deterministic simulation with recorded generating parameters;
+- inspectable prior specifications;
+- prior and posterior predictive checks;
+- convergence and sampling diagnostics;
+- prior-sensitivity assessment;
+- parameter-recovery workflows;
+- conservative and reproducible reporting.
+
+The initial development scope is restricted to:
+
+1.  hierarchical Bernoulli-logit models for binary trial-level outcomes;
+2.  hierarchical lognormal models for strictly positive uncensored
+    durations.
+
+The core package will not require Gazepoint hardware, Gazepoint exports,
+`gp3tools`, proprietary software, private data, or a Bayesian backend.
+
+## Development status
+
+`gp3bayes` is currently at development version `0.0.0.9000`.
+
+No public model-fitting API is available yet. The current development
+stage establishes the standalone package structure, approved
+methodological scope, data-contract principles, and validation
+infrastructure.
+
+## Interpretation boundaries
+
+Behavioural, gaze, pupil, and physiological measurements do not directly
+reveal emotion, stress, cognition, comprehension, personality,
+diagnosis, deception, intention, or other latent psychological states.
+
+Associations must not be described as causal effects unless the study
+design and target estimand justify causal interpretation.
+
+## Licence
+
+`gp3bayes` is released under the MIT License.
