@@ -6,10 +6,16 @@
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/index.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/news/index.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/audit_model_readiness.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/build_model_formula.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_contract.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_specification.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/create_prior_specification.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/gp3bayes-package.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/index.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/print.gp3bayes_model_contract.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/print.gp3bayes_model_specification.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/print.gp3bayes_prior_specification.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/print.gp3bayes_readiness_audit.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/validate_prior_specification.html</loc></url>
 </urlset>
 

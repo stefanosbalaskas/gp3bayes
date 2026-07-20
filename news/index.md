@@ -29,3 +29,21 @@
   random slopes.
 - Added structured `gp3bayes_readiness_audit` results with explicit
   pass, warning, and failure statuses and a concise print method.
+- Added
+  [`build_model_formula()`](https://stefanosbalaskas.github.io/gp3bayes/reference/build_model_formula.md)
+  for deterministic, backend-independent construction of approved
+  fixed-effects, interaction, participant, item, time, and optional
+  participant-level random-slope structures.
+- Added
+  [`create_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_prior_specification.md)
+  and
+  [`validate_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_prior_specification.md)
+  for explicit binary-logit and lognormal-duration prior records without
+  creating executable backend objects.
+- Added
+  [`create_model_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_specification.md)
+  to combine a model contract, successful readiness audit, approved
+  formula, and validated priors into one inspectable backend-independent
+  specification.
+- Added concise print methods and deterministic validation tests for
+  formulas, priors, compatibility checks, and complete specifications.

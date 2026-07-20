@@ -126,6 +126,32 @@
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">##   Checks: 18 passed, 0 warnings, 0 failures</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="model-specifications">Model specifications<a class="anchor" aria-label="anchor" href="#model-specifications"></a>
+</h2>
+<p><code><a href="reference/build_model_formula.html">build_model_formula()</a></code> translates the approved contract into an R formula, while <code><a href="reference/create_prior_specification.html">create_prior_specification()</a></code> records family-appropriate priors without creating backend-specific objects. A ready audit, formula, contract, and validated priors can then be combined into one inspectable model specification.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">binary_priors</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_prior_specification.html">create_prior_specification</a></span><span class="op">(</span></span>
+<span>  <span class="va">binary_contract</span>,</span>
+<span>  baseline <span class="op">=</span> <span class="fl">0.5</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_specification.html">create_model_specification</a></span><span class="op">(</span></span>
+<span>  <span class="va">binary_contract</span>,</span>
+<span>  <span class="va">readiness_audit</span>,</span>
+<span>  <span class="va">binary_priors</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_specification</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_model_specification&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="do">##   Family: binary</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="do">##   Formula: selected ~ condition + (1 | participant_id) + (1 | stimulus_id)</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="do">##   Readiness status: ready</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="do">##   Readiness warnings: 0</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="do">##   Prior classes: Intercept, b, sd</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="do">##   Backend: none</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="do">##   Fit performed: FALSE</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="development-status">Development status<a class="anchor" aria-label="anchor" href="#development-status"></a>
 </h2>
 <p><code>gp3bayes</code> is currently at development version <code>0.0.0.9000</code>.</p>

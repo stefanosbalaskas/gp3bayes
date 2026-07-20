@@ -45,6 +45,10 @@
 <li>Added a concise <code>gp3bayes_model_contract</code> print method and deterministic validation tests.</li>
 <li>Added <code><a href="../reference/audit_model_readiness.html">audit_model_readiness()</a></code> for backend-independent assessment of outcome validity, declared columns, missingness, repeated measurements, item and trial structure, predictors, interactions, time terms, and requested participant-level random slopes.</li>
 <li>Added structured <code>gp3bayes_readiness_audit</code> results with explicit pass, warning, and failure statuses and a concise print method.</li>
+<li>Added <code><a href="../reference/build_model_formula.html">build_model_formula()</a></code> for deterministic, backend-independent construction of approved fixed-effects, interaction, participant, item, time, and optional participant-level random-slope structures.</li>
+<li>Added <code><a href="../reference/create_prior_specification.html">create_prior_specification()</a></code> and <code><a href="../reference/validate_prior_specification.html">validate_prior_specification()</a></code> for explicit binary-logit and lognormal-duration prior records without creating executable backend objects.</li>
+<li>Added <code><a href="../reference/create_model_specification.html">create_model_specification()</a></code> to combine a model contract, successful readiness audit, approved formula, and validated priors into one inspectable backend-independent specification.</li>
+<li>Added concise print methods and deterministic validation tests for formulas, priors, compatibility checks, and complete specifications.</li>
 </ul></div>
   </main></div>
 
