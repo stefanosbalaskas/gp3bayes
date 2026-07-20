@@ -86,6 +86,29 @@ readiness_audit <- audit_model_readiness(
 readiness_audit
 ```
 
+## Model specifications
+
+`build_model_formula()` translates the approved contract into an R formula,
+while `create_prior_specification()` records family-appropriate priors
+without creating backend-specific objects. A ready audit, formula, contract,
+and validated priors can then be combined into one inspectable model
+specification.
+
+```{r model-specification-example}
+binary_priors <- create_prior_specification(
+  binary_contract,
+  baseline = 0.5
+)
+
+binary_specification <- create_model_specification(
+  binary_contract,
+  readiness_audit,
+  binary_priors
+)
+
+binary_specification
+```
+
 ## Development status
 
 `gp3bayes` is currently at development version `0.0.0.9000`.

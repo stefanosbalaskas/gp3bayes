@@ -22,3 +22,15 @@
   requested participant-level random slopes.
 * Added structured `gp3bayes_readiness_audit` results with explicit pass,
   warning, and failure statuses and a concise print method.
+* Added `build_model_formula()` for deterministic, backend-independent
+  construction of approved fixed-effects, interaction, participant, item,
+  time, and optional participant-level random-slope structures.
+* Added `create_prior_specification()` and
+  `validate_prior_specification()` for explicit binary-logit and
+  lognormal-duration prior records without creating executable backend
+  objects.
+* Added `create_model_specification()` to combine a model contract,
+  successful readiness audit, approved formula, and validated priors into
+  one inspectable backend-independent specification.
+* Added concise print methods and deterministic validation tests for
+  formulas, priors, compatibility checks, and complete specifications.
