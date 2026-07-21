@@ -6,17 +6,15 @@ hierarchical behavioural data.
 
 ## Scope
 
-The package is designed around:
+The package currently provides:
 
-- explicit data and model contracts;
+- explicit model contracts;
 - model-readiness audits;
-- deterministic simulation with recorded generating parameters;
-- inspectable prior specifications;
-- prior and posterior predictive checks;
-- convergence and sampling diagnostics;
-- prior-sensitivity assessment;
-- parameter-recovery workflows;
-- conservative and reproducible reporting.
+- deterministic hierarchical binary simulation with recorded truth;
+- explicit binary-outcome and condition transformations;
+- inspectable backend-independent prior specifications;
+- restricted hierarchical formula construction;
+- structured prior-predictive plausibility checks.
 
 The initial development scope is restricted to:
 
@@ -186,6 +184,17 @@ binary_prior_check
 ##   Failed checks: 0
 ##   Backend: none
 ##   Fit performed: FALSE
+```
+
+## Citation
+
+Citation metadata are provided in both `CITATION.cff` and
+`inst/CITATION`. After installing the package, obtain the current
+R-formatted citation with:
+
+``` r
+
+citation("gp3bayes")
 ```
 
 ## Development status
