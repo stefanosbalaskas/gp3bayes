@@ -33,3 +33,9 @@ reference:
   - create_prior_specification
   - validate_prior_specification
   - create_model_specification
+- title: Binary workflow foundation
+  contents:
+  - simulate_hierarchical_binary_data
+  - prepare_hierarchical_binary_data
+  - specify_binary_model
+  - check_binary_prior_predictive
