@@ -152,6 +152,55 @@
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="do">##   Fit performed: FALSE</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="hierarchical-binary-workflow-foundation">Hierarchical binary workflow foundation<a class="anchor" aria-label="anchor" href="#hierarchical-binary-workflow-foundation"></a>
+</h2>
+<p>The backend-independent binary workflow can simulate known hierarchical data-generating processes, prepare neutral long-format data, construct a restricted model specification, and evaluate prior predictive plausibility. No model is fitted and no posterior draws are produced.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">binary_simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_hierarchical_binary_data.html">simulate_hierarchical_binary_data</a></span><span class="op">(</span></span>
+<span>  n_participants <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  trials_per_participant <span class="op">=</span> <span class="fl">8</span>,</span>
+<span>  n_items <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  random_slope_sd <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">2026</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_workflow_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
+<span>  family <span class="op">=</span> <span class="st">"binary"</span>,</span>
+<span>  outcome_col <span class="op">=</span> <span class="st">"selected"</span>,</span>
+<span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
+<span>  item_col <span class="op">=</span> <span class="st">"item_id"</span>,</span>
+<span>  trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span>
+<span>  condition_col <span class="op">=</span> <span class="st">"condition"</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="st">"trial_covariate"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_prepared</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_hierarchical_binary_data.html">prepare_hierarchical_binary_data</a></span><span class="op">(</span></span>
+<span>  <span class="va">binary_simulation</span><span class="op">$</span><span class="va">data</span>,</span>
+<span>  <span class="va">binary_workflow_contract</span>,</span>
+<span>  condition_levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span>,</span>
+<span>  scale_predictors <span class="op">=</span> <span class="st">"trial_covariate"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_workflow_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/specify_binary_model.html">specify_binary_model</a></span><span class="op">(</span></span>
+<span>  <span class="va">binary_prepared</span>,</span>
+<span>  baseline <span class="op">=</span> <span class="fl">0.35</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_prior_check</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_binary_prior_predictive.html">check_binary_prior_predictive</a></span><span class="op">(</span></span>
+<span>  <span class="va">binary_workflow_specification</span>,</span>
+<span>  draws <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">2027</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_prior_check</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_binary_prior_predictive_check&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">##   Adequate: TRUE</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">##   Draws: 100</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">##   Failed checks: 0</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">##   Backend: none</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##   Fit performed: FALSE</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="development-status">Development status<a class="anchor" aria-label="anchor" href="#development-status"></a>
 </h2>
 <p><code>gp3bayes</code> is currently at development version <code>0.0.0.9000</code>.</p>

@@ -131,6 +131,63 @@ binary_specification
 ##   Fit performed: FALSE
 ```
 
+## Hierarchical binary workflow foundation
+
+The backend-independent binary workflow can simulate known hierarchical
+data-generating processes, prepare neutral long-format data, construct a
+restricted model specification, and evaluate prior predictive
+plausibility. No model is fitted and no posterior draws are produced.
+
+``` r
+
+binary_simulation <- simulate_hierarchical_binary_data(
+  n_participants = 12,
+  trials_per_participant = 8,
+  n_items = 6,
+  random_slope_sd = 0,
+  seed = 2026
+)
+
+binary_workflow_contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  predictors = "trial_covariate"
+)
+
+binary_prepared <- prepare_hierarchical_binary_data(
+  binary_simulation$data,
+  binary_workflow_contract,
+  condition_levels = c("control", "treatment"),
+  scale_predictors = "trial_covariate"
+)
+
+binary_workflow_specification <- specify_binary_model(
+  binary_prepared,
+  baseline = 0.35
+)
+
+binary_prior_check <- check_binary_prior_predictive(
+  binary_workflow_specification,
+  draws = 100,
+  seed = 2027
+)
+
+binary_prior_check
+```
+
+``` R
+## <gp3bayes_binary_prior_predictive_check>
+##   Adequate: TRUE
+##   Draws: 100
+##   Failed checks: 0
+##   Backend: none
+##   Fit performed: FALSE
+```
+
 ## Development status
 
 `gp3bayes` is currently at development version `0.0.0.9000`.

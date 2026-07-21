@@ -47,3 +47,26 @@
   specification.
 - Added concise print methods and deterministic validation tests for
   formulas, priors, compatibility checks, and complete specifications.
+- Added
+  [`simulate_hierarchical_binary_data()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_hierarchical_binary_data.md)
+  for deterministic hierarchical Bernoulli-logit simulation with
+  participant effects, optional crossed item effects, optional
+  participant condition slopes, controlled imbalance, and a stored
+  true-parameter record.
+- Added
+  [`prepare_hierarchical_binary_data()`](https://stefanosbalaskas.github.io/gp3bayes/reference/prepare_hierarchical_binary_data.md)
+  for explicit binary-outcome mapping, condition coding, recorded
+  predictor scaling, missing-data decisions, readiness auditing, and
+  fixed-effects matrix construction.
+- Added
+  [`specify_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_binary_model.md)
+  to combine prepared data with the approved binary contract, restricted
+  hierarchical formula, and validated backend-independent prior
+  specification.
+- Added
+  [`check_binary_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_binary_prior_predictive.md)
+  for deterministic simulation of family-specific prior predictions and
+  structured plausibility checks without fitting a model or requiring a
+  Bayesian backend.
+- Added concise print methods, generated documentation, and 89 focused
+  tests for the backend-independent binary workflow foundation.

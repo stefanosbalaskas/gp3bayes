@@ -49,6 +49,11 @@
 <li>Added <code><a href="../reference/create_prior_specification.html">create_prior_specification()</a></code> and <code><a href="../reference/validate_prior_specification.html">validate_prior_specification()</a></code> for explicit binary-logit and lognormal-duration prior records without creating executable backend objects.</li>
 <li>Added <code><a href="../reference/create_model_specification.html">create_model_specification()</a></code> to combine a model contract, successful readiness audit, approved formula, and validated priors into one inspectable backend-independent specification.</li>
 <li>Added concise print methods and deterministic validation tests for formulas, priors, compatibility checks, and complete specifications.</li>
+<li>Added <code><a href="../reference/simulate_hierarchical_binary_data.html">simulate_hierarchical_binary_data()</a></code> for deterministic hierarchical Bernoulli-logit simulation with participant effects, optional crossed item effects, optional participant condition slopes, controlled imbalance, and a stored true-parameter record.</li>
+<li>Added <code><a href="../reference/prepare_hierarchical_binary_data.html">prepare_hierarchical_binary_data()</a></code> for explicit binary-outcome mapping, condition coding, recorded predictor scaling, missing-data decisions, readiness auditing, and fixed-effects matrix construction.</li>
+<li>Added <code><a href="../reference/specify_binary_model.html">specify_binary_model()</a></code> to combine prepared data with the approved binary contract, restricted hierarchical formula, and validated backend-independent prior specification.</li>
+<li>Added <code><a href="../reference/check_binary_prior_predictive.html">check_binary_prior_predictive()</a></code> for deterministic simulation of family-specific prior predictions and structured plausibility checks without fitting a model or requiring a Bayesian backend.</li>
+<li>Added concise print methods, generated documentation, and 89 focused tests for the backend-independent binary workflow foundation.</li>
 </ul></div>
   </main></div>
 
