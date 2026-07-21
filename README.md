@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Edit README.Rmd, not README.md. -->
 
-# gp3bayes
+# gp3bayes <img src="man/figures/logo.svg" align="right" height="160" alt="gp3bayes logo" />
 
 `gp3bayes` is an independent R package under development for
 transparent, contract-first Bayesian workflows for repeated-measures and
