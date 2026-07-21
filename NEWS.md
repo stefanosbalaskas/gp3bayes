@@ -49,3 +49,8 @@
   without fitting a model or requiring a Bayesian backend.
 * Added concise print methods, generated documentation, and 89 focused
   tests for the backend-independent binary workflow foundation.
+* Added repository and installed-package citation metadata through
+  `CITATION.cff` and `inst/CITATION`.
+* Refined the package description to match the currently implemented
+  backend-independent contract, readiness, simulation, preparation,
+  specification, and prior-predictive functionality.

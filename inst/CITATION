@@ -1,0 +1,14 @@
+bibentry(
+  bibtype = "Manual",
+  title = "gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data",
+  author = person(
+    given = "Stefanos",
+    family = "Balaskas"
+  ),
+  year = "2026",
+  note = paste(
+    "R package version",
+    meta$Version
+  ),
+  url = "https://stefanosbalaskas.github.io/gp3bayes/"
+)

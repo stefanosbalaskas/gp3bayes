@@ -6,11 +6,12 @@
 \alias{gp3bayes-package}
 \title{gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data}
 \description{
-\code{gp3bayes} provides package-neutral infrastructure for transparent
-Bayesian analysis of repeated-measures and hierarchical behavioural data.
-The package emphasises explicit data and model contracts, readiness
-auditing, deterministic simulation, inspectable prior specifications,
-diagnostic assessment, sensitivity analysis, and conservative reporting.
+\code{gp3bayes} provides package-neutral infrastructure for transparent,
+contract-first Bayesian workflows for repeated-measures and hierarchical
+behavioural data. The current package implements model contracts,
+readiness audits, deterministic hierarchical binary simulation, recorded
+transformations, restricted model specifications, inspectable priors, and
+prior-predictive plausibility checks without fitting a model.
 }
 \section{Initial model families}{
 
