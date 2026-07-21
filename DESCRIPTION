@@ -9,13 +9,13 @@ Authors@R:
       role = c("aut", "cre"),
       comment = c(ORCID = "0000-0003-2444-9796")
     )
-Description: Provides transparent, contract-first infrastructure for
-    Bayesian analysis of repeated-measures and hierarchical behavioural
-    data. It supports explicit data and model contracts, readiness audits,
-    deterministic simulation, inspectable prior specifications, diagnostic
-    assessment, sensitivity analysis, and conservative reporting for
-    approved model families. Optional Bayesian backends are not required
-    for package installation or core validation.
+Description: Provides transparent, contract-first infrastructure for Bayesian
+    analysis of repeated-measures and hierarchical behavioural data. It
+    supports explicit model contracts, readiness audits, deterministic
+    simulation for hierarchical binary outcomes, recorded data
+    transformations, inspectable prior specifications, and prior predictive
+    checks. The core package does not fit models and requires no Bayesian
+    backend, compiler, hardware-specific export, or external dataset.
 License: MIT + file LICENSE
 URL: https://stefanosbalaskas.github.io/gp3bayes/,
     https://github.com/stefanosbalaskas/gp3bayes

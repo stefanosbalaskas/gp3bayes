@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use gp3bayes, please cite the software using this metadata."
+type: software
+title: "gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data"
+version: "0.0.0.9000"
+authors:
+  - family-names: "Balaskas"
+    given-names: "Stefanos"
+    email: "s.balaskas@ac.upatras.gr"
+    orcid: "https://orcid.org/0000-0003-2444-9796"
+repository-code: "https://github.com/stefanosbalaskas/gp3bayes"
+url: "https://stefanosbalaskas.github.io/gp3bayes/"
+license: MIT
+abstract: >-
+  gp3bayes provides transparent, contract-first infrastructure for Bayesian
+  analysis of repeated-measures and hierarchical behavioural data. It supports
+  explicit model contracts, readiness audits, deterministic simulation for
+  hierarchical binary outcomes, recorded data transformations, inspectable
+  prior specifications, and prior predictive checks. The core package does not
+  fit models and requires no Bayesian backend.
+keywords:
+  - Bayesian workflows
+  - hierarchical models
+  - repeated measures
+  - behavioural data
+  - prior predictive checks
