@@ -12,10 +12,11 @@ Authors@R:
 Description: Provides transparent, contract-first infrastructure for Bayesian
     analysis of repeated-measures and hierarchical behavioural data. It
     supports explicit model contracts, readiness audits, deterministic
-    simulation for hierarchical binary outcomes, recorded data
-    transformations, inspectable prior specifications, and prior predictive
-    checks. The core package does not fit models and requires no Bayesian
-    backend, compiler, hardware-specific export, or external dataset.
+    simulation and preparation for hierarchical binary outcomes, inspectable
+    prior specifications, prior predictive checks, and restricted optional
+    fitting of approved binary models through 'brms' and 'rstan'. Core
+    validation and specification remain backend-independent and require no
+    compiler, hardware-specific export, or external dataset.
 License: MIT + file LICENSE
 URL: https://stefanosbalaskas.github.io/gp3bayes/,
     https://github.com/stefanosbalaskas/gp3bayes
@@ -24,7 +25,9 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Suggests:
+    brms,
     knitr,
     rmarkdown,
+    rstan,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

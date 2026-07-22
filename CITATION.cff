@@ -16,8 +16,9 @@ abstract: >-
   analysis of repeated-measures and hierarchical behavioural data. It supports
   explicit model contracts, readiness audits, deterministic simulation for
   hierarchical binary outcomes, recorded data transformations, inspectable
-  prior specifications, and prior predictive checks. The core package does not
-  fit models and requires no Bayesian backend.
+  prior specifications, prior predictive checks, and restricted optional
+  fitting of approved binary models through brms and rstan. Core validation
+  and specification remain backend-independent.
 keywords:
   - Bayesian workflows
   - hierarchical models
