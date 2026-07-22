@@ -43,3 +43,12 @@ reference:
   contents:
   - translate_binary_model_to_brms
   - fit_binary_model
+- title: Binary posterior validation
+  contents:
+  - diagnose_binary_fit
+  - summarise_binary_posterior
+  - check_binary_posterior_predictive
+  - assess_binary_prior_sensitivity
+  - run_binary_recovery
+  - create_binary_model_report
+  - plot_sampling_diagnostics
