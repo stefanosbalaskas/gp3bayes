@@ -54,3 +54,9 @@
 * Refined the package description to match the currently implemented
   backend-independent contract, readiness, simulation, preparation,
   specification, and prior-predictive functionality.
+* Added restricted binary model translation from approved package
+  specifications to `brms` Bernoulli-logit formulas and priors.
+* Added optional full-MCMC fitting through the fixed `brms` and `rstan`
+  sampling route without unrestricted formulas or backend arguments.
+* Added conservative fit metadata that records sampling settings while
+  explicitly withholding convergence and posterior-adequacy claims.

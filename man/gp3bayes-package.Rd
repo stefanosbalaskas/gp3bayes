@@ -8,10 +8,12 @@
 \description{
 \code{gp3bayes} provides package-neutral infrastructure for transparent,
 contract-first Bayesian workflows for repeated-measures and hierarchical
-behavioural data. The current package implements model contracts,
-readiness audits, deterministic hierarchical binary simulation, recorded
-transformations, restricted model specifications, inspectable priors, and
-prior-predictive plausibility checks without fitting a model.
+behavioural data. The package implements model contracts, readiness audits,
+deterministic hierarchical binary simulation, recorded transformations,
+restricted model specifications, inspectable priors, prior-predictive
+checks, and optional full-MCMC fitting of approved binary models through
+\code{brms} and \code{rstan}. Fitting alone does not establish convergence or
+posterior adequacy.
 }
 \section{Initial model families}{
 
@@ -27,10 +29,11 @@ Additional outcome families require separate methodological approval.
 
 \section{Backend policy}{
 
-Core validation, contract, and simulation functionality must remain usable
-without a Bayesian backend. Model fitting will use one optional backend
-through restricted, contract-aware interfaces rather than an unrestricted
-general-purpose formula wrapper.
+Core validation, contract, simulation, preparation, and specification
+functionality remains usable without a Bayesian backend. Binary model
+fitting uses the optional \code{brms} interface with the fixed \code{rstan} sampling
+backend through restricted, contract-aware functions rather than an
+unrestricted general-purpose formula wrapper.
 }
 
 \section{Interpretation boundaries}{

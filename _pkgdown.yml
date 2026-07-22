@@ -39,3 +39,7 @@ reference:
   - prepare_hierarchical_binary_data
   - specify_binary_model
   - check_binary_prior_predictive
+- title: Binary model fitting
+  contents:
+  - translate_binary_model_to_brms
+  - fit_binary_model

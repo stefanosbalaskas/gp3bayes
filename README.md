@@ -17,7 +17,10 @@ The package currently provides:
 - explicit binary-outcome and condition transformations;
 - inspectable backend-independent prior specifications;
 - restricted hierarchical formula construction;
-- structured prior-predictive plausibility checks.
+- structured prior-predictive plausibility checks;
+- restricted translation of approved binary specifications to `brms`;
+- optional full-MCMC binary fitting through the fixed `brms` and `rstan`
+  route.
 
 The initial development scope is restricted to:
 
@@ -25,8 +28,11 @@ The initial development scope is restricted to:
 2.  hierarchical lognormal models for strictly positive uncensored
     durations.
 
-The core package will not require Gazepoint hardware, Gazepoint exports,
-`gp3tools`, proprietary software, private data, or a Bayesian backend.
+Core contract, validation, simulation, preparation, specification, and
+prior-predictive functionality does not require Gazepoint hardware,
+Gazepoint exports, `gp3tools`, proprietary software, private data, or a
+Bayesian backend. Binary fitting requires the optional `brms` and
+`rstan` packages.
 
 ## Model contracts
 
@@ -174,6 +180,29 @@ binary_prior_check
     ##   Failed checks: 0
     ##   Backend: none
     ##   Fit performed: FALSE
+
+## Restricted binary model fitting
+
+`translate_binary_model_to_brms()` converts an approved package
+specification into a fixed Bernoulli-logit `brms` representation without
+compiling or fitting a model. `fit_binary_model()` optionally runs full
+MCMC sampling through the fixed `brms` and `rstan` route. Neither
+function accepts an unrestricted formula, family, backend, algorithm,
+Stan extension, or arbitrary backend arguments.
+
+``` r
+if (requireNamespace("brms", quietly = TRUE)) {
+  backend_specification <- translate_binary_model_to_brms(
+    binary_workflow_specification
+  )
+
+  backend_specification
+}
+```
+
+A returned fit does not by itself establish convergence, posterior
+adequacy, causal identification, or substantive validity. Those
+assessments require separate diagnostic and reporting gates.
 
 ## Citation
 
