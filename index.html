@@ -223,10 +223,19 @@
 <p>A returned fit does not by itself establish convergence, posterior adequacy, causal identification, or substantive validity. Those assessments require separate diagnostic and reporting gates.</p>
 </div>
 <div class="section level2">
+<h2 id="binary-posterior-validation">Binary posterior validation<a class="anchor" aria-label="anchor" href="#binary-posterior-validation"></a>
+</h2>
+<p>Approved binary fits can be assessed with conservative numerical sampling diagnostics, posterior summaries, posterior predictive checks, prior-scale sensitivity, simulation-based recovery, and structured Markdown reports. A threshold pass is not an automatic convergence or posterior-adequacy claim.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">diagnostics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/diagnose_binary_fit.html">diagnose_binary_fit</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span>
+<span><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/summarise_binary_posterior.html">summarise_binary_posterior</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span>
+<span><span class="va">predictive</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_binary_posterior_predictive.html">check_binary_posterior_predictive</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the current R-formatted citation with:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">

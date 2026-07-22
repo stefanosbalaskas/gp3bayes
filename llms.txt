@@ -217,6 +217,21 @@ A returned fit does not by itself establish convergence, posterior
 adequacy, causal identification, or substantive validity. Those
 assessments require separate diagnostic and reporting gates.
 
+## Binary posterior validation
+
+Approved binary fits can be assessed with conservative numerical
+sampling diagnostics, posterior summaries, posterior predictive checks,
+prior-scale sensitivity, simulation-based recovery, and structured
+Markdown reports. A threshold pass is not an automatic convergence or
+posterior-adequacy claim.
+
+``` r
+
+diagnostics <- diagnose_binary_fit(binary_fit)
+posterior <- summarise_binary_posterior(binary_fit)
+predictive <- check_binary_posterior_predictive(binary_fit)
+```
+
 ## Citation
 
 Citation metadata are provided in both `CITATION.cff` and
@@ -297,4 +312,21 @@ design and target estimand justify causal interpretation.
   : Translate a Binary Model Specification to brms
 - [`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model.md)
   : Fit an Approved Hierarchical Binary Model
+
+## Binary posterior validation
+
+- [`diagnose_binary_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_binary_fit.md)
+  : Diagnose a Fitted Binary Model
+- [`summarise_binary_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_binary_posterior.md)
+  : Summarise a Binary Posterior
+- [`check_binary_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_binary_posterior_predictive.md)
+  : Check Binary Posterior Predictive Behaviour
+- [`assess_binary_prior_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/assess_binary_prior_sensitivity.md)
+  : Assess Binary Prior Sensitivity
+- [`run_binary_recovery()`](https://stefanosbalaskas.github.io/gp3bayes/reference/run_binary_recovery.md)
+  : Run Binary Parameter Recovery
+- [`create_binary_model_report()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_binary_model_report.md)
+  : Create a Structured Binary Model Report
+- [`plot_sampling_diagnostics()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_sampling_diagnostics.md)
+  : Plot Sampling Diagnostics
 

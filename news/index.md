@@ -81,3 +81,12 @@
   sampling route without unrestricted formulas or backend arguments.
 - Added conservative fit metadata that records sampling settings while
   explicitly withholding convergence and posterior-adequacy claims.
+- Added conservative binary posterior diagnostics covering R-hat, bulk
+  and tail ESS, divergences, maximum-treedepth saturation, and
+  chain-level energy diagnostics.
+- Added posterior summaries, binary posterior predictive checks,
+  prior-scale sensitivity, simulation-based recovery, diagnostic plots,
+  and structured Markdown model reports.
+- Diagnostic, predictive, sensitivity, and recovery statuses never
+  create automatic convergence, adequacy, robustness, or validation
+  claims.

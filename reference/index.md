@@ -45,3 +45,20 @@
   : Translate a Binary Model Specification to brms
 - [`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model.md)
   : Fit an Approved Hierarchical Binary Model
+
+## Binary posterior validation
+
+- [`diagnose_binary_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_binary_fit.md)
+  : Diagnose a Fitted Binary Model
+- [`summarise_binary_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_binary_posterior.md)
+  : Summarise a Binary Posterior
+- [`check_binary_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_binary_posterior_predictive.md)
+  : Check Binary Posterior Predictive Behaviour
+- [`assess_binary_prior_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/assess_binary_prior_sensitivity.md)
+  : Assess Binary Prior Sensitivity
+- [`run_binary_recovery()`](https://stefanosbalaskas.github.io/gp3bayes/reference/run_binary_recovery.md)
+  : Run Binary Parameter Recovery
+- [`create_binary_model_report()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_binary_model_report.md)
+  : Create a Structured Binary Model Report
+- [`plot_sampling_diagnostics()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_sampling_diagnostics.md)
+  : Plot Sampling Diagnostics
