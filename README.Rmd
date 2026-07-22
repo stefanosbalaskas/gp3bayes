@@ -181,6 +181,20 @@ A returned fit does not by itself establish convergence, posterior adequacy,
 causal identification, or substantive validity. Those assessments require
 separate diagnostic and reporting gates.
 
+## Binary posterior validation
+
+Approved binary fits can be assessed with conservative numerical sampling
+diagnostics, posterior summaries, posterior predictive checks, prior-scale
+sensitivity, simulation-based recovery, and structured Markdown reports.
+A threshold pass is not an automatic convergence or posterior-adequacy
+claim.
+
+```r
+diagnostics <- diagnose_binary_fit(binary_fit)
+posterior <- summarise_binary_posterior(binary_fit)
+predictive <- check_binary_posterior_predictive(binary_fit)
+```
+
 ## Citation
 
 Citation metadata are provided in both `CITATION.cff` and
