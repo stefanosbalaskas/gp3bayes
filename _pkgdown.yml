@@ -52,3 +52,11 @@ reference:
   - run_binary_recovery
   - create_binary_model_report
   - plot_sampling_diagnostics
+- title: Lognormal duration workflow
+  contents:
+  - simulate_hierarchical_duration_data
+  - prepare_hierarchical_duration_data
+  - specify_duration_model
+  - check_duration_prior_predictive
+  - translate_duration_model_to_brms
+  - fit_duration_model
