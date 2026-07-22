@@ -90,3 +90,11 @@
 - Diagnostic, predictive, sensitivity, and recovery statuses never
   create automatic convergence, adequacy, robustness, or validation
   claims.
+- Added the complete hierarchical lognormal duration workflow for
+  strictly positive finite uncensored outcomes.
+- Added deterministic duration simulation, explicit unit conversion and
+  preparation, model specification, prior predictive checks, restricted
+  `brms` translation, and full MCMC fitting through `rstan`.
+- Zero, negative, censored, truncated, shifted, survival, Gamma,
+  Weibull, and mixture outcomes remain outside the approved duration
+  contract.

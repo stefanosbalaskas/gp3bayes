@@ -232,6 +232,36 @@ posterior <- summarise_binary_posterior(binary_fit)
 predictive <- check_binary_posterior_predictive(binary_fit)
 ```
 
+## Hierarchical lognormal duration workflow
+
+The duration workflow supports strictly positive, finite, uncensored
+durations with an explicit recorded unit. It provides deterministic
+simulation, preparation, inspectable priors, prior predictive checks,
+and restricted optional full-MCMC fitting through `brms` and `rstan`.
+
+``` r
+
+duration_simulation <- simulate_hierarchical_duration_data(seed = 2026)
+duration_contract <- create_model_contract(
+  family = "duration",
+  outcome_col = "duration",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  outcome_unit = "milliseconds"
+)
+duration_prepared <- prepare_hierarchical_duration_data(
+  duration_simulation$data,
+  duration_contract,
+  condition_levels = c("control", "treatment")
+)
+duration_specification <- specify_duration_model(
+  duration_prepared,
+  baseline = 500
+)
+```
+
 ## Citation
 
 Citation metadata are provided in both `CITATION.cff` and

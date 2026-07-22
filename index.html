@@ -232,10 +232,35 @@
 <span><span class="va">predictive</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_binary_posterior_predictive.html">check_binary_posterior_predictive</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="hierarchical-lognormal-duration-workflow">Hierarchical lognormal duration workflow<a class="anchor" aria-label="anchor" href="#hierarchical-lognormal-duration-workflow"></a>
+</h2>
+<p>The duration workflow supports strictly positive, finite, uncensored durations with an explicit recorded unit. It provides deterministic simulation, preparation, inspectable priors, prior predictive checks, and restricted optional full-MCMC fitting through <code>brms</code> and <code>rstan</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">duration_simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_hierarchical_duration_data.html">simulate_hierarchical_duration_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">2026</span><span class="op">)</span></span>
+<span><span class="va">duration_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
+<span>  family <span class="op">=</span> <span class="st">"duration"</span>,</span>
+<span>  outcome_col <span class="op">=</span> <span class="st">"duration"</span>,</span>
+<span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
+<span>  item_col <span class="op">=</span> <span class="st">"item_id"</span>,</span>
+<span>  trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span>
+<span>  condition_col <span class="op">=</span> <span class="st">"condition"</span>,</span>
+<span>  outcome_unit <span class="op">=</span> <span class="st">"milliseconds"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">duration_prepared</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_hierarchical_duration_data.html">prepare_hierarchical_duration_data</a></span><span class="op">(</span></span>
+<span>  <span class="va">duration_simulation</span><span class="op">$</span><span class="va">data</span>,</span>
+<span>  <span class="va">duration_contract</span>,</span>
+<span>  condition_levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">duration_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/specify_duration_model.html">specify_duration_model</a></span><span class="op">(</span></span>
+<span>  <span class="va">duration_prepared</span>,</span>
+<span>  baseline <span class="op">=</span> <span class="fl">500</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the current R-formatted citation with:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">

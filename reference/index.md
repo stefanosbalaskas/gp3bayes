@@ -62,3 +62,18 @@
   : Create a Structured Binary Model Report
 - [`plot_sampling_diagnostics()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_sampling_diagnostics.md)
   : Plot Sampling Diagnostics
+
+## Lognormal duration workflow
+
+- [`simulate_hierarchical_duration_data()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_hierarchical_duration_data.md)
+  : Simulate Hierarchical Lognormal Duration Data
+- [`prepare_hierarchical_duration_data()`](https://stefanosbalaskas.github.io/gp3bayes/reference/prepare_hierarchical_duration_data.md)
+  : Prepare Hierarchical Duration Data
+- [`specify_duration_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_duration_model.md)
+  : Specify a Backend-Independent Duration Model
+- [`check_duration_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_duration_prior_predictive.md)
+  : Check Duration Prior Predictive Behaviour
+- [`translate_duration_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_duration_model_to_brms.md)
+  : Translate a Duration Model Specification to brms
+- [`fit_duration_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_duration_model.md)
+  : Fit an Approved Hierarchical Lognormal Duration Model
