@@ -38,3 +38,10 @@
   : Specify a Backend-Independent Binary Model
 - [`check_binary_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_binary_prior_predictive.md)
   : Check Binary Prior Predictive Behaviour
+
+## Binary model fitting
+
+- [`translate_binary_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_binary_model_to_brms.md)
+  : Translate a Binary Model Specification to brms
+- [`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model.md)
+  : Fit an Approved Hierarchical Binary Model

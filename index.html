@@ -70,14 +70,16 @@
 <li>explicit binary-outcome and condition transformations;</li>
 <li>inspectable backend-independent prior specifications;</li>
 <li>restricted hierarchical formula construction;</li>
-<li>structured prior-predictive plausibility checks.</li>
+<li>structured prior-predictive plausibility checks;</li>
+<li>restricted translation of approved binary specifications to <code>brms</code>;</li>
+<li>optional full-MCMC binary fitting through the fixed <code>brms</code> and <code>rstan</code> route.</li>
 </ul>
 <p>The initial development scope is restricted to:</p>
 <ol style="list-style-type: decimal">
 <li>hierarchical Bernoulli-logit models for binary trial-level outcomes;</li>
 <li>hierarchical lognormal models for strictly positive uncensored durations.</li>
 </ol>
-<p>The core package will not require Gazepoint hardware, Gazepoint exports, <code>gp3tools</code>, proprietary software, private data, or a Bayesian backend.</p>
+<p>Core contract, validation, simulation, preparation, specification, and prior-predictive functionality does not require Gazepoint hardware, Gazepoint exports, <code>gp3tools</code>, proprietary software, private data, or a Bayesian backend. Binary fitting requires the optional <code>brms</code> and <code>rstan</code> packages.</p>
 </div>
 <div class="section level2">
 <h2 id="model-contracts">Model contracts<a class="anchor" aria-label="anchor" href="#model-contracts"></a>
@@ -207,10 +209,24 @@
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##   Fit performed: FALSE</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="restricted-binary-model-fitting">Restricted binary model fitting<a class="anchor" aria-label="anchor" href="#restricted-binary-model-fitting"></a>
+</h2>
+<p><code><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms()</a></code> converts an approved package specification into a fixed Bernoulli-logit <code>brms</code> representation without compiling or fitting a model. <code><a href="reference/fit_binary_model.html">fit_binary_model()</a></code> optionally runs full MCMC sampling through the fixed <code>brms</code> and <code>rstan</code> route. Neither function accepts an unrestricted formula, family, backend, algorithm, Stan extension, or arbitrary backend arguments.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"brms"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">backend_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms</a></span><span class="op">(</span></span>
+<span>    <span class="va">binary_workflow_specification</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">backend_specification</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>A returned fit does not by itself establish convergence, posterior adequacy, causal identification, or substantive validity. Those assessments require separate diagnostic and reporting gates.</p>
+</div>
+<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the current R-formatted citation with:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
