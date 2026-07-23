@@ -10,6 +10,14 @@ authors:
     email: "s.balaskas@ac.upatras.gr"
     orcid: "https://orcid.org/0000-0003-2444-9796"
 repository-code: "https://github.com/stefanosbalaskas/gp3bayes"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21518698"
+    description: "Concept DOI for all gp3bayes releases."
+  - type: doi
+    value: "10.5281/zenodo.21518699"
+    description: "Version-specific DOI for gp3bayes 0.1.0."
+doi: "10.5281/zenodo.21518699"
 url: "https://stefanosbalaskas.github.io/gp3bayes/"
 license: MIT
 abstract: >-
