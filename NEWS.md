@@ -81,3 +81,10 @@
   Markdown reports.
 * Duration validation statuses remain separate from automatic convergence,
   adequacy, robustness, causal, or substantive claims.
+* Added integrated end-to-end binary and duration vignettes.
+* Added dedicated articles for sampling diagnostics, prior sensitivity and
+  recovery, and optional backend installation.
+* Added a repository-only audit covering exports, Rd aliases, pkgdown
+  reference topics, articles, built pages, and optional dependencies.
+* Aligned DESCRIPTION, citation metadata, README, package documentation, and
+  the curated pkgdown reference and article indices with the complete scope.

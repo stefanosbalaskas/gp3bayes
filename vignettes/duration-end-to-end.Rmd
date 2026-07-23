@@ -1,0 +1,224 @@
+---
+title: "End-to-End Hierarchical Lognormal Duration Workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{End-to-End Hierarchical Lognormal Duration Workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Scope
+
+The duration workflow is restricted to strictly positive, finite, uncensored
+durations modeled with a hierarchical lognormal likelihood. Zero, negative,
+censored, truncated, shifted-lognormal, Gamma, Weibull, survival, and mixture
+outcomes are outside this contract.
+
+## Simulate durations with stored truth
+
+```{r duration-simulation}
+library(gp3bayes)
+
+duration_simulation <- simulate_hierarchical_duration_data(
+  n_participants = 16,
+  trials_per_participant = 10,
+  n_items = 8,
+  baseline_median = 500,
+  random_slope_sd = 0.15,
+  residual_sd = 0.40,
+  outcome_unit = "milliseconds",
+  seed = 2030
+)
+
+duration_simulation
+head(duration_simulation$data)
+```
+
+The fixed effects and grouping scales are on the log-duration scale. The
+baseline is stored as a median in the declared outcome unit.
+
+## Declare the duration contract
+
+```{r duration-contract}
+duration_contract <- create_model_contract(
+  family = "duration",
+  outcome_col = "duration",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  predictors = c(
+    "participant_covariate",
+    "trial_covariate"
+  ),
+  interaction = c(
+    "condition",
+    "participant_covariate"
+  ),
+  random_slope = TRUE,
+  outcome_unit = "milliseconds"
+)
+
+duration_contract
+```
+
+The outcome unit is mandatory. The package never guesses a unit from column
+names or magnitudes.
+
+## Prepare, convert, and audit
+
+```{r duration-preparation}
+duration_prepared <- prepare_hierarchical_duration_data(
+  duration_simulation$data,
+  duration_contract,
+  condition_levels = c(
+    "control",
+    "treatment"
+  )
+)
+
+duration_prepared
+duration_prepared$decision_log
+```
+
+Explicit unit conversion uses `outcome_multiplier` and `converted_unit`
+together. For example, converting milliseconds to seconds is recorded as:
+
+```{r duration-unit-conversion}
+duration_seconds <- prepare_hierarchical_duration_data(
+  duration_simulation$data,
+  duration_contract,
+  condition_levels = c(
+    "control",
+    "treatment"
+  ),
+  outcome_multiplier = 0.001,
+  converted_unit = "seconds"
+)
+
+duration_seconds$transformations$outcome
+```
+
+## Specify priors and check prior implications
+
+```{r duration-specification}
+duration_specification <- specify_duration_model(
+  duration_prepared,
+  baseline = 500,
+  intercept_scale = 1,
+  coefficient_scale = 0.5,
+  group_sd_scale = 1,
+  residual_scale = 1,
+  correlation_eta = 2,
+  student_df = 3
+)
+
+duration_specification
+duration_specification$priors$table
+```
+
+```{r duration-prior-predictive}
+duration_prior_predictive <- check_duration_prior_predictive(
+  duration_specification,
+  draws = 100,
+  seed = 2031
+)
+
+duration_prior_predictive
+duration_prior_predictive$checks
+```
+
+The prior check examines overall medians, upper tails, coefficients of
+variation, and condition median ratios. A failure requests review and does not
+automatically alter the priors.
+
+## Translate and fit through the restricted backend
+
+```{r duration-fit, eval=FALSE}
+duration_translation <- translate_duration_model_to_brms(
+  duration_specification
+)
+
+duration_fit <- fit_duration_model(
+  duration_specification,
+  chains = 4,
+  iter = 2000,
+  warmup = 1000,
+  cores = 4,
+  seed = 2032,
+  adapt_delta = 0.95,
+  max_treedepth = 12,
+  refresh = 100
+)
+```
+
+The likelihood, formula, priors, backend, and sampling algorithm are derived
+from the approved package specification. There is no unrestricted formula or
+backend argument.
+
+## Diagnostics and posterior interpretation
+
+```{r duration-validation, eval=FALSE}
+duration_diagnostics <- diagnose_duration_fit(
+  duration_fit
+)
+
+duration_posterior <- summarise_duration_posterior(
+  duration_fit
+)
+
+duration_predictive <- check_duration_posterior_predictive(
+  duration_fit,
+  draws = 500,
+  seed = 2033
+)
+```
+
+Exponentiating a population-level coefficient gives a conditional median
+duration ratio under the lognormal model. This ratio is not automatically a
+causal effect.
+
+The predictive check compares observed and replicated median, mean, upper-tail,
+dispersion, condition-ratio, and grouping summaries. Passing those summaries
+does not prove global model adequacy.
+
+## Sensitivity, recovery, and reporting
+
+```{r duration-sensitivity-recovery, eval=FALSE}
+duration_sensitivity <- assess_duration_prior_sensitivity(
+  duration_fit,
+  scale_multipliers = c(
+    tighter = 0.5,
+    wider = 2
+  )
+)
+
+duration_recovery <- run_duration_recovery(
+  repetitions = 20,
+  baseline_median = 500,
+  outcome_unit = "milliseconds",
+  seed = 4001
+)
+
+duration_report <- create_duration_model_report(
+  duration_fit,
+  diagnostics = duration_diagnostics,
+  posterior_summary = duration_posterior,
+  posterior_predictive = duration_predictive,
+  prior_sensitivity = duration_sensitivity,
+  recovery = duration_recovery,
+  file = "duration-model-report.md"
+)
+```
+
+Recovery results apply to the declared synthetic data-generating process.
+Reports preserve the distinction between successful fitting, numerical
+sampling diagnostics, predictive behavior, robustness checks, and substantive
+interpretation.

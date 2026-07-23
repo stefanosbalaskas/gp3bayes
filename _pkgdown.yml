@@ -68,3 +68,15 @@ reference:
   - assess_duration_prior_sensitivity
   - run_duration_recovery
   - create_duration_model_report
+articles:
+- title: End-to-end workflows
+  contents:
+  - binary-end-to-end
+  - duration-end-to-end
+- title: Diagnostics and validation
+  contents:
+  - posterior-diagnostics
+  - sensitivity-and-recovery
+- title: Installation
+  contents:
+  - optional-backend-installation

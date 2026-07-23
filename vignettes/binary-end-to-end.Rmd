@@ -1,0 +1,225 @@
+---
+title: "End-to-End Hierarchical Binary Workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{End-to-End Hierarchical Binary Workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Scope
+
+This article presents the approved Bernoulli-logit workflow for binary
+trial-level outcomes with repeated observations, participant effects, and
+optional crossed item effects. The interface is deliberately restricted:
+users do not supply an arbitrary formula, likelihood, backend, Stan program,
+or automatic model-selection rule.
+
+The core contract, simulation, preparation, model specification, and prior
+predictive check do not require a Bayesian backend.
+
+## Simulate a known data-generating process
+
+```{r binary-simulation}
+library(gp3bayes)
+
+binary_simulation <- simulate_hierarchical_binary_data(
+  n_participants = 16,
+  trials_per_participant = 10,
+  n_items = 8,
+  random_slope_sd = 0.20,
+  seed = 2026
+)
+
+binary_simulation
+head(binary_simulation$data)
+```
+
+The simulation object retains fixed effects, grouping scales, the condition
+coding, random effects, and the random-number seed. Stored truth enables
+later recovery assessment without a private or external data set.
+
+## Declare the model contract
+
+```{r binary-contract}
+binary_contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  predictors = c(
+    "participant_covariate",
+    "trial_covariate"
+  ),
+  interaction = c(
+    "condition",
+    "participant_covariate"
+  ),
+  random_slope = TRUE
+)
+
+binary_contract
+```
+
+Contract creation records the intended outcome, grouping structure,
+likelihood, link, supported interaction, assumptions, diagnostics, limitations,
+and interpretation boundaries. It does not validate the data or establish
+model adequacy.
+
+## Prepare and audit the data
+
+```{r binary-preparation}
+binary_prepared <- prepare_hierarchical_binary_data(
+  binary_simulation$data,
+  binary_contract,
+  condition_levels = c(
+    "control",
+    "treatment"
+  )
+)
+
+binary_prepared
+binary_prepared$decision_log
+```
+
+Outcome mapping, condition coding, missing-value decisions, and requested
+scaling are explicit and recorded. No variable is silently transformed.
+
+## Specify priors and inspect prior implications
+
+```{r binary-specification}
+binary_specification <- specify_binary_model(
+  binary_prepared,
+  baseline = 0.35,
+  intercept_scale = 1.5,
+  coefficient_scale = 0.75,
+  group_sd_scale = 1,
+  correlation_eta = 2,
+  student_df = 3
+)
+
+binary_specification
+binary_specification$priors$table
+```
+
+```{r binary-prior-predictive}
+binary_prior_predictive <- check_binary_prior_predictive(
+  binary_specification,
+  draws = 100,
+  seed = 2027
+)
+
+binary_prior_predictive
+binary_prior_predictive$checks
+```
+
+A prior-predictive failure requests substantive review. The function does not
+automatically change priors or select a different model.
+
+## Translate and fit with the optional backend
+
+The fitting route is fixed to `brms`, `rstan`, and full MCMC sampling. The
+following code requires the optional backend and a working C++ toolchain.
+
+```{r binary-fit, eval=FALSE}
+binary_translation <- translate_binary_model_to_brms(
+  binary_specification
+)
+
+binary_fit <- fit_binary_model(
+  binary_specification,
+  chains = 4,
+  iter = 2000,
+  warmup = 1000,
+  cores = 4,
+  seed = 2028,
+  adapt_delta = 0.95,
+  max_treedepth = 12,
+  refresh = 100
+)
+```
+
+A returned fit confirms that sampling completed. It does not by itself
+establish convergence or posterior adequacy.
+
+## Diagnose, interpret, and validate
+
+```{r binary-validation, eval=FALSE}
+binary_diagnostics <- diagnose_binary_fit(
+  binary_fit
+)
+
+binary_posterior <- summarise_binary_posterior(
+  binary_fit,
+  probability = 0.95
+)
+
+binary_predictive <- check_binary_posterior_predictive(
+  binary_fit,
+  draws = 500,
+  seed = 2029
+)
+
+binary_diagnostics
+binary_posterior
+binary_predictive
+```
+
+The diagnostic object reports R-hat, bulk and tail ESS, divergent transitions,
+maximum-treedepth saturation, and chain-level energy diagnostics. Its
+pass/review/fail status is a threshold report, not an automatic declaration
+that the model converged.
+
+Population-level coefficients are reported on the log-odds and odds-ratio
+scales. Posterior probabilities and intervals are not frequentist significance
+tests and are not automatically causal.
+
+## Prior sensitivity and simulation recovery
+
+```{r binary-sensitivity-recovery, eval=FALSE}
+binary_sensitivity <- assess_binary_prior_sensitivity(
+  binary_fit,
+  scale_multipliers = c(
+    tighter = 0.5,
+    wider = 2
+  )
+)
+
+binary_recovery <- run_binary_recovery(
+  repetitions = 20,
+  seed = 3001
+)
+```
+
+A small recovery run is only a smoke test. A larger run assesses the declared
+synthetic design and does not validate every future use of the package.
+
+## Structured reporting
+
+```{r binary-report, eval=FALSE}
+binary_report <- create_binary_model_report(
+  binary_fit,
+  diagnostics = binary_diagnostics,
+  posterior_summary = binary_posterior,
+  posterior_predictive = binary_predictive,
+  prior_sensitivity = binary_sensitivity,
+  recovery = binary_recovery,
+  file = "binary-model-report.md"
+)
+
+binary_report
+```
+
+The report keeps fitting, diagnostics, predictive checks, sensitivity, and
+recovery as separate evidence layers. It does not automatically claim
+convergence, predictive validity, causal identification, or substantive
+validity.
