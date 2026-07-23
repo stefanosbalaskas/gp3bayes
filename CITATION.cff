@@ -2,7 +2,8 @@ cff-version: 1.2.0
 message: "If you use gp3bayes, please cite the software using this metadata."
 type: software
 title: "gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data"
-version: "0.0.0.9000"
+version: 0.1.0
+date-released: '2026-07-23'
 authors:
   - family-names: "Balaskas"
     given-names: "Stefanos"

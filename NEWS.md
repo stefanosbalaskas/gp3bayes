@@ -1,4 +1,4 @@
-# gp3bayes 0.0.0.9000
+# gp3bayes 0.1.0
 
 * Created the independent `gp3bayes` package scaffold.
 * Defined the initial scope as contract-first Bayesian workflows for
