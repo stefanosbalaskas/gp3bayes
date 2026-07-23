@@ -58,7 +58,8 @@
 <img src="logo.svg" class="logo" alt=""><h1 id="gp3bayes-">gp3bayes <a class="anchor" aria-label="anchor" href="#gp3bayes-"></a>
 </h1>
 </div>
-<p><code>gp3bayes</code> is an independent R package under development for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data.</p>
+<p><a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><img src="https://zenodo.org/badge/1305351994.svg" alt="DOI"></a></p>
+<p><code>gp3bayes</code> is an independent R package for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data.</p>
 <div class="section level2">
 <h2 id="scope">Scope<a class="anchor" aria-label="anchor" href="#scope"></a>
 </h2>
@@ -272,12 +273,19 @@
 <p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the current R-formatted citation with:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
+<p>For exact reproducibility, cite the archived software version:</p>
+<ul>
+<li>Version 0.1.0 DOI: <a href="https://doi.org/10.5281/zenodo.21518699" class="external-link"><code>10.5281/zenodo.21518699</code></a>
+</li>
+<li>Concept DOI for all releases: <a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><code>10.5281/zenodo.21518698</code></a>
+</li>
+</ul>
 </div>
 <div class="section level2">
-<h2 id="development-status">Development status<a class="anchor" aria-label="anchor" href="#development-status"></a>
+<h2 id="release-status">Release status<a class="anchor" aria-label="anchor" href="#release-status"></a>
 </h2>
-<p><code>gp3bayes</code> is currently at development version <code>0.0.0.9000</code>.</p>
-<p>No public model-fitting API is available yet. The current development stage establishes the standalone package structure, approved methodological scope, data-contract principles, and validation infrastructure.</p>
+<p><code>gp3bayes</code> 0.1.0 is the first stable release.</p>
+<p>The public API provides restricted Bernoulli-logit and lognormal-duration workflows, including optional full-MCMC fitting through <code>brms</code> and <code>rstan</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="interpretation-boundaries">Interpretation boundaries<a class="anchor" aria-label="anchor" href="#interpretation-boundaries"></a>

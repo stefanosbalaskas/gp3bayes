@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/stefanosbalaskas/gp3bayes/blob/v0.1.0/inst/CITATION)
+[`inst/CITATION`](https://github.com/stefanosbalaskas/gp3bayes/blob/master/inst/CITATION)
 
 Balaskas S (2026). *gp3bayes: Contract-First Bayesian Workflows for
 Hierarchical Behavioural Data*. R package version 0.1.0,
