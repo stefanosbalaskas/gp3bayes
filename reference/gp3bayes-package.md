@@ -2,12 +2,13 @@
 
 `gp3bayes` provides package-neutral infrastructure for transparent,
 contract-first Bayesian workflows for repeated-measures and hierarchical
-behavioural data. The package implements model contracts, readiness
-audits, deterministic hierarchical binary simulation, recorded
-transformations, restricted model specifications, inspectable priors,
-prior-predictive checks, and optional full-MCMC fitting of approved
-binary models through `brms` and `rstan`. Fitting alone does not
-establish convergence or posterior adequacy.
+behavioural data. It implements approved Bernoulli-logit and positive
+lognormal duration workflows with deterministic simulation, recorded
+preparation, inspectable priors, restricted optional full-MCMC fitting,
+sampling diagnostics, posterior predictive checks, prior sensitivity,
+simulation-based recovery, and conservative structured reporting.
+Fitting or passing a numerical threshold does not by itself establish
+convergence, posterior adequacy, causal identification, or validity.
 
 ## Initial model families
 

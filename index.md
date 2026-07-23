@@ -8,16 +8,18 @@ hierarchical behavioural data.
 
 The package currently provides:
 
-- explicit model contracts;
-- model-readiness audits;
-- deterministic hierarchical binary simulation with recorded truth;
-- explicit binary-outcome and condition transformations;
-- inspectable backend-independent prior specifications;
-- restricted hierarchical formula construction;
-- structured prior-predictive plausibility checks;
-- restricted translation of approved binary specifications to `brms`;
-- optional full-MCMC binary fitting through the fixed `brms` and `rstan`
-  route.
+- explicit contracts and model-readiness audits;
+- deterministic binary and positive-duration simulation with stored
+  truth;
+- recorded outcome, condition, unit, missing-value, and scaling
+  decisions;
+- inspectable backend-independent prior specifications and prior checks;
+- restricted Bernoulli-logit and lognormal formula construction;
+- optional full-MCMC fitting through the fixed `brms` and `rstan` route;
+- R-hat, bulk/tail ESS, divergence, treedepth, and energy diagnostics;
+- posterior summaries and family-specific posterior predictive checks;
+- prior-scale sensitivity and simulation-based parameter recovery;
+- conservative structured reporting without automatic adequacy claims.
 
 The initial development scope is restricted to:
 
