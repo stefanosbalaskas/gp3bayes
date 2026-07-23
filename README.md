@@ -247,6 +247,20 @@ duration_specification <- specify_duration_model(
 )
 ```
 
+## Duration posterior validation
+
+Approved lognormal duration fits support the same conservative
+diagnostic contract as binary fits, together with positive-scale
+posterior predictive checks, prior sensitivity, simulation-based
+recovery, and structured reports. Exponentiated population coefficients
+are conditional median ratios, not automatically causal effects.
+
+``` r
+duration_diagnostics <- diagnose_duration_fit(duration_fit)
+duration_posterior <- summarise_duration_posterior(duration_fit)
+duration_predictive <- check_duration_posterior_predictive(duration_fit)
+```
+
 ## Citation
 
 Citation metadata are provided in both `CITATION.cff` and

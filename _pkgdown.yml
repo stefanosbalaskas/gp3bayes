@@ -60,3 +60,11 @@ reference:
   - check_duration_prior_predictive
   - translate_duration_model_to_brms
   - fit_duration_model
+- title: Duration posterior validation
+  contents:
+  - diagnose_duration_fit
+  - summarise_duration_posterior
+  - check_duration_posterior_predictive
+  - assess_duration_prior_sensitivity
+  - run_duration_recovery
+  - create_duration_model_report
