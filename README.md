@@ -3,9 +3,11 @@
 
 # gp3bayes <img src="man/figures/logo.svg" align="right" height="160" alt="gp3bayes logo" />
 
-`gp3bayes` is an independent R package under development for
-transparent, contract-first Bayesian workflows for repeated-measures and
-hierarchical behavioural data.
+[![DOI](https://zenodo.org/badge/1305351994.svg)](https://doi.org/10.5281/zenodo.21518698)
+
+`gp3bayes` is an independent R package for transparent, contract-first
+Bayesian workflows for repeated-measures and hierarchical behavioural
+data.
 
 ## Scope
 
@@ -273,14 +275,20 @@ R-formatted citation with:
 citation("gp3bayes")
 ```
 
-## Development status
+For exact reproducibility, cite the archived software version:
 
-`gp3bayes` is currently at development version `0.0.0.9000`.
+- Version 0.1.0 DOI:
+  [`10.5281/zenodo.21518699`](https://doi.org/10.5281/zenodo.21518699)
+- Concept DOI for all releases:
+  [`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698)
 
-No public model-fitting API is available yet. The current development
-stage establishes the standalone package structure, approved
-methodological scope, data-contract principles, and validation
-infrastructure.
+## Release status
+
+`gp3bayes` 0.1.0 is the first stable release.
+
+The public API provides restricted Bernoulli-logit and
+lognormal-duration workflows, including optional full-MCMC fitting
+through `brms` and `rstan`.
 
 ## Interpretation boundaries
 
