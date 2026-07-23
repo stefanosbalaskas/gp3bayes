@@ -11,12 +11,12 @@ Authors@R:
     )
 Description: Provides transparent, contract-first infrastructure for Bayesian
     analysis of repeated-measures and hierarchical behavioural data. It
-    supports explicit model contracts, readiness audits, deterministic
-    simulation and preparation for hierarchical binary outcomes, inspectable
-    prior specifications, prior predictive checks, and restricted optional
-    fitting of approved binary models through 'brms' and 'rstan'. Core
-    validation and specification remain backend-independent and require no
-    compiler, hardware-specific export, or external dataset.
+    supports approved Bernoulli-logit and positive lognormal duration
+    workflows with readiness audits, deterministic simulation, explicit
+    preparation, inspectable priors, prior and posterior predictive checks,
+    restricted optional fitting through 'brms' and 'rstan', sampling
+    diagnostics, prior sensitivity, parameter recovery, and conservative
+    reporting. Core contracts and prior checks remain backend-independent.
 License: MIT + file LICENSE
 URL: https://stefanosbalaskas.github.io/gp3bayes/,
     https://github.com/stefanosbalaskas/gp3bayes
@@ -33,3 +33,4 @@ Suggests:
     rstan,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+VignetteBuilder: knitr

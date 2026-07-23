@@ -1,0 +1,127 @@
+---
+title: "Prior Sensitivity and Simulation-Based Recovery"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Prior Sensitivity and Simulation-Based Recovery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Different validation questions
+
+Prior sensitivity and parameter recovery answer different questions.
+
+Prior sensitivity asks whether selected posterior summaries change materially
+under prespecified defensible prior-scale changes.
+
+Recovery asks whether the complete simulation, preparation, specification,
+fitting, and summarization workflow can recover known generating values under a
+declared synthetic design.
+
+Neither procedure proves that a model is appropriate for every empirical data
+set.
+
+## Prior-scale sensitivity
+
+Binary and duration sensitivity functions refit the same approved formula,
+likelihood, backend, and sampling algorithm. Only declared prior scales are
+multiplied.
+
+```{r binary-sensitivity, eval=FALSE}
+binary_sensitivity <- assess_binary_prior_sensitivity(
+  binary_fit,
+  scale_multipliers = c(
+    tighter = 0.5,
+    wider = 2
+  ),
+  maximum_standardized_shift = 0.25,
+  review_standardized_shift = 0.50
+)
+
+binary_sensitivity
+binary_sensitivity$comparison
+```
+
+```{r duration-sensitivity, eval=FALSE}
+duration_sensitivity <- assess_duration_prior_sensitivity(
+  duration_fit,
+  scale_multipliers = c(
+    tighter = 0.5,
+    wider = 2
+  )
+)
+```
+
+The standardized shift is the absolute change in posterior median divided by
+the reference posterior standard deviation. A pass applies only to the
+declared multipliers. The object always records `robustness_claim = FALSE`.
+
+## Simulation-based recovery
+
+The recovery functions repeatedly:
+
+1. generate deterministic synthetic data with stored truth;
+2. create the approved model contract;
+3. prepare and audit the data;
+4. specify the approved priors;
+5. fit through `brms` and `rstan`;
+6. run the sampling diagnostic contract;
+7. calculate bias, RMSE, interval coverage, and interval width.
+
+```{r binary-recovery, eval=FALSE}
+binary_recovery <- run_binary_recovery(
+  repetitions = 20,
+  n_participants = 30,
+  trials_per_participant = 16,
+  seed = 5001
+)
+```
+
+```{r duration-recovery, eval=FALSE}
+duration_recovery <- run_duration_recovery(
+  repetitions = 20,
+  n_participants = 30,
+  trials_per_participant = 16,
+  baseline_median = 500,
+  outcome_unit = "milliseconds",
+  seed = 6001
+)
+```
+
+## Minimum repetition rule
+
+The default reporting contract requires at least 20 completed repetitions
+before an overall recovery pass is possible. A smaller run can detect obvious
+software or workflow failures, but its best possible status is `review`.
+
+This rule prevents a two- or five-repetition smoke test from being described as
+validation.
+
+## Failure handling
+
+With `continue_on_error = TRUE`, a failed repetition is retained in the
+fit-status registry. It is not silently removed from the denominator. Repeated
+fitting failures lower the diagnostic pass fraction and can force review or
+failure.
+
+## Interpretation
+
+Recovery is conditional on:
+
+- the selected data-generating parameters;
+- sample size and grouping structure;
+- the approved prior specification;
+- the chosen MCMC settings;
+- the interval probability;
+- the declared recovery thresholds.
+
+A successful recovery experiment is evidence about that design. It is not a
+universal guarantee of unbiased inference, causal identification, or
+substantive validity.

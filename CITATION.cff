@@ -14,11 +14,11 @@ license: MIT
 abstract: >-
   gp3bayes provides transparent, contract-first infrastructure for Bayesian
   analysis of repeated-measures and hierarchical behavioural data. It supports
-  explicit model contracts, readiness audits, deterministic simulation for
-  hierarchical binary outcomes, recorded data transformations, inspectable
-  prior specifications, prior predictive checks, and restricted optional
-  fitting of approved binary models through brms and rstan. Core validation
-  and specification remain backend-independent.
+  explicit contracts and readiness audits for hierarchical Bernoulli-logit
+  and positive lognormal duration models, deterministic simulation, recorded
+  transformations, inspectable priors, predictive checks, restricted optional
+  fitting through brms and rstan, sampling diagnostics, prior sensitivity,
+  parameter recovery, and conservative reporting.
 keywords:
   - Bayesian workflows
   - hierarchical models
