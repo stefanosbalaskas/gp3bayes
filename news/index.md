@@ -98,3 +98,9 @@
 - Zero, negative, censored, truncated, shifted, survival, Gamma,
   Weibull, and mixture outcomes remain outside the approved duration
   contract.
+- Added conservative duration posterior diagnostics, posterior summaries
+  with median-ratio interpretation, posterior predictive checks,
+  prior-scale sensitivity, simulation-based recovery, and structured
+  Markdown reports.
+- Duration validation statuses remain separate from automatic
+  convergence, adequacy, robustness, causal, or substantive claims.

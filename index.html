@@ -257,10 +257,19 @@
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="duration-posterior-validation">Duration posterior validation<a class="anchor" aria-label="anchor" href="#duration-posterior-validation"></a>
+</h2>
+<p>Approved lognormal duration fits support the same conservative diagnostic contract as binary fits, together with positive-scale posterior predictive checks, prior sensitivity, simulation-based recovery, and structured reports. Exponentiated population coefficients are conditional median ratios, not automatically causal effects.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">duration_diagnostics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/diagnose_duration_fit.html">diagnose_duration_fit</a></span><span class="op">(</span><span class="va">duration_fit</span><span class="op">)</span></span>
+<span><span class="va">duration_posterior</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/summarise_duration_posterior.html">summarise_duration_posterior</a></span><span class="op">(</span><span class="va">duration_fit</span><span class="op">)</span></span>
+<span><span class="va">duration_predictive</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_duration_posterior_predictive.html">check_duration_posterior_predictive</a></span><span class="op">(</span><span class="va">duration_fit</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the current R-formatted citation with:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">

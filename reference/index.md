@@ -77,3 +77,18 @@
   : Translate a Duration Model Specification to brms
 - [`fit_duration_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_duration_model.md)
   : Fit an Approved Hierarchical Lognormal Duration Model
+
+## Duration posterior validation
+
+- [`diagnose_duration_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_duration_fit.md)
+  : Diagnose a Fitted Duration Model
+- [`summarise_duration_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_duration_posterior.md)
+  : Summarise a Duration Posterior
+- [`check_duration_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_duration_posterior_predictive.md)
+  : Check Duration Posterior Predictive Behaviour
+- [`assess_duration_prior_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/assess_duration_prior_sensitivity.md)
+  : Assess Duration Prior Sensitivity
+- [`run_duration_recovery()`](https://stefanosbalaskas.github.io/gp3bayes/reference/run_duration_recovery.md)
+  : Run Duration Parameter Recovery
+- [`create_duration_model_report()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_duration_model_report.md)
+  : Create a Structured Duration Model Report
