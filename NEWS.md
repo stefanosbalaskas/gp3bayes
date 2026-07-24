@@ -1,3 +1,9 @@
+# gp3bayes 0.1.1
+
+* Prepared the first CRAN submission candidate.
+* Added Zenodo DOI documentation and current release-status wording.
+* Added explicit copyright-holder metadata for the initial CRAN submission.
+
 # gp3bayes 0.1.0
 
 * Created the independent `gp3bayes` package scaffold.
