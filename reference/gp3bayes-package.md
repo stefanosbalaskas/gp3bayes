@@ -49,9 +49,9 @@ Useful links:
 ## Author
 
 **Maintainer**: Stefanos Balaskas <s.balaskas@ac.upatras.gr>
-([ORCID](https://orcid.org/0000-0003-2444-9796))
+([ORCID](https://orcid.org/0000-0003-2444-9796)) \[copyright holder\]
 
 Authors:
 
 - Stefanos Balaskas <s.balaskas@ac.upatras.gr>
-  ([ORCID](https://orcid.org/0000-0003-2444-9796))
+  ([ORCID](https://orcid.org/0000-0003-2444-9796)) \[copyright holder\]
