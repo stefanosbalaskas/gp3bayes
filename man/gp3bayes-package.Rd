@@ -55,11 +55,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Stefanos Balaskas \email{s.balaskas@ac.upatras.gr} (\href{https://orcid.org/0000-0003-2444-9796}{ORCID})
+\strong{Maintainer}: Stefanos Balaskas \email{s.balaskas@ac.upatras.gr} (\href{https://orcid.org/0000-0003-2444-9796}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{
-  \item Stefanos Balaskas \email{s.balaskas@ac.upatras.gr} (\href{https://orcid.org/0000-0003-2444-9796}{ORCID})
+  \item Stefanos Balaskas \email{s.balaskas@ac.upatras.gr} (\href{https://orcid.org/0000-0003-2444-9796}{ORCID}) [copyright holder]
 }
 
 }

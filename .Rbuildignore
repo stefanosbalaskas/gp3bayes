@@ -9,3 +9,4 @@
 ^pkgdown$
 ^CITATION\.cff$
 ^tools$
+^cran-comments\.md$
