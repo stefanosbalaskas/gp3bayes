@@ -288,3 +288,19 @@ directly reproducible.
 ## Licence
 
 `gp3bayes` is released under the MIT License.
+
+## Specification closure
+
+The development API now closes the remaining contract-level requirements with strict readiness audits, exact transformation replay, first-class probability/median/tail estimands, governed structural and deletion sensitivity, duration-unit invariance, detailed posterior predictive checks, and optional exact K-fold validation.
+
+These functions remain inside the two approved Bernoulli-logit and positive uncensored lognormal-duration contracts. They do not add arbitrary formulas, likelihoods, automatic model selection, automatic exclusions, or causal claims.
+
+```r
+audit_model_readiness_strict(data, contract)
+create_transformation_recipe(prepared)
+estimate_standardized_probability_contrast(fit)
+estimate_standardized_duration_estimands(fit)
+check_binary_ppc_details(fit)
+check_duration_ppc_details(fit)
+gp3bayes_specification_traceability()
+```

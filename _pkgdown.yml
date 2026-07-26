@@ -95,6 +95,37 @@ reference:
   - run_sbc_plan
   - summarise_sbc_result
 
+- title: Specification closure
+  contents:
+  - summarise_condition_balance
+  - summarise_binary_group_variation
+  - identify_identifier_like_predictors
+  - review_duration_extremes
+  - audit_duration_boundaries
+  - audit_model_readiness_strict
+  - plot.gp3bayes_strict_readiness_audit
+  - create_transformation_recipe
+  - apply_transformation_recipe
+  - invert_transformation_recipe
+  - validate_transformation_replay
+  - estimate_standardized_probability_contrast
+  - estimate_standardized_duration_estimands
+  - summarise_estimand_draws
+  - create_random_slope_sensitivity_plan
+  - run_random_slope_sensitivity
+  - create_group_deletion_sensitivity_plan
+  - run_group_deletion_sensitivity
+  - compare_estimand_sensitivity
+  - audit_estimand_invariance
+  - create_contrast_coding_sensitivity_specification
+  - create_predictor_scaling_sensitivity_specification
+  - create_duration_unit_sensitivity_specification
+  - audit_duration_unit_invariance
+  - check_binary_ppc_details
+  - check_duration_ppc_details
+  - compute_kfold_cv
+  - plot.gp3bayes_kfold_cv
+  - gp3bayes_specification_traceability
 articles:
 - title: End-to-end workflows
   contents:
@@ -113,3 +144,8 @@ articles:
   - advanced-optional-workflows
   - pathological-simulation-scenarios
   - backend-portability
+- title: Specification closure
+  contents:
+  - specification-closure
+  - estimands-and-sensitivity
+  - transformation-replay-and-detailed-ppc
