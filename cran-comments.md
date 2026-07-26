@@ -1,8 +1,12 @@
+## Development version
+
+Current development version: gp3bayes 0.2.0.9001.
+
+The latest archived stable release is gp3bayes 0.1.0.
+
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new submission.
+0 errors | 0 warnings | 0 notes
 
 ## Test environments
 
@@ -12,13 +16,12 @@
 
 ## Additional validation
 
-* The full testthat suite passes.
-* All package vignettes build and rebuild successfully.
-* The pkgdown reference site and all five articles build successfully.
-* Optional real-backend smoke tests were completed with 'brms' and 'rstan'.
+* Full testthat suite: 514 tests passed.
+* `pkgdown::check_pkgdown()`: no problems.
+* Specification-closure backend-independent smoke test: passed.
+* Real-backend smoke test: passed with both `rstan` and `cmdstanr`.
+* Exact K-fold smoke validation: passed with both `rstan` and `cmdstanr`.
+* `R CMD check --as-cran --run-donttest`: 0 errors, 0 warnings, 0 notes.
 
-## Notes
-
-* The single expected NOTE is:
-
-  New submission
+This file records development validation and should be refreshed again before a
+future CRAN submission.

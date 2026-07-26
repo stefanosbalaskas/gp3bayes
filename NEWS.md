@@ -1,5 +1,10 @@
 # gp3bayes 0.2.0.9001
 
+* Aligned DESCRIPTION, README, citation metadata, package-level help,
+  backend-installation guidance, CRAN comments, and pkgdown deployment metadata
+  with the complete 0.2.0.9001 development API and dual `rstan`/`cmdstanr`
+  backend support.
+
 ## Specification closure
 
 * Adds strict readiness checks for overall condition imbalance, binary group outcome variation, identifier-like numeric predictors, fixed-effect rank, duration extremes, declared duration ranges, censoring signals, and optional separation screening.

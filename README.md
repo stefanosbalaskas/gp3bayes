@@ -11,32 +11,48 @@ data.
 
 ## Scope
 
-The package currently provides:
+The current development version is `gp3bayes` 0.2.0.9001.
 
-- explicit contracts and model-readiness audits;
-- deterministic binary and positive-duration simulation with stored
-  truth;
-- recorded outcome, condition, unit, missing-value, and scaling
+The package provides:
+
+- explicit model contracts and standard or strict model-readiness
+  audits;
+- deterministic hierarchical binary and positive-duration simulation
+  with stored truth;
+- recorded outcome, condition, unit, missing-value, coding, and scaling
   decisions;
-- inspectable backend-independent prior specifications and prior checks;
-- restricted Bernoulli-logit and lognormal formula construction;
-- optional full-MCMC fitting through the fixed `brms` and `rstan` route;
+- reusable transformation recipes with replay, inversion, and
+  validation;
+- inspectable backend-independent prior specifications and prior
+  predictive checks;
+- restricted Bernoulli-logit and lognormal model construction;
+- optional full-MCMC fitting through `brms` with either `rstan` or
+  `cmdstanr`;
 - R-hat, bulk/tail ESS, divergence, treedepth, and energy diagnostics;
-- posterior summaries and family-specific posterior predictive checks;
-- prior-scale sensitivity and simulation-based parameter recovery;
-- conservative structured reporting without automatic adequacy claims.
+- family-specific posterior summaries and detailed posterior predictive
+  checks;
+- design-standardised binary probability contrasts and duration median,
+  ratio, and predictive-quantile estimands;
+- prior-scale, power-scaling, structural, deletion, contrast-coding,
+  predictor-scaling, and duration-unit sensitivity workflows;
+- PSIS-LOO diagnostics, influence assessment, model comparison, model
+  weights, and optional exact K-fold validation;
+- fixed-effects separation screening and simulation-based calibration;
+- specification traceability and conservative structured reporting
+  without automatic adequacy, robustness, exclusion, or model-selection
+  claims.
 
-The initial development scope is restricted to:
+The approved model-family scope remains restricted to:
 
 1.  hierarchical Bernoulli-logit models for binary trial-level outcomes;
 2.  hierarchical lognormal models for strictly positive uncensored
     durations.
 
-Core contract, validation, simulation, preparation, specification, and
-prior-predictive functionality does not require Gazepoint hardware,
-Gazepoint exports, `gp3tools`, proprietary software, private data, or a
-Bayesian backend. Binary fitting requires the optional `brms` and
-`rstan` packages.
+Core contract, validation, simulation, preparation, transformation,
+specification, and prior-predictive functionality does not require
+Gazepoint hardware, Gazepoint exports, `gp3tools`, proprietary software,
+private data, or a Bayesian backend. Full-MCMC fitting requires `brms`
+and one supported sampling backend: `rstan` or `cmdstanr`.
 
 ## Model contracts
 
@@ -188,11 +204,18 @@ binary_prior_check
 ## Restricted binary model fitting
 
 `translate_binary_model_to_brms()` converts an approved package
-specification into a fixed Bernoulli-logit `brms` representation without
-compiling or fitting a model. `fit_binary_model()` optionally runs full
-MCMC sampling through the fixed `brms` and `rstan` route. Neither
-function accepts an unrestricted formula, family, backend, algorithm,
-Stan extension, or arbitrary backend arguments.
+specification into a restricted Bernoulli-logit `brms` representation
+without compiling or fitting a model.
+
+`fit_binary_model()` retains the original fixed `rstan` fitting route.
+For backend-portable full-MCMC fitting, `fit_binary_model_backend()`
+accepts either `backend = "rstan"` or `backend = "cmdstanr"` while
+preserving the same approved family, formula, priors, and sampling
+contract.
+
+Neither interface accepts unrestricted formulas, arbitrary model
+families, alternative inference algorithms, user-supplied Stan programs,
+or arbitrary backend arguments.
 
 ``` r
 if (requireNamespace("brms", quietly = TRUE)) {
@@ -227,7 +250,8 @@ predictive <- check_binary_posterior_predictive(binary_fit)
 The duration workflow supports strictly positive, finite, uncensored
 durations with an explicit recorded unit. It provides deterministic
 simulation, preparation, inspectable priors, prior predictive checks,
-and restricted optional full-MCMC fitting through `brms` and `rstan`.
+and restricted optional full-MCMC fitting through `brms` with either
+`rstan` or `cmdstanr`.
 
 ``` r
 duration_simulation <- simulate_hierarchical_duration_data(seed = 2026)
@@ -268,29 +292,35 @@ duration_predictive <- check_duration_posterior_predictive(duration_fit)
 ## Citation
 
 Citation metadata are provided in both `CITATION.cff` and
-`inst/CITATION`. After installing the package, obtain the current
-R-formatted citation with:
+`inst/CITATION`. After installing the package, obtain the R-formatted
+citation for the installed version with:
 
 ``` r
 citation("gp3bayes")
 ```
 
-For exact reproducibility, cite the archived software version:
+The repository currently represents development version **0.2.0.9001**.
 
-- Version 0.1.0 DOI:
+For archived software citation:
+
+- Latest archived stable release: `gp3bayes` 0.1.0 —
   [`10.5281/zenodo.21518699`](https://doi.org/10.5281/zenodo.21518699)
-- Concept DOI for all releases:
+- Concept DOI for all releases —
   [`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698)
+  \## Development status
 
-## Release status
+`gp3bayes` 0.2.0.9001 is the current development version.
 
-`gp3bayes` 0.1.0 is the first stable release.
+The development API provides contract-first Bernoulli-logit and
+lognormal-duration workflows; backend-portable full-MCMC fitting through
+`brms` with either `rstan` or `cmdstanr`; advanced sensitivity,
+PSIS-LOO, model-weighting, separation-screening, and simulation-based
+calibration workflows; strict specification closure; transformation
+replay; explicit posterior estimands; detailed posterior predictive
+checks; and optional exact K-fold validation.
 
-The public API provides restricted Bernoulli-logit and
-lognormal-duration workflows, including optional full-MCMC fitting
-through `brms` and `rstan`.
-
-## Interpretation boundaries
+The latest archived stable release remains `gp3bayes` 0.1.0. \##
+Interpretation boundaries
 
 Behavioural, gaze, pupil, and physiological measurements do not directly
 reveal emotion, stress, cognition, comprehension, personality,
@@ -301,18 +331,18 @@ design and target estimand justify causal interpretation.
 
 ## Advanced optional workflows
 
-The post-0.1.1 development branch adds conservative optional adapters
+The 0.2.0.9001 development API includes conservative optional adapters
 for power-scaled sensitivity through `priorsense`, PSIS-LOO diagnostics
-and stacking through `loo`, fixed-effects separation screening through
-`detectseparation`, simulation-based calibration through `SBC`, and
-full-MCMC backend selection between `rstan` and `cmdstanr`.
+and model weights through `loo`, fixed-effects separation screening
+through `detectseparation`, simulation-based calibration through `SBC`,
+and full-MCMC backend selection between `rstan` and `cmdstanr`.
 
-These extensions do not introduce unrestricted formulas, arbitrary model
-families, automatic model selection, or automatic adequacy claims.
 Dedicated binary and duration pathology generators make documented
 failure cases directly reproducible.
 
-## Licence
+These extensions do not introduce unrestricted formulas, arbitrary model
+families, automatic model selection, automatic exclusion, or automatic
+adequacy claims. \## Licence
 
 `gp3bayes` is released under the MIT License.
 

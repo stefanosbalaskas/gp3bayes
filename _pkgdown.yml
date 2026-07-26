@@ -4,7 +4,8 @@ template:
   bootstrap: 5
 
 development:
-  mode: auto
+  mode: unreleased
+  version_tooltip: "Development documentation for gp3bayes 0.2.0.9001"
 
 home:
   title: gp3bayes

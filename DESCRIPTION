@@ -12,11 +12,13 @@ Authors@R:
 Description: Provides transparent, contract-first infrastructure for Bayesian
     analysis of repeated-measures and hierarchical behavioural data. It
     supports approved Bernoulli-logit and positive lognormal duration
-    workflows with readiness audits, deterministic simulation, explicit
-    preparation, inspectable priors, prior and posterior predictive checks,
-    restricted optional fitting through 'brms' with 'rstan' or 'cmdstanr', sampling
-    diagnostics, prior sensitivity, parameter recovery, and conservative
-    reporting. Core contracts and prior checks remain backend-independent.
+    workflows with strict readiness auditing, deterministic simulation,
+    explicit preparation and transformation replay, inspectable priors,
+    prior and posterior predictive checks, restricted optional fitting
+    through 'brms' with either 'rstan' or 'cmdstanr', sampling diagnostics,
+    explicit posterior estimands, sensitivity analysis, predictive
+    validation, simulation-based calibration, and conservative reporting.
+    Core contracts and validation remain backend-independent.
 License: MIT + file LICENSE
 URL: https://stefanosbalaskas.github.io/gp3bayes/,
     https://github.com/stefanosbalaskas/gp3bayes
