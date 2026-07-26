@@ -1,3 +1,17 @@
+# gp3bayes 0.2.0.9000
+
+* Added optional power-scaling sensitivity integration through `priorsense`.
+* Added conservative PSIS-LOO diagnostics, influence inspection, model
+  comparison, and stacking or pseudo-BMA weights through `loo`.
+* Added fixed-effects separation screening through `detectseparation`.
+* Added simulation-based calibration plans and plots through `SBC`.
+* Added restricted full-MCMC backend selection between `rstan` and
+  `cmdstanr`.
+* Added coefficient-specific interaction-prior defaults for binary and
+  duration contracts.
+* Added dedicated binary and duration pathology generators, evaluations,
+  plots, tests, examples, smoke tests, and three integrated articles.
+
 # gp3bayes 0.1.1
 
 * Prepared the first CRAN submission candidate.
