@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,15 +31,25 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.2.0.9000" id="gp3bayes-0209000">gp3bayes 0.2.0.9000<a class="anchor" aria-label="anchor" href="#gp3bayes-0209000"></a></h2>
-<ul><li>Added optional power-scaling sensitivity integration through <code>priorsense</code>.</li>
-<li>Added conservative PSIS-LOO diagnostics, influence inspection, model comparison, and stacking or pseudo-BMA weights through <code>loo</code>.</li>
-<li>Added fixed-effects separation screening through <code>detectseparation</code>.</li>
-<li>Added simulation-based calibration plans and plots through <code>SBC</code>.</li>
-<li>Added restricted full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</li>
-<li>Added coefficient-specific interaction-prior defaults for binary and duration contracts.</li>
-<li>Added dedicated binary and duration pathology generators, evaluations, plots, tests, examples, smoke tests, and three integrated articles.</li>
+<h2 class="pkg-version" data-toc-text="0.2.0.9001" id="gp3bayes-0209001">gp3bayes 0.2.0.9001<a class="anchor" aria-label="anchor" href="#gp3bayes-0209001"></a></h2>
+<div class="section level3">
+<h3 id="specification-closure-0-2-0-9001">Specification closure<a class="anchor" aria-label="anchor" href="#specification-closure-0-2-0-9001"></a></h3>
+<ul><li><p>Adds strict readiness checks for overall condition imbalance, binary group outcome variation, identifier-like numeric predictors, fixed-effect rank, duration extremes, declared duration ranges, censoring signals, and optional separation screening.</p></li>
+<li><p>Adds reusable transformation recipes with forward replay, inversion, and exact replay validation for retained rows.</p></li>
+<li><p>Adds first-class design-standardised binary probability contrasts and duration median, ratio, and predictive-quantile estimands.</p></li>
+<li><p>Adds governed structural, group-deletion, contrast-coding, predictor-scaling, and duration-unit sensitivity workflows without automatic model selection or exclusion.</p></li>
+<li><p>Adds detailed family-specific posterior predictive checks and plotting helpers.</p></li>
+<li><p>Adds a governed exact K-fold adapter through <code><a href="https://mc-stan.org/loo/reference/kfold-generic.html" class="external-link">brms::kfold()</a></code> as an optional predictive-validation fallback/complement to PSIS-LOO.</p></li>
+<li><p>Adds an auditable specification-traceability matrix, examples, smoke tests, and three integrated articles.</p></li>
+<li><p>Added optional power-scaling sensitivity integration through <code>priorsense</code>.</p></li>
+<li><p>Added conservative PSIS-LOO diagnostics, influence inspection, model comparison, and stacking or pseudo-BMA weights through <code>loo</code>.</p></li>
+<li><p>Added fixed-effects separation screening through <code>detectseparation</code>.</p></li>
+<li><p>Added simulation-based calibration plans and plots through <code>SBC</code>.</p></li>
+<li><p>Added restricted full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p></li>
+<li><p>Added coefficient-specific interaction-prior defaults for binary and duration contracts.</p></li>
+<li><p>Added dedicated binary and duration pathology generators, evaluations, plots, tests, examples, smoke tests, and three integrated articles.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="gp3bayes-011">gp3bayes 0.1.1<a class="anchor" aria-label="anchor" href="#gp3bayes-011"></a></h2>
 <ul><li>Prepared the first CRAN submission candidate.</li>

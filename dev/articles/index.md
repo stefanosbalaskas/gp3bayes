@@ -27,3 +27,12 @@
   Scenarios](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/pathological-simulation-scenarios.md):
 - [Backend Portability and
   Installation](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/backend-portability.md):
+
+### Specification closure
+
+- [Specification Closure: Strict Readiness and Governed
+  Validation](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/specification-closure.md):
+- [First-Class Estimands and Sensitivity
+  Workflows](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/estimands-and-sensitivity.md):
+- [Transformation Replay and Detailed Posterior Predictive
+  Checks](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/transformation-replay-and-detailed-ppc.md):

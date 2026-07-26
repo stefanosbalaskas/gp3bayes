@@ -145,3 +145,64 @@
   : Run a Simulation-Based Calibration Plan
 - [`summarise_sbc_result()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_sbc_result.md)
   : Summarise an SBC Result
+
+## Specification closure
+
+- [`summarise_condition_balance()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_condition_balance.md)
+  : Summarise Overall Condition Balance
+- [`summarise_binary_group_variation()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_binary_group_variation.md)
+  : Summarise Binary Outcome Variation Within Groups
+- [`identify_identifier_like_predictors()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/identify_identifier_like_predictors.md)
+  : Identify Identifier-Like Numeric Predictors
+- [`review_duration_extremes()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/review_duration_extremes.md)
+  : Review Extreme Positive Durations Without Deleting Them
+- [`audit_duration_boundaries()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/audit_duration_boundaries.md)
+  : Audit Duration Range and Censoring Boundaries
+- [`audit_model_readiness_strict()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/audit_model_readiness_strict.md)
+  : Run a Strict Model-Readiness Audit
+- [`plot(`*`<gp3bayes_strict_readiness_audit>`*`)`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/plot.gp3bayes_strict_readiness_audit.md)
+  : Plot a Strict Readiness Audit
+- [`create_transformation_recipe()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_transformation_recipe.md)
+  : Create a Reusable Transformation Recipe
+- [`apply_transformation_recipe()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/apply_transformation_recipe.md)
+  : Apply a Recorded Transformation Recipe
+- [`invert_transformation_recipe()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/invert_transformation_recipe.md)
+  : Invert a Recorded Transformation Recipe
+- [`validate_transformation_replay()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/validate_transformation_replay.md)
+  : Validate Exact Transformation Replay
+- [`estimate_standardized_probability_contrast()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/estimate_standardized_probability_contrast.md)
+  : Estimate a Design-Standardised Binary Probability Contrast
+- [`estimate_standardized_duration_estimands()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/estimate_standardized_duration_estimands.md)
+  : Estimate Design-Standardised Duration Estimands
+- [`summarise_estimand_draws()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_estimand_draws.md)
+  : Summarise Posterior Estimand Draws
+- [`create_random_slope_sensitivity_plan()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_random_slope_sensitivity_plan.md)
+  : Create a Random-Slope Sensitivity Plan
+- [`run_random_slope_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/run_random_slope_sensitivity.md)
+  : Run Random-Intercept versus Random-Slope Sensitivity
+- [`create_group_deletion_sensitivity_plan()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_group_deletion_sensitivity_plan.md)
+  : Create a Group-Deletion Sensitivity Plan
+- [`run_group_deletion_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/run_group_deletion_sensitivity.md)
+  : Run a Group-Deletion Sensitivity Plan
+- [`compare_estimand_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/compare_estimand_sensitivity.md)
+  : Compare Estimand Sensitivity Across Alternative Fits
+- [`audit_estimand_invariance()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/audit_estimand_invariance.md)
+  : Audit Estimand Invariance Against a Declared Tolerance
+- [`create_contrast_coding_sensitivity_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_contrast_coding_sensitivity_specification.md)
+  : Create a Contrast-Coding Sensitivity Specification
+- [`create_predictor_scaling_sensitivity_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_predictor_scaling_sensitivity_specification.md)
+  : Create a Predictor-Scaling Sensitivity Specification
+- [`create_duration_unit_sensitivity_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_duration_unit_sensitivity_specification.md)
+  : Create a Duration-Unit Sensitivity Specification
+- [`audit_duration_unit_invariance()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/audit_duration_unit_invariance.md)
+  : Audit Duration-Unit Invariance
+- [`check_binary_ppc_details()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_binary_ppc_details.md)
+  : Run Detailed Binary Posterior Predictive Checks
+- [`check_duration_ppc_details()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_duration_ppc_details.md)
+  : Run Detailed Duration Posterior Predictive Checks
+- [`compute_kfold_cv()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/compute_kfold_cv.md)
+  : Compute Governed Exact K-Fold Cross-Validation
+- [`plot(`*`<gp3bayes_kfold_cv>`*`)`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/plot.gp3bayes_kfold_cv.md)
+  : Plot Governed Exact K-Fold Results
+- [`gp3bayes_specification_traceability()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/gp3bayes_specification_traceability.md)
+  : Specification-Closure Traceability Matrix

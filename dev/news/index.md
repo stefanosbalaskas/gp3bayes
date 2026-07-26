@@ -1,17 +1,50 @@
 # Changelog
 
-## gp3bayes 0.2.0.9000
+## gp3bayes 0.2.0.9001
+
+### Specification closure
+
+- Adds strict readiness checks for overall condition imbalance, binary
+  group outcome variation, identifier-like numeric predictors,
+  fixed-effect rank, duration extremes, declared duration ranges,
+  censoring signals, and optional separation screening.
+
+- Adds reusable transformation recipes with forward replay, inversion,
+  and exact replay validation for retained rows.
+
+- Adds first-class design-standardised binary probability contrasts and
+  duration median, ratio, and predictive-quantile estimands.
+
+- Adds governed structural, group-deletion, contrast-coding,
+  predictor-scaling, and duration-unit sensitivity workflows without
+  automatic model selection or exclusion.
+
+- Adds detailed family-specific posterior predictive checks and plotting
+  helpers.
+
+- Adds a governed exact K-fold adapter through
+  [`brms::kfold()`](https://mc-stan.org/loo/reference/kfold-generic.html)
+  as an optional predictive-validation fallback/complement to PSIS-LOO.
+
+- Adds an auditable specification-traceability matrix, examples, smoke
+  tests, and three integrated articles.
 
 - Added optional power-scaling sensitivity integration through
   `priorsense`.
+
 - Added conservative PSIS-LOO diagnostics, influence inspection, model
   comparison, and stacking or pseudo-BMA weights through `loo`.
+
 - Added fixed-effects separation screening through `detectseparation`.
+
 - Added simulation-based calibration plans and plots through `SBC`.
+
 - Added restricted full-MCMC backend selection between `rstan` and
   `cmdstanr`.
+
 - Added coefficient-specific interaction-prior defaults for binary and
   duration contracts.
+
 - Added dedicated binary and duration pathology generators, evaluations,
   plots, tests, examples, smoke tests, and three integrated articles.
 
