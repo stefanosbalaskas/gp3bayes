@@ -2,8 +2,7 @@ cff-version: 1.2.0
 message: "If you use gp3bayes, please cite the software using this metadata."
 type: software
 title: "gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data"
-version: 0.1.0
-date-released: '2026-07-23'
+version: 0.2.0.9001
 authors:
   - family-names: "Balaskas"
     given-names: "Stefanos"
@@ -16,21 +15,25 @@ identifiers:
     description: "Concept DOI for all gp3bayes releases."
   - type: doi
     value: "10.5281/zenodo.21518699"
-    description: "Version-specific DOI for gp3bayes 0.1.0."
-doi: "10.5281/zenodo.21518699"
+    description: "Version-specific DOI for the archived gp3bayes 0.1.0 release."
+doi: "10.5281/zenodo.21518698"
 url: "https://stefanosbalaskas.github.io/gp3bayes/"
 license: MIT
 abstract: >-
   gp3bayes provides transparent, contract-first infrastructure for Bayesian
   analysis of repeated-measures and hierarchical behavioural data. It supports
-  explicit contracts and readiness audits for hierarchical Bernoulli-logit
-  and positive lognormal duration models, deterministic simulation, recorded
-  transformations, inspectable priors, predictive checks, restricted optional
-  fitting through brms and rstan, sampling diagnostics, prior sensitivity,
-  parameter recovery, and conservative reporting.
+  approved Bernoulli-logit and positive lognormal duration workflows with
+  strict readiness auditing, deterministic simulation, recorded
+  transformations, inspectable priors, prior and posterior predictive checks,
+  restricted optional full-MCMC fitting through brms with either rstan or
+  cmdstanr, sampling diagnostics, explicit posterior estimands, sensitivity
+  analysis, predictive validation, simulation-based calibration, and
+  conservative reporting.
 keywords:
   - Bayesian workflows
   - hierarchical models
   - repeated measures
   - behavioural data
-  - prior predictive checks
+  - posterior predictive checks
+  - sensitivity analysis
+  - predictive validation

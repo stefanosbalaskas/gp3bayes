@@ -16,9 +16,9 @@ simulation-based recovery, and conservative structured reporting.
 Fitting or passing a numerical threshold does not by itself establish
 convergence, posterior adequacy, causal identification, or validity.
 }
-\section{Initial model families}{
+\section{Approved model families}{
 
-The initial development scope is restricted to:
+The approved model-family scope is restricted to:
 \itemize{
 \item hierarchical Bernoulli-logit models for binary trial-level outcomes;
 \item hierarchical lognormal models for strictly positive uncensored
@@ -30,11 +30,14 @@ Additional outcome families require separate methodological approval.
 
 \section{Backend policy}{
 
-Core validation, contract, simulation, preparation, and specification
-functionality remains usable without a Bayesian backend. Binary model
-fitting uses the optional \code{brms} interface with the fixed \code{rstan} sampling
-backend through restricted, contract-aware functions rather than an
-unrestricted general-purpose formula wrapper.
+Core validation, contract, simulation, preparation, transformation,
+specification, and prior-predictive functionality remains usable without a
+Bayesian backend. Restricted full-MCMC fitting uses the \code{brms} interface.
+The original \code{fit_binary_model()} and \code{fit_duration_model()} interfaces
+retain the fixed \code{rstan} route, while the backend-portable
+\code{fit_binary_model_backend()} and \code{fit_duration_model_backend()} interfaces
+support either \code{rstan} or \code{cmdstanr}. Model families, formulas, priors, and
+algorithms remain contract-restricted.
 }
 
 \section{Interpretation boundaries}{

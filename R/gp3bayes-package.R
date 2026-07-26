@@ -10,8 +10,8 @@
 #' Fitting or passing a numerical threshold does not by itself establish
 #' convergence, posterior adequacy, causal identification, or validity.
 #'
-#' @section Initial model families:
-#' The initial development scope is restricted to:
+#' @section Approved model families:
+#' The approved model-family scope is restricted to:
 #'
 #' * hierarchical Bernoulli-logit models for binary trial-level outcomes;
 #' * hierarchical lognormal models for strictly positive uncensored
@@ -20,11 +20,14 @@
 #' Additional outcome families require separate methodological approval.
 #'
 #' @section Backend policy:
-#' Core validation, contract, simulation, preparation, and specification
-#' functionality remains usable without a Bayesian backend. Binary model
-#' fitting uses the optional `brms` interface with the fixed `rstan` sampling
-#' backend through restricted, contract-aware functions rather than an
-#' unrestricted general-purpose formula wrapper.
+#' Core validation, contract, simulation, preparation, transformation,
+#' specification, and prior-predictive functionality remains usable without a
+#' Bayesian backend. Restricted full-MCMC fitting uses the `brms` interface.
+#' The original `fit_binary_model()` and `fit_duration_model()` interfaces
+#' retain the fixed `rstan` route, while the backend-portable
+#' `fit_binary_model_backend()` and `fit_duration_model_backend()` interfaces
+#' support either `rstan` or `cmdstanr`. Model families, formulas, priors, and
+#' algorithms remain contract-restricted.
 #'
 #' @section Interpretation boundaries:
 #' Behavioural measurements do not directly reveal emotion, stress,
