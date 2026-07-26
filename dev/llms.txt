@@ -1,0 +1,512 @@
+# gp3bayes
+
+[![DOI](https://zenodo.org/badge/1305351994.svg)](https://doi.org/10.5281/zenodo.21518698)
+
+`gp3bayes` is an independent R package for transparent, contract-first
+Bayesian workflows for repeated-measures and hierarchical behavioural
+data.
+
+## Scope
+
+The package currently provides:
+
+- explicit contracts and model-readiness audits;
+- deterministic binary and positive-duration simulation with stored
+  truth;
+- recorded outcome, condition, unit, missing-value, and scaling
+  decisions;
+- inspectable backend-independent prior specifications and prior checks;
+- restricted Bernoulli-logit and lognormal formula construction;
+- optional full-MCMC fitting through the fixed `brms` and `rstan` route;
+- R-hat, bulk/tail ESS, divergence, treedepth, and energy diagnostics;
+- posterior summaries and family-specific posterior predictive checks;
+- prior-scale sensitivity and simulation-based parameter recovery;
+- conservative structured reporting without automatic adequacy claims.
+
+The initial development scope is restricted to:
+
+1.  hierarchical Bernoulli-logit models for binary trial-level outcomes;
+2.  hierarchical lognormal models for strictly positive uncensored
+    durations.
+
+Core contract, validation, simulation, preparation, specification, and
+prior-predictive functionality does not require Gazepoint hardware,
+Gazepoint exports, `gp3tools`, proprietary software, private data, or a
+Bayesian backend. Binary fitting requires the optional `brms` and
+`rstan` packages.
+
+## Model contracts
+
+[`create_model_contract()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_model_contract.md)
+records the approved methodological specification and neutral column
+mappings for one initial model family. Creating a contract does not
+validate data, fit a model, or establish model adequacy.
+
+``` r
+
+binary_contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "stimulus_id",
+  trial_col = "trial_id",
+  condition_col = "condition"
+)
+
+binary_contract
+```
+
+``` R
+## <gp3bayes_model_contract>
+##   Family: binary
+##   Likelihood: Bernoulli
+##   Link: logit
+##   Outcome: selected
+##   Participant: participant_id
+##   Item: stimulus_id
+##   Condition: condition
+##   Random slope requested: FALSE
+##   Fitting performed: FALSE
+```
+
+## Readiness audits
+
+[`audit_model_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/audit_model_readiness.md)
+evaluates observable data requirements before formula construction or
+model fitting. Failures block progression, whereas warnings identify
+structures requiring review.
+
+``` r
+
+binary_data <- data.frame(
+  participant_id = rep(c("p1", "p2"), each = 4),
+  stimulus_id = rep(paste0("s", 1:4), times = 2),
+  trial_id = rep(1:4, times = 2),
+  condition = rep(c("control", "treatment"), times = 4),
+  selected = c(0, 1, 0, 1, 1, 0, 1, 0)
+)
+
+readiness_audit <- audit_model_readiness(
+  binary_data,
+  binary_contract
+)
+
+readiness_audit
+```
+
+``` R
+## <gp3bayes_readiness_audit>
+##   Family: binary
+##   Rows: 8
+##   Status: ready
+##   Ready: TRUE
+##   Checks: 18 passed, 0 warnings, 0 failures
+```
+
+## Model specifications
+
+[`build_model_formula()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/build_model_formula.md)
+translates the approved contract into an R formula, while
+[`create_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_prior_specification.md)
+records family-appropriate priors without creating backend-specific
+objects. A ready audit, formula, contract, and validated priors can then
+be combined into one inspectable model specification.
+
+``` r
+
+binary_priors <- create_prior_specification(
+  binary_contract,
+  baseline = 0.5
+)
+
+binary_specification <- create_model_specification(
+  binary_contract,
+  readiness_audit,
+  binary_priors
+)
+
+binary_specification
+```
+
+``` R
+## <gp3bayes_model_specification>
+##   Family: binary
+##   Formula: selected ~ condition + (1 | participant_id) + (1 | stimulus_id)
+##   Readiness status: ready
+##   Readiness warnings: 0
+##   Prior classes: Intercept, b, sd
+##   Backend: none
+##   Fit performed: FALSE
+```
+
+## Hierarchical binary workflow foundation
+
+The backend-independent binary workflow can simulate known hierarchical
+data-generating processes, prepare neutral long-format data, construct a
+restricted model specification, and evaluate prior predictive
+plausibility. No model is fitted and no posterior draws are produced.
+
+``` r
+
+binary_simulation <- simulate_hierarchical_binary_data(
+  n_participants = 12,
+  trials_per_participant = 8,
+  n_items = 6,
+  random_slope_sd = 0,
+  seed = 2026
+)
+
+binary_workflow_contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  predictors = "trial_covariate"
+)
+
+binary_prepared <- prepare_hierarchical_binary_data(
+  binary_simulation$data,
+  binary_workflow_contract,
+  condition_levels = c("control", "treatment"),
+  scale_predictors = "trial_covariate"
+)
+
+binary_workflow_specification <- specify_binary_model(
+  binary_prepared,
+  baseline = 0.35
+)
+
+binary_prior_check <- check_binary_prior_predictive(
+  binary_workflow_specification,
+  draws = 100,
+  seed = 2027
+)
+
+binary_prior_check
+```
+
+``` R
+## <gp3bayes_binary_prior_predictive_check>
+##   Adequate: TRUE
+##   Draws: 100
+##   Failed checks: 0
+##   Backend: none
+##   Fit performed: FALSE
+```
+
+## Restricted binary model fitting
+
+[`translate_binary_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/translate_binary_model_to_brms.md)
+converts an approved package specification into a fixed Bernoulli-logit
+`brms` representation without compiling or fitting a model.
+[`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_binary_model.md)
+optionally runs full MCMC sampling through the fixed `brms` and `rstan`
+route. Neither function accepts an unrestricted formula, family,
+backend, algorithm, Stan extension, or arbitrary backend arguments.
+
+``` r
+
+if (requireNamespace("brms", quietly = TRUE)) {
+  backend_specification <- translate_binary_model_to_brms(
+    binary_workflow_specification
+  )
+
+  backend_specification
+}
+```
+
+A returned fit does not by itself establish convergence, posterior
+adequacy, causal identification, or substantive validity. Those
+assessments require separate diagnostic and reporting gates.
+
+## Binary posterior validation
+
+Approved binary fits can be assessed with conservative numerical
+sampling diagnostics, posterior summaries, posterior predictive checks,
+prior-scale sensitivity, simulation-based recovery, and structured
+Markdown reports. A threshold pass is not an automatic convergence or
+posterior-adequacy claim.
+
+``` r
+
+diagnostics <- diagnose_binary_fit(binary_fit)
+posterior <- summarise_binary_posterior(binary_fit)
+predictive <- check_binary_posterior_predictive(binary_fit)
+```
+
+## Hierarchical lognormal duration workflow
+
+The duration workflow supports strictly positive, finite, uncensored
+durations with an explicit recorded unit. It provides deterministic
+simulation, preparation, inspectable priors, prior predictive checks,
+and restricted optional full-MCMC fitting through `brms` and `rstan`.
+
+``` r
+
+duration_simulation <- simulate_hierarchical_duration_data(seed = 2026)
+duration_contract <- create_model_contract(
+  family = "duration",
+  outcome_col = "duration",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  outcome_unit = "milliseconds"
+)
+duration_prepared <- prepare_hierarchical_duration_data(
+  duration_simulation$data,
+  duration_contract,
+  condition_levels = c("control", "treatment")
+)
+duration_specification <- specify_duration_model(
+  duration_prepared,
+  baseline = 500
+)
+```
+
+## Duration posterior validation
+
+Approved lognormal duration fits support the same conservative
+diagnostic contract as binary fits, together with positive-scale
+posterior predictive checks, prior sensitivity, simulation-based
+recovery, and structured reports. Exponentiated population coefficients
+are conditional median ratios, not automatically causal effects.
+
+``` r
+
+duration_diagnostics <- diagnose_duration_fit(duration_fit)
+duration_posterior <- summarise_duration_posterior(duration_fit)
+duration_predictive <- check_duration_posterior_predictive(duration_fit)
+```
+
+## Citation
+
+Citation metadata are provided in both `CITATION.cff` and
+`inst/CITATION`. After installing the package, obtain the current
+R-formatted citation with:
+
+``` r
+
+citation("gp3bayes")
+```
+
+For exact reproducibility, cite the archived software version:
+
+- Version 0.1.0 DOI:
+  [`10.5281/zenodo.21518699`](https://doi.org/10.5281/zenodo.21518699)
+- Concept DOI for all releases:
+  [`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698)
+
+## Release status
+
+`gp3bayes` 0.1.0 is the first stable release.
+
+The public API provides restricted Bernoulli-logit and
+lognormal-duration workflows, including optional full-MCMC fitting
+through `brms` and `rstan`.
+
+## Interpretation boundaries
+
+Behavioural, gaze, pupil, and physiological measurements do not directly
+reveal emotion, stress, cognition, comprehension, personality,
+diagnosis, deception, intention, or other latent psychological states.
+
+Associations must not be described as causal effects unless the study
+design and target estimand justify causal interpretation.
+
+## Advanced optional workflows
+
+The post-0.1.1 development branch adds conservative optional adapters
+for power-scaled sensitivity through `priorsense`, PSIS-LOO diagnostics
+and stacking through `loo`, fixed-effects separation screening through
+`detectseparation`, simulation-based calibration through `SBC`, and
+full-MCMC backend selection between `rstan` and `cmdstanr`.
+
+These extensions do not introduce unrestricted formulas, arbitrary model
+families, automatic model selection, or automatic adequacy claims.
+Dedicated binary and duration pathology generators make documented
+failure cases directly reproducible.
+
+## Licence
+
+`gp3bayes` is released under the MIT License.
+
+# Package index
+
+## Package overview
+
+- [`gp3bayes`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/gp3bayes-package.md)
+  [`gp3bayes-package`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/gp3bayes-package.md)
+  : gp3bayes: Contract-First Bayesian Workflows for Hierarchical
+  Behavioural Data
+
+## Model contracts
+
+- [`create_model_contract()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_model_contract.md)
+  : Create an Approved Bayesian Model Contract
+
+## Readiness audits
+
+- [`audit_model_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/audit_model_readiness.md)
+  : Audit Data Readiness for an Approved Model Contract
+
+## Model specifications
+
+- [`build_model_formula()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/build_model_formula.md)
+  : Build an Approved Model Formula
+- [`create_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_prior_specification.md)
+  : Create a Backend-Independent Prior Specification
+- [`validate_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/validate_prior_specification.md)
+  : Validate a Prior Specification
+- [`create_model_specification()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_model_specification.md)
+  : Create a Complete Model Specification
+
+## Binary workflow foundation
+
+- [`simulate_hierarchical_binary_data()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/simulate_hierarchical_binary_data.md)
+  : Simulate Hierarchical Binary Data
+- [`prepare_hierarchical_binary_data()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/prepare_hierarchical_binary_data.md)
+  : Prepare Hierarchical Binary Data
+- [`specify_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/specify_binary_model.md)
+  : Specify a Backend-Independent Binary Model
+- [`check_binary_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_binary_prior_predictive.md)
+  : Check Binary Prior Predictive Behaviour
+
+## Binary model fitting
+
+- [`translate_binary_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/translate_binary_model_to_brms.md)
+  : Translate a Binary Model Specification to brms
+- [`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_binary_model.md)
+  : Fit an Approved Hierarchical Binary Model
+
+## Binary posterior validation
+
+- [`diagnose_binary_fit()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/diagnose_binary_fit.md)
+  : Diagnose a Fitted Binary Model
+- [`summarise_binary_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_binary_posterior.md)
+  : Summarise a Binary Posterior
+- [`check_binary_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_binary_posterior_predictive.md)
+  : Check Binary Posterior Predictive Behaviour
+- [`assess_binary_prior_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/assess_binary_prior_sensitivity.md)
+  : Assess Binary Prior Sensitivity
+- [`run_binary_recovery()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/run_binary_recovery.md)
+  : Run Binary Parameter Recovery
+- [`create_binary_model_report()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_binary_model_report.md)
+  : Create a Structured Binary Model Report
+- [`plot_sampling_diagnostics()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/plot_sampling_diagnostics.md)
+  : Plot Sampling Diagnostics
+
+## Lognormal duration workflow
+
+- [`simulate_hierarchical_duration_data()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/simulate_hierarchical_duration_data.md)
+  : Simulate Hierarchical Lognormal Duration Data
+- [`prepare_hierarchical_duration_data()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/prepare_hierarchical_duration_data.md)
+  : Prepare Hierarchical Duration Data
+- [`specify_duration_model()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/specify_duration_model.md)
+  : Specify a Backend-Independent Duration Model
+- [`check_duration_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_duration_prior_predictive.md)
+  : Check Duration Prior Predictive Behaviour
+- [`translate_duration_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/translate_duration_model_to_brms.md)
+  : Translate a Duration Model Specification to brms
+- [`fit_duration_model()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_duration_model.md)
+  : Fit an Approved Hierarchical Lognormal Duration Model
+
+## Duration posterior validation
+
+- [`diagnose_duration_fit()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/diagnose_duration_fit.md)
+  : Diagnose a Fitted Duration Model
+- [`summarise_duration_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_duration_posterior.md)
+  : Summarise a Duration Posterior
+- [`check_duration_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_duration_posterior_predictive.md)
+  : Check Duration Posterior Predictive Behaviour
+- [`assess_duration_prior_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/assess_duration_prior_sensitivity.md)
+  : Assess Duration Prior Sensitivity
+- [`run_duration_recovery()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/run_duration_recovery.md)
+  : Run Duration Parameter Recovery
+- [`create_duration_model_report()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_duration_model_report.md)
+  : Create a Structured Duration Model Report
+
+## Advanced optional workflows
+
+- [`bayesian_backend_capabilities()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/bayesian_backend_capabilities.md)
+  : Report Optional Bayesian Backend Capabilities
+- [`check_cmdstan_backend()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/check_cmdstan_backend.md)
+  : Check the CmdStanR Backend
+- [`specify_binary_model_with_interaction_prior()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/specify_binary_model_with_interaction_prior.md)
+  : Specify a Binary Model with a Separate Interaction Prior
+- [`specify_duration_model_with_interaction_prior()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/specify_duration_model_with_interaction_prior.md)
+  : Specify a Duration Model with a Separate Interaction Prior
+- [`interaction_prior_summary()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/interaction_prior_summary.md)
+  : Summarise Separate Interaction Prior Metadata
+- [`translate_binary_model_with_interaction_prior()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/translate_binary_model_with_interaction_prior.md)
+  : Translate an Advanced Binary Specification to brms
+- [`translate_duration_model_with_interaction_prior()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/translate_duration_model_with_interaction_prior.md)
+  : Translate an Advanced Duration Specification to brms
+- [`fit_binary_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_binary_model_backend.md)
+  [`fit_binary_model_cmdstanr()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_binary_model_backend.md)
+  : Fit a Binary Model with a Selected Full-MCMC Backend
+- [`fit_duration_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_duration_model_backend.md)
+  [`fit_duration_model_cmdstanr()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/fit_duration_model_backend.md)
+  : Fit a Duration Model with a Selected Full-MCMC Backend
+- [`detect_binary_separation()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/detect_binary_separation.md)
+  : Detect Separation in the Binary Fixed-Effects Screen
+- [`compute_psis_loo()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/compute_psis_loo.md)
+  : Compute PSIS-LOO for a gp3bayes Fit
+- [`compute_psis_loo_from_log_lik()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/compute_psis_loo_from_log_lik.md)
+  : Compute PSIS-LOO from a Log-Likelihood Matrix
+- [`identify_loo_influential_observations()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/identify_loo_influential_observations.md)
+  : Identify Influential PSIS-LOO Observations
+- [`compare_psis_loo()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/compare_psis_loo.md)
+  : Compare Models with PSIS-LOO
+- [`compute_loo_model_weights()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/compute_loo_model_weights.md)
+  : Compute LOO Model-Averaging Weights
+- [`assess_powerscaled_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/assess_powerscaled_sensitivity.md)
+  : Assess Power-Scaled Prior and Likelihood Sensitivity
+- [`powerscale_sequence_for_fit()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/powerscale_sequence_for_fit.md)
+  : Create a Power-Scaling Sequence
+- [`simulate_binary_pathology()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/simulate_binary_pathology.md)
+  : Simulate a Dedicated Binary Pathology Scenario
+- [`simulate_duration_pathology()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/simulate_duration_pathology.md)
+  : Simulate a Dedicated Duration Pathology Scenario
+- [`evaluate_pathological_simulation()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/evaluate_pathological_simulation.md)
+  : Evaluate a Pathological Simulation Against the Contract Gate
+- [`create_brms_sbc_plan()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_brms_sbc_plan.md)
+  : Create a brms-Based Simulation-Based Calibration Plan
+- [`create_custom_sbc_plan()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/create_custom_sbc_plan.md)
+  : Create an Expert Custom SBC Plan
+- [`run_sbc_plan()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/run_sbc_plan.md)
+  : Run a Simulation-Based Calibration Plan
+- [`summarise_sbc_result()`](https://stefanosbalaskas.github.io/gp3bayes/dev/reference/summarise_sbc_result.md)
+  : Summarise an SBC Result
+
+# Articles
+
+### End-to-end workflows
+
+- [End-to-End Hierarchical Binary
+  Workflow](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/binary-end-to-end.md):
+- [End-to-End Hierarchical Lognormal Duration
+  Workflow](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/duration-end-to-end.md):
+
+### Diagnostics and validation
+
+- [Sampling Diagnostics and Conservative
+  Decisions](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/posterior-diagnostics.md):
+- [Prior Sensitivity and Simulation-Based
+  Recovery](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/sensitivity-and-recovery.md):
+
+### Installation
+
+- [Optional Bayesian Backend
+  Installation](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/optional-backend-installation.md):
+
+### Advanced optional workflows
+
+- [Advanced Optional Bayesian
+  Workflows](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/advanced-optional-workflows.md):
+- [Pathological Simulation
+  Scenarios](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/pathological-simulation-scenarios.md):
+- [Backend Portability and
+  Installation](https://stefanosbalaskas.github.io/gp3bayes/dev/articles/backend-portability.md):

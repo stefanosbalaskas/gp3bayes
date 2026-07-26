@@ -1,0 +1,16 @@
+pandoc: 3.8.3
+pkgdown: 2.2.1
+pkgdown_sha: ~
+articles:
+  advanced-optional-workflows: advanced-optional-workflows.html
+  backend-portability: backend-portability.html
+  binary-end-to-end: binary-end-to-end.html
+  duration-end-to-end: duration-end-to-end.html
+  optional-backend-installation: optional-backend-installation.html
+  pathological-simulation-scenarios: pathological-simulation-scenarios.html
+  posterior-diagnostics: posterior-diagnostics.html
+  sensitivity-and-recovery: sensitivity-and-recovery.html
+last_built: 2026-07-26T08:45Z
+urls:
+  reference: https://stefanosbalaskas.github.io/gp3bayes/reference
+  article: https://stefanosbalaskas.github.io/gp3bayes/articles
