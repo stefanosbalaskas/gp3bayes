@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gp3bayes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -294,9 +294,29 @@
 <p>Associations must not be described as causal effects unless the study design and target estimand justify causal interpretation.</p>
 </div>
 <div class="section level2">
+<h2 id="advanced-optional-workflows">Advanced optional workflows<a class="anchor" aria-label="anchor" href="#advanced-optional-workflows"></a>
+</h2>
+<p>The post-0.1.1 development branch adds conservative optional adapters for power-scaled sensitivity through <code>priorsense</code>, PSIS-LOO diagnostics and stacking through <code>loo</code>, fixed-effects separation screening through <code>detectseparation</code>, simulation-based calibration through <code>SBC</code>, and full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p>
+<p>These extensions do not introduce unrestricted formulas, arbitrary model families, automatic model selection, or automatic adequacy claims. Dedicated binary and duration pathology generators make documented failure cases directly reproducible.</p>
+</div>
+<div class="section level2">
 <h2 id="licence">Licence<a class="anchor" aria-label="anchor" href="#licence"></a>
 </h2>
 <p><code>gp3bayes</code> is released under the MIT License.</p>
+</div>
+<div class="section level2">
+<h2 id="specification-closure">Specification closure<a class="anchor" aria-label="anchor" href="#specification-closure"></a>
+</h2>
+<p>The development API now closes the remaining contract-level requirements with strict readiness audits, exact transformation replay, first-class probability/median/tail estimands, governed structural and deletion sensitivity, duration-unit invariance, detailed posterior predictive checks, and optional exact K-fold validation.</p>
+<p>These functions remain inside the two approved Bernoulli-logit and positive uncensored lognormal-duration contracts. They do not add arbitrary formulas, likelihoods, automatic model selection, automatic exclusions, or causal claims.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/audit_model_readiness_strict.html">audit_model_readiness_strict</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">contract</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/create_transformation_recipe.html">create_transformation_recipe</a></span><span class="op">(</span><span class="va">prepared</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/estimate_standardized_probability_contrast.html">estimate_standardized_probability_contrast</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/estimate_standardized_duration_estimands.html">estimate_standardized_duration_estimands</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/check_binary_ppc_details.html">check_binary_ppc_details</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/check_duration_ppc_details.html">check_duration_ppc_details</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/gp3bayes_specification_traceability.html">gp3bayes_specification_traceability</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
