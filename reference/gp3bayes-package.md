@@ -10,9 +10,9 @@ simulation-based recovery, and conservative structured reporting.
 Fitting or passing a numerical threshold does not by itself establish
 convergence, posterior adequacy, causal identification, or validity.
 
-## Initial model families
+## Approved model families
 
-The initial development scope is restricted to:
+The approved model-family scope is restricted to:
 
 - hierarchical Bernoulli-logit models for binary trial-level outcomes;
 
@@ -23,11 +23,19 @@ Additional outcome families require separate methodological approval.
 
 ## Backend policy
 
-Core validation, contract, simulation, preparation, and specification
-functionality remains usable without a Bayesian backend. Binary model
-fitting uses the optional `brms` interface with the fixed `rstan`
-sampling backend through restricted, contract-aware functions rather
-than an unrestricted general-purpose formula wrapper.
+Core validation, contract, simulation, preparation, transformation,
+specification, and prior-predictive functionality remains usable without
+a Bayesian backend. Restricted full-MCMC fitting uses the `brms`
+interface. The original
+[`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model.md)
+and
+[`fit_duration_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_duration_model.md)
+interfaces retain the fixed `rstan` route, while the backend-portable
+[`fit_binary_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model_backend.md)
+and
+[`fit_duration_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_duration_model_backend.md)
+interfaces support either `rstan` or `cmdstanr`. Model families,
+formulas, priors, and algorithms remain contract-restricted.
 
 ## Interpretation boundaries
 

@@ -18,7 +18,10 @@ install.packages(
 
 ## Optional fitting and validation dependencies
 
-Full MCMC fitting and posterior validation require:
+Full-MCMC fitting uses `brms` with either `rstan` or `cmdstanr`.
+Posterior diagnostics and visualisation use `posterior` and `bayesplot`.
+
+For the `rstan` route:
 
 ``` r
 
@@ -32,10 +35,40 @@ install.packages(
 )
 ```
 
-The supported fitting route is fixed to the `brms` interface, `rstan`
-backend, and full sampling algorithm. `cmdstanr`, variational inference,
-Pathfinder, Laplace approximation, and user-supplied Stan programs are
-not part of the approved interface.
+For the `cmdstanr` route, install the common packages first:
+
+``` r
+
+install.packages(
+  c(
+    "brms",
+    "posterior",
+    "bayesplot"
+  )
+)
+```
+
+Then install CmdStanR from the Stan R-universe repository:
+
+``` r
+
+install.packages(
+  "cmdstanr",
+  repos = c(
+    "https://stan-dev.r-universe.dev",
+    getOption("repos")
+  )
+)
+
+cmdstanr::check_cmdstan_toolchain()
+cmdstanr::install_cmdstan()
+```
+
+The supported fitting interface remains restricted to `brms` and full
+MCMC. `gp3bayes` allows `rstan` or `cmdstanr` as implementation backends
+but does not expose variational inference, Pathfinder, Laplace
+approximation, arbitrary Stan programs, arbitrary model families, or
+arbitrary backend arguments.
 
 ## Windows toolchain check
 
@@ -50,32 +83,45 @@ pkgbuild::has_build_tools(
 )
 ```
 
-The result should be `TRUE`. If Stan compilation has already occurred in
-the current session and the probe unexpectedly includes Stan-specific
-include paths, restart R and repeat the check in a clean session.
+The result should be `TRUE`.
+
+For `cmdstanr`, additionally run:
+
+``` r
+
+cmdstanr::check_cmdstan_toolchain()
+check_cmdstan_backend(strict = TRUE)
+```
 
 ## Backend preflight
 
 ``` r
 
+bayesian_backend_capabilities()
+```
+
+For `rstan`:
+
+``` r
+
 stopifnot(
-  requireNamespace(
-    "brms",
-    quietly = TRUE
-  ),
-  requireNamespace(
-    "rstan",
-    quietly = TRUE
-  ),
-  requireNamespace(
-    "posterior",
-    quietly = TRUE
-  )
+  requireNamespace("brms", quietly = TRUE),
+  requireNamespace("rstan", quietly = TRUE),
+  requireNamespace("posterior", quietly = TRUE)
+)
+```
+
+For `cmdstanr`:
+
+``` r
+
+stopifnot(
+  requireNamespace("brms", quietly = TRUE),
+  requireNamespace("cmdstanr", quietly = TRUE),
+  requireNamespace("posterior", quietly = TRUE)
 )
 
-pkgbuild::has_build_tools(
-  debug = TRUE
-)
+check_cmdstan_backend(strict = TRUE)
 ```
 
 ## Minimal compilation smoke test
@@ -118,8 +164,9 @@ specification <- specify_binary_model(
   baseline = 0.35
 )
 
-smoke_fit <- fit_binary_model(
+smoke_fit <- fit_binary_model_backend(
   specification,
+  backend = "rstan",
   chains = 2,
   iter = 300,
   warmup = 150,

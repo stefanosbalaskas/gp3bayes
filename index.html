@@ -64,25 +64,30 @@
 <div class="section level2">
 <h2 id="scope">Scope<a class="anchor" aria-label="anchor" href="#scope"></a>
 </h2>
-<p>The package currently provides:</p>
+<p>The current development version is <code>gp3bayes</code> 0.2.0.9001.</p>
+<p>The package provides:</p>
 <ul>
-<li>explicit contracts and model-readiness audits;</li>
-<li>deterministic binary and positive-duration simulation with stored truth;</li>
-<li>recorded outcome, condition, unit, missing-value, and scaling decisions;</li>
-<li>inspectable backend-independent prior specifications and prior checks;</li>
-<li>restricted Bernoulli-logit and lognormal formula construction;</li>
-<li>optional full-MCMC fitting through the fixed <code>brms</code> and <code>rstan</code> route;</li>
+<li>explicit model contracts and standard or strict model-readiness audits;</li>
+<li>deterministic hierarchical binary and positive-duration simulation with stored truth;</li>
+<li>recorded outcome, condition, unit, missing-value, coding, and scaling decisions;</li>
+<li>reusable transformation recipes with replay, inversion, and validation;</li>
+<li>inspectable backend-independent prior specifications and prior predictive checks;</li>
+<li>restricted Bernoulli-logit and lognormal model construction;</li>
+<li>optional full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>;</li>
 <li>R-hat, bulk/tail ESS, divergence, treedepth, and energy diagnostics;</li>
-<li>posterior summaries and family-specific posterior predictive checks;</li>
-<li>prior-scale sensitivity and simulation-based parameter recovery;</li>
-<li>conservative structured reporting without automatic adequacy claims.</li>
+<li>family-specific posterior summaries and detailed posterior predictive checks;</li>
+<li>design-standardised binary probability contrasts and duration median, ratio, and predictive-quantile estimands;</li>
+<li>prior-scale, power-scaling, structural, deletion, contrast-coding, predictor-scaling, and duration-unit sensitivity workflows;</li>
+<li>PSIS-LOO diagnostics, influence assessment, model comparison, model weights, and optional exact K-fold validation;</li>
+<li>fixed-effects separation screening and simulation-based calibration;</li>
+<li>specification traceability and conservative structured reporting without automatic adequacy, robustness, exclusion, or model-selection claims.</li>
 </ul>
-<p>The initial development scope is restricted to:</p>
+<p>The approved model-family scope remains restricted to:</p>
 <ol style="list-style-type: decimal">
 <li>hierarchical Bernoulli-logit models for binary trial-level outcomes;</li>
 <li>hierarchical lognormal models for strictly positive uncensored durations.</li>
 </ol>
-<p>Core contract, validation, simulation, preparation, specification, and prior-predictive functionality does not require Gazepoint hardware, Gazepoint exports, <code>gp3tools</code>, proprietary software, private data, or a Bayesian backend. Binary fitting requires the optional <code>brms</code> and <code>rstan</code> packages.</p>
+<p>Core contract, validation, simulation, preparation, transformation, specification, and prior-predictive functionality does not require Gazepoint hardware, Gazepoint exports, <code>gp3tools</code>, proprietary software, private data, or a Bayesian backend. Full-MCMC fitting requires <code>brms</code> and one supported sampling backend: <code>rstan</code> or <code>cmdstanr</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="model-contracts">Model contracts<a class="anchor" aria-label="anchor" href="#model-contracts"></a>
@@ -214,7 +219,9 @@
 <div class="section level2">
 <h2 id="restricted-binary-model-fitting">Restricted binary model fitting<a class="anchor" aria-label="anchor" href="#restricted-binary-model-fitting"></a>
 </h2>
-<p><code><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms()</a></code> converts an approved package specification into a fixed Bernoulli-logit <code>brms</code> representation without compiling or fitting a model. <code><a href="reference/fit_binary_model.html">fit_binary_model()</a></code> optionally runs full MCMC sampling through the fixed <code>brms</code> and <code>rstan</code> route. Neither function accepts an unrestricted formula, family, backend, algorithm, Stan extension, or arbitrary backend arguments.</p>
+<p><code><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms()</a></code> converts an approved package specification into a restricted Bernoulli-logit <code>brms</code> representation without compiling or fitting a model.</p>
+<p><code><a href="reference/fit_binary_model.html">fit_binary_model()</a></code> retains the original fixed <code>rstan</code> fitting route. For backend-portable full-MCMC fitting, <code><a href="reference/fit_binary_model_backend.html">fit_binary_model_backend()</a></code> accepts either <code>backend = "rstan"</code> or <code>backend = "cmdstanr"</code> while preserving the same approved family, formula, priors, and sampling contract.</p>
+<p>Neither interface accepts unrestricted formulas, arbitrary model families, alternative inference algorithms, user-supplied Stan programs, or arbitrary backend arguments.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"brms"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">backend_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms</a></span><span class="op">(</span></span>
@@ -237,7 +244,7 @@
 <div class="section level2">
 <h2 id="hierarchical-lognormal-duration-workflow">Hierarchical lognormal duration workflow<a class="anchor" aria-label="anchor" href="#hierarchical-lognormal-duration-workflow"></a>
 </h2>
-<p>The duration workflow supports strictly positive, finite, uncensored durations with an explicit recorded unit. It provides deterministic simulation, preparation, inspectable priors, prior predictive checks, and restricted optional full-MCMC fitting through <code>brms</code> and <code>rstan</code>.</p>
+<p>The duration workflow supports strictly positive, finite, uncensored durations with an explicit recorded unit. It provides deterministic simulation, preparation, inspectable priors, prior predictive checks, and restricted optional full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">duration_simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_hierarchical_duration_data.html">simulate_hierarchical_duration_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">2026</span><span class="op">)</span></span>
 <span><span class="va">duration_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
@@ -271,38 +278,28 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the current R-formatted citation with:</p>
+<p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the R-formatted citation for the installed version with:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
-<p>For exact reproducibility, cite the archived software version:</p>
+<p>The repository currently represents development version <strong>0.2.0.9001</strong>.</p>
+<p>For archived software citation:</p>
 <ul>
-<li>Version 0.1.0 DOI: <a href="https://doi.org/10.5281/zenodo.21518699" class="external-link"><code>10.5281/zenodo.21518699</code></a>
+<li>Latest archived stable release: <code>gp3bayes</code> 0.1.0 — <a href="https://doi.org/10.5281/zenodo.21518699" class="external-link"><code>10.5281/zenodo.21518699</code></a>
 </li>
-<li>Concept DOI for all releases: <a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><code>10.5281/zenodo.21518698</code></a>
-</li>
+<li>Concept DOI for all releases — <a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><code>10.5281/zenodo.21518698</code></a> ## Development status</li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="release-status">Release status<a class="anchor" aria-label="anchor" href="#release-status"></a>
-</h2>
-<p><code>gp3bayes</code> 0.1.0 is the first stable release.</p>
-<p>The public API provides restricted Bernoulli-logit and lognormal-duration workflows, including optional full-MCMC fitting through <code>brms</code> and <code>rstan</code>.</p>
-</div>
-<div class="section level2">
-<h2 id="interpretation-boundaries">Interpretation boundaries<a class="anchor" aria-label="anchor" href="#interpretation-boundaries"></a>
-</h2>
+<p><code>gp3bayes</code> 0.2.0.9001 is the current development version.</p>
+<p>The development API provides contract-first Bernoulli-logit and lognormal-duration workflows; backend-portable full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>; advanced sensitivity, PSIS-LOO, model-weighting, separation-screening, and simulation-based calibration workflows; strict specification closure; transformation replay; explicit posterior estimands; detailed posterior predictive checks; and optional exact K-fold validation.</p>
+<p>The latest archived stable release remains <code>gp3bayes</code> 0.1.0. ## Interpretation boundaries</p>
 <p>Behavioural, gaze, pupil, and physiological measurements do not directly reveal emotion, stress, cognition, comprehension, personality, diagnosis, deception, intention, or other latent psychological states.</p>
 <p>Associations must not be described as causal effects unless the study design and target estimand justify causal interpretation.</p>
 </div>
 <div class="section level2">
 <h2 id="advanced-optional-workflows">Advanced optional workflows<a class="anchor" aria-label="anchor" href="#advanced-optional-workflows"></a>
 </h2>
-<p>The post-0.1.1 development branch adds conservative optional adapters for power-scaled sensitivity through <code>priorsense</code>, PSIS-LOO diagnostics and stacking through <code>loo</code>, fixed-effects separation screening through <code>detectseparation</code>, simulation-based calibration through <code>SBC</code>, and full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p>
-<p>These extensions do not introduce unrestricted formulas, arbitrary model families, automatic model selection, or automatic adequacy claims. Dedicated binary and duration pathology generators make documented failure cases directly reproducible.</p>
-</div>
-<div class="section level2">
-<h2 id="licence">Licence<a class="anchor" aria-label="anchor" href="#licence"></a>
-</h2>
+<p>The 0.2.0.9001 development API includes conservative optional adapters for power-scaled sensitivity through <code>priorsense</code>, PSIS-LOO diagnostics and model weights through <code>loo</code>, fixed-effects separation screening through <code>detectseparation</code>, simulation-based calibration through <code>SBC</code>, and full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p>
+<p>Dedicated binary and duration pathology generators make documented failure cases directly reproducible.</p>
+<p>These extensions do not introduce unrestricted formulas, arbitrary model families, automatic model selection, automatic exclusion, or automatic adequacy claims. ## Licence</p>
 <p><code>gp3bayes</code> is released under the MIT License.</p>
 </div>
 <div class="section level2">

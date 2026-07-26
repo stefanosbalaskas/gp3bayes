@@ -81,7 +81,10 @@ specification, and prior predictive checks do not require
 <div class="section level2">
 <h2 id="optional-fitting-and-validation-dependencies">Optional fitting and validation dependencies<a class="anchor" aria-label="anchor" href="#optional-fitting-and-validation-dependencies"></a>
 </h2>
-<p>Full MCMC fitting and posterior validation require:</p>
+<p>Full-MCMC fitting uses <code>brms</code> with either
+<code>rstan</code> or <code>cmdstanr</code>. Posterior diagnostics and
+visualisation use <code>posterior</code> and <code>bayesplot</code>.</p>
+<p>For the <code>rstan</code> route:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -91,11 +94,34 @@ specification, and prior predictive checks do not require
 <span>    <span class="st">"bayesplot"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The supported fitting route is fixed to the <code>brms</code>
-interface, <code>rstan</code> backend, and full sampling algorithm.
-<code>cmdstanr</code>, variational inference, Pathfinder, Laplace
-approximation, and user-supplied Stan programs are not part of the
-approved interface.</p>
+<p>For the <code>cmdstanr</code> route, install the common packages
+first:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"brms"</span>,</span>
+<span>    <span class="st">"posterior"</span>,</span>
+<span>    <span class="st">"bayesplot"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Then install CmdStanR from the Stan R-universe repository:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
+<span>  <span class="st">"cmdstanr"</span>,</span>
+<span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://stan-dev.r-universe.dev"</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cmdstanr</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/cmdstanr/reference/install_cmdstan.html" class="external-link">check_cmdstan_toolchain</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">cmdstanr</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/cmdstanr/reference/install_cmdstan.html" class="external-link">install_cmdstan</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>The supported fitting interface remains restricted to
+<code>brms</code> and full MCMC. <code>gp3bayes</code> allows
+<code>rstan</code> or <code>cmdstanr</code> as implementation backends
+but does not expose variational inference, Pathfinder, Laplace
+approximation, arbitrary Stan programs, arbitrary model families, or
+arbitrary backend arguments.</p>
 </div>
 <div class="section level2">
 <h2 id="windows-toolchain-check">Windows toolchain check<a class="anchor" aria-label="anchor" href="#windows-toolchain-check"></a>
@@ -103,37 +129,37 @@ approved interface.</p>
 <p>On Windows, source compilation requires the Rtools version compatible
 with the installed R version. After installing Rtools, start a clean R
 session and run:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pkgbuild</span><span class="fu">::</span><span class="fu"><a href="https://pkgbuild.r-lib.org/reference/has_build_tools.html" class="external-link">has_build_tools</a></span><span class="op">(</span></span>
 <span>  debug <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The result should be <code>TRUE</code>. If Stan compilation has
-already occurred in the current session and the probe unexpectedly
-includes Stan-specific include paths, restart R and repeat the check in
-a clean session.</p>
+<p>The result should be <code>TRUE</code>.</p>
+<p>For <code>cmdstanr</code>, additionally run:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">cmdstanr</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/cmdstanr/reference/install_cmdstan.html" class="external-link">check_cmdstan_toolchain</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/check_cmdstan_backend.html">check_cmdstan_backend</a></span><span class="op">(</span>strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="backend-preflight">Backend preflight<a class="anchor" aria-label="anchor" href="#backend-preflight"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bayesian_backend_capabilities.html">bayesian_backend_capabilities</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>For <code>rstan</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span></span>
-<span>    <span class="st">"brms"</span>,</span>
-<span>    quietly <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span></span>
-<span>    <span class="st">"rstan"</span>,</span>
-<span>    quietly <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span></span>
-<span>    <span class="st">"posterior"</span>,</span>
-<span>    quietly <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"brms"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rstan"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"posterior"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>For <code>cmdstanr</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"brms"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"cmdstanr"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"posterior"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">pkgbuild</span><span class="fu">::</span><span class="fu"><a href="https://pkgbuild.r-lib.org/reference/has_build_tools.html" class="external-link">has_build_tools</a></span><span class="op">(</span></span>
-<span>  debug <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/check_cmdstan_backend.html">check_cmdstan_backend</a></span><span class="op">(</span>strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="minimal-compilation-smoke-test">Minimal compilation smoke test<a class="anchor" aria-label="anchor" href="#minimal-compilation-smoke-test"></a>
@@ -142,7 +168,7 @@ a clean session.</p>
 model before a large analysis. Short chains may produce low
 effective-sample-size warnings; those warnings must not be interpreted
 as adequate posterior inference.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simulate_hierarchical_binary_data.html">simulate_hierarchical_binary_data</a></span><span class="op">(</span></span>
 <span>  n_participants <span class="op">=</span> <span class="fl">8</span>,</span>
 <span>  trials_per_participant <span class="op">=</span> <span class="fl">6</span>,</span>
@@ -174,8 +200,9 @@ as adequate posterior inference.</p>
 <span>  baseline <span class="op">=</span> <span class="fl">0.35</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">smoke_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_binary_model.html">fit_binary_model</a></span><span class="op">(</span></span>
+<span><span class="va">smoke_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_binary_model_backend.html">fit_binary_model_backend</a></span><span class="op">(</span></span>
 <span>  <span class="va">specification</span>,</span>
+<span>  backend <span class="op">=</span> <span class="st">"rstan"</span>,</span>
 <span>  chains <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  iter <span class="op">=</span> <span class="fl">300</span>,</span>
 <span>  warmup <span class="op">=</span> <span class="fl">150</span>,</span>

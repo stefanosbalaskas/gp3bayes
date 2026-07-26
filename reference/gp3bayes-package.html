@@ -62,10 +62,10 @@ convergence, posterior adequacy, causal identification, or validity.</p>
 
 
     <div class="section level2">
-    <h2 id="initial-model-families">Initial model families<a class="anchor" aria-label="anchor" href="#initial-model-families"></a></h2>
+    <h2 id="approved-model-families">Approved model families<a class="anchor" aria-label="anchor" href="#approved-model-families"></a></h2>
 
 
-<p>The initial development scope is restricted to:</p><ul><li><p>hierarchical Bernoulli-logit models for binary trial-level outcomes;</p></li>
+<p>The approved model-family scope is restricted to:</p><ul><li><p>hierarchical Bernoulli-logit models for binary trial-level outcomes;</p></li>
 <li><p>hierarchical lognormal models for strictly positive uncensored
 durations.</p></li>
 </ul><p>Additional outcome families require separate methodological approval.</p>
@@ -74,11 +74,14 @@ durations.</p></li>
     <h2 id="backend-policy">Backend policy<a class="anchor" aria-label="anchor" href="#backend-policy"></a></h2>
 
 
-<p>Core validation, contract, simulation, preparation, and specification
-functionality remains usable without a Bayesian backend. Binary model
-fitting uses the optional <code>brms</code> interface with the fixed <code>rstan</code> sampling
-backend through restricted, contract-aware functions rather than an
-unrestricted general-purpose formula wrapper.</p>
+<p>Core validation, contract, simulation, preparation, transformation,
+specification, and prior-predictive functionality remains usable without a
+Bayesian backend. Restricted full-MCMC fitting uses the <code>brms</code> interface.
+The original <code><a href="fit_binary_model.html">fit_binary_model()</a></code> and <code><a href="fit_duration_model.html">fit_duration_model()</a></code> interfaces
+retain the fixed <code>rstan</code> route, while the backend-portable
+<code><a href="fit_binary_model_backend.html">fit_binary_model_backend()</a></code> and <code><a href="fit_duration_model_backend.html">fit_duration_model_backend()</a></code> interfaces
+support either <code>rstan</code> or <code>cmdstanr</code>. Model families, formulas, priors, and
+algorithms remain contract-restricted.</p>
     </div>
     <div class="section level2">
     <h2 id="interpretation-boundaries">Interpretation boundaries<a class="anchor" aria-label="anchor" href="#interpretation-boundaries"></a></h2>
