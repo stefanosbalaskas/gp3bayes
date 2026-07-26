@@ -299,6 +299,19 @@ diagnosis, deception, intention, or other latent psychological states.
 Associations must not be described as causal effects unless the study
 design and target estimand justify causal interpretation.
 
+## Advanced optional workflows
+
+The post-0.1.1 development branch adds conservative optional adapters
+for power-scaled sensitivity through `priorsense`, PSIS-LOO diagnostics
+and stacking through `loo`, fixed-effects separation screening through
+`detectseparation`, simulation-based calibration through `SBC`, and
+full-MCMC backend selection between `rstan` and `cmdstanr`.
+
+These extensions do not introduce unrestricted formulas, arbitrary model
+families, automatic model selection, or automatic adequacy claims.
+Dedicated binary and duration pathology generators make documented
+failure cases directly reproducible.
+
 ## Licence
 
 `gp3bayes` is released under the MIT License.

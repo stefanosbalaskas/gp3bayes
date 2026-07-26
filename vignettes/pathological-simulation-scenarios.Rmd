@@ -1,0 +1,106 @@
+---
+title: "Pathological Simulation Scenarios"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pathological Simulation Scenarios}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(gp3bayes)
+```
+
+The dedicated pathology generators make failure cases reproducible instead of
+leaving them as prose-only limitations.
+
+## Binary scenarios
+
+```{r}
+binary_scenarios <- c(
+  "null_contrast",
+  "weak_information",
+  "severe_imbalance",
+  "near_separation",
+  "omitted_random_slope",
+  "sparse_item_structure",
+  "all_zero_participants",
+  "rank_deficiency",
+  "missing_outcomes"
+)
+
+binary_results <- lapply(
+  binary_scenarios,
+  simulate_binary_pathology,
+  seed = 2026
+)
+
+data.frame(
+  scenario = binary_scenarios,
+  expected_gate = vapply(
+    binary_results,
+    `[[`,
+    character(1),
+    "expected_gate"
+  )
+)
+```
+
+A rank-deficient design is an explicit structural failure:
+
+```{r}
+rank_failure <- simulate_binary_pathology(
+  "rank_deficiency",
+  seed = 2026
+)
+evaluate_pathological_simulation(rank_failure)
+plot(rank_failure)
+```
+
+## Duration scenarios
+
+```{r}
+duration_scenarios <- c(
+  "null_ratio",
+  "high_group_heterogeneity",
+  "weak_information",
+  "severe_imbalance",
+  "heavy_tailed_contamination",
+  "mixture",
+  "censoring",
+  "incorrect_unit",
+  "zero_duration",
+  "negative_duration"
+)
+
+duration_results <- lapply(
+  duration_scenarios,
+  simulate_duration_pathology,
+  seed = 2026
+)
+
+data.frame(
+  scenario = duration_scenarios,
+  expected_gate = vapply(
+    duration_results,
+    `[[`,
+    character(1),
+    "expected_gate"
+  )
+)
+```
+
+Censoring and incorrect measurement units are semantic contract failures even
+when their numeric values could otherwise pass a simple range check.
+
+```{r}
+censored <- simulate_duration_pathology("censoring", seed = 2026)
+wrong_unit <- simulate_duration_pathology("incorrect_unit", seed = 2026)
+
+evaluate_pathological_simulation(censored)
+evaluate_pathological_simulation(wrong_unit)
+```
+
+Heavy tails and mixtures are adequacy stress tests. They do not trigger an
+automatic switch to another likelihood.

@@ -68,6 +68,33 @@ reference:
   - assess_duration_prior_sensitivity
   - run_duration_recovery
   - create_duration_model_report
+- title: Advanced optional workflows
+  contents:
+  - bayesian_backend_capabilities
+  - check_cmdstan_backend
+  - specify_binary_model_with_interaction_prior
+  - specify_duration_model_with_interaction_prior
+  - interaction_prior_summary
+  - translate_binary_model_with_interaction_prior
+  - translate_duration_model_with_interaction_prior
+  - fit_binary_model_backend
+  - fit_duration_model_backend
+  - detect_binary_separation
+  - compute_psis_loo
+  - compute_psis_loo_from_log_lik
+  - identify_loo_influential_observations
+  - compare_psis_loo
+  - compute_loo_model_weights
+  - assess_powerscaled_sensitivity
+  - powerscale_sequence_for_fit
+  - simulate_binary_pathology
+  - simulate_duration_pathology
+  - evaluate_pathological_simulation
+  - create_brms_sbc_plan
+  - create_custom_sbc_plan
+  - run_sbc_plan
+  - summarise_sbc_result
+
 articles:
 - title: End-to-end workflows
   contents:
@@ -80,3 +107,9 @@ articles:
 - title: Installation
   contents:
   - optional-backend-installation
+
+- title: Advanced optional workflows
+  contents:
+  - advanced-optional-workflows
+  - pathological-simulation-scenarios
+  - backend-portability

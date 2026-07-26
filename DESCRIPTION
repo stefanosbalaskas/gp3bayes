@@ -1,6 +1,6 @@
 Package: gp3bayes
 Title: Contract-First Bayesian Workflows for Hierarchical Behavioural Data
-Version: 0.1.1
+Version: 0.2.0.9000
 Authors@R:
     person(
       given = "Stefanos",
@@ -14,7 +14,7 @@ Description: Provides transparent, contract-first infrastructure for Bayesian
     supports approved Bernoulli-logit and positive lognormal duration
     workflows with readiness audits, deterministic simulation, explicit
     preparation, inspectable priors, prior and posterior predictive checks,
-    restricted optional fitting through 'brms' and 'rstan', sampling
+    restricted optional fitting through 'brms' with 'rstan' or 'cmdstanr', sampling
     diagnostics, prior sensitivity, parameter recovery, and conservative
     reporting. Core contracts and prior checks remain backend-independent.
 License: MIT + file LICENSE
@@ -25,12 +25,19 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Suggests:
+    SBC,
     bayesplot,
     brms,
+    cmdstanr,
+    detectseparation,
     knitr,
+    loo,
     posterior,
+    priorsense,
     rmarkdown,
     rstan,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+Additional_repositories: https://stan-dev.r-universe.dev
+Remotes: hyunjimoon/SBC
