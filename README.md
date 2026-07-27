@@ -307,7 +307,8 @@ For archived software citation:
   [`10.5281/zenodo.21518699`](https://doi.org/10.5281/zenodo.21518699)
 - Concept DOI for all releases —
   [`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698)
-  \## Development status
+
+## Development status
 
 `gp3bayes` 0.2.0.9001 is the current development version.
 
@@ -319,8 +320,9 @@ calibration workflows; strict specification closure; transformation
 replay; explicit posterior estimands; detailed posterior predictive
 checks; and optional exact K-fold validation.
 
-The latest archived stable release remains `gp3bayes` 0.1.0. \##
-Interpretation boundaries
+The latest archived stable release remains `gp3bayes` 0.1.0.
+
+## Interpretation boundaries
 
 Behavioural, gaze, pupil, and physiological measurements do not directly
 reveal emotion, stress, cognition, comprehension, personality,
@@ -342,7 +344,9 @@ failure cases directly reproducible.
 
 These extensions do not introduce unrestricted formulas, arbitrary model
 families, automatic model selection, automatic exclusion, or automatic
-adequacy claims. \## Licence
+adequacy claims.
+
+## Licence
 
 `gp3bayes` is released under the MIT License.
 
