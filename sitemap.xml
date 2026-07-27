@@ -1,7 +1,5 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/404.html</loc></url>
-<url><loc>https://stefanosbalaskas.github.io/gp3bayes/LICENSE-text.html</loc></url>
-<url><loc>https://stefanosbalaskas.github.io/gp3bayes/LICENSE.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/advanced-optional-workflows.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/backend-portability.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/binary-end-to-end.html</loc></url>
@@ -16,6 +14,8 @@
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/transformation-replay-and-detailed-ppc.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/authors.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/index.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/LICENSE-text.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/LICENSE.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/news/index.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/apply_transformation_recipe.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/assess_binary_prior_sensitivity.html</loc></url>
