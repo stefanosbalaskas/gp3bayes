@@ -94,7 +94,8 @@
 
   min(
     as.integer(chains),
-    as.integer(detected)
+    as.integer(detected),
+    2L
   )
 }
 
@@ -422,15 +423,52 @@ translate_binary_model_to_brms <- function(specification) {
 #' diagnostic and reporting gates.
 #'
 #' @examples
-#' \dontrun{
-#' fit <- fit_binary_model(
-#'   specification,
-#'   chains = 4,
-#'   iter = 2000,
-#'   warmup = 1000,
-#'   cores = 4,
-#'   seed = 2026
-#' )
+#' \donttest{
+#' if (
+#'   requireNamespace("brms", quietly = TRUE) &&
+#'     requireNamespace("rstan", quietly = TRUE)
+#' ) {
+#'   simulation <- simulate_hierarchical_binary_data(
+#'     n_participants = 8,
+#'     trials_per_participant = 6,
+#'     n_items = 4,
+#'     random_slope_sd = 0,
+#'     seed = 2026
+#'   )
+#'
+#'   contract <- create_model_contract(
+#'     family = "binary",
+#'     outcome_col = "selected",
+#'     participant_col = "participant_id",
+#'     item_col = "item_id",
+#'     trial_col = "trial_id",
+#'     condition_col = "condition"
+#'   )
+#'
+#'   prepared <- prepare_hierarchical_binary_data(
+#'     simulation$data,
+#'     contract,
+#'     condition_levels = c(
+#'       "control",
+#'       "treatment"
+#'     )
+#'   )
+#'
+#'   specification <- specify_binary_model(
+#'     prepared,
+#'     baseline = 0.35
+#'   )
+#'
+#'   fit <- fit_binary_model(
+#'     specification,
+#'     chains = 2,
+#'     iter = 200,
+#'     warmup = 100,
+#'     cores = 2,
+#'     seed = 2026,
+#'     refresh = 0
+#'   )
+#' }
 #' }
 #'
 #' @export

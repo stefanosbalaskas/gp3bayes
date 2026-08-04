@@ -1,4 +1,10 @@
 # gp3bayes 0.1.1
+* Addressed CRAN feedback by replacing the non-executable fitting
+  example with a guarded `\donttest{}` example, enforcing a
+  two-core ceiling, requiring explicit report-output paths, using
+  temporary paths in vignettes, and removing direct modification
+  of the global environment.
+
 
 * Prepared the first CRAN submission candidate.
 * Added Zenodo DOI documentation and current release-status wording.

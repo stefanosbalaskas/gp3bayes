@@ -11,7 +11,7 @@ create_binary_model_report(
   posterior_predictive = NULL,
   prior_sensitivity = NULL,
   recovery = NULL,
-  file = "gp3bayes-binary-model-report.md",
+  file,
   overwrite = FALSE
 )
 }
@@ -31,7 +31,8 @@ create_binary_model_report(
 
 \item{recovery}{Optional result from \code{\link[=run_binary_recovery]{run_binary_recovery()}}.}
 
-\item{file}{Output Markdown file.}
+\item{file}{Explicit output Markdown path. The caller must supply the
+destination; the function has no default output path.}
 
 \item{overwrite}{Whether an existing file may be replaced.}
 }

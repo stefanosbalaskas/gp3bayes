@@ -62,7 +62,10 @@ audit_model_readiness <- function(data, contract) {
   .validate_readiness_data(data)
   .validate_readiness_contract(contract)
 
-  checks <- list()
+  check_store <- new.env(
+    parent = emptyenv()
+  )
+  check_store$checks <- list()
 
   add_check <- function(
     check_id,
@@ -71,7 +74,7 @@ audit_model_readiness <- function(data, contract) {
     message,
     n_affected = NA_integer_
   ) {
-    checks[[length(checks) + 1L]] <<- .readiness_check(
+    check_store$checks[[length(check_store$checks) + 1L]] <- .readiness_check(
       check_id = check_id,
       category = category,
       status = status,
@@ -237,7 +240,7 @@ audit_model_readiness <- function(data, contract) {
 
   checks <- do.call(
     rbind,
-    checks
+    check_store$checks
   )
 
   rownames(checks) <- NULL

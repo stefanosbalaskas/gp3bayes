@@ -1319,7 +1319,8 @@ run_duration_recovery <- function(
 #' @param prior_sensitivity Optional result from
 #'   [assess_duration_prior_sensitivity()].
 #' @param recovery Optional result from [run_duration_recovery()].
-#' @param file Output Markdown path.
+#' @param file Explicit output Markdown path. The caller must supply the
+#'   destination; the function has no default output path.
 #' @param overwrite Whether an existing file may be replaced.
 #'
 #' @return A `gp3bayes_duration_model_report`.
@@ -1332,7 +1333,7 @@ create_duration_model_report <- function(
   posterior_predictive = NULL,
   prior_sensitivity = NULL,
   recovery = NULL,
-  file = "gp3bayes-duration-model-report.md",
+  file,
   overwrite = FALSE
 ) {
   .gp3b_validate_gp3bayes_fit(

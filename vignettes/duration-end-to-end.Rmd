@@ -148,10 +148,10 @@ duration_translation <- translate_duration_model_to_brms(
 
 duration_fit <- fit_duration_model(
   duration_specification,
-  chains = 4,
+  chains = 2,
   iter = 2000,
   warmup = 1000,
-  cores = 4,
+  cores = 2,
   seed = 2032,
   adapt_delta = 0.95,
   max_treedepth = 12,
@@ -207,6 +207,11 @@ duration_recovery <- run_duration_recovery(
   seed = 4001
 )
 
+duration_report_file <- tempfile(
+  pattern = "gp3bayes-duration-report-",
+  fileext = ".md"
+)
+
 duration_report <- create_duration_model_report(
   duration_fit,
   diagnostics = duration_diagnostics,
@@ -214,8 +219,11 @@ duration_report <- create_duration_model_report(
   posterior_predictive = duration_predictive,
   prior_sensitivity = duration_sensitivity,
   recovery = duration_recovery,
-  file = "duration-model-report.md"
+  file = duration_report_file
 )
+
+duration_report
+unlink(duration_report_file)
 ```
 
 Recovery results apply to the declared synthetic data-generating process.
