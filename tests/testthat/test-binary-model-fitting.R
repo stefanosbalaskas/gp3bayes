@@ -279,8 +279,8 @@ test_that(
     expect_error(
       fit_binary_model(
         specification,
-        chains = 2,
-        cores = 3
+        chains = 1,
+        cores = 2
       ),
       "`cores` cannot exceed"
     )

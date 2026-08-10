@@ -1458,7 +1458,8 @@ run_binary_recovery <- function(
 #' @param prior_sensitivity Optional result from
 #'   [assess_binary_prior_sensitivity()].
 #' @param recovery Optional result from [run_binary_recovery()].
-#' @param file Output Markdown file.
+#' @param file Explicit output Markdown path. The caller must supply the
+#'   destination; the function has no default output path.
 #' @param overwrite Whether an existing file may be replaced.
 #'
 #' @return A `gp3bayes_binary_model_report` containing the normalized path and
@@ -1476,7 +1477,7 @@ create_binary_model_report <- function(
   posterior_predictive = NULL,
   prior_sensitivity = NULL,
   recovery = NULL,
-  file = "gp3bayes-binary-model-report.md",
+  file,
   overwrite = FALSE
 ) {
   .gp3b_validate_gp3bayes_fit(

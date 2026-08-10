@@ -1,5 +1,24 @@
 # gp3bayes 0.2.0.9001
 
+## 0.2.0 stabilization program
+
+* Adds a stable family-neutral workflow API while retaining the existing
+  binary- and duration-specific interfaces.
+* Adds analysis manifests, data/specification fingerprints, explicit
+  manifest freezing/comparison, and reproducibility reports.
+* Adds pre-fit missingness, fixed-effect design, random-effect support,
+  and combined design-support audits without automatic data/model changes.
+* Adds declarative unified sensitivity suites and evidence inventories
+  without aggregate robustness, adequacy, exclusion, or selection claims.
+* Adds backend environment validation, MCSE-aware rstan/cmdstanr posterior
+  parity auditing, and serialized gp3bayes object-schema contracts.
+* Forward-ports CRAN 0.1.1 compliance safeguards: two-core automatic
+  defaults, explicit report paths, temporary vignette outputs, and safe
+  seed handling without direct global-environment modification.
+* Adds five focused stabilization articles plus an integrated synthetic
+  0.2.0 release case study, tests, and release smoke/audit scripts.
+
+
 * Aligned DESCRIPTION, README, citation metadata, package-level help,
   backend-installation guidance, CRAN comments, and pkgdown deployment metadata
   with the complete 0.2.0.9001 development API and dual `rstan`/`cmdstanr`
@@ -29,7 +48,7 @@
 
 # gp3bayes 0.1.1
 
-* Prepared the first CRAN submission candidate.
+* Published `gp3bayes` 0.1.1 on CRAN after addressing CRAN review feedback.
 * Added Zenodo DOI documentation and current release-status wording.
 * Added explicit copyright-holder metadata for the initial CRAN submission.
 

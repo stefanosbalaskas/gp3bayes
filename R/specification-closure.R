@@ -124,17 +124,7 @@
 
 .gp3c_with_seed <- function(seed, expr) {
   seed <- .gp3c_integer(seed, "seed", 0L)
-  had_seed <- exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)
-  if (had_seed) old_seed <- get(".Random.seed", envir = .GlobalEnv)
-  on.exit({
-    if (had_seed) {
-      assign(".Random.seed", old_seed, envir = .GlobalEnv)
-    } else if (exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)) {
-      rm(".Random.seed", envir = .GlobalEnv)
-    }
-  }, add = TRUE)
-  set.seed(seed)
-  force(expr)
+  withr::with_seed(seed, force(expr))
 }
 
 .gp3c_fit <- function(fit, family = NULL) {
@@ -1942,10 +1932,11 @@ run_group_deletion_sensitivity <- function(
   reference_summary <- summarise_estimand_draws(
     reference_estimand, reference_estimand$primary_quantity
   )
-  results <- vector("list", length(plan$units))
-  fits <- if (retain_fits) vector("list", length(plan$units)) else NULL
-  names(results) <- plan$units
-  if (retain_fits) names(fits) <- plan$units
+  result_store <- new.env(parent = emptyenv())
+  result_store$results <- vector("list", length(plan$units))
+  result_store$fits <- if (retain_fits) vector("list", length(plan$units)) else NULL
+  names(result_store$results) <- plan$units
+  if (retain_fits) names(result_store$fits) <- plan$units
   rows <- lapply(seq_along(plan$units), function(i) {
     unit <- plan$units[[i]]
     outcome <- tryCatch({
@@ -1956,8 +1947,8 @@ run_group_deletion_sensitivity <- function(
       )
       est <- .gp3c_primary_estimand(fit, ndraws, seed + i)
       summary <- summarise_estimand_draws(est, est$primary_quantity)
-      results[[i]] <<- est
-      if (retain_fits) fits[[i]] <<- fit
+      result_store$results[[i]] <- est
+      if (retain_fits) result_store$fits[[i]] <- fit
       list(summary = summary, error = NULL)
     }, error = function(e) list(summary = NULL, error = conditionMessage(e)))
     if (!is.null(outcome$error)) {
@@ -1982,6 +1973,8 @@ run_group_deletion_sensitivity <- function(
       )
     }
   })
+  results <- result_store$results
+  fits <- result_store$fits
   structure(list(
     status = "review",
     plan = plan,
