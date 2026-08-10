@@ -1,0 +1,113 @@
+---
+title: "Pre-fit Design-Support Diagnostics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pre-fit Design-Support Diagnostics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(gp3bayes)
+```
+
+## Diagnose the design before invoking Stan
+
+Many modeling failures can be identified from the declared design itself.
+Version 0.2.0 adds four reporting audits that run before MCMC:
+
+- `audit_missingness_structure()`;
+- `audit_fixed_effect_design()`;
+- `audit_random_effects_support()`; and
+- `audit_design_support()`.
+
+They do not impute, exclude, drop predictors, or simplify random effects.
+
+```{r}
+simulation <- simulate_hierarchical_binary_data(
+  n_participants = 12,
+  trials_per_participant = 10,
+  n_items = 6,
+  random_slope_sd = 0,
+  seed = 11
+)
+
+contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  predictors = "trial_covariate"
+)
+```
+
+## Missingness is described, not repaired
+
+```{r}
+with_missing <- simulation$data
+with_missing$trial_covariate[c(3, 17, 41)] <- NA_real_
+
+missingness <- audit_missingness_structure(
+  with_missing,
+  contract
+)
+missingness
+plot(missingness)
+```
+
+## Fixed-effect geometry
+
+The fixed-effects audit reports design-matrix rank, singular values, a
+condition-number screen, invariant columns, and leverage. These quantities are
+warning signals about the declared numerical design; they do not determine a
+scientifically preferred model.
+
+```{r}
+fixed_design <- audit_fixed_effect_design(
+  simulation$data,
+  contract
+)
+fixed_design
+plot(fixed_design)
+```
+
+## Repetition, crossing and random slopes
+
+```{r}
+random_support <- audit_random_effects_support(
+  simulation$data,
+  contract
+)
+random_support
+plot(random_support)
+```
+
+## One combined preflight
+
+```{r}
+design <- audit_design_support(
+  simulation$data,
+  contract,
+  separation = FALSE,
+  strict_readiness = TRUE
+)
+design
+plot(design)
+```
+
+For binary models, a fixed-effects separation screen can also be requested when
+`detectseparation` is installed:
+
+```{r eval=FALSE}
+audit_design_support(
+  simulation$data,
+  contract,
+  separation = TRUE
+)
+```
+
+A `review` or `fail` flag is a prompt for methodological inspection. It is not
+an automatic instruction to remove data or alter the prespecified model.

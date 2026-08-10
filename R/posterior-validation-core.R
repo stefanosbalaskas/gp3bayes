@@ -56,52 +56,8 @@
 }
 
 .gp3b_with_seed <- function(seed, code) {
-  seed <- .gp3b_assert_integer(
-    seed,
-    "seed",
-    minimum = 0L
-  )
-
-  had_seed <- exists(
-    ".Random.seed",
-    envir = .GlobalEnv,
-    inherits = FALSE
-  )
-
-  if (had_seed) {
-    old_seed <- get(
-      ".Random.seed",
-      envir = .GlobalEnv,
-      inherits = FALSE
-    )
-  }
-
-  on.exit(
-    {
-      if (had_seed) {
-        assign(
-          ".Random.seed",
-          old_seed,
-          envir = .GlobalEnv
-        )
-      } else if (
-        exists(
-          ".Random.seed",
-          envir = .GlobalEnv,
-          inherits = FALSE
-        )
-      ) {
-        rm(
-          ".Random.seed",
-          envir = .GlobalEnv
-        )
-      }
-    },
-    add = TRUE
-  )
-
-  set.seed(seed)
-  force(code)
+  seed <- .gp3b_assert_integer(seed, "seed", minimum = 0L)
+  withr::with_seed(seed, force(code))
 }
 
 .gp3b_classify_upper <- function(

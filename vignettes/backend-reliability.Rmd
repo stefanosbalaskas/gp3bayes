@@ -1,0 +1,105 @@
+---
+title: "Backend Reliability, Parity and Object Schemas"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Backend Reliability, Parity and Object Schemas}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(gp3bayes)
+```
+
+## Two interchangeable implementation backends, one modeling contract
+
+The approved full-MCMC interface remains `brms` with either `rstan` or
+`cmdstanr`. Backend portability should preserve the model family, formula,
+priors, estimand and sampling contract. It should **not** imply identical
+random-number streams or identical posterior draws.
+
+```{r}
+backend_capabilities()
+validate_backend_environment("rstan")
+validate_backend_environment("cmdstanr")
+```
+
+An optional compiler smoke test can be requested explicitly and is not run in
+this vignette:
+
+```{r eval=FALSE}
+validate_backend_environment("rstan", compile_test = TRUE)
+validate_backend_environment("cmdstanr", compile_test = TRUE)
+```
+
+## Posterior-summary parity
+
+Parity is evaluated relative to Monte Carlo uncertainty rather than exact draw
+identity. The data-frame interface below makes the rule transparent and is also
+useful for archived summary comparisons.
+
+```{r}
+rstan_summary <- data.frame(
+  variable = c("b_Intercept", "b_conditiontreatment"),
+  mean = c(-0.60, 0.40),
+  sd = c(0.20, 0.15),
+  mcse_mean = c(0.01, 0.01)
+)
+
+cmdstanr_summary <- data.frame(
+  variable = c("b_Intercept", "b_conditiontreatment"),
+  mean = c(-0.59, 0.41),
+  sd = c(0.21, 0.15),
+  mcse_mean = c(0.01, 0.01)
+)
+
+parity <- audit_backend_parity(
+  rstan_summary,
+  cmdstanr_summary
+)
+parity
+plot(parity)
+```
+
+With real fits, the same function obtains posterior summaries from each fit:
+
+```{r eval=FALSE}
+parity <- audit_backend_parity(
+  fit_rstan,
+  fit_cmdstanr,
+  variables = c("b_Intercept", "b_conditiontreatment")
+)
+```
+
+## Object-schema compatibility
+
+A stable release also needs to know when serialized object structure changes.
+Schema capture records structure rather than values.
+
+```{r}
+contract <- create_model_contract(
+  "binary", "selected", "participant_id",
+  condition_col = "condition"
+)
+
+schema <- capture_gp3bayes_schema(contract)
+schema
+
+validation <- validate_gp3bayes_schema(contract, schema)
+validation
+```
+
+Freezing does not write anything unless a path is explicitly provided:
+
+```{r}
+frozen_schema <- freeze_gp3bayes_schema(schema)
+
+schema_file <- tempfile(fileext = ".rds")
+freeze_gp3bayes_schema(frozen_schema, schema_file)
+read_gp3bayes_schema(schema_file)
+unlink(schema_file)
+```
+
+A schema match is a compatibility check only. It says nothing about numerical
+identity, statistical adequacy, or scientific validity.

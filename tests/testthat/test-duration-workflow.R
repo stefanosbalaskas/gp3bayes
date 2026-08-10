@@ -618,8 +618,8 @@ test_that(
     expect_error(
       fit_duration_model(
         specification,
-        chains = 2,
-        cores = 3
+        chains = 1,
+        cores = 2
       ),
       "`cores` cannot exceed"
     )

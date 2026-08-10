@@ -19,10 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macos-latest,   r: 'release', force_suggests: 'true',  extra_packages: 'any::rcmdcheck'}
-          - {os: windows-latest, r: 'release', force_suggests: 'true',  extra_packages: 'any::rcmdcheck'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release', force_suggests: 'true', extra_packages: 'any::rcmdcheck'}
-          - {os: ubuntu-latest,   r: 'release', force_suggests: 'true',  extra_packages: 'any::rcmdcheck'}
+          - {os: macos-latest,   r: 'release', force_suggests: 'true',  extra_packages: 'any::rcmdcheck, any::BH, any::RcppEigen, any::StanHeaders'}
+          - {os: windows-latest, r: 'release', force_suggests: 'true',  extra_packages: 'any::rcmdcheck, any::BH, any::RcppEigen, any::StanHeaders'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release', force_suggests: 'false', extra_packages: 'any::rcmdcheck, brms=?ignore, rstan=?ignore, cmdstanr=?ignore, SBC=?ignore, priorsense=?ignore'}
+          - {os: ubuntu-latest,   r: 'release', force_suggests: 'true',  extra_packages: 'any::rcmdcheck, any::BH, any::RcppEigen, any::StanHeaders'}
           - {os: ubuntu-latest,   r: 'oldrel-1', force_suggests: 'false', extra_packages: 'any::rcmdcheck, brms=?ignore, rstan=?ignore'}
 
     env:

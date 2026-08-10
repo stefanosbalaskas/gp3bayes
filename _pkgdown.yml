@@ -127,6 +127,48 @@ reference:
   - compute_kfold_cv
   - plot.gp3bayes_kfold_cv
   - gp3bayes_specification_traceability
+- title: Stable 0.2.0 workflow API
+  contents:
+  - validate_gp3bayes_object
+  - diagnose_model_fit
+  - summarise_model_posterior
+  - check_model_ppc
+  - estimate_model_estimands
+  - model_workflow_status
+- title: Reproducibility and manifests
+  contents:
+  - create_analysis_manifest
+  - validate_analysis_manifest
+  - freeze_analysis_manifest
+  - read_analysis_manifest
+  - compare_analysis_manifests
+  - analysis_manifest_table
+  - write_reproducibility_report
+- title: Pre-fit design support
+  contents:
+  - audit_missingness_structure
+  - audit_fixed_effect_design
+  - audit_random_effects_support
+  - audit_design_support
+  - preflight_model_specification
+- title: Unified sensitivity and evidence
+  contents:
+  - create_sensitivity_suite_plan
+  - run_sensitivity_suite
+  - summarise_sensitivity_suite
+  - collect_model_evidence
+  - create_model_evidence_report
+- title: Backend reliability and compatibility
+  contents:
+  - backend_capabilities
+  - validate_backend_environment
+  - audit_backend_parity
+  - capture_gp3bayes_schema
+  - compare_gp3bayes_schemas
+  - validate_gp3bayes_schema
+  - freeze_gp3bayes_schema
+  - read_gp3bayes_schema
+
 articles:
 - title: End-to-end workflows
   contents:
@@ -150,3 +192,11 @@ articles:
   - specification-closure
   - estimands-and-sensitivity
   - transformation-replay-and-detailed-ppc
+- title: 0.2.0 stabilization
+  contents:
+  - stable-unified-workflow
+  - reproducible-analysis-manifests
+  - pre-fit-design-diagnostics
+  - sensitivity-evidence-workflow
+  - backend-reliability
+  - release-case-study

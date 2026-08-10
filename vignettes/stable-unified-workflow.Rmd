@@ -1,0 +1,117 @@
+---
+title: "A Stable Unified Workflow API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A Stable Unified Workflow API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(gp3bayes)
+```
+
+## Why a unified API?
+
+The family-specific `gp3bayes` functions remain the authoritative low-level
+interfaces. Version 0.2.0 adds a small family-neutral layer so an analysis
+pipeline can use the same verbs after a binary or duration model has been
+fitted. The wrappers dispatch only inside the two approved model families.
+They do not accept arbitrary formulas, likelihoods, Stan programs, or fitting
+algorithms.
+
+The stable verbs are:
+
+- `diagnose_model_fit()` for numerical sampling diagnostics;
+- `summarise_model_posterior()` for family-specific posterior summaries;
+- `check_model_ppc()` for family-specific posterior predictive checks;
+- `estimate_model_estimands()` for the approved standardized estimands;
+- `validate_gp3bayes_object()` for structural object checks; and
+- `model_workflow_status()` for a descriptive stage map.
+
+## Build a backend-independent specification
+
+```{r}
+simulation <- simulate_hierarchical_binary_data(
+  n_participants = 12,
+  trials_per_participant = 8,
+  n_items = 6,
+  random_slope_sd = 0,
+  seed = 2026
+)
+
+contract <- create_model_contract(
+  family = "binary",
+  outcome_col = "selected",
+  participant_col = "participant_id",
+  item_col = "item_id",
+  trial_col = "trial_id",
+  condition_col = "condition"
+)
+
+prepared <- prepare_hierarchical_binary_data(
+  simulation$data,
+  contract,
+  condition_levels = c("control", "treatment")
+)
+
+specification <- specify_binary_model(
+  prepared,
+  baseline = 0.35
+)
+```
+
+Structural validation is deliberately different from statistical validation:
+
+```{r}
+validate_gp3bayes_object(contract)
+validate_gp3bayes_object(specification)
+```
+
+## Inspect workflow progress
+
+```{r}
+workflow <- model_workflow_status(specification)
+workflow
+plot(workflow)
+```
+
+The stage map says what objects are present. It does **not** say the analysis is
+adequate, robust, causal, or complete.
+
+## Fit through either approved backend
+
+Full MCMC is optional and intentionally not executed while this vignette is
+built.
+
+```{r eval=FALSE}
+fit <- fit_binary_model_backend(
+  specification,
+  backend = "cmdstanr", # or "rstan"
+  chains = 2,
+  iter = 2000,
+  warmup = 1000,
+  cores = 2,
+  seed = 2026
+)
+```
+
+After fitting, the same verbs work for either approved family:
+
+```{r eval=FALSE}
+diagnostics <- diagnose_model_fit(fit)
+posterior <- summarise_model_posterior(fit)
+ppc <- check_model_ppc(fit, draws = 400, seed = 2026)
+estimands <- estimate_model_estimands(fit)
+
+plot_sampling_diagnostics(fit, type = "trace")
+```
+
+## What the unified layer does not do
+
+A stable API is not a license to automate scientific judgment. In particular,
+these wrappers do not automatically select a model, delete observations,
+change a random-effects structure, declare posterior adequacy, or translate an
+association into a causal effect. Those boundaries remain explicit throughout
+0.2.0.

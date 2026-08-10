@@ -11,7 +11,7 @@ create_duration_model_report(
   posterior_predictive = NULL,
   prior_sensitivity = NULL,
   recovery = NULL,
-  file = "gp3bayes-duration-model-report.md",
+  file,
   overwrite = FALSE
 )
 }
@@ -31,7 +31,8 @@ create_duration_model_report(
 
 \item{recovery}{Optional result from \code{\link[=run_duration_recovery]{run_duration_recovery()}}.}
 
-\item{file}{Output Markdown path.}
+\item{file}{Explicit output Markdown path. The caller must supply the
+destination; the function has no default output path.}
 
 \item{overwrite}{Whether an existing file may be replaced.}
 }
