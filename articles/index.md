@@ -36,3 +36,18 @@
   Workflows](https://stefanosbalaskas.github.io/gp3bayes/articles/estimands-and-sensitivity.md):
 - [Transformation Replay and Detailed Posterior Predictive
   Checks](https://stefanosbalaskas.github.io/gp3bayes/articles/transformation-replay-and-detailed-ppc.md):
+
+### 0.2.0 stabilization
+
+- [A Stable Unified Workflow
+  API](https://stefanosbalaskas.github.io/gp3bayes/articles/stable-unified-workflow.md):
+- [Analysis Manifests and Reproducible Bayesian
+  Workflows](https://stefanosbalaskas.github.io/gp3bayes/articles/reproducible-analysis-manifests.md):
+- [Pre-fit Design-Support
+  Diagnostics](https://stefanosbalaskas.github.io/gp3bayes/articles/pre-fit-design-diagnostics.md):
+- [Unified Sensitivity Suites and Evidence
+  Inventories](https://stefanosbalaskas.github.io/gp3bayes/articles/sensitivity-evidence-workflow.md):
+- [Backend Reliability, Parity and Object
+  Schemas](https://stefanosbalaskas.github.io/gp3bayes/articles/backend-reliability.md):
+- [A Reproducible 0.2.0 Release Case
+  Study](https://stefanosbalaskas.github.io/gp3bayes/articles/release-case-study.md):

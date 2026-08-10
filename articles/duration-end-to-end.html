@@ -289,10 +289,10 @@ does not automatically alter the priors.</p>
 <span></span>
 <span><span class="va">duration_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_duration_model.html">fit_duration_model</a></span><span class="op">(</span></span>
 <span>  <span class="va">duration_specification</span>,</span>
-<span>  chains <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  chains <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  iter <span class="op">=</span> <span class="fl">2000</span>,</span>
 <span>  warmup <span class="op">=</span> <span class="fl">1000</span>,</span>
-<span>  cores <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  cores <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">2032</span>,</span>
 <span>  adapt_delta <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  max_treedepth <span class="op">=</span> <span class="fl">12</span>,</span>
@@ -345,6 +345,8 @@ those summaries does not prove global model adequacy.</p>
 <span>  seed <span class="op">=</span> <span class="fl">4001</span></span>
 <span><span class="op">)</span></span>
 <span></span>
+<span><span class="va">duration_report_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".md"</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">duration_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_duration_model_report.html">create_duration_model_report</a></span><span class="op">(</span></span>
 <span>  <span class="va">duration_fit</span>,</span>
 <span>  diagnostics <span class="op">=</span> <span class="va">duration_diagnostics</span>,</span>
@@ -352,8 +354,11 @@ those summaries does not prove global model adequacy.</p>
 <span>  posterior_predictive <span class="op">=</span> <span class="va">duration_predictive</span>,</span>
 <span>  prior_sensitivity <span class="op">=</span> <span class="va">duration_sensitivity</span>,</span>
 <span>  recovery <span class="op">=</span> <span class="va">duration_recovery</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"duration-model-report.md"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span>  file <span class="op">=</span> <span class="va">duration_report_file</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">duration_report</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">duration_report_file</span><span class="op">)</span></span></code></pre></div>
 <p>Recovery results apply to the declared synthetic data-generating
 process. Reports preserve the distinction between successful fitting,
 numerical sampling diagnostics, predictive behavior, robustness checks,

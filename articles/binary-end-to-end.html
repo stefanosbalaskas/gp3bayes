@@ -262,10 +262,10 @@ and a working C++ toolchain.</p>
 <span></span>
 <span><span class="va">binary_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_binary_model.html">fit_binary_model</a></span><span class="op">(</span></span>
 <span>  <span class="va">binary_specification</span>,</span>
-<span>  chains <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  chains <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  iter <span class="op">=</span> <span class="fl">2000</span>,</span>
 <span>  warmup <span class="op">=</span> <span class="fl">1000</span>,</span>
-<span>  cores <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  cores <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">2028</span>,</span>
 <span>  adapt_delta <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  max_treedepth <span class="op">=</span> <span class="fl">12</span>,</span>
@@ -328,17 +328,20 @@ package.</p>
 <h2 id="structured-reporting">Structured reporting<a class="anchor" aria-label="anchor" href="#structured-reporting"></a>
 </h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">binary_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_binary_model_report.html">create_binary_model_report</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">binary_report_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".md"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_binary_model_report.html">create_binary_model_report</a></span><span class="op">(</span></span>
 <span>  <span class="va">binary_fit</span>,</span>
 <span>  diagnostics <span class="op">=</span> <span class="va">binary_diagnostics</span>,</span>
 <span>  posterior_summary <span class="op">=</span> <span class="va">binary_posterior</span>,</span>
 <span>  posterior_predictive <span class="op">=</span> <span class="va">binary_predictive</span>,</span>
 <span>  prior_sensitivity <span class="op">=</span> <span class="va">binary_sensitivity</span>,</span>
 <span>  recovery <span class="op">=</span> <span class="va">binary_recovery</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"binary-model-report.md"</span></span>
+<span>  file <span class="op">=</span> <span class="va">binary_report_file</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">binary_report</span></span></code></pre></div>
+<span><span class="va">binary_report</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">binary_report_file</span><span class="op">)</span></span></code></pre></div>
 <p>The report keeps fitting, diagnostics, predictive checks,
 sensitivity, and recovery as separate evidence layers. It does not
 automatically claim convergence, predictive validity, causal

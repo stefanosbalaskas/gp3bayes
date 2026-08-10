@@ -113,16 +113,55 @@ diagnostic and reporting gates.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_binary_model</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">specification</span>,</span></span>
-<span class="r-in"><span>  chains <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>  iter <span class="op">=</span> <span class="fl">2000</span>,</span></span>
-<span class="r-in"><span>  warmup <span class="op">=</span> <span class="fl">1000</span>,</span></span>
-<span class="r-in"><span>  cores <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>  seed <span class="op">=</span> <span class="fl">2026</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"brms"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;&amp;</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rstan"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;&amp;</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="fu"><a href="validate_backend_environment.html">validate_backend_environment</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="st">"rstan"</span>,</span></span>
+<span class="r-in"><span>        compile_test <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>        strict <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span><span class="op">$</span><span class="va">status</span>,</span></span>
+<span class="r-in"><span>      <span class="st">"pass"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="simulate_hierarchical_binary_data.html">simulate_hierarchical_binary_data</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    n_participants <span class="op">=</span> <span class="fl">8</span>,</span></span>
+<span class="r-in"><span>    trials_per_participant <span class="op">=</span> <span class="fl">6</span>,</span></span>
+<span class="r-in"><span>    n_items <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>    random_slope_sd <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>    seed <span class="op">=</span> <span class="fl">2026</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    family <span class="op">=</span> <span class="st">"binary"</span>,</span></span>
+<span class="r-in"><span>    outcome_col <span class="op">=</span> <span class="st">"selected"</span>,</span></span>
+<span class="r-in"><span>    participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span></span>
+<span class="r-in"><span>    item_col <span class="op">=</span> <span class="st">"item_id"</span>,</span></span>
+<span class="r-in"><span>    trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span></span>
+<span class="r-in"><span>    condition_col <span class="op">=</span> <span class="st">"condition"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">prepared</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepare_hierarchical_binary_data.html">prepare_hierarchical_binary_data</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">simulation</span><span class="op">$</span><span class="va">data</span>,</span></span>
+<span class="r-in"><span>    <span class="va">contract</span>,</span></span>
+<span class="r-in"><span>    condition_levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="specify_binary_model.html">specify_binary_model</a></span><span class="op">(</span><span class="va">prepared</span>, baseline <span class="op">=</span> <span class="fl">0.35</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_binary_model</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">specification</span>,</span></span>
+<span class="r-in"><span>    chains <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>    iter <span class="op">=</span> <span class="fl">200</span>,</span></span>
+<span class="r-in"><span>    warmup <span class="op">=</span> <span class="fl">100</span>,</span></span>
+<span class="r-in"><span>    cores <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>    seed <span class="op">=</span> <span class="fl">2026</span>,</span></span>
+<span class="r-in"><span>    refresh <span class="op">=</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

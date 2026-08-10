@@ -13,7 +13,7 @@ create_binary_model_report(
   posterior_predictive = NULL,
   prior_sensitivity = NULL,
   recovery = NULL,
-  file = "gp3bayes-binary-model-report.md",
+  file,
   overwrite = FALSE
 )
 ```
@@ -51,7 +51,8 @@ create_binary_model_report(
 
 - file:
 
-  Output Markdown file.
+  Explicit output Markdown path. The caller must supply the destination;
+  the function has no default output path.
 
 - overwrite:
 

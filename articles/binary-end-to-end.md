@@ -210,10 +210,10 @@ binary_translation <- translate_binary_model_to_brms(
 
 binary_fit <- fit_binary_model(
   binary_specification,
-  chains = 4,
+  chains = 2,
   iter = 2000,
   warmup = 1000,
-  cores = 4,
+  cores = 2,
   seed = 2028,
   adapt_delta = 0.95,
   max_treedepth = 12,
@@ -283,6 +283,8 @@ package.
 
 ``` r
 
+binary_report_file <- tempfile(fileext = ".md")
+
 binary_report <- create_binary_model_report(
   binary_fit,
   diagnostics = binary_diagnostics,
@@ -290,10 +292,11 @@ binary_report <- create_binary_model_report(
   posterior_predictive = binary_predictive,
   prior_sensitivity = binary_sensitivity,
   recovery = binary_recovery,
-  file = "binary-model-report.md"
+  file = binary_report_file
 )
 
 binary_report
+unlink(binary_report_file)
 ```
 
 The report keeps fitting, diagnostics, predictive checks, sensitivity,

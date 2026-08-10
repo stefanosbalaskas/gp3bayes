@@ -206,3 +206,80 @@
   : Plot Governed Exact K-Fold Results
 - [`gp3bayes_specification_traceability()`](https://stefanosbalaskas.github.io/gp3bayes/reference/gp3bayes_specification_traceability.md)
   : Specification-Closure Traceability Matrix
+
+## Stable 0.2.0 workflow API
+
+- [`validate_gp3bayes_object()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_gp3bayes_object.md)
+  : Validate a gp3bayes Object
+- [`diagnose_model_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_model_fit.md)
+  : Diagnose an Approved gp3bayes Fit
+- [`summarise_model_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_model_posterior.md)
+  : Summarise an Approved gp3bayes Posterior
+- [`check_model_ppc()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_model_ppc.md)
+  : Check Posterior Predictive Behaviour
+- [`estimate_model_estimands()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_model_estimands.md)
+  : Estimate the Approved Primary Estimands
+- [`model_workflow_status()`](https://stefanosbalaskas.github.io/gp3bayes/reference/model_workflow_status.md)
+  : Summarise Workflow Stage Completion
+
+## Reproducibility and manifests
+
+- [`create_analysis_manifest()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_analysis_manifest.md)
+  : Create an Analysis Manifest
+- [`validate_analysis_manifest()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_analysis_manifest.md)
+  : Validate an Analysis Manifest
+- [`freeze_analysis_manifest()`](https://stefanosbalaskas.github.io/gp3bayes/reference/freeze_analysis_manifest.md)
+  : Freeze an Analysis Manifest
+- [`read_analysis_manifest()`](https://stefanosbalaskas.github.io/gp3bayes/reference/read_analysis_manifest.md)
+  : Read a Frozen Analysis Manifest
+- [`compare_analysis_manifests()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_analysis_manifests.md)
+  : Compare Analysis Manifests
+- [`analysis_manifest_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/analysis_manifest_table.md)
+  : Summarise Manifest Components
+- [`write_reproducibility_report()`](https://stefanosbalaskas.github.io/gp3bayes/reference/write_reproducibility_report.md)
+  : Write a Reproducibility Report
+
+## Pre-fit design support
+
+- [`audit_missingness_structure()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_missingness_structure.md)
+  : Audit Missingness Structure Before Model Fitting
+- [`audit_fixed_effect_design()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_fixed_effect_design.md)
+  : Audit the Fixed-Effects Design Matrix
+- [`audit_random_effects_support()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_random_effects_support.md)
+  : Audit Random-Effects Support
+- [`audit_design_support()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_design_support.md)
+  : Audit Overall Design Support
+- [`preflight_model_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/preflight_model_specification.md)
+  : Preflight an Approved Model Specification
+
+## Unified sensitivity and evidence
+
+- [`create_sensitivity_suite_plan()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_sensitivity_suite_plan.md)
+  : Create a Sensitivity Suite Plan
+- [`run_sensitivity_suite()`](https://stefanosbalaskas.github.io/gp3bayes/reference/run_sensitivity_suite.md)
+  : Run a Unified Sensitivity Suite
+- [`summarise_sensitivity_suite()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_sensitivity_suite.md)
+  : Summarise a Sensitivity Suite
+- [`collect_model_evidence()`](https://stefanosbalaskas.github.io/gp3bayes/reference/collect_model_evidence.md)
+  : Collect Model Evidence Without Declaring Model Adequacy
+- [`create_model_evidence_report()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_evidence_report.md)
+  : Create a Model Evidence Report
+
+## Backend reliability and compatibility
+
+- [`backend_capabilities()`](https://stefanosbalaskas.github.io/gp3bayes/reference/backend_capabilities.md)
+  : Report Bayesian Backend Capabilities
+- [`validate_backend_environment()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_backend_environment.md)
+  : Validate a Bayesian Backend Environment
+- [`audit_backend_parity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_backend_parity.md)
+  : Audit Posterior Parity Across rstan and cmdstanr
+- [`capture_gp3bayes_schema()`](https://stefanosbalaskas.github.io/gp3bayes/reference/capture_gp3bayes_schema.md)
+  : Capture the Structural Schema of a gp3bayes Object
+- [`compare_gp3bayes_schemas()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_gp3bayes_schemas.md)
+  : Compare gp3bayes Object Schemas
+- [`validate_gp3bayes_schema()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_gp3bayes_schema.md)
+  : Validate an Object Against a Frozen gp3bayes Schema
+- [`freeze_gp3bayes_schema()`](https://stefanosbalaskas.github.io/gp3bayes/reference/freeze_gp3bayes_schema.md)
+  : Freeze a gp3bayes Object Schema
+- [`read_gp3bayes_schema()`](https://stefanosbalaskas.github.io/gp3bayes/reference/read_gp3bayes_schema.md)
+  : Read a Frozen gp3bayes Object Schema
