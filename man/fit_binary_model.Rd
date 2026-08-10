@@ -58,7 +58,15 @@ diagnostic and reporting gates.
 \donttest{
 if (
   requireNamespace("brms", quietly = TRUE) &&
-    requireNamespace("rstan", quietly = TRUE)
+    requireNamespace("rstan", quietly = TRUE) &&
+    identical(
+      validate_backend_environment(
+        "rstan",
+        compile_test = TRUE,
+        strict = FALSE
+      )$status,
+      "pass"
+    )
 ) {
   simulation <- simulate_hierarchical_binary_data(
     n_participants = 8,
