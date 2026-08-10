@@ -1,0 +1,14 @@
+"release","object","object_class","file","md5","compare_lengths","values_recorded"
+"0.2.0","binary_model_contract","gp3bayes_model_contract","binary_model_contract.rds","e18cbe6098938675da067ac740a375df",FALSE,FALSE
+"0.2.0","binary_readiness_audit","gp3bayes_readiness_audit","binary_readiness_audit.rds","7073ca5fc9b0f7b594b677d77e74ab0f",FALSE,FALSE
+"0.2.0","binary_prepared","gp3bayes_binary_prepared","binary_prepared.rds","ae0938dd4a6e32181b55ee103a5e9379",FALSE,FALSE
+"0.2.0","binary_model_specification","gp3bayes_binary_model_specification,gp3bayes_model_specification","binary_model_specification.rds","d9ed12845ab17496fd31646657ebdd49",FALSE,FALSE
+"0.2.0","binary_design_support","gp3bayes_design_support_audit","binary_design_support.rds","966f16421f150b6d7bda1bd835761b37",FALSE,FALSE
+"0.2.0","binary_analysis_manifest","gp3bayes_analysis_manifest","binary_analysis_manifest.rds","cdee9897fa680f9270a5abb8d8c2122e",FALSE,FALSE
+"0.2.0","duration_model_contract","gp3bayes_model_contract","duration_model_contract.rds","6d2ddf07763048d850bffc3c04b16891",FALSE,FALSE
+"0.2.0","duration_readiness_audit","gp3bayes_readiness_audit","duration_readiness_audit.rds","4b65dfb858ba0c7ead4143c0f2710311",FALSE,FALSE
+"0.2.0","duration_prepared","gp3bayes_duration_prepared","duration_prepared.rds","0b1a114e530c2ed842c159d6cd0834c5",FALSE,FALSE
+"0.2.0","duration_model_specification","gp3bayes_duration_model_specification,gp3bayes_model_specification","duration_model_specification.rds","483262c3bb3e91615f25a25adcc915ca",FALSE,FALSE
+"0.2.0","duration_design_support","gp3bayes_design_support_audit","duration_design_support.rds","e2447ac599952e28bf744d75b427e708",FALSE,FALSE
+"0.2.0","duration_analysis_manifest","gp3bayes_analysis_manifest","duration_analysis_manifest.rds","5359beac710c3f0079a2b0ef92d880c2",FALSE,FALSE
+"0.2.0","sensitivity_suite_plan","gp3bayes_sensitivity_plan","sensitivity_suite_plan.rds","6ce6fb22d3ea5cb074d4eef87bc0e549",FALSE,FALSE

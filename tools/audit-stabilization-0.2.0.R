@@ -21,7 +21,7 @@ execution_text <- read_all(c(r_files, rd_files, vignette_files, test_files))
 
 desc <- read.dcf("DESCRIPTION")
 stopifnot(
-  identical(unname(desc[1L, "Version"]), "0.2.0.9001"),
+  unname(desc[1L, "Version"]) %in% c("0.2.0.9001", "0.2.0"),
   grepl("\\bwithr\\b", unname(desc[1L, "Imports"]), perl = TRUE)
 )
 

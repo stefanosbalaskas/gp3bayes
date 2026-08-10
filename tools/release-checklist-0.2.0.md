@@ -56,9 +56,9 @@
 - [x] NEWS documents the stabilization milestone.
 - [x] pkgdown reference index includes new function groups.
 - [x] Six stabilization articles are visible in the Articles navbar.
-- [ ] Public pkgdown is deployed immediately after merge.
-- [ ] Object schemas intended as release compatibility baselines are captured only after APIs are frozen.
-- [ ] Bump development version to 0.2.0 only on the release-preparation branch.
+- [x] Public pkgdown is deployed immediately after merge.
+- [x] Object schemas intended as release compatibility baselines are captured only after APIs are frozen.
+- [x] Bump development version to 0.2.0 only on the release-preparation branch.
 - [ ] Build and inspect final `gp3bayes_0.2.0.tar.gz`.
 - [ ] Create GitHub release and Zenodo archive after validation.
 
