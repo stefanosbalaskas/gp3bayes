@@ -13,7 +13,7 @@ data.
 
 ## Scope
 
-The current development version is `gp3bayes` 0.2.0.9001.
+The current package version is `gp3bayes` 0.2.0.
 
 The package provides:
 
@@ -58,8 +58,8 @@ and one supported sampling backend: `rstan` or `cmdstanr`.
 
 ## 0.2.0 stabilization layer
 
-The 0.2.0 development line adds a stable family-neutral workflow API,
-analysis manifests and reproducibility reports, pre-fit design-support
+`gp3bayes` 0.2.0 adds a stable family-neutral workflow API, analysis
+manifests and reproducibility reports, pre-fit design-support
 diagnostics, unified sensitivity/evidence inventories,
 backend-environment and posterior-summary parity audits, and
 serialized-object schema checks. These layers compose the existing
@@ -319,7 +319,7 @@ citation for the installed version with:
 citation("gp3bayes")
 ```
 
-The repository currently represents development version **0.2.0.9001**.
+The repository currently represents release version **0.2.0**.
 
 For archived software citation:
 
@@ -331,11 +331,11 @@ For archived software citation:
   `gp3bayes` 0.1.0 —
   [`10.5281/zenodo.21518699`](https://doi.org/10.5281/zenodo.21518699)
 
-## Development status
+## Release status
 
-`gp3bayes` 0.2.0.9001 is the current development version.
+`gp3bayes` 0.2.0 is the current package version.
 
-The development API provides contract-first Bernoulli-logit and
+The 0.2.0 API provides contract-first Bernoulli-logit and
 lognormal-duration workflows; backend-portable full-MCMC fitting through
 `brms` with either `rstan` or `cmdstanr`; advanced sensitivity,
 PSIS-LOO, model-weighting, separation-screening, and simulation-based
@@ -343,8 +343,8 @@ calibration workflows; strict specification closure; transformation
 replay; explicit posterior estimands; detailed posterior predictive
 checks; and optional exact K-fold validation.
 
-The current CRAN release is `gp3bayes` 0.1.1; development continues
-toward the stable 0.2.0 release.
+The repository release version is `gp3bayes` 0.2.0; CRAN availability is
+reported by the status badge above.
 
 ## Interpretation boundaries
 
@@ -357,11 +357,11 @@ design and target estimand justify causal interpretation.
 
 ## Advanced optional workflows
 
-The 0.2.0.9001 development API includes conservative optional adapters
-for power-scaled sensitivity through `priorsense`, PSIS-LOO diagnostics
-and model weights through `loo`, fixed-effects separation screening
-through `detectseparation`, simulation-based calibration through `SBC`,
-and full-MCMC backend selection between `rstan` and `cmdstanr`.
+`gp3bayes` 0.2.0 includes conservative optional adapters for
+power-scaled sensitivity through `priorsense`, PSIS-LOO diagnostics and
+model weights through `loo`, fixed-effects separation screening through
+`detectseparation`, simulation-based calibration through `SBC`, and
+full-MCMC backend selection between `rstan` and `cmdstanr`.
 
 Dedicated binary and duration pathology generators make documented
 failure cases directly reproducible.
@@ -376,8 +376,8 @@ adequacy claims.
 
 ## Specification closure
 
-The development API now closes the remaining contract-level requirements
-with strict readiness audits, exact transformation replay, first-class
+The 0.2.0 API closes the remaining contract-level requirements with
+strict readiness audits, exact transformation replay, first-class
 probability/median/tail estimands, governed structural and deletion
 sensitivity, duration-unit invariance, detailed posterior predictive
 checks, and optional exact K-fold validation.

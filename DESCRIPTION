@@ -1,6 +1,6 @@
 Package: gp3bayes
 Title: Contract-First Bayesian Workflows for Hierarchical Behavioural Data
-Version: 0.2.0.9001
+Version: 0.2.0
 Authors@R:
     person(
       given = "Stefanos",
@@ -43,5 +43,5 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-Additional_repositories: https://stan-dev.r-universe.dev
-Remotes: hyunjimoon/SBC
+Additional_repositories: https://stan-dev.r-universe.dev,
+    https://r-multiverse.r-universe.dev

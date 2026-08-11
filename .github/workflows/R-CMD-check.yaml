@@ -38,7 +38,9 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
-          extra-repositories: https://stan-dev.r-universe.dev
+          extra-repositories: |
+            https://stan-dev.r-universe.dev
+            https://r-multiverse.r-universe.dev
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:

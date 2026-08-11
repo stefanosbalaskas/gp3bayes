@@ -1,4 +1,4 @@
-# gp3bayes 0.2.0.9001
+# gp3bayes 0.2.0
 
 ## 0.2.0 stabilization program
 
@@ -21,7 +21,7 @@
 
 * Aligned DESCRIPTION, README, citation metadata, package-level help,
   backend-installation guidance, CRAN comments, and pkgdown deployment metadata
-  with the complete 0.2.0.9001 development API and dual `rstan`/`cmdstanr`
+  with the complete 0.2.0 API and dual `rstan`/`cmdstanr`
   backend support.
 
 ## Specification closure
