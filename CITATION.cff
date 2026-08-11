@@ -14,8 +14,8 @@ identifiers:
     value: "10.5281/zenodo.21518698"
     description: "Concept DOI for all gp3bayes releases."
   - type: doi
-    value: "10.5281/zenodo.21518699"
-    description: "Version-specific DOI for the archived gp3bayes 0.1.0 release."
+    value: "10.5281/zenodo.21880165"
+    description: "Version-specific DOI for the archived gp3bayes 0.2.0 release."
 doi: "10.5281/zenodo.21518698"
 url: "https://stefanosbalaskas.github.io/gp3bayes/"
 license: MIT

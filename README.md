@@ -328,8 +328,8 @@ For archived software citation:
 - Concept DOI for all releases —
   [`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698)
 - Latest archived Zenodo version currently documented in the repository:
-  `gp3bayes` 0.1.0 —
-  [`10.5281/zenodo.21518699`](https://doi.org/10.5281/zenodo.21518699)
+  `gp3bayes` 0.2.0 —
+  [`10.5281/zenodo.21880165`](https://doi.org/10.5281/zenodo.21880165)
 
 ## Release status
 
