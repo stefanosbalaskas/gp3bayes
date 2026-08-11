@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gp3bayes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.2.0.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
 <div class="section level2">
 <h2 id="scope">Scope<a class="anchor" aria-label="anchor" href="#scope"></a>
 </h2>
-<p>The current development version is <code>gp3bayes</code> 0.2.0.9001.</p>
+<p>The current package version is <code>gp3bayes</code> 0.2.0.</p>
 <p>The package provides:</p>
 <ul>
 <li>explicit model contracts and standard or strict model-readiness audits;</li>
@@ -92,7 +92,7 @@
 <div class="section level2">
 <h2 id="id_020-stabilization-layer">0.2.0 stabilization layer<a class="anchor" aria-label="anchor" href="#id_020-stabilization-layer"></a>
 </h2>
-<p>The 0.2.0 development line adds a stable family-neutral workflow API, analysis manifests and reproducibility reports, pre-fit design-support diagnostics, unified sensitivity/evidence inventories, backend-environment and posterior-summary parity audits, and serialized-object schema checks. These layers compose the existing binary and duration workflows without adding unrestricted formulas, automatic model selection, automatic exclusion, or automatic adequacy/causal claims.</p>
+<p><code>gp3bayes</code> 0.2.0 adds a stable family-neutral workflow API, analysis manifests and reproducibility reports, pre-fit design-support diagnostics, unified sensitivity/evidence inventories, backend-environment and posterior-summary parity audits, and serialized-object schema checks. These layers compose the existing binary and duration workflows without adding unrestricted formulas, automatic model selection, automatic exclusion, or automatic adequacy/causal claims.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/audit_design_support.html">audit_design_support</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">contract</span><span class="op">)</span></span>
 <span><span class="va">manifest</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_analysis_manifest.html">create_analysis_manifest</a></span><span class="op">(</span><span class="va">specification</span>, seed <span class="op">=</span> <span class="fl">2026</span><span class="op">)</span></span>
@@ -291,7 +291,7 @@
 <p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the R-formatted citation for the installed version with:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
-<p>The repository currently represents development version <strong>0.2.0.9001</strong>.</p>
+<p>The repository currently represents release version <strong>0.2.0</strong>.</p>
 <p>For archived software citation:</p>
 <ul>
 <li>Current CRAN release: <code>gp3bayes</code> 0.1.1 — <a href="https://cran.r-project.org/package=gp3bayes" class="external-link">CRAN</a>
@@ -303,11 +303,11 @@
 </ul>
 </div>
 <div class="section level2">
-<h2 id="development-status">Development status<a class="anchor" aria-label="anchor" href="#development-status"></a>
+<h2 id="release-status">Release status<a class="anchor" aria-label="anchor" href="#release-status"></a>
 </h2>
-<p><code>gp3bayes</code> 0.2.0.9001 is the current development version.</p>
-<p>The development API provides contract-first Bernoulli-logit and lognormal-duration workflows; backend-portable full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>; advanced sensitivity, PSIS-LOO, model-weighting, separation-screening, and simulation-based calibration workflows; strict specification closure; transformation replay; explicit posterior estimands; detailed posterior predictive checks; and optional exact K-fold validation.</p>
-<p>The current CRAN release is <code>gp3bayes</code> 0.1.1; development continues toward the stable 0.2.0 release.</p>
+<p><code>gp3bayes</code> 0.2.0 is the current package version.</p>
+<p>The 0.2.0 API provides contract-first Bernoulli-logit and lognormal-duration workflows; backend-portable full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>; advanced sensitivity, PSIS-LOO, model-weighting, separation-screening, and simulation-based calibration workflows; strict specification closure; transformation replay; explicit posterior estimands; detailed posterior predictive checks; and optional exact K-fold validation.</p>
+<p>The repository release version is <code>gp3bayes</code> 0.2.0; CRAN availability is reported by the status badge above.</p>
 </div>
 <div class="section level2">
 <h2 id="interpretation-boundaries">Interpretation boundaries<a class="anchor" aria-label="anchor" href="#interpretation-boundaries"></a>
@@ -318,7 +318,7 @@
 <div class="section level2">
 <h2 id="advanced-optional-workflows">Advanced optional workflows<a class="anchor" aria-label="anchor" href="#advanced-optional-workflows"></a>
 </h2>
-<p>The 0.2.0.9001 development API includes conservative optional adapters for power-scaled sensitivity through <code>priorsense</code>, PSIS-LOO diagnostics and model weights through <code>loo</code>, fixed-effects separation screening through <code>detectseparation</code>, simulation-based calibration through <code>SBC</code>, and full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p>
+<p><code>gp3bayes</code> 0.2.0 includes conservative optional adapters for power-scaled sensitivity through <code>priorsense</code>, PSIS-LOO diagnostics and model weights through <code>loo</code>, fixed-effects separation screening through <code>detectseparation</code>, simulation-based calibration through <code>SBC</code>, and full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p>
 <p>Dedicated binary and duration pathology generators make documented failure cases directly reproducible.</p>
 <p>These extensions do not introduce unrestricted formulas, arbitrary model families, automatic model selection, automatic exclusion, or automatic adequacy claims.</p>
 </div>
@@ -330,7 +330,7 @@
 <div class="section level2">
 <h2 id="specification-closure">Specification closure<a class="anchor" aria-label="anchor" href="#specification-closure"></a>
 </h2>
-<p>The development API now closes the remaining contract-level requirements with strict readiness audits, exact transformation replay, first-class probability/median/tail estimands, governed structural and deletion sensitivity, duration-unit invariance, detailed posterior predictive checks, and optional exact K-fold validation.</p>
+<p>The 0.2.0 API closes the remaining contract-level requirements with strict readiness audits, exact transformation replay, first-class probability/median/tail estimands, governed structural and deletion sensitivity, duration-unit invariance, detailed posterior predictive checks, and optional exact K-fold validation.</p>
 <p>These functions remain inside the two approved Bernoulli-logit and positive uncensored lognormal-duration contracts. They do not add arbitrary formulas, likelihoods, automatic model selection, automatic exclusions, or causal claims.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/audit_model_readiness_strict.html">audit_model_readiness_strict</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">contract</span><span class="op">)</span></span>

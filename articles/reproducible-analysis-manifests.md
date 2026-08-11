@@ -91,7 +91,7 @@ frozen
 #>   Data: 80 x 8
 #>   Data hash: 09ab941d91559d015dc9fe304ebfb2e7
 #>   Frozen: TRUE
-#>   Manifest hash: 8b55c1192758313c83326b723c11a62c
+#>   Manifest hash: 1b0bdea4ffa06171ed35d42cf4076253
 ```
 
 Writing is always explicit. Temporary files are used here so the
@@ -110,7 +110,7 @@ freeze_analysis_manifest(manifest, file = manifest_file)
 #>   Data: 80 x 8
 #>   Data hash: 09ab941d91559d015dc9fe304ebfb2e7
 #>   Frozen: TRUE
-#>   Manifest hash: 8b55c1192758313c83326b723c11a62c
+#>   Manifest hash: 1b0bdea4ffa06171ed35d42cf4076253
 restored <- read_analysis_manifest(manifest_file)
 write_reproducibility_report(restored, report_file)
 
