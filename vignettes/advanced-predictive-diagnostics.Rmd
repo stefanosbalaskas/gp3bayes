@@ -1,0 +1,60 @@
+---
+title: "Advanced Predictive Diagnostics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Predictive Diagnostics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+This article extends the prediction layer with diagnostics that remain
+descriptive rather than becoming automatic acceptance or rejection rules.
+
+```{r}
+library(gp3bayes)
+
+p <- c(0.05, 0.20, 0.75, 0.90)
+y <- c(0, 0, 1, 1)
+
+binary_confusion_table(p, y)
+binary_roc_curve(p, y)
+binary_precision_recall_curve(p, y)
+binary_calibration_error(p, y, bins = 2)
+```
+
+```{r, eval=requireNamespace("ggplot2", quietly=TRUE)}
+plot_binary_roc(binary_roc_curve(p, y))
+plot_binary_precision_recall(binary_precision_recall_curve(p, y))
+```
+
+For a fitted model, posterior predictive discrepancy checks retain the entire
+replicated distribution:
+
+```{r, eval=FALSE}
+pp <- predict_model(
+  fit,
+  type = "predictive",
+  include_group_effects = TRUE,
+  ndraws = 1000
+)
+
+check <- posterior_predictive_statistic(pp, statistic = "mean")
+ppc_statistic_table(check)
+plot_ppc_statistic(check)
+```
+
+Duration models additionally support predictive Q-Q and tail checks:
+
+```{r, eval=FALSE}
+duration_qq_table(pp)
+plot_duration_qq(pp)
+
+tail <- duration_tail_check(pp, threshold = 2000)
+plot_duration_tail(tail)
+```
+
+None of these diagnostics certifies adequacy automatically.

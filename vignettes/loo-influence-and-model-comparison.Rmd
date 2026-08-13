@@ -1,0 +1,45 @@
+---
+title: "LOO Influence and Predictive Model Comparison"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LOO Influence and Predictive Model Comparison}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+The LOO display layer converts existing `gp3bayes_psis_loo`,
+`gp3bayes_loo_comparison`, and `gp3bayes_loo_weights` objects into explicit
+tables and publication-oriented figures.
+
+```{r, eval=FALSE}
+loo_result <- compute_psis_loo(fit, cores = 1)
+
+loo_summary_table(loo_result)
+loo_diagnostic_table(loo_result)
+plot_loo_influence(loo_result)
+```
+
+For multiple prespecified models:
+
+```{r, eval=FALSE}
+comparison <- compare_psis_loo(
+  list(reference = fit_reference, sensitivity = fit_sensitivity),
+  cores = 1
+)
+
+weights <- compute_loo_model_weights(comparison, method = "stacking")
+
+model_comparison_table(comparison)
+model_weights_table(weights)
+
+plot_model_comparison(comparison)
+plot_model_weights(weights)
+```
+
+ELPD differences and predictive weights are retained as descriptive predictive
+evidence. The package does not promote the highest-ranked model to an
+automatically preferred substantive model.

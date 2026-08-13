@@ -1,0 +1,64 @@
+---
+title: "Posterior Exploration and Publication Graphics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Posterior Exploration and Publication Graphics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+`gp3bayes` separates numerical posterior summaries from graphics. The same
+posterior draw matrix can therefore be inspected, tabulated, and plotted
+without changing the fitted model or its contract.
+
+## Backend-independent posterior tables
+
+```{r}
+library(gp3bayes)
+
+draws <- cbind(
+  intercept = seq(-1, 1, length.out = 500),
+  condition = seq(-0.5, 0.7, length.out = 500)
+)
+
+posterior_interval_table(draws)
+posterior_probability_table(draws, rope = c(-0.1, 0.1))
+posterior_correlation_table(draws)
+```
+
+## Publication graphics
+
+```{r, eval=requireNamespace("ggplot2", quietly=TRUE) && requireNamespace("bayesplot", quietly=TRUE)}
+plot_posterior_intervals(draws)
+plot_posterior_areas(draws)
+```
+
+The plotting functions return ordinary plotting objects. They do not alter
+posterior draws, set decision thresholds, or turn interval exclusion into an
+automatic substantive conclusion.
+
+## Fitted-model extraction
+
+For an approved fitted model, the post-fit API standardises extraction through
+the `posterior` package:
+
+```{r, eval=FALSE}
+draw_array <- extract_posterior_draws(fit, regex = "^b_", format = "array")
+draw_df <- extract_posterior_draws(fit, regex = "^b_", format = "df")
+
+mcmc_diagnostic_table(fit)
+sampler_diagnostic_table(fit)
+quality <- summarise_mcmc_quality(fit)
+
+plot_rank_diagnostics(fit)
+plot_autocorrelation(fit)
+plot_mcmc_quality(quality)
+plot_sampler_diagnostics(fit)
+```
+
+Diagnostic flags request inspection. Their absence is not encoded as proof of
+model adequacy.

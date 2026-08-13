@@ -4,7 +4,8 @@ template:
   bootstrap: 5
 
 development:
-  mode: release
+  mode: unreleased
+  version_tooltip: "Development documentation for gp3bayes 0.3.0.9000"
 
 home:
   title: gp3bayes
@@ -168,6 +169,134 @@ reference:
   - freeze_gp3bayes_schema
   - read_gp3bayes_schema
 
+- title: Post-fit exploration and prediction
+  contents:
+  - extract_posterior_draws
+  - extract_sampler_diagnostics
+  - extract_log_likelihood
+  - posterior_interval_table
+  - posterior_probability_table
+  - posterior_correlation_table
+  - mcmc_diagnostic_table
+  - sampler_diagnostic_table
+  - identify_mcmc_issues
+  - summarise_mcmc_quality
+  - group_effect_table
+  - variance_component_table
+  - create_prediction_grid
+  - audit_prediction_support
+  - prediction_support_table
+  - predict_model
+  - predict_binary_probability
+  - predict_duration
+  - extract_expected_predictions
+  - extract_posterior_predictions
+  - extract_linear_predictions
+  - prediction_table
+  - prediction_contrast
+  - prediction_exceedance_probability
+  - prediction_uncertainty_decomposition
+  - grouped_prediction_check
+  - predictive_residuals
+  - binary_prediction_scores
+  - binary_threshold_metrics
+  - binary_calibration_table
+  - duration_prediction_scores
+  - duration_quantile_calibration
+  - duration_pit_table
+  - predictive_coverage_table
+  - posterior_predictive_summary_table
+- title: LOO tables and publication graphics
+  contents:
+  - loo_diagnostic_table
+  - loo_summary_table
+  - model_comparison_table
+  - model_weights_table
+  - theme_gp3bayes
+  - plot_posterior_intervals
+  - plot_posterior_areas
+  - plot_posterior_density
+  - plot_posterior_correlations
+  - plot_posterior_pairs
+  - plot_rank_diagnostics
+  - plot_autocorrelation
+  - plot_mcmc_quality
+  - plot_sampler_diagnostics
+  - plot_estimand_intervals
+  - plot_prediction_intervals
+  - plot_binary_calibration
+  - plot_binary_threshold_metrics
+  - plot_duration_quantile_calibration
+  - plot_duration_pit
+  - plot_exceedance_probability
+  - plot_predictive_coverage
+  - plot_predictive_residuals
+  - plot_prediction_support
+  - plot_uncertainty_decomposition
+  - plot_grouped_prediction_check
+  - plot_group_effects
+  - plot_variance_components
+  - plot_loo_influence
+  - plot_model_comparison
+  - plot_model_weights
+  - create_figure_set
+  - save_figure_set
+- title: Analysis bundles
+  contents:
+  - create_analysis_bundle
+  - analysis_bundle_table
+  - create_publication_table_set
+  - create_analysis_figure_set
+  - write_analysis_bundle_report
+- title: Advanced prediction diagnostics
+  contents:
+  - prediction_draws_long
+  - posterior_predictive_statistic
+  - ppc_statistic_table
+  - binary_confusion_table
+  - binary_roc_curve
+  - binary_precision_recall_curve
+  - binary_calibration_error
+  - binary_group_calibration
+  - duration_qq_table
+  - duration_tail_check
+  - group_prediction_summary
+  - prediction_pairwise_contrasts
+  - prediction_interval_width
+  - prediction_rank_probabilities
+  - plot_prediction_draws
+  - plot_ppc_statistic
+  - plot_binary_roc
+  - plot_binary_precision_recall
+  - plot_binary_group_calibration
+  - plot_duration_qq
+  - plot_duration_tail
+  - plot_group_predictions
+  - plot_prediction_interval_width
+  - plot_prediction_rank_probabilities
+- title: Evidence graphics and reporting
+  contents:
+  - sensitivity_suite_table
+  - model_evidence_table
+  - backend_parity_table
+  - backend_environment_table
+  - manifest_comparison_table
+  - schema_comparison_table
+  - design_support_table
+  - missingness_audit_table
+  - plot_sensitivity_suite_gg
+  - plot_model_evidence_gg
+  - plot_backend_parity_gg
+  - plot_backend_environment_gg
+  - plot_manifest_comparison_gg
+  - plot_schema_comparison_gg
+  - plot_design_support_gg
+  - plot_missingness_gg
+  - create_model_card
+  - model_card_table
+  - create_reporting_checklist
+  - plot_reporting_checklist
+  - write_model_card
 articles:
 - title: End-to-end workflows
   contents:
@@ -199,3 +328,16 @@ articles:
   - sensitivity-evidence-workflow
   - backend-reliability
   - release-case-study
+- title: Post-fit exploration
+  contents:
+  - posterior-exploration-and-graphics
+  - prediction-calibration-and-scoring
+  - hierarchical-effects-and-uncertainty
+  - loo-influence-and-model-comparison
+  - publication-analysis-bundles
+- title: Advanced post-fit diagnostics
+  contents:
+  - advanced-predictive-diagnostics
+  - prediction-contrasts-ranking-and-groups
+  - evidence-graphics-and-governance
+  - model-cards-and-reporting-inventories
