@@ -123,7 +123,7 @@ frozen_manifest
 #>   Data: 288 x 8
 #>   Data hash: f3612a97dabe7adffe8782487b233903
 #>   Frozen: TRUE
-#>   Manifest hash: e87e01f3ffb2e7c9f23cec8174448670
+#>   Manifest hash: e6dcdca1ee378e1e99c6c72dd5efe8ae
 ```
 
 ## 6. Optional dual-backend fitting

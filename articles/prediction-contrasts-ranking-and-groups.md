@@ -1,0 +1,38 @@
+# Prediction Contrasts, Rankings, and Groups
+
+Prediction grids can be summarised by observed design variables without
+expanding the approved model-family scope.
+
+``` r
+
+grid <- create_prediction_grid(
+  fit,
+  at = list(condition = c("control", "treatment"))
+)
+
+pred <- predict_model(
+  fit,
+  newdata = grid,
+  type = "expected",
+  include_group_effects = FALSE
+)
+
+prediction_pairwise_contrasts(pred)
+prediction_interval_width(pred)
+prediction_rank_probabilities(pred)
+```
+
+The ranking function is deliberately descriptive. A probability of rank
+one is not converted into an automatic selection.
+
+When the prediction data contain multiple rows per substantive group:
+
+``` r
+
+grouped <- group_prediction_summary(pred, by = "condition")
+grouped
+plot_group_predictions(grouped, "condition")
+```
+
+This makes aggregation explicit and reproducible rather than hiding it
+inside plotting code.

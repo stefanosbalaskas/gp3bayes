@@ -3,23 +3,45 @@ pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   advanced-optional-workflows: advanced-optional-workflows.html
+  advanced-predictive-diagnostics: advanced-predictive-diagnostics.html
   backend-portability: backend-portability.html
   backend-reliability: backend-reliability.html
   binary-end-to-end: binary-end-to-end.html
+  declared-prior-versus-posterior: declared-prior-versus-posterior.html
   duration-end-to-end: duration-end-to-end.html
+  end-to-end-evidence-showcase: end-to-end-evidence-showcase.html
   estimands-and-sensitivity: estimands-and-sensitivity.html
+  evidence-graphics-and-governance: evidence-graphics-and-governance.html
+  grouped-loo-influence: grouped-loo-influence.html
+  hierarchical-effect-atlas: hierarchical-effect-atlas.html
+  hierarchical-effects-and-uncertainty: hierarchical-effects-and-uncertainty.html
+  loo-influence-and-model-comparison: loo-influence-and-model-comparison.html
+  loo-influence-atlas: loo-influence-atlas.html
+  model-cards-and-reporting-inventories: model-cards-and-reporting-inventories.html
   optional-backend-installation: optional-backend-installation.html
   pathological-simulation-scenarios: pathological-simulation-scenarios.html
   posterior-diagnostics: posterior-diagnostics.html
+  posterior-exploration-and-graphics: posterior-exploration-and-graphics.html
   pre-fit-design-diagnostics: pre-fit-design-diagnostics.html
+  prediction-calibration-and-scoring: prediction-calibration-and-scoring.html
+  prediction-contrasts-ranking-and-groups: prediction-contrasts-ranking-and-groups.html
+  prediction-profiles-surfaces-and-contrasts: prediction-profiles-surfaces-and-contrasts.html
+  predictive-distribution-and-calibration-uncertainty: predictive-distribution-and-calibration-uncertainty.html
+  public-api-map: public-api-map.html
+  publication-analysis-bundles: publication-analysis-bundles.html
+  publication-registries-and-dashboards: publication-registries-and-dashboards.html
+  quality-hardening-and-failure-contracts: quality-hardening-and-failure-contracts.html
+  recovery-diagnostics-for-publication: recovery-diagnostics-for-publication.html
   release-case-study: release-case-study.html
   reproducible-analysis-manifests: reproducible-analysis-manifests.html
+  sbc-publication-diagnostics: sbc-publication-diagnostics.html
   sensitivity-and-recovery: sensitivity-and-recovery.html
+  sensitivity-atlas: sensitivity-atlas.html
   sensitivity-evidence-workflow: sensitivity-evidence-workflow.html
   specification-closure: specification-closure.html
   stable-unified-workflow: stable-unified-workflow.html
   transformation-replay-and-detailed-ppc: transformation-replay-and-detailed-ppc.html
-last_built: 2026-08-11T01:04Z
+last_built: 2026-08-13T21:40Z
 urls:
   reference: https://stefanosbalaskas.github.io/gp3bayes/reference
   article: https://stefanosbalaskas.github.io/gp3bayes/articles

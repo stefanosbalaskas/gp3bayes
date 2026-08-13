@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,55 @@
       <small>Source: <a href="https://github.com/stefanosbalaskas/gp3bayes/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.0.9000" id="gp3bayes-0309000">gp3bayes 0.3.0.9000<a class="anchor" aria-label="anchor" href="#gp3bayes-0309000"></a></h2>
+<div class="section level4">
+<h4 id="public-api-and-integration-hardening-0-3-0-9000">Public API and integration hardening<a class="anchor" aria-label="anchor" href="#public-api-and-integration-hardening-0-3-0-9000"></a></h4>
+<ul><li>Froze the 324-function development API in a machine-readable manifest and added tests for exported names and formal argument stability.</li>
+<li>Added source-level documentation coverage tests for all public exports.</li>
+<li>Added direct smoke tests for lightweight prediction, backend, LOO, prior-posterior, and Phase-4 table adapters.</li>
+<li>Added explicit malformed-input and combinatoric-boundary tests for fit-dependent extraction and prediction-comparison helpers.</li>
+<li>Added a complete public API map and a quality/failure-contract article.</li>
+</ul><p>This hardening phase adds no public functions and does not broaden the approved model-family scope.</p>
+</div>
+<div class="section level4">
+<h4 id="hierarchical-and-posterior-predictive-atlases-0-3-0-9000">Hierarchical and posterior-predictive atlases<a class="anchor" aria-label="anchor" href="#hierarchical-and-posterior-predictive-atlases-0-3-0-9000"></a></h4>
+<ul><li>Added raw group-effect draw extraction, posterior rank probabilities, and baseline random-intercept latent variance partitions.</li>
+<li>Added governed numeric prediction profiles, finite-difference predictive gradients, two-dimensional prediction surfaces, and contrast profiles.</li>
+<li>Added posterior-predictive distribution and quantile atlases, posterior uncertainty in prediction scores, and binary calibration uncertainty.</li>
+<li>Added group-aggregated PSIS-LOO influence summaries and graphics.</li>
+<li>Added four articles covering the new hierarchical and predictive layer.</li>
+</ul><p>All additions remain descriptive under the fitted model. They do not add causal derivatives, automatic ranking, automatic calibration certification, automatic adequacy decisions, or automatic group exclusion.</p>
+</div>
+<div class="section level4">
+<h4 id="evidence-atlases-recovery-graphics-and-publication-registries-0-3-0-9000">Evidence atlases, recovery graphics, and publication registries<a class="anchor" aria-label="anchor" href="#evidence-atlases-recovery-graphics-and-publication-registries-0-3-0-9000"></a></h4>
+<ul><li>Added publication-oriented recovery, prior-sensitivity, estimand- sensitivity, group-deletion, random-slope, power-scale, and SBC adapters.</li>
+<li>Added a declared-prior versus posterior bridge with marginal shift, contraction, overlap, and empirical distance summaries.</li>
+<li>Added pointwise PSIS-LOO influence atlases without automatic exclusion.</li>
+<li>Added publication registries, evidence inventories, and non-interactive diagnostic dashboards with explicit file-output semantics.</li>
+<li>Added seven evidence/publication articles including an end-to-end showcase.</li>
+</ul><p>No addition performs automatic model selection, automatic exclusion, automatic adequacy or robustness certification, or causal interpretation.</p>
+</div>
+<div class="section level4">
+<h4 id="advanced-predictive-diagnostics-and-evidence-graphics-0-3-0-9000">Advanced predictive diagnostics and evidence graphics<a class="anchor" aria-label="anchor" href="#advanced-predictive-diagnostics-and-evidence-graphics-0-3-0-9000"></a></h4>
+<ul><li>Added ROC, precision-recall, confusion, calibration-error, grouped calibration, predictive Q-Q, duration-tail, interval-width, posterior ranking, and posterior predictive discrepancy summaries.</li>
+<li>Added ggplot adapters for sensitivity suites, model-evidence inventories, backend parity/environment checks, analysis-manifest comparisons, schema comparisons, design-support audits, and missingness audits.</li>
+<li>Added structured model cards and reporting-evidence inventories with explicit Markdown output.</li>
+<li>Added four advanced post-fit articles and additional test coverage.</li>
+</ul><p>These additions are presentation and diagnostic layers. They do not add automatic model selection, automatic adequacy certification, automatic exclusion, or causal interpretation.</p>
+</div>
+<div class="section level3">
+<h3 id="post-fit-exploration-prediction-and-publication-layer-0-3-0-9000">Post-fit exploration, prediction, and publication layer<a class="anchor" aria-label="anchor" href="#post-fit-exploration-prediction-and-publication-layer-0-3-0-9000"></a></h3>
+<ul><li>Added standardized posterior-draw, sampler-diagnostic, log-likelihood, expected-prediction, posterior-predictive, and linear-predictor extraction.</li>
+<li>Added governed prediction grids and explicit prediction-support auditing.</li>
+<li>Added binary calibration, threshold metrics, predictive scores, duration quantile calibration, PIT summaries, predictive coverage, residual review, grouped posterior predictive checks, and descriptive uncertainty decomposition.</li>
+<li>Added group-effect, variance-component, LOO diagnostic, LOO comparison, and predictive-weight tables.</li>
+<li>Added a publication-oriented ggplot/bayesplot layer covering posterior intervals, densities, MCMC diagnostics, calibration, prediction intervals, hierarchical effects, uncertainty, and LOO influence/comparison.</li>
+<li>Added explicit figure sets and structured analysis bundles; no output is written without an explicit destination.</li>
+<li>Added five articles documenting posterior exploration, prediction and scoring, hierarchical uncertainty, LOO comparison, and publication bundles.</li>
+</ul><p>All additions remain within the approved hierarchical Bernoulli-logit and positive uncensored lognormal-duration model families. They do not add automatic model selection, automatic exclusions, adequacy claims, or causal interpretation.</p>
+</div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="gp3bayes-020">gp3bayes 0.2.0<a class="anchor" aria-label="anchor" href="#gp3bayes-020"></a></h2>
 <div class="section level3">

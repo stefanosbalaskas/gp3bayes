@@ -1,0 +1,25 @@
+# Sensitivity Atlases
+
+Existing sensitivity workflows now share a publication-oriented
+table-and-plot layer.
+
+``` r
+
+prior_sensitivity_table(prior_sensitivity)
+plot_prior_sensitivity(prior_sensitivity)
+
+estimand_sensitivity_table(estimand_sensitivity)
+plot_estimand_sensitivity_gg(estimand_sensitivity)
+
+group_deletion_sensitivity_table(group_deletion)
+plot_group_deletion_sensitivity(group_deletion)
+
+random_slope_sensitivity_table(random_slope)
+plot_random_slope_sensitivity(random_slope)
+
+powerscale_sensitivity_table(power_scale)
+plot_powerscale_sensitivity_gg(power_scale)
+```
+
+Local stability under a perturbation is not promoted to a universal
+robustness claim.

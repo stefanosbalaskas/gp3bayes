@@ -1,0 +1,48 @@
+# Hierarchical Effects and Predictive Uncertainty
+
+`gp3bayes` treats group-level estimates as posterior quantities to
+inspect, not as automatic rankings of participants or items.
+
+``` r
+
+effects <- group_effect_table(fit)
+components <- variance_component_table(fit)
+
+plot_group_effects(effects)
+plot_variance_components(components)
+```
+
+## Grouped posterior predictive checks
+
+``` r
+
+participant_ppc <- grouped_prediction_check(
+  fit,
+  group = "participant_id",
+  ndraws = 1000
+)
+
+as.data.frame(participant_ppc)
+plot_grouped_prediction_check(participant_ppc)
+```
+
+The check compares observed group summaries with their posterior
+predictive distribution. No group is automatically excluded.
+
+## Descriptive uncertainty decomposition
+
+``` r
+
+uncertainty <- prediction_uncertainty_decomposition(
+  fit,
+  include_group_effects = FALSE,
+  ndraws = 1000
+)
+
+as.data.frame(uncertainty)
+plot_uncertainty_decomposition(uncertainty)
+```
+
+The expected-response component and remaining predictive component are
+Monte Carlo variance summaries under the fitted model. They should not
+be interpreted as a causal variance decomposition.
