@@ -1,4 +1,18 @@
 # gp3bayes 0.3.0.9000
+### Public API and integration hardening
+
+* Froze the 324-function development API in a machine-readable manifest
+  and added tests for exported names and formal argument stability.
+* Added source-level documentation coverage tests for all public exports.
+* Added direct smoke tests for lightweight prediction, backend, LOO,
+  prior-posterior, and Phase-4 table adapters.
+* Added explicit malformed-input and combinatoric-boundary tests for
+  fit-dependent extraction and prediction-comparison helpers.
+* Added a complete public API map and a quality/failure-contract article.
+
+This hardening phase adds no public functions and does not broaden the
+approved model-family scope.
+
 ### Hierarchical and posterior-predictive atlases
 
 * Added raw group-effect draw extraction, posterior rank probabilities,

@@ -461,3 +461,7 @@ articles:
   - prediction-profiles-surfaces-and-contrasts
   - predictive-distribution-and-calibration-uncertainty
   - grouped-loo-influence
+- title: API and quality hardening
+  contents:
+  - public-api-map
+  - quality-hardening-and-failure-contracts
