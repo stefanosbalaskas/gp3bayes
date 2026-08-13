@@ -26,3 +26,34 @@ utils::globalVariables(
         "variable_2"
     )
 )
+
+# Phase 3 ggplot2 NSE variables.
+utils::globalVariables(
+    c(
+        "coverage",
+        "standardized_bias",
+        "rmse",
+        "repetition",
+        "truth",
+        "diagnostic_status",
+        "completed",
+        "count",
+        "scenario",
+        "scale_multiplier",
+        "standardized_shift",
+        "maximum_standardized_shift",
+        "alternative",
+        "alternative_median",
+        "alternative_lower",
+        "alternative_upper",
+        "reference_median",
+        "omitted_unit",
+        "median_shift",
+        "sensitivity",
+        "distribution",
+        "standardized_location_shift",
+        "contraction",
+        "elpd_loo",
+        "influence_rank"
+    )
+)

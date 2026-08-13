@@ -1,0 +1,31 @@
+---
+title: "Pointwise LOO Influence Atlases"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pointwise LOO Influence Atlases}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Aggregate PSIS-LOO summaries can be read together with observation-level
+predictive contributions and influence diagnostics.
+
+```{r, eval=FALSE}
+atlas <- create_loo_influence_atlas(
+  loo_result,
+  data = fit$specification$prepared$data
+)
+
+loo_influence_summary(atlas$table)
+loo_flagged_data(atlas$table)
+
+plot_loo_pointwise_elpd(atlas$table)
+plot_loo_pareto_vs_elpd(atlas$table)
+plot_loo_influence_rank(atlas$table)
+```
+
+Flagged observations request inspection and are never removed automatically.

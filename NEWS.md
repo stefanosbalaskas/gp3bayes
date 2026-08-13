@@ -1,4 +1,18 @@
 # gp3bayes 0.3.0.9000
+### Evidence atlases, recovery graphics, and publication registries
+
+* Added publication-oriented recovery, prior-sensitivity, estimand-
+  sensitivity, group-deletion, random-slope, power-scale, and SBC adapters.
+* Added a declared-prior versus posterior bridge with marginal shift,
+  contraction, overlap, and empirical distance summaries.
+* Added pointwise PSIS-LOO influence atlases without automatic exclusion.
+* Added publication registries, evidence inventories, and non-interactive
+  diagnostic dashboards with explicit file-output semantics.
+* Added seven evidence/publication articles including an end-to-end showcase.
+
+No addition performs automatic model selection, automatic exclusion,
+automatic adequacy or robustness certification, or causal interpretation.
+
 ### Advanced predictive diagnostics and evidence graphics
 
 * Added ROC, precision-recall, confusion, calibration-error, grouped
