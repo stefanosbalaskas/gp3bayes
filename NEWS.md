@@ -1,3 +1,88 @@
+# gp3bayes 0.3.0.9000
+### Public API and integration hardening
+
+* Froze the 324-function development API in a machine-readable manifest
+  and added tests for exported names and formal argument stability.
+* Added source-level documentation coverage tests for all public exports.
+* Added direct smoke tests for lightweight prediction, backend, LOO,
+  prior-posterior, and Phase-4 table adapters.
+* Added explicit malformed-input and combinatoric-boundary tests for
+  fit-dependent extraction and prediction-comparison helpers.
+* Added a complete public API map and a quality/failure-contract article.
+
+This hardening phase adds no public functions and does not broaden the
+approved model-family scope.
+
+### Hierarchical and posterior-predictive atlases
+
+* Added raw group-effect draw extraction, posterior rank probabilities,
+  and baseline random-intercept latent variance partitions.
+* Added governed numeric prediction profiles, finite-difference predictive
+  gradients, two-dimensional prediction surfaces, and contrast profiles.
+* Added posterior-predictive distribution and quantile atlases, posterior
+  uncertainty in prediction scores, and binary calibration uncertainty.
+* Added group-aggregated PSIS-LOO influence summaries and graphics.
+* Added four articles covering the new hierarchical and predictive layer.
+
+All additions remain descriptive under the fitted model. They do not add
+causal derivatives, automatic ranking, automatic calibration certification,
+automatic adequacy decisions, or automatic group exclusion.
+
+### Evidence atlases, recovery graphics, and publication registries
+
+* Added publication-oriented recovery, prior-sensitivity, estimand-
+  sensitivity, group-deletion, random-slope, power-scale, and SBC adapters.
+* Added a declared-prior versus posterior bridge with marginal shift,
+  contraction, overlap, and empirical distance summaries.
+* Added pointwise PSIS-LOO influence atlases without automatic exclusion.
+* Added publication registries, evidence inventories, and non-interactive
+  diagnostic dashboards with explicit file-output semantics.
+* Added seven evidence/publication articles including an end-to-end showcase.
+
+No addition performs automatic model selection, automatic exclusion,
+automatic adequacy or robustness certification, or causal interpretation.
+
+### Advanced predictive diagnostics and evidence graphics
+
+* Added ROC, precision-recall, confusion, calibration-error, grouped
+  calibration, predictive Q-Q, duration-tail, interval-width, posterior
+  ranking, and posterior predictive discrepancy summaries.
+* Added ggplot adapters for sensitivity suites, model-evidence inventories,
+  backend parity/environment checks, analysis-manifest comparisons, schema
+  comparisons, design-support audits, and missingness audits.
+* Added structured model cards and reporting-evidence inventories with
+  explicit Markdown output.
+* Added four advanced post-fit articles and additional test coverage.
+
+These additions are presentation and diagnostic layers. They do not add
+automatic model selection, automatic adequacy certification, automatic
+exclusion, or causal interpretation.
+
+
+## Post-fit exploration, prediction, and publication layer
+
+* Added standardized posterior-draw, sampler-diagnostic, log-likelihood,
+  expected-prediction, posterior-predictive, and linear-predictor extraction.
+* Added governed prediction grids and explicit prediction-support auditing.
+* Added binary calibration, threshold metrics, predictive scores, duration
+  quantile calibration, PIT summaries, predictive coverage, residual review,
+  grouped posterior predictive checks, and descriptive uncertainty
+  decomposition.
+* Added group-effect, variance-component, LOO diagnostic, LOO comparison,
+  and predictive-weight tables.
+* Added a publication-oriented ggplot/bayesplot layer covering posterior
+  intervals, densities, MCMC diagnostics, calibration, prediction intervals,
+  hierarchical effects, uncertainty, and LOO influence/comparison.
+* Added explicit figure sets and structured analysis bundles; no output is
+  written without an explicit destination.
+* Added five articles documenting posterior exploration, prediction and
+  scoring, hierarchical uncertainty, LOO comparison, and publication bundles.
+
+All additions remain within the approved hierarchical Bernoulli-logit and
+positive uncensored lognormal-duration model families. They do not add
+automatic model selection, automatic exclusions, adequacy claims, or causal
+interpretation.
+
 # gp3bayes 0.2.0
 
 ## 0.2.0 stabilization program

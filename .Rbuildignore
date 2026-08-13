@@ -10,3 +10,7 @@
 ^CITATION\.cff$
 ^tools$
 ^cran-comments\.md$
+^paper$
+^gp3bayes-paper-bundle\.zip$
+^gp3bayes\.Rmd$
+^refs\.bib$

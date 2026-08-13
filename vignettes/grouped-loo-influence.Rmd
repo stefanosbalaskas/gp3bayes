@@ -1,0 +1,28 @@
+---
+title: "Grouped PSIS-LOO Influence"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Grouped PSIS-LOO Influence}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Pointwise PSIS-LOO diagnostics may be aggregated by a declared participant,
+item, condition, or other observation-level grouping variable.
+
+```{r, eval=FALSE}
+group_loo <- loo_group_influence_table(
+  loo_atlas,
+  group = "participant_id"
+)
+
+plot_loo_group_influence(group_loo)
+plot_loo_group_elpd(group_loo)
+```
+
+Aggregation supports review of concentrated predictive influence. It never
+removes a group automatically.

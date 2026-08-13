@@ -4,7 +4,8 @@ template:
   bootstrap: 5
 
 development:
-  mode: release
+  mode: unreleased
+  version_tooltip: "Development documentation for gp3bayes 0.3.0.9000"
 
 home:
   title: gp3bayes
@@ -168,6 +169,239 @@ reference:
   - freeze_gp3bayes_schema
   - read_gp3bayes_schema
 
+- title: Post-fit exploration and prediction
+  contents:
+  - extract_posterior_draws
+  - extract_sampler_diagnostics
+  - extract_log_likelihood
+  - posterior_interval_table
+  - posterior_probability_table
+  - posterior_correlation_table
+  - mcmc_diagnostic_table
+  - sampler_diagnostic_table
+  - identify_mcmc_issues
+  - summarise_mcmc_quality
+  - group_effect_table
+  - variance_component_table
+  - create_prediction_grid
+  - audit_prediction_support
+  - prediction_support_table
+  - predict_model
+  - predict_binary_probability
+  - predict_duration
+  - extract_expected_predictions
+  - extract_posterior_predictions
+  - extract_linear_predictions
+  - prediction_table
+  - prediction_contrast
+  - prediction_exceedance_probability
+  - prediction_uncertainty_decomposition
+  - grouped_prediction_check
+  - predictive_residuals
+  - binary_prediction_scores
+  - binary_threshold_metrics
+  - binary_calibration_table
+  - duration_prediction_scores
+  - duration_quantile_calibration
+  - duration_pit_table
+  - predictive_coverage_table
+  - posterior_predictive_summary_table
+- title: LOO tables and publication graphics
+  contents:
+  - loo_diagnostic_table
+  - loo_summary_table
+  - model_comparison_table
+  - model_weights_table
+  - theme_gp3bayes
+  - plot_posterior_intervals
+  - plot_posterior_areas
+  - plot_posterior_density
+  - plot_posterior_correlations
+  - plot_posterior_pairs
+  - plot_rank_diagnostics
+  - plot_autocorrelation
+  - plot_mcmc_quality
+  - plot_sampler_diagnostics
+  - plot_estimand_intervals
+  - plot_prediction_intervals
+  - plot_binary_calibration
+  - plot_binary_threshold_metrics
+  - plot_duration_quantile_calibration
+  - plot_duration_pit
+  - plot_exceedance_probability
+  - plot_predictive_coverage
+  - plot_predictive_residuals
+  - plot_prediction_support
+  - plot_uncertainty_decomposition
+  - plot_grouped_prediction_check
+  - plot_group_effects
+  - plot_variance_components
+  - plot_loo_influence
+  - plot_model_comparison
+  - plot_model_weights
+  - create_figure_set
+  - save_figure_set
+- title: Analysis bundles
+  contents:
+  - create_analysis_bundle
+  - analysis_bundle_table
+  - create_publication_table_set
+  - create_analysis_figure_set
+  - write_analysis_bundle_report
+- title: Advanced prediction diagnostics
+  contents:
+  - prediction_draws_long
+  - posterior_predictive_statistic
+  - ppc_statistic_table
+  - binary_confusion_table
+  - binary_roc_curve
+  - binary_precision_recall_curve
+  - binary_calibration_error
+  - binary_group_calibration
+  - duration_qq_table
+  - duration_tail_check
+  - group_prediction_summary
+  - prediction_pairwise_contrasts
+  - prediction_interval_width
+  - prediction_rank_probabilities
+  - plot_prediction_draws
+  - plot_ppc_statistic
+  - plot_binary_roc
+  - plot_binary_precision_recall
+  - plot_binary_group_calibration
+  - plot_duration_qq
+  - plot_duration_tail
+  - plot_group_predictions
+  - plot_prediction_interval_width
+  - plot_prediction_rank_probabilities
+- title: Evidence graphics and reporting
+  contents:
+  - sensitivity_suite_table
+  - model_evidence_table
+  - backend_parity_table
+  - backend_environment_table
+  - manifest_comparison_table
+  - schema_comparison_table
+  - design_support_table
+  - missingness_audit_table
+  - plot_sensitivity_suite_gg
+  - plot_model_evidence_gg
+  - plot_backend_parity_gg
+  - plot_backend_environment_gg
+  - plot_manifest_comparison_gg
+  - plot_schema_comparison_gg
+  - plot_design_support_gg
+  - plot_missingness_gg
+  - create_model_card
+  - model_card_table
+  - create_reporting_checklist
+  - plot_reporting_checklist
+  - write_model_card
+- title: Recovery, sensitivity, and SBC publication
+  contents:
+  - recovery_parameter_table
+  - recovery_estimate_table
+  - recovery_fit_status_table
+  - prior_sensitivity_table
+  - prior_sensitivity_scenario_table
+  - estimand_sensitivity_table
+  - group_deletion_sensitivity_table
+  - random_slope_sensitivity_table
+  - powerscale_sensitivity_table
+  - sbc_stats_table
+  - sbc_overview_table
+  - plot_recovery_bias
+  - plot_recovery_coverage
+  - plot_recovery_rmse
+  - plot_recovery_estimates
+  - plot_recovery_fit_status
+  - plot_prior_sensitivity
+  - plot_prior_sensitivity_scenarios
+  - plot_estimand_sensitivity_gg
+  - plot_group_deletion_sensitivity
+  - plot_random_slope_sensitivity
+  - plot_powerscale_sensitivity_gg
+  - plot_sbc_rank_gg
+  - plot_sbc_ecdf_gg
+  - plot_sbc_coverage_gg
+  - plot_sbc_simulated_vs_estimated_gg
+- title: Prior-posterior and LOO evidence atlases
+  contents:
+  - prior_specification_table
+  - simulate_declared_prior_draws
+  - prior_posterior_bridge
+  - prior_posterior_summary_table
+  - prior_posterior_distance_table
+  - prior_posterior_draws_long
+  - plot_prior_posterior_density
+  - plot_prior_posterior_intervals
+  - plot_prior_posterior_shift
+  - plot_prior_posterior_contraction
+  - loo_pointwise_table
+  - loo_influence_summary
+  - loo_flagged_data
+  - create_loo_influence_atlas
+  - loo_influence_atlas_table
+  - plot_loo_pointwise_elpd
+  - plot_loo_pareto_vs_elpd
+  - plot_loo_influence_rank
+- title: Publication registry and diagnostic dashboard
+  contents:
+  - create_publication_registry
+  - register_publication_table
+  - register_publication_figure
+  - publication_registry_table
+  - validate_publication_registry
+  - write_publication_registry
+  - save_publication_registry_figures
+  - create_complete_evidence_inventory
+  - evidence_inventory_table
+  - create_diagnostic_dashboard
+  - diagnostic_dashboard_table
+  - create_diagnostic_dashboard_figures
+  - plot_diagnostic_dashboard
+  - write_diagnostic_dashboard_report
+- title: Hierarchical effect diagnostics
+  contents:
+  - group_effect_draws_table
+  - group_effect_rank_probability_table
+  - random_intercept_variance_partition
+  - random_intercept_variance_partition_table
+  - plot_group_effect_distribution
+  - plot_group_effect_rank_probability
+  - plot_random_intercept_variance_partition
+- title: Prediction profiles and surfaces
+  contents:
+  - create_prediction_profile
+  - prediction_profile_table
+  - prediction_gradient_table
+  - plot_prediction_profile
+  - plot_prediction_gradient
+  - create_prediction_surface
+  - prediction_surface_table
+  - plot_prediction_surface
+  - plot_prediction_surface_uncertainty
+  - create_prediction_contrast_profile
+  - prediction_contrast_profile_table
+  - plot_prediction_contrast_profile
+- title: Predictive distribution and calibration uncertainty
+  contents:
+  - create_predictive_distribution_atlas
+  - predictive_distribution_atlas_table
+  - predictive_quantile_envelope
+  - prediction_score_uncertainty
+  - prediction_score_uncertainty_table
+  - binary_calibration_uncertainty
+  - binary_calibration_uncertainty_table
+  - plot_predictive_atlas_statistics
+  - plot_predictive_quantile_envelope
+  - plot_prediction_score_uncertainty
+  - plot_binary_calibration_uncertainty
+- title: Grouped predictive influence
+  contents:
+  - loo_group_influence_table
+  - plot_loo_group_influence
+  - plot_loo_group_elpd
 articles:
 - title: End-to-end workflows
   contents:
@@ -199,3 +433,35 @@ articles:
   - sensitivity-evidence-workflow
   - backend-reliability
   - release-case-study
+- title: Post-fit exploration
+  contents:
+  - posterior-exploration-and-graphics
+  - prediction-calibration-and-scoring
+  - hierarchical-effects-and-uncertainty
+  - loo-influence-and-model-comparison
+  - publication-analysis-bundles
+- title: Advanced post-fit diagnostics
+  contents:
+  - advanced-predictive-diagnostics
+  - prediction-contrasts-ranking-and-groups
+  - evidence-graphics-and-governance
+  - model-cards-and-reporting-inventories
+- title: Evidence atlas and publication system
+  contents:
+  - recovery-diagnostics-for-publication
+  - declared-prior-versus-posterior
+  - sensitivity-atlas
+  - sbc-publication-diagnostics
+  - loo-influence-atlas
+  - publication-registries-and-dashboards
+  - end-to-end-evidence-showcase
+- title: Hierarchical and predictive atlas
+  contents:
+  - hierarchical-effect-atlas
+  - prediction-profiles-surfaces-and-contrasts
+  - predictive-distribution-and-calibration-uncertainty
+  - grouped-loo-influence
+- title: API and quality hardening
+  contents:
+  - public-api-map
+  - quality-hardening-and-failure-contracts

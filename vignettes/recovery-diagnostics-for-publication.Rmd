@@ -1,0 +1,30 @@
+---
+title: "Parameter Recovery Diagnostics for Publication"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Parameter Recovery Diagnostics for Publication}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Recovery objects retain parameter summaries, repetition-level estimates, and
+fit statuses. The publication layer exposes each separately.
+
+```{r, eval=FALSE}
+recovery_parameter_table(recovery)
+recovery_estimate_table(recovery)
+recovery_fit_status_table(recovery)
+
+plot_recovery_bias(recovery)
+plot_recovery_coverage(recovery)
+plot_recovery_rmse(recovery)
+plot_recovery_estimates(recovery)
+plot_recovery_fit_status(recovery)
+```
+
+Recovery evidence remains a validation diagnostic; no figure certifies an
+implementation or model automatically.

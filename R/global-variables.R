@@ -1,0 +1,96 @@
+# Global variables used by ggplot2 non-standard evaluation.
+#
+# Registered centrally so R CMD check can distinguish data-frame
+# column names used inside aes() from unresolved R objects.
+
+utils::globalVariables(
+    c(
+        ".group",
+        "available",
+        "changed",
+        "check",
+        "cmdstanr_mean",
+        "column",
+        "correlation",
+        "expected",
+        "fraction_missing",
+        "item",
+        "observed_tail_rate",
+        "path",
+        "predictive_lower_tail_rate",
+        "predictive_mean_tail_rate",
+        "predictive_upper_tail_rate",
+        "rstan_mean",
+        "status_code",
+        "variable_1",
+        "variable_2"
+    )
+)
+
+# Phase 3 ggplot2 NSE variables.
+utils::globalVariables(
+    c(
+        "coverage",
+        "standardized_bias",
+        "rmse",
+        "repetition",
+        "truth",
+        "diagnostic_status",
+        "completed",
+        "count",
+        "scenario",
+        "scale_multiplier",
+        "standardized_shift",
+        "maximum_standardized_shift",
+        "alternative",
+        "alternative_median",
+        "alternative_lower",
+        "alternative_upper",
+        "reference_median",
+        "omitted_unit",
+        "median_shift",
+        "sensitivity",
+        "distribution",
+        "standardized_location_shift",
+        "contraction",
+        "elpd_loo",
+        "influence_rank"
+    )
+)
+
+# Phase 4 ggplot2 NSE variables.
+utils::globalVariables(
+    c(
+        "profile_x",
+        "gradient_midpoint",
+        "gradient_median",
+        "gradient_lower",
+        "gradient_upper",
+        "surface_x",
+        "surface_y",
+        "interval_width",
+        "contrast_median",
+        "contrast_lower",
+        "contrast_upper",
+        "probability_highest",
+        "mean_rank",
+        "fraction_median",
+        "fraction_lower",
+        "fraction_upper",
+        "observed_statistic",
+        "statistic",
+        "probability",
+        "observed_quantile",
+        "predictive_median",
+        "predictive_lower",
+        "predictive_upper",
+        "metric",
+        "observed_rate",
+        "predicted_median",
+        "predicted_lower",
+        "predicted_upper",
+        "group_value",
+        "max_pareto_k",
+        "total_elpd_loo"
+    )
+)
