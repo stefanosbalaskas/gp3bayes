@@ -1,4 +1,19 @@
 # gp3bayes 0.3.0.9000
+### Hierarchical and posterior-predictive atlases
+
+* Added raw group-effect draw extraction, posterior rank probabilities,
+  and baseline random-intercept latent variance partitions.
+* Added governed numeric prediction profiles, finite-difference predictive
+  gradients, two-dimensional prediction surfaces, and contrast profiles.
+* Added posterior-predictive distribution and quantile atlases, posterior
+  uncertainty in prediction scores, and binary calibration uncertainty.
+* Added group-aggregated PSIS-LOO influence summaries and graphics.
+* Added four articles covering the new hierarchical and predictive layer.
+
+All additions remain descriptive under the fitted model. They do not add
+causal derivatives, automatic ranking, automatic calibration certification,
+automatic adequacy decisions, or automatic group exclusion.
+
 ### Evidence atlases, recovery graphics, and publication registries
 
 * Added publication-oriented recovery, prior-sensitivity, estimand-

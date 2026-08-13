@@ -57,3 +57,40 @@ utils::globalVariables(
         "influence_rank"
     )
 )
+
+# Phase 4 ggplot2 NSE variables.
+utils::globalVariables(
+    c(
+        "profile_x",
+        "gradient_midpoint",
+        "gradient_median",
+        "gradient_lower",
+        "gradient_upper",
+        "surface_x",
+        "surface_y",
+        "interval_width",
+        "contrast_median",
+        "contrast_lower",
+        "contrast_upper",
+        "probability_highest",
+        "mean_rank",
+        "fraction_median",
+        "fraction_lower",
+        "fraction_upper",
+        "observed_statistic",
+        "statistic",
+        "probability",
+        "observed_quantile",
+        "predictive_median",
+        "predictive_lower",
+        "predictive_upper",
+        "metric",
+        "observed_rate",
+        "predicted_median",
+        "predicted_lower",
+        "predicted_upper",
+        "group_value",
+        "max_pareto_k",
+        "total_elpd_loo"
+    )
+)

@@ -361,6 +361,47 @@ reference:
   - create_diagnostic_dashboard_figures
   - plot_diagnostic_dashboard
   - write_diagnostic_dashboard_report
+- title: Hierarchical effect diagnostics
+  contents:
+  - group_effect_draws_table
+  - group_effect_rank_probability_table
+  - random_intercept_variance_partition
+  - random_intercept_variance_partition_table
+  - plot_group_effect_distribution
+  - plot_group_effect_rank_probability
+  - plot_random_intercept_variance_partition
+- title: Prediction profiles and surfaces
+  contents:
+  - create_prediction_profile
+  - prediction_profile_table
+  - prediction_gradient_table
+  - plot_prediction_profile
+  - plot_prediction_gradient
+  - create_prediction_surface
+  - prediction_surface_table
+  - plot_prediction_surface
+  - plot_prediction_surface_uncertainty
+  - create_prediction_contrast_profile
+  - prediction_contrast_profile_table
+  - plot_prediction_contrast_profile
+- title: Predictive distribution and calibration uncertainty
+  contents:
+  - create_predictive_distribution_atlas
+  - predictive_distribution_atlas_table
+  - predictive_quantile_envelope
+  - prediction_score_uncertainty
+  - prediction_score_uncertainty_table
+  - binary_calibration_uncertainty
+  - binary_calibration_uncertainty_table
+  - plot_predictive_atlas_statistics
+  - plot_predictive_quantile_envelope
+  - plot_prediction_score_uncertainty
+  - plot_binary_calibration_uncertainty
+- title: Grouped predictive influence
+  contents:
+  - loo_group_influence_table
+  - plot_loo_group_influence
+  - plot_loo_group_elpd
 articles:
 - title: End-to-end workflows
   contents:
@@ -414,3 +455,9 @@ articles:
   - loo-influence-atlas
   - publication-registries-and-dashboards
   - end-to-end-evidence-showcase
+- title: Hierarchical and predictive atlas
+  contents:
+  - hierarchical-effect-atlas
+  - prediction-profiles-surfaces-and-contrasts
+  - predictive-distribution-and-calibration-uncertainty
+  - grouped-loo-influence
