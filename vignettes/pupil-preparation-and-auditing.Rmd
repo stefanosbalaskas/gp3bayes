@@ -1,0 +1,100 @@
+---
+title: "Preparing and auditing pupil time courses"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Preparing and auditing pupil time courses}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4.5
+)
+library(gp3bayes)
+```
+
+## Preparation is not preprocessing automation
+
+`prepare_pupil_timecourse()` validates declared columns and records only
+transformations explicitly requested by the analyst. It does not detect or
+repair blinks, interpolate missing values, smooth traces, select an eye, or
+choose a baseline window.
+
+```{r prep-example}
+sim <- simulate_pupil_timecourse(
+  n_participants = 5,
+  trials_per_participant = 4,
+  sampling_frequency = 20,
+  time_window = c(-0.5, 1.5),
+  seed = 14
+)
+contract <- create_pupil_contract(
+  outcome_col = "pupil_mm",
+  participant_col = "participant_id",
+  trial_col = "trial_id",
+  item_col = "item_id",
+  condition_col = "condition",
+  time_col = "event_time",
+  pupil_unit = "millimetres",
+  sampling_frequency = 20,
+  eye = "combined",
+  blink_col = "blink",
+  interpolation_col = "interpolated",
+  gaze_x_col = "gaze_x",
+  gaze_y_col = "gaze_y",
+  luminance_col = "luminance",
+  baseline_window = c(-0.5, 0),
+  baseline_method = "none",
+  preprocessing_provenance = "deterministic synthetic example"
+)
+prepared <- prepare_pupil_timecourse(sim$data, contract)
+prepared
+```
+
+## Explicit baseline transformation
+
+A baseline operation is performed only when requested, and the declared
+baseline window must be available. Data already declared as baseline-adjusted
+cannot be baseline-adjusted a second time.
+
+```{r prep-baseline}
+baseline_prepared <- prepare_pupil_timecourse(
+  sim$data,
+  contract,
+  baseline_operation = "subtract",
+  baseline_window = c(-0.5, 0)
+)
+head(baseline_prepared$transformation_log)
+```
+
+The raw declared pupil value remains linked to the model value in the
+prepared object.
+
+## Readiness evidence
+
+```{r readiness}
+readiness <- audit_pupil_readiness(prepared)
+pupil_readiness_table(readiness, "summary")
+head(pupil_readiness_table(readiness, "participant"))
+head(pupil_readiness_table(readiness, "trial"))
+```
+
+The audit reports sample support, sampling intervals, missingness, baseline
+coverage, indicators, gaze/luminance availability, and related measurement
+context. It does not remove observations.
+
+## Measurement-context audit
+
+```{r measurement}
+measurement <- audit_pupil_measurement_context(prepared)
+pupil_measurement_audit_table(measurement)
+```
+
+PFE status is carried from the contract. Gaze coordinates are evidence about
+measurement context and can be declared as nuisance covariates or used in
+sensitivity scenarios, but this foundation does not implement a universal PFE
+correction.

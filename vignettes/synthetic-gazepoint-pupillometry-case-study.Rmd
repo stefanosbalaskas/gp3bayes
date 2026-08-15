@@ -1,0 +1,141 @@
+---
+title: "Synthetic Gazepoint pupillometry case study"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Synthetic Gazepoint pupillometry case study}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4.5
+)
+library(gp3bayes)
+```
+
+## Purpose
+
+This case study is **entirely synthetic**. Its statistics are software
+demonstrations and are not empirical evidence about Gazepoint hardware,
+participants, or psychological processes.
+
+```{r case-sim}
+sim <- simulate_pupil_timecourse(
+  n_participants = 8,
+  trials_per_participant = 6,
+  sampling_frequency = 20,
+  time_window = c(-0.5, 1.5),
+  condition_difference = 0.18,
+  blink_trial_probability = 0.04,
+  include_gaze = TRUE,
+  include_luminance = TRUE,
+  seed = 20260814
+)
+```
+
+## A Gazepoint-like mapping audit
+
+The raw simulator is vendor-neutral. The next object creates a small
+Gazepoint-like view solely to exercise the verified field bridge.
+
+```{r case-gazepoint}
+gp_like <- data.frame(
+  TIME = sim$data$event_time[1:20],
+  LPD = 15 + sim$data$pupil_mm[1:20],
+  LPV = as.integer(!is.na(sim$data$pupil_mm[1:20])),
+  BPOGX = sim$data$gaze_x[1:20],
+  BPOGY = sim$data$gaze_y[1:20],
+  BPOGV = 1
+)
+gazepoint_pupil_mapping_table(inspect_gazepoint_pupil_schema(gp_like))
+```
+
+`LPD` is labelled as pixels by the bridge. The example does not convert those
+synthetic values into millimetres.
+
+## Contract through specification
+
+```{r case-workflow}
+contract <- create_pupil_contract(
+  outcome_col = "pupil_mm",
+  participant_col = "participant_id",
+  trial_col = "trial_id",
+  item_col = "item_id",
+  condition_col = "condition",
+  time_col = "event_time",
+  pupil_unit = "millimetres",
+  sampling_frequency = 20,
+  eye = "combined",
+  blink_col = "blink",
+  interpolation_col = "interpolated",
+  gaze_x_col = "gaze_x",
+  gaze_y_col = "gaze_y",
+  luminance_col = "luminance",
+  baseline_window = c(-0.5, 0),
+  preprocessing_provenance = "gp3bayes deterministic simulator"
+)
+prepared <- prepare_pupil_timecourse(sim$data, contract)
+readiness <- audit_pupil_readiness(prepared)
+measurement <- audit_pupil_measurement_context(prepared)
+spec <- specify_pupil_timecourse_model(
+  prepared,
+  smooth_basis_dimension = 6,
+  autocorrelation = "ar1"
+)
+pupil_readiness_table(readiness)
+pupil_measurement_audit_table(measurement)
+pupil_specification_table(spec)
+```
+
+## Backend and post-fit stages
+
+```{r case-fit, eval=FALSE}
+fit <- fit_pupil_model_backend(spec, backend = "cmdstanr", cores = 2)
+trajectory <- estimate_pupil_trajectory(
+  predict_pupil_trajectory(fit, ndraws = 200)
+)
+window <- estimate_pupil_window(
+  predict_pupil_trajectory(fit, ndraws = 200),
+  window = c(0.3, 1.0)
+)
+auc <- estimate_pupil_auc(
+  predict_pupil_trajectory(fit, ndraws = 200),
+  window = c(0.3, 1.0)
+)
+ppc <- check_pupil_posterior_predictive(fit, ndraws = 200)
+diag <- diagnose_pupil_fit(fit)
+
+plan <- create_pupil_validation_plan(
+  prepared,
+  target = "new_trial_known_participant",
+  K = 4
+)
+validation <- validate_pupil_model(fit, plan, execute = TRUE)
+```
+
+## Sensitivity
+
+```{r case-sensitivity}
+spec_for_sensitivity <- specify_pupil_timecourse_model(
+  prepared,
+  autocorrelation = "none",
+  smooth_basis_dimension = 5
+)
+suite <- create_pupil_sensitivity_suite(
+  spec_for_sensitivity,
+  baseline_windows = list(c(-0.5, -0.1), c(-0.4, -0.1)),
+  baseline_window_operation = "subtract",
+  interpolation_policy = c("retain", "exclude_flagged"),
+  gaze_adjustment = c("none", "declared_covariates"),
+  luminance_adjustment = c("none", "declared_covariate"),
+  analysis_windows = list(c(0.3, 1.0))
+)
+head(pupil_sensitivity_table(suite))
+```
+
+All windows and sensitivity dimensions are declared. No simulated estimate is
+presented as an empirical effect, and no scenario is automatically selected.

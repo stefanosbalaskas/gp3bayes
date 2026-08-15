@@ -56,6 +56,74 @@ Gazepoint exports, `gp3tools`, proprietary software, private data, or a Bayesian
 backend. Full-MCMC fitting requires `brms` and one supported sampling backend:
 `rstan` or `cmdstanr`.
 
+## Development 0.4.0.9000: Bayesian dynamic pupillometry
+
+The repository development line `0.4.0.9000` introduces a governed Bayesian
+dynamic-pupillometry model family. The archived stable repository release remains
+`0.2.0` (`v0.2.0`); the CRAN badge above reports the CRAN release separately.
+The `0.4.0.9000` functionality described here is development functionality and is
+not represented as a CRAN release.
+
+The pupil workflow consumes an explicitly mapped and audited time series rather
+than silently performing generic pupil preprocessing. Blink/interpolation status,
+baseline decisions, gaze/PFE information, luminance, contrast, units, device
+metadata, and upstream provenance can be declared and audited. The first approved
+model family is a restricted Gaussian hierarchical time-course model with
+package-constructed temporal structure, grouping effects, scale-aware priors,
+and optional declared temporal dependence.
+
+```{r pupil-foundation-example}
+pupil_simulation <- simulate_pupil_timecourse(
+  n_participants = 4,
+  trials_per_participant = 2,
+  n_items = 4,
+  sampling_frequency = 20,
+  time_window = c(-0.2, 1.0),
+  baseline_window = c(-0.2, 0),
+  seed = 2026
+)
+
+pupil_contract <- create_pupil_contract(
+  outcome_col = "pupil_mm",
+  participant_col = "participant_id",
+  trial_col = "trial_id",
+  item_col = "item_id",
+  condition_col = "condition",
+  time_col = "event_time",
+  pupil_unit = "millimetres",
+  sampling_frequency = 20,
+  time_unit = "seconds",
+  eye = "combined",
+  validity_col = "valid",
+  interpolation_col = "interpolated",
+  blink_col = "blink",
+  gaze_x_col = "gaze_x",
+  gaze_y_col = "gaze_y",
+  luminance_col = "luminance",
+  baseline_window = c(-0.2, 0),
+  baseline_method = "none",
+  preprocessing_provenance = "gp3bayes deterministic simulator"
+)
+
+pupil_prepared <- prepare_pupil_timecourse(
+  pupil_simulation$data,
+  pupil_contract,
+  baseline_operation = "subtract",
+  baseline_window = c(-0.2, 0)
+)
+
+pupil_readiness <- audit_pupil_readiness(pupil_prepared)
+pupil_specification <- specify_pupil_timecourse_model(
+  pupil_prepared,
+  smooth_basis_dimension = 5,
+  autocorrelation = "none"
+)
+```
+
+Model fitting is deliberately separate from preprocessing and does not itself
+establish convergence, model adequacy, causal identification, or a psychological
+interpretation of pupil change.
+
 ## 0.2.0 stabilization layer
 
 `gp3bayes` 0.2.0 adds a stable family-neutral workflow API,

@@ -1,6 +1,6 @@
 Package: gp3bayes
 Title: Contract-First Bayesian Workflows for Hierarchical Behavioural Data
-Version: 0.3.0.9000
+Version: 0.4.0.9000
 Authors@R:
     person(
       given = "Stefanos",
@@ -11,12 +11,13 @@ Authors@R:
     )
 Description: Provides transparent, contract-first infrastructure for Bayesian
     analysis of repeated-measures and hierarchical behavioural data. It
-    supports approved Bernoulli-logit and positive lognormal duration
-    workflows with strict readiness auditing, deterministic simulation,
-    explicit preparation and transformation replay, inspectable priors,
-    prior and posterior predictive checks, restricted optional fitting
-    through 'brms' with either 'rstan' or 'cmdstanr', sampling diagnostics,
-    explicit posterior estimands, sensitivity analysis, predictive
+    supports approved Bernoulli-logit, positive lognormal duration, and
+    governed Gaussian dynamic-pupillometry workflows with strict readiness
+    auditing, deterministic simulation, explicit preparation and
+    transformation replay, inspectable scale-aware priors, prior and posterior
+    predictive checks, restricted optional fitting through 'brms' with either
+    'rstan' or 'cmdstanr', sampling and temporal diagnostics, explicit
+    posterior estimands, sensitivity analysis, target-specific predictive
     validation, simulation-based calibration, and conservative reporting.
     Core contracts and validation remain backend-independent.
 License: MIT + file LICENSE
