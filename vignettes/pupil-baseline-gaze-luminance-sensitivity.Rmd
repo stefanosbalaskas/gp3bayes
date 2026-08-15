@@ -1,0 +1,89 @@
+---
+title: "Baseline, gaze/PFE, and luminance sensitivity"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Baseline, gaze/PFE, and luminance sensitivity}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4.5
+)
+library(gp3bayes)
+```
+
+## Prespecify consequential analysis choices
+
+The sensitivity layer records alternative analysis states without selecting
+the scenario that produces the largest effect.
+
+```{r sensitivity}
+sim <- simulate_pupil_timecourse(
+  n_participants = 5,
+  trials_per_participant = 4,
+  sampling_frequency = 20,
+  time_window = c(-0.6, 1.4),
+  include_gaze = TRUE,
+  include_luminance = TRUE,
+  seed = 73
+)
+contract <- create_pupil_contract(
+  outcome_col = "pupil_mm",
+  participant_col = "participant_id",
+  trial_col = "trial_id",
+  condition_col = "condition",
+  time_col = "event_time",
+  pupil_unit = "millimetres",
+  sampling_frequency = 20,
+  blink_col = "blink",
+  interpolation_col = "interpolated",
+  gaze_x_col = "gaze_x",
+  gaze_y_col = "gaze_y",
+  luminance_col = "luminance",
+  baseline_window = c(-0.6, 0),
+  pfe_corrected = FALSE
+)
+prepared <- prepare_pupil_timecourse(sim$data, contract)
+
+spec_for_sensitivity <- specify_pupil_timecourse_model(
+  prepared,
+  autocorrelation = "none",
+  smooth_basis_dimension = 5
+)
+suite <- create_pupil_sensitivity_suite(
+  spec_for_sensitivity,
+  baseline_windows = list(c(-0.6, -0.1), c(-0.4, -0.1)),
+  baseline_window_operation = "subtract",
+  baseline_operations = c("none", "subtract"),
+  interpolation_policy = c("retain", "exclude_flagged"),
+  gaze_adjustment = c("none", "declared_covariates"),
+  luminance_adjustment = c("none", "declared_covariate"),
+  smooth_basis_dimensions = c(5, 7),
+  autocorrelation = c("none", "ar1"),
+  analysis_windows = list(c(0.2, 1.0))
+)
+pupil_sensitivity_table(suite)
+```
+
+## Materialize, do not rank
+
+```{r materialize}
+scenario_id <- pupil_sensitivity_table(suite)$scenario_id[1]
+scenario <- materialize_pupil_sensitivity_scenario(suite, scenario_id)
+scenario$scenario_id
+scenario$specification
+```
+
+Each scenario can be fitted and reduced to the same declared estimand.
+`compare_pupil_sensitivity_estimands()` then places those estimands side by
+side. It does not identify a winner.
+
+PFE and luminance are handled as measurement-context variables. The 0.4
+foundation can audit them and compare explicitly declared adjusted/unadjusted
+specifications, but it does not invent a universal PFE correction or a
+Bayesian Open-DPSM replacement.

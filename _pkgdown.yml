@@ -5,13 +5,13 @@ template:
 
 development:
   mode: unreleased
-  version_tooltip: "Development documentation for gp3bayes 0.3.0.9000"
+  version_tooltip: "Development documentation for gp3bayes 0.4.0.9000"
 
 home:
   title: gp3bayes
   description: >
-    Contract-first Bayesian workflows for repeated-measures and
-    hierarchical behavioural data.
+    Contract-first Bayesian workflows for repeated-measures, hierarchical
+    behavioural data, and governed dynamic pupillometry.
 
 navbar:
   structure:
@@ -402,7 +402,74 @@ reference:
   - loo_group_influence_table
   - plot_loo_group_influence
   - plot_loo_group_elpd
+- title: Pupil contracts, Gazepoint, simulation, and preparation
+  contents:
+  - create_pupil_contract
+  - as.data.frame.gp3bayes_pupil_contract
+  - inspect_gazepoint_pupil_schema
+  - gazepoint_pupil_mapping_table
+  - simulate_pupil_timecourse
+  - prepare_pupil_timecourse
+  - audit_pupil_readiness
+  - pupil_readiness_table
+  - audit_pupil_measurement_context
+  - pupil_measurement_audit_table
+- title: Pupil model fitting, prediction, and estimands
+  contents:
+  - specify_pupil_timecourse_model
+  - pupil_specification_table
+  - translate_pupil_model_to_brms
+  - check_pupil_prior_predictive
+  - fit_pupil_model_backend
+  - fit_pupil_model
+  - fit_pupil_model_cmdstanr
+  - as_pupil_prediction_draws
+  - predict_pupil_trajectory
+  - estimate_pupil_trajectory
+  - pupil_trajectory_table
+  - estimate_pupil_window
+  - estimate_pupil_auc
+  - estimate_pupil_peak
+  - estimate_pupil_peak_latency
+  - pupil_condition_contrast
+  - as.data.frame.gp3bayes_pupil_estimand
+- title: Pupil diagnostics, validation, and sensitivity
+  contents:
+  - diagnose_pupil_fit
+  - pupil_residual_acf
+  - check_pupil_posterior_predictive
+  - pupil_ppc_table
+  - summarise_pupil_posterior
+  - create_pupil_validation_plan
+  - validate_pupil_model
+  - pupil_validation_table
+  - create_pupil_sensitivity_suite
+  - materialize_pupil_sensitivity_scenario
+  - compare_pupil_sensitivity_estimands
+  - pupil_sensitivity_table
+- title: Pupil publication graphics
+  contents:
+  - plot_pupil_readiness
+  - plot_pupil_observed_trajectory
+  - plot_pupil_posterior_trajectory
+  - plot_pupil_estimand
+  - plot_pupil_ppc
+  - plot_pupil_residual_acf
+  - plot_pupil_validation
+  - plot_pupil_sensitivity
+  - plot_pupil_measurement_audit
 articles:
+- title: Bayesian dynamic pupillometry
+  contents:
+  - bayesian-dynamic-pupillometry
+  - pupil-preparation-and-auditing
+  - gazepoint-pupil-interoperability
+  - fitting-pupil-timecourse-models
+  - pupil-trajectories-and-estimands
+  - pupil-ppc-and-temporal-diagnostics
+  - pupil-temporal-validation
+  - pupil-baseline-gaze-luminance-sensitivity
+  - synthetic-gazepoint-pupillometry-case-study
 - title: End-to-end workflows
   contents:
   - binary-end-to-end

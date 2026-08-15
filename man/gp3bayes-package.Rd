@@ -8,11 +8,12 @@
 \description{
 \code{gp3bayes} provides package-neutral infrastructure for transparent,
 contract-first Bayesian workflows for repeated-measures and hierarchical
-behavioural data. It implements approved Bernoulli-logit and positive
-lognormal duration workflows with deterministic simulation, recorded
-preparation, inspectable priors, restricted optional full-MCMC fitting,
-sampling diagnostics, posterior predictive checks, prior sensitivity,
-simulation-based recovery, and conservative structured reporting.
+behavioural data. It implements approved Bernoulli-logit, positive lognormal
+duration, and governed Gaussian dynamic-pupillometry workflows with
+deterministic simulation, recorded preparation, scale-aware priors,
+restricted optional full-MCMC fitting, sampling and temporal diagnostics,
+posterior predictive checks, sensitivity analysis, target-specific
+validation, and conservative structured reporting.
 Fitting or passing a numerical threshold does not by itself establish
 convergence, posterior adequacy, causal identification, or validity.
 }
@@ -21,8 +22,9 @@ convergence, posterior adequacy, causal identification, or validity.
 The approved model-family scope is restricted to:
 \itemize{
 \item hierarchical Bernoulli-logit models for binary trial-level outcomes;
-\item hierarchical lognormal models for strictly positive uncensored
-durations.
+\item hierarchical lognormal models for strictly positive uncensored durations;
+\item governed Gaussian hierarchical dynamic pupil time-course models with
+scale-aware priors and declared temporal dependence.
 }
 
 Additional outcome families require separate methodological approval.
@@ -33,9 +35,10 @@ Additional outcome families require separate methodological approval.
 Core validation, contract, simulation, preparation, transformation,
 specification, and prior-predictive functionality remains usable without a
 Bayesian backend. Restricted full-MCMC fitting uses the \code{brms} interface.
-The original \code{fit_binary_model()} and \code{fit_duration_model()} interfaces
-retain the fixed \code{rstan} route, while the backend-portable
-\code{fit_binary_model_backend()} and \code{fit_duration_model_backend()} interfaces
+The original \code{fit_binary_model()}, \code{fit_duration_model()}, and
+\code{fit_pupil_model()} interfaces retain a fixed \code{rstan} route, while the
+backend-portable \code{fit_binary_model_backend()},
+\code{fit_duration_model_backend()}, and \code{fit_pupil_model_backend()} interfaces
 support either \code{rstan} or \code{cmdstanr}. Model families, formulas, priors, and
 algorithms remain contract-restricted.
 }

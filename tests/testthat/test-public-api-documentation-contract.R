@@ -1,129 +1,78 @@
-test_that("every public export has an installed or source Rd alias", {
+# API-DOC-CONTRACT-0.4: aliases follow the current development manifest
 
-  exports <- sort(getNamespaceExports("gp3bayes"))
-
-  expect_equal(
-    length(exports),
-    324L
+.gp3bayes_doc_manifest_path <- function(filename) {
+  source_path <- testthat::test_path(
+    "..", "..", "inst", "api", filename
   )
-
-  # Locate a source package root when tests are running directly
-  # from the repository. R CMD check may instead execute against
-  # the installed package, where source man/*.Rd files are absent.
-  candidates <- c(
-    ".",
-    "..",
-    "../..",
-    "../../..",
-    "../../../.."
+  installed_path <- system.file(
+    "api", filename, package = "gp3bayes"
   )
+  candidates <- c(source_path, installed_path)
+  candidates <- candidates[nzchar(candidates) & file.exists(candidates)]
+  if (!length(candidates)) {
+    stop("Could not locate API manifest: ", filename, call. = FALSE)
+  }
+  candidates[[1L]]
+}
 
-  candidates <- unique(
-    normalizePath(
-      candidates,
-      winslash = "/",
-      mustWork = FALSE
-    )
-  )
-
-  is_source_root <- vapply(
-    candidates,
-    function(path) {
-      file.exists(file.path(path, "NAMESPACE")) &&
-        dir.exists(file.path(path, "man"))
-    },
-    logical(1L)
-  )
-
-  if (any(is_source_root)) {
-
-    source_root <- candidates[which(is_source_root)[1L]]
-
-    rd_files <- list.files(
-      file.path(source_root, "man"),
-      pattern = "\\.Rd$",
-      full.names = TRUE
-    )
-
-    expect_gt(
-      length(rd_files),
-      0L
-    )
-
-    aliases <- unique(
-      unlist(
-        lapply(
-          rd_files,
-          function(file) {
-
-            x <- readLines(
-              file,
-              warn = FALSE,
-              encoding = "UTF-8"
-            )
-
-            a <- grep(
-              "^\\\\alias\\{",
-              x,
-              value = TRUE
-            )
-
-            sub(
-              "^\\\\alias\\{(.*)\\}$",
-              "\\1",
-              a
-            )
-          }
-        ),
-        use.names = FALSE
-      )
-    )
-
+.gp3bayes_rd_aliases <- function() {
+  man_dir <- testthat::test_path("..", "..", "man")
+  rd_files <- if (dir.exists(man_dir)) {
+    list.files(man_dir, pattern = "\\.Rd$", full.names = TRUE)
   } else {
-
-    # Installed packages store the help alias index here.
-    alias_path <- system.file(
-      "help",
-      "aliases.rds",
-      package = "gp3bayes"
-    )
-
-    expect_true(
-      nzchar(alias_path)
-    )
-
-    expect_true(
-      file.exists(alias_path)
-    )
-
-    alias_index <- readRDS(
-      alias_path
-    )
-
-    aliases <- names(
-      alias_index
-    )
+    character()
   }
 
-  aliases <- unique(
-    aliases[
-      !is.na(aliases) &
-        nzchar(aliases)
-    ]
-  )
+  if (length(rd_files)) {
+    alias_lines <- unlist(
+      lapply(rd_files, function(path) {
+        x <- readLines(path, warn = FALSE, encoding = "UTF-8")
+        grep("^\\\\alias\\{.*\\}$", x, value = TRUE)
+      }),
+      use.names = FALSE
+    )
+    return(unique(sub(
+      "^\\\\alias\\{(.*)\\}$", "\\1", alias_lines
+    )))
+  }
 
-  expect_gt(
-    length(aliases),
-    0L
-  )
+  anindex <- system.file("help", "AnIndex", package = "gp3bayes")
+  if (!nzchar(anindex) || !file.exists(anindex)) {
+    stop(
+      "Could not locate source Rd files or installed help/AnIndex.",
+      call. = FALSE
+    )
+  }
+  x <- readLines(anindex, warn = FALSE, encoding = "UTF-8")
+  x <- x[nzchar(trimws(x))]
+  unique(sub("[[:space:]].*$", "", x))
+}
 
-  missing_aliases <- setdiff(
-    exports,
-    aliases
-  )
+testthat::test_that(
+  "every current public export has an Rd alias",
+  {
+    cur <- utils::read.delim(
+      .gp3bayes_doc_manifest_path("public-api-0.4.0.9000.tsv"),
+      stringsAsFactors = FALSE,
+      check.names = FALSE
+    )
+    cur <- cur[order(cur$function_name), , drop = FALSE]
 
-  expect_identical(
-    missing_aliases,
-    character()
-  )
-})
+    exports <- sort(getNamespaceExports(asNamespace("gp3bayes")))
+    testthat::expect_equal(length(exports), 370L)
+    testthat::expect_identical(exports, cur$function_name)
+
+    aliases <- .gp3bayes_rd_aliases()
+    testthat::expect_gt(length(aliases), 0L)
+    missing_aliases <- setdiff(exports, aliases)
+
+    if (length(missing_aliases)) {
+      testthat::fail(paste0(
+        "Public exports missing Rd aliases: ",
+        paste(missing_aliases, collapse = ", ")
+      ))
+    } else {
+      testthat::pass()
+    }
+  }
+)

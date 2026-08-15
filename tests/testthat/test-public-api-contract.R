@@ -1,46 +1,60 @@
-test_that("frozen public API names and formal arguments remain stable", {
-  manifest_path <- system.file(
-    "api",
-    "public-api-0.3.0.9000.tsv",
-    package = "gp3bayes"
-  )
-  expect_true(nzchar(manifest_path))
-  manifest <- utils::read.delim(
-    manifest_path,
-    stringsAsFactors = FALSE,
-    check.names = FALSE
-  )
+# API-CONTRACT-0.4: historical 0.3 compatibility + current 0.4 exactness
 
-  actual_exports <- sort(getNamespaceExports("gp3bayes"))
-  expect_identical(actual_exports, manifest$function_name)
+.gp3bayes_manifest_path <- function(filename) {
+  source_path <- testthat::test_path(
+    "..", "..", "inst", "api", filename
+  )
+  installed_path <- system.file(
+    "api", filename, package = "gp3bayes"
+  )
+  candidates <- c(source_path, installed_path)
+  candidates <- candidates[nzchar(candidates) & file.exists(candidates)]
+  if (!length(candidates)) {
+    stop("Could not locate API manifest: ", filename, call. = FALSE)
+  }
+  candidates[[1L]]
+}
 
-  actual_formals <- vapply(
-    actual_exports,
-    function(name) {
-      fn <- getExportedValue("gp3bayes", name)
-      expect_true(is.function(fn))
-      paste(names(formals(fn)), collapse = "|")
-    },
-    character(1L)
-  )
+testthat::test_that(
+  "historical 0.3 API remains compatible and current 0.4 API is exact",
+  {
+    old <- utils::read.delim(
+      .gp3bayes_manifest_path("public-api-0.3.0.9000.tsv"),
+      stringsAsFactors = FALSE,
+      check.names = FALSE
+    )
+    cur <- utils::read.delim(
+      .gp3bayes_manifest_path("public-api-0.4.0.9000.tsv"),
+      stringsAsFactors = FALSE,
+      check.names = FALSE
+    )
+    old <- old[order(old$function_name), , drop = FALSE]
+    cur <- cur[order(cur$function_name), , drop = FALSE]
 
-  expect_identical(
-    unname(actual_formals),
-    manifest$formal_names
-  )
-})
+    testthat::expect_equal(nrow(old), 324L)
+    testthat::expect_equal(nrow(cur), 370L)
 
-test_that("frozen API contains no duplicate public names", {
-  manifest_path <- system.file(
-    "api",
-    "public-api-0.3.0.9000.tsv",
-    package = "gp3bayes"
-  )
-  manifest <- utils::read.delim(
-    manifest_path,
-    stringsAsFactors = FALSE,
-    check.names = FALSE
-  )
-  expect_equal(nrow(manifest), 324L)
-  expect_false(anyDuplicated(manifest$function_name) > 0L)
-})
+    idx <- match(old$function_name, cur$function_name)
+    testthat::expect_false(anyNA(idx))
+    testthat::expect_identical(
+      old$formal_names, cur$formal_names[idx]
+    )
+
+    ns <- asNamespace("gp3bayes")
+    exports <- sort(getNamespaceExports(ns))
+    testthat::expect_identical(exports, cur$function_name)
+
+    actual_formals <- vapply(
+      exports,
+      function(name) {
+        f <- get(name, envir = ns, inherits = FALSE)
+        testthat::expect_true(is.function(f), info = name)
+        paste(names(formals(f)), collapse = "|")
+      },
+      character(1L)
+    )
+    testthat::expect_identical(
+      unname(actual_formals), cur$formal_names
+    )
+  }
+)

@@ -1,0 +1,65 @@
+---
+title: "Gazepoint pupil-data interoperability"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Gazepoint pupil-data interoperability}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4.5
+)
+library(gp3bayes)
+```
+
+## Verified Open Gaze fields
+
+The Gazepoint bridge recognizes documented Open Gaze API fields and reports a
+mapping proposal. It does not select a left, right, pixel-diameter, or 3-D
+pupil channel on the analyst's behalf.
+
+The API distinguishes camera-image pupil diameter (`LPD`, `RPD`) in **pixels**
+from 3-D pupil diameter (`LPUPILD`, `RPUPILD`) in **metres**. The bridge keeps
+those units separate.
+
+```{r gazepoint-schema}
+gp <- data.frame(
+  TIME = seq(0, 0.3, by = 0.1),
+  LPD = c(15.1, 15.2, 15.3, 15.2),
+  LPV = 1,
+  RPD = c(15.0, 15.1, 15.2, 15.1),
+  RPV = 1,
+  BPOGX = c(.48, .49, .50, .51),
+  BPOGY = c(.52, .51, .50, .49),
+  BPOGV = 1
+)
+schema <- inspect_gazepoint_pupil_schema(gp)
+schema
+gazepoint_pupil_mapping_table(schema)
+```
+
+Because both left and right pupil channels are present, channel selection is
+ambiguous and must be explicit.
+
+## 3-D pupil diameter
+
+```{r gazepoint-3d}
+gp3d <- data.frame(
+  TIME = c(0, .1, .2),
+  LPUPILD = c(.0031, .0032, .0033),
+  LPUPILV = 1,
+  LEYEX = c(-.04, -.04, -.04),
+  LEYEY = c(0, 0, 0),
+  LEYEZ = c(.65, .65, .65)
+)
+gazepoint_pupil_mapping_table(inspect_gazepoint_pupil_schema(gp3d))
+```
+
+A proposed schema is an interoperability audit, not evidence that a column is
+appropriate for a specific scientific analysis. Export variants and
+preprocessing provenance remain part of the contract.
