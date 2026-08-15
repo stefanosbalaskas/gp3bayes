@@ -53,6 +53,77 @@ Gazepoint hardware, Gazepoint exports, `gp3tools`, proprietary software,
 private data, or a Bayesian backend. Full-MCMC fitting requires `brms`
 and one supported sampling backend: `rstan` or `cmdstanr`.
 
+## Development 0.4.0.9000: Bayesian dynamic pupillometry
+
+The repository development line `0.4.0.9000` introduces a governed
+Bayesian dynamic-pupillometry model family. The archived stable
+repository release remains `0.2.0` (`v0.2.0`); the CRAN badge above
+reports the CRAN release separately. The `0.4.0.9000` functionality
+described here is development functionality and is not represented as a
+CRAN release.
+
+The pupil workflow consumes an explicitly mapped and audited time series
+rather than silently performing generic pupil preprocessing.
+Blink/interpolation status, baseline decisions, gaze/PFE information,
+luminance, contrast, units, device metadata, and upstream provenance can
+be declared and audited. The first approved model family is a restricted
+Gaussian hierarchical time-course model with package-constructed
+temporal structure, grouping effects, scale-aware priors, and optional
+declared temporal dependence.
+
+``` r
+
+pupil_simulation <- simulate_pupil_timecourse(
+  n_participants = 4,
+  trials_per_participant = 2,
+  n_items = 4,
+  sampling_frequency = 20,
+  time_window = c(-0.2, 1.0),
+  baseline_window = c(-0.2, 0),
+  seed = 2026
+)
+
+pupil_contract <- create_pupil_contract(
+  outcome_col = "pupil_mm",
+  participant_col = "participant_id",
+  trial_col = "trial_id",
+  item_col = "item_id",
+  condition_col = "condition",
+  time_col = "event_time",
+  pupil_unit = "millimetres",
+  sampling_frequency = 20,
+  time_unit = "seconds",
+  eye = "combined",
+  validity_col = "valid",
+  interpolation_col = "interpolated",
+  blink_col = "blink",
+  gaze_x_col = "gaze_x",
+  gaze_y_col = "gaze_y",
+  luminance_col = "luminance",
+  baseline_window = c(-0.2, 0),
+  baseline_method = "none",
+  preprocessing_provenance = "gp3bayes deterministic simulator"
+)
+
+pupil_prepared <- prepare_pupil_timecourse(
+  pupil_simulation$data,
+  pupil_contract,
+  baseline_operation = "subtract",
+  baseline_window = c(-0.2, 0)
+)
+
+pupil_readiness <- audit_pupil_readiness(pupil_prepared)
+pupil_specification <- specify_pupil_timecourse_model(
+  pupil_prepared,
+  smooth_basis_dimension = 5,
+  autocorrelation = "none"
+)
+```
+
+Model fitting is deliberately separate from preprocessing and does not
+itself establish convergence, model adequacy, causal identification, or
+a psychological interpretation of pupil change.
+
 ## 0.2.0 stabilization layer
 
 `gp3bayes` 0.2.0 adds a stable family-neutral workflow API, analysis
@@ -1158,7 +1229,136 @@ gp3bayes_specification_traceability()
 - [`plot_loo_group_elpd()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_loo_group_elpd.md)
   : Plot Grouped Pointwise ELPD Contribution
 
+## Pupil contracts, Gazepoint, simulation, and preparation
+
+- [`create_pupil_contract()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_contract.md)
+  : Create a governed pupil-timecourse contract
+- [`as.data.frame(`*`<gp3bayes_pupil_contract>`*`)`](https://stefanosbalaskas.github.io/gp3bayes/reference/as.data.frame.gp3bayes_pupil_contract.md)
+  : Convert a pupil contract to a transparent table
+- [`inspect_gazepoint_pupil_schema()`](https://stefanosbalaskas.github.io/gp3bayes/reference/inspect_gazepoint_pupil_schema.md)
+  : Inspect verified Gazepoint pupil and gaze fields
+- [`gazepoint_pupil_mapping_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/gazepoint_pupil_mapping_table.md)
+  : Return the Gazepoint pupil mapping audit table
+- [`simulate_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_pupil_timecourse.md)
+  : Simulate deterministic hierarchical pupil time courses
+- [`prepare_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/prepare_pupil_timecourse.md)
+  : Prepare a pupil time course under explicit transformations
+- [`audit_pupil_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_readiness.md)
+  : Audit pupil-timecourse readiness
+- [`pupil_readiness_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_readiness_table.md)
+  : Extract pupil readiness tables
+- [`audit_pupil_measurement_context()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_measurement_context.md)
+  : Audit pupil measurement and confound context
+- [`pupil_measurement_audit_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_measurement_audit_table.md)
+  : Extract a pupil measurement-context table
+
+## Pupil model fitting, prediction, and estimands
+
+- [`specify_pupil_timecourse_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_pupil_timecourse_model.md)
+  : Specify the restricted hierarchical pupil time-course model
+- [`pupil_specification_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_specification_table.md)
+  : Convert a pupil specification to a publication-ready table
+- [`translate_pupil_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_pupil_model_to_brms.md)
+  : Translate an approved pupil model to brms
+- [`check_pupil_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_pupil_prior_predictive.md)
+  : Check the approved pupil priors predictively
+- [`fit_pupil_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_model_backend.md)
+  : Fit the restricted pupil time-course model with an approved backend
+- [`fit_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_model.md)
+  : Fit a pupil model through the fixed rstan route
+- [`fit_pupil_model_cmdstanr()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_model_cmdstanr.md)
+  : Fit a pupil model through the fixed cmdstanr route
+- [`as_pupil_prediction_draws()`](https://stefanosbalaskas.github.io/gp3bayes/reference/as_pupil_prediction_draws.md)
+  : Create a lightweight pupil prediction object from frozen draws
+- [`predict_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/predict_pupil_trajectory.md)
+  : Predict governed pupil trajectories
+- [`estimate_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_trajectory.md)
+  : Estimate posterior pupil trajectories
+- [`pupil_trajectory_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_trajectory_table.md)
+  : Convert a pupil trajectory to a table
+- [`estimate_pupil_window()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_window.md)
+  : Estimate a declared-window mean pupil response
+- [`estimate_pupil_auc()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_auc.md)
+  : Estimate area under a declared pupil-response window
+- [`estimate_pupil_peak()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_peak.md)
+  : Estimate posterior peak pupil response inside a declared window
+- [`estimate_pupil_peak_latency()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_peak_latency.md)
+  : Estimate posterior peak latency inside a declared window
+- [`pupil_condition_contrast()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_condition_contrast.md)
+  : Estimate a posterior condition-difference trajectory
+- [`as.data.frame(`*`<gp3bayes_pupil_estimand>`*`)`](https://stefanosbalaskas.github.io/gp3bayes/reference/as.data.frame.gp3bayes_pupil_estimand.md)
+  : Convert a pupil estimand to a data frame
+
+## Pupil diagnostics, validation, and sensitivity
+
+- [`diagnose_pupil_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_pupil_fit.md)
+  : Diagnose temporal and sampling behaviour of a pupil fit
+- [`pupil_residual_acf()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_residual_acf.md)
+  : Summarise residual autocorrelation for a pupil fit
+- [`check_pupil_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_pupil_posterior_predictive.md)
+  : Run pupil-specific posterior predictive checks
+- [`pupil_ppc_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_ppc_table.md)
+  : Extract pupil PPC evidence tables
+- [`summarise_pupil_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_pupil_posterior.md)
+  : Summarise a fitted pupil posterior
+- [`create_pupil_validation_plan()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_validation_plan.md)
+  : Create an explicit pupil predictive-validation plan
+- [`validate_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_pupil_model.md)
+  : Validate a pupil model for an explicit prediction target
+- [`pupil_validation_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_validation_table.md)
+  : Extract a pupil validation table
+- [`create_pupil_sensitivity_suite()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_sensitivity_suite.md)
+  : Create a governed pupil sensitivity suite
+- [`materialize_pupil_sensitivity_scenario()`](https://stefanosbalaskas.github.io/gp3bayes/reference/materialize_pupil_sensitivity_scenario.md)
+  : Materialize one declared pupil sensitivity scenario
+- [`compare_pupil_sensitivity_estimands()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_pupil_sensitivity_estimands.md)
+  : Compare declared pupil sensitivity estimands
+- [`pupil_sensitivity_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_sensitivity_table.md)
+  : Extract pupil sensitivity scenarios or comparison results
+
+## Pupil publication graphics
+
+- [`plot_pupil_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_readiness.md)
+  : Plot pupil readiness evidence
+- [`plot_pupil_observed_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_observed_trajectory.md)
+  : Plot observed pupil trajectories
+- [`plot_pupil_posterior_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_posterior_trajectory.md)
+  : Plot posterior pupil trajectories or condition differences
+- [`plot_pupil_estimand()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_estimand.md)
+  : Plot declared-window pupil estimands
+- [`plot_pupil_ppc()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_ppc.md)
+  : Plot pupil posterior-predictive evidence
+- [`plot_pupil_residual_acf()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_residual_acf.md)
+  : Plot pupil residual autocorrelation
+- [`plot_pupil_validation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_validation.md)
+  : Plot pupil validation evidence
+- [`plot_pupil_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_sensitivity.md)
+  : Plot pupil sensitivity scenarios or result comparisons
+- [`plot_pupil_measurement_audit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_measurement_audit.md)
+  : Plot gaze/PFE and luminance measurement-context evidence
+
 # Articles
+
+### Bayesian dynamic pupillometry
+
+- [Bayesian dynamic pupillometry: governed
+  foundation](https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-dynamic-pupillometry.md):
+- [Preparing and auditing pupil time
+  courses](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-preparation-and-auditing.md):
+- [Gazepoint pupil-data
+  interoperability](https://stefanosbalaskas.github.io/gp3bayes/articles/gazepoint-pupil-interoperability.md):
+- [Fitting hierarchical pupil time-course
+  models](https://stefanosbalaskas.github.io/gp3bayes/articles/fitting-pupil-timecourse-models.md):
+- [Posterior pupil trajectories and declared
+  estimands](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-trajectories-and-estimands.md):
+- [Pupil posterior predictive checks and temporal
+  diagnostics](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-ppc-and-temporal-diagnostics.md):
+- [Validation for temporally dependent pupil
+  data](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-temporal-validation.md):
+- [Baseline, gaze/PFE, and luminance
+  sensitivity](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-baseline-gaze-luminance-sensitivity.md):
+- [Synthetic Gazepoint pupillometry case
+  study](https://stefanosbalaskas.github.io/gp3bayes/articles/synthetic-gazepoint-pupillometry-case-study.md):
 
 ### End-to-end workflows
 

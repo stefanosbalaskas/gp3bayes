@@ -1,5 +1,26 @@
 # Articles
 
+### Bayesian dynamic pupillometry
+
+- [Bayesian dynamic pupillometry: governed
+  foundation](https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-dynamic-pupillometry.md):
+- [Preparing and auditing pupil time
+  courses](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-preparation-and-auditing.md):
+- [Gazepoint pupil-data
+  interoperability](https://stefanosbalaskas.github.io/gp3bayes/articles/gazepoint-pupil-interoperability.md):
+- [Fitting hierarchical pupil time-course
+  models](https://stefanosbalaskas.github.io/gp3bayes/articles/fitting-pupil-timecourse-models.md):
+- [Posterior pupil trajectories and declared
+  estimands](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-trajectories-and-estimands.md):
+- [Pupil posterior predictive checks and temporal
+  diagnostics](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-ppc-and-temporal-diagnostics.md):
+- [Validation for temporally dependent pupil
+  data](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-temporal-validation.md):
+- [Baseline, gaze/PFE, and luminance
+  sensitivity](https://stefanosbalaskas.github.io/gp3bayes/articles/pupil-baseline-gaze-luminance-sensitivity.md):
+- [Synthetic Gazepoint pupillometry case
+  study](https://stefanosbalaskas.github.io/gp3bayes/articles/synthetic-gazepoint-pupillometry-case-study.md):
+
 ### End-to-end workflows
 
 - [End-to-End Hierarchical Binary

@@ -6,12 +6,15 @@ articles:
   advanced-predictive-diagnostics: advanced-predictive-diagnostics.html
   backend-portability: backend-portability.html
   backend-reliability: backend-reliability.html
+  bayesian-dynamic-pupillometry: bayesian-dynamic-pupillometry.html
   binary-end-to-end: binary-end-to-end.html
   declared-prior-versus-posterior: declared-prior-versus-posterior.html
   duration-end-to-end: duration-end-to-end.html
   end-to-end-evidence-showcase: end-to-end-evidence-showcase.html
   estimands-and-sensitivity: estimands-and-sensitivity.html
   evidence-graphics-and-governance: evidence-graphics-and-governance.html
+  fitting-pupil-timecourse-models: fitting-pupil-timecourse-models.html
+  gazepoint-pupil-interoperability: gazepoint-pupil-interoperability.html
   grouped-loo-influence: grouped-loo-influence.html
   hierarchical-effect-atlas: hierarchical-effect-atlas.html
   hierarchical-effects-and-uncertainty: hierarchical-effects-and-uncertainty.html
@@ -30,6 +33,11 @@ articles:
   public-api-map: public-api-map.html
   publication-analysis-bundles: publication-analysis-bundles.html
   publication-registries-and-dashboards: publication-registries-and-dashboards.html
+  pupil-baseline-gaze-luminance-sensitivity: pupil-baseline-gaze-luminance-sensitivity.html
+  pupil-ppc-and-temporal-diagnostics: pupil-ppc-and-temporal-diagnostics.html
+  pupil-preparation-and-auditing: pupil-preparation-and-auditing.html
+  pupil-temporal-validation: pupil-temporal-validation.html
+  pupil-trajectories-and-estimands: pupil-trajectories-and-estimands.html
   quality-hardening-and-failure-contracts: quality-hardening-and-failure-contracts.html
   recovery-diagnostics-for-publication: recovery-diagnostics-for-publication.html
   release-case-study: release-case-study.html
@@ -40,8 +48,9 @@ articles:
   sensitivity-evidence-workflow: sensitivity-evidence-workflow.html
   specification-closure: specification-closure.html
   stable-unified-workflow: stable-unified-workflow.html
+  synthetic-gazepoint-pupillometry-case-study: synthetic-gazepoint-pupillometry-case-study.html
   transformation-replay-and-detailed-ppc: transformation-replay-and-detailed-ppc.html
-last_built: 2026-08-13T21:40Z
+last_built: 2026-08-15T22:10Z
 urls:
   reference: https://stefanosbalaskas.github.io/gp3bayes/reference
   article: https://stefanosbalaskas.github.io/gp3bayes/articles

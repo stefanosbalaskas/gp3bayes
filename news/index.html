@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.3.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.4.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,19 @@
       <small>Source: <a href="https://github.com/stefanosbalaskas/gp3bayes/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.4.0.9000" id="gp3bayes-0409000">gp3bayes 0.4.0.9000<a class="anchor" aria-label="anchor" href="#gp3bayes-0409000"></a></h2>
+<div class="section level4">
+<h4 id="bayesian-dynamic-pupillometry-foundation-0-4-0-9000">Bayesian dynamic pupillometry foundation<a class="anchor" aria-label="anchor" href="#bayesian-dynamic-pupillometry-foundation-0-4-0-9000"></a></h4>
+<ul><li>Adds a first-class, vendor-neutral pupil time-course contract with verified Gazepoint schema inspection and explicit unit handling.</li>
+<li>Adds deterministic pupil simulation, governed preparation, readiness and measurement-context audits without silent blink interpolation, smoothing, PFE correction, luminance correction, or exclusion.</li>
+<li>Adds a restricted Gaussian hierarchical pupil time-course family with smooth or linear trajectories, optional condition-specific trajectories, participant/item hierarchy, declared covariates, scale-aware priors, and an optional guarded AR(1) structure.</li>
+<li>Adds backend-portable full-MCMC fitting through <code>brms</code> with <code>rstan</code> or <code>cmdstanr</code>, plus prior-predictive planning/execution under the same closed specification.</li>
+<li>Adds posterior pupil trajectories, declared-window means, AUC, peak response, peak latency, condition contrasts, threshold probabilities, PPCs, temporal diagnostics, target-specific grouped/future validation, and declared sensitivity scenarios.</li>
+<li>Adds publication tables, <code>ggplot2</code> graphics, nine pupillometry articles, focused failure-contract tests, a frozen 0.4.0.9000 API manifest, and a dedicated development audit.</li>
+<li>Pupil responses are not automatically interpreted as cognitive load, attention, arousal, stress, emotion, surprise, or effort; causal, adequacy, exclusion, and model-selection claims remain outside automated package decisions.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0.9000" id="gp3bayes-0309000">gp3bayes 0.3.0.9000<a class="anchor" aria-label="anchor" href="#gp3bayes-0309000"></a></h2>
 <div class="section level4">

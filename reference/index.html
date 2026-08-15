@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.3.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.4.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -2557,6 +2557,378 @@
 
         </dt>
         <dd>Plot Grouped Pointwise ELPD Contribution</dd>
+      </dl></div><div class="section level2">
+      <h2 id="pupil-contracts-gazepoint-simulation-and-preparation">Pupil contracts, Gazepoint, simulation, and preparation<a class="anchor" aria-label="anchor" href="#pupil-contracts-gazepoint-simulation-and-preparation"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="create_pupil_contract.html">create_pupil_contract()</a></code>
+
+        </dt>
+        <dd>Create a governed pupil-timecourse contract</dd>
+
+        <dt>
+
+          <code><a href="as.data.frame.gp3bayes_pupil_contract.html">as.data.frame(<i>&lt;gp3bayes_pupil_contract&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Convert a pupil contract to a transparent table</dd>
+
+        <dt>
+
+          <code><a href="inspect_gazepoint_pupil_schema.html">inspect_gazepoint_pupil_schema()</a></code>
+
+        </dt>
+        <dd>Inspect verified Gazepoint pupil and gaze fields</dd>
+
+        <dt>
+
+          <code><a href="gazepoint_pupil_mapping_table.html">gazepoint_pupil_mapping_table()</a></code>
+
+        </dt>
+        <dd>Return the Gazepoint pupil mapping audit table</dd>
+
+        <dt>
+
+          <code><a href="simulate_pupil_timecourse.html">simulate_pupil_timecourse()</a></code>
+
+        </dt>
+        <dd>Simulate deterministic hierarchical pupil time courses</dd>
+
+        <dt>
+
+          <code><a href="prepare_pupil_timecourse.html">prepare_pupil_timecourse()</a></code>
+
+        </dt>
+        <dd>Prepare a pupil time course under explicit transformations</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_readiness.html">audit_pupil_readiness()</a></code>
+
+        </dt>
+        <dd>Audit pupil-timecourse readiness</dd>
+
+        <dt>
+
+          <code><a href="pupil_readiness_table.html">pupil_readiness_table()</a></code>
+
+        </dt>
+        <dd>Extract pupil readiness tables</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_measurement_context.html">audit_pupil_measurement_context()</a></code>
+
+        </dt>
+        <dd>Audit pupil measurement and confound context</dd>
+
+        <dt>
+
+          <code><a href="pupil_measurement_audit_table.html">pupil_measurement_audit_table()</a></code>
+
+        </dt>
+        <dd>Extract a pupil measurement-context table</dd>
+      </dl></div><div class="section level2">
+      <h2 id="pupil-model-fitting-prediction-and-estimands">Pupil model fitting, prediction, and estimands<a class="anchor" aria-label="anchor" href="#pupil-model-fitting-prediction-and-estimands"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="specify_pupil_timecourse_model.html">specify_pupil_timecourse_model()</a></code>
+
+        </dt>
+        <dd>Specify the restricted hierarchical pupil time-course model</dd>
+
+        <dt>
+
+          <code><a href="pupil_specification_table.html">pupil_specification_table()</a></code>
+
+        </dt>
+        <dd>Convert a pupil specification to a publication-ready table</dd>
+
+        <dt>
+
+          <code><a href="translate_pupil_model_to_brms.html">translate_pupil_model_to_brms()</a></code>
+
+        </dt>
+        <dd>Translate an approved pupil model to brms</dd>
+
+        <dt>
+
+          <code><a href="check_pupil_prior_predictive.html">check_pupil_prior_predictive()</a></code>
+
+        </dt>
+        <dd>Check the approved pupil priors predictively</dd>
+
+        <dt>
+
+          <code><a href="fit_pupil_model_backend.html">fit_pupil_model_backend()</a></code>
+
+        </dt>
+        <dd>Fit the restricted pupil time-course model with an approved backend</dd>
+
+        <dt>
+
+          <code><a href="fit_pupil_model.html">fit_pupil_model()</a></code>
+
+        </dt>
+        <dd>Fit a pupil model through the fixed rstan route</dd>
+
+        <dt>
+
+          <code><a href="fit_pupil_model_cmdstanr.html">fit_pupil_model_cmdstanr()</a></code>
+
+        </dt>
+        <dd>Fit a pupil model through the fixed cmdstanr route</dd>
+
+        <dt>
+
+          <code><a href="as_pupil_prediction_draws.html">as_pupil_prediction_draws()</a></code>
+
+        </dt>
+        <dd>Create a lightweight pupil prediction object from frozen draws</dd>
+
+        <dt>
+
+          <code><a href="predict_pupil_trajectory.html">predict_pupil_trajectory()</a></code>
+
+        </dt>
+        <dd>Predict governed pupil trajectories</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_trajectory.html">estimate_pupil_trajectory()</a></code>
+
+        </dt>
+        <dd>Estimate posterior pupil trajectories</dd>
+
+        <dt>
+
+          <code><a href="pupil_trajectory_table.html">pupil_trajectory_table()</a></code>
+
+        </dt>
+        <dd>Convert a pupil trajectory to a table</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_window.html">estimate_pupil_window()</a></code>
+
+        </dt>
+        <dd>Estimate a declared-window mean pupil response</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_auc.html">estimate_pupil_auc()</a></code>
+
+        </dt>
+        <dd>Estimate area under a declared pupil-response window</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_peak.html">estimate_pupil_peak()</a></code>
+
+        </dt>
+        <dd>Estimate posterior peak pupil response inside a declared window</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_peak_latency.html">estimate_pupil_peak_latency()</a></code>
+
+        </dt>
+        <dd>Estimate posterior peak latency inside a declared window</dd>
+
+        <dt>
+
+          <code><a href="pupil_condition_contrast.html">pupil_condition_contrast()</a></code>
+
+        </dt>
+        <dd>Estimate a posterior condition-difference trajectory</dd>
+
+        <dt>
+
+          <code><a href="as.data.frame.gp3bayes_pupil_estimand.html">as.data.frame(<i>&lt;gp3bayes_pupil_estimand&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Convert a pupil estimand to a data frame</dd>
+      </dl></div><div class="section level2">
+      <h2 id="pupil-diagnostics-validation-and-sensitivity">Pupil diagnostics, validation, and sensitivity<a class="anchor" aria-label="anchor" href="#pupil-diagnostics-validation-and-sensitivity"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="diagnose_pupil_fit.html">diagnose_pupil_fit()</a></code>
+
+        </dt>
+        <dd>Diagnose temporal and sampling behaviour of a pupil fit</dd>
+
+        <dt>
+
+          <code><a href="pupil_residual_acf.html">pupil_residual_acf()</a></code>
+
+        </dt>
+        <dd>Summarise residual autocorrelation for a pupil fit</dd>
+
+        <dt>
+
+          <code><a href="check_pupil_posterior_predictive.html">check_pupil_posterior_predictive()</a></code>
+
+        </dt>
+        <dd>Run pupil-specific posterior predictive checks</dd>
+
+        <dt>
+
+          <code><a href="pupil_ppc_table.html">pupil_ppc_table()</a></code>
+
+        </dt>
+        <dd>Extract pupil PPC evidence tables</dd>
+
+        <dt>
+
+          <code><a href="summarise_pupil_posterior.html">summarise_pupil_posterior()</a></code>
+
+        </dt>
+        <dd>Summarise a fitted pupil posterior</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_validation_plan.html">create_pupil_validation_plan()</a></code>
+
+        </dt>
+        <dd>Create an explicit pupil predictive-validation plan</dd>
+
+        <dt>
+
+          <code><a href="validate_pupil_model.html">validate_pupil_model()</a></code>
+
+        </dt>
+        <dd>Validate a pupil model for an explicit prediction target</dd>
+
+        <dt>
+
+          <code><a href="pupil_validation_table.html">pupil_validation_table()</a></code>
+
+        </dt>
+        <dd>Extract a pupil validation table</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_sensitivity_suite.html">create_pupil_sensitivity_suite()</a></code>
+
+        </dt>
+        <dd>Create a governed pupil sensitivity suite</dd>
+
+        <dt>
+
+          <code><a href="materialize_pupil_sensitivity_scenario.html">materialize_pupil_sensitivity_scenario()</a></code>
+
+        </dt>
+        <dd>Materialize one declared pupil sensitivity scenario</dd>
+
+        <dt>
+
+          <code><a href="compare_pupil_sensitivity_estimands.html">compare_pupil_sensitivity_estimands()</a></code>
+
+        </dt>
+        <dd>Compare declared pupil sensitivity estimands</dd>
+
+        <dt>
+
+          <code><a href="pupil_sensitivity_table.html">pupil_sensitivity_table()</a></code>
+
+        </dt>
+        <dd>Extract pupil sensitivity scenarios or comparison results</dd>
+      </dl></div><div class="section level2">
+      <h2 id="pupil-publication-graphics">Pupil publication graphics<a class="anchor" aria-label="anchor" href="#pupil-publication-graphics"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="plot_pupil_readiness.html">plot_pupil_readiness()</a></code>
+
+        </dt>
+        <dd>Plot pupil readiness evidence</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_observed_trajectory.html">plot_pupil_observed_trajectory()</a></code>
+
+        </dt>
+        <dd>Plot observed pupil trajectories</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_posterior_trajectory.html">plot_pupil_posterior_trajectory()</a></code>
+
+        </dt>
+        <dd>Plot posterior pupil trajectories or condition differences</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_estimand.html">plot_pupil_estimand()</a></code>
+
+        </dt>
+        <dd>Plot declared-window pupil estimands</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_ppc.html">plot_pupil_ppc()</a></code>
+
+        </dt>
+        <dd>Plot pupil posterior-predictive evidence</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_residual_acf.html">plot_pupil_residual_acf()</a></code>
+
+        </dt>
+        <dd>Plot pupil residual autocorrelation</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_validation.html">plot_pupil_validation()</a></code>
+
+        </dt>
+        <dd>Plot pupil validation evidence</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_sensitivity.html">plot_pupil_sensitivity()</a></code>
+
+        </dt>
+        <dd>Plot pupil sensitivity scenarios or result comparisons</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_measurement_audit.html">plot_pupil_measurement_audit()</a></code>
+
+        </dt>
+        <dd>Plot gaze/PFE and luminance measurement-context evidence</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

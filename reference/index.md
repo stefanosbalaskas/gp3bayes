@@ -737,3 +737,111 @@
   : Plot Grouped LOO Influence
 - [`plot_loo_group_elpd()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_loo_group_elpd.md)
   : Plot Grouped Pointwise ELPD Contribution
+
+## Pupil contracts, Gazepoint, simulation, and preparation
+
+- [`create_pupil_contract()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_contract.md)
+  : Create a governed pupil-timecourse contract
+- [`as.data.frame(`*`<gp3bayes_pupil_contract>`*`)`](https://stefanosbalaskas.github.io/gp3bayes/reference/as.data.frame.gp3bayes_pupil_contract.md)
+  : Convert a pupil contract to a transparent table
+- [`inspect_gazepoint_pupil_schema()`](https://stefanosbalaskas.github.io/gp3bayes/reference/inspect_gazepoint_pupil_schema.md)
+  : Inspect verified Gazepoint pupil and gaze fields
+- [`gazepoint_pupil_mapping_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/gazepoint_pupil_mapping_table.md)
+  : Return the Gazepoint pupil mapping audit table
+- [`simulate_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_pupil_timecourse.md)
+  : Simulate deterministic hierarchical pupil time courses
+- [`prepare_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/prepare_pupil_timecourse.md)
+  : Prepare a pupil time course under explicit transformations
+- [`audit_pupil_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_readiness.md)
+  : Audit pupil-timecourse readiness
+- [`pupil_readiness_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_readiness_table.md)
+  : Extract pupil readiness tables
+- [`audit_pupil_measurement_context()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_measurement_context.md)
+  : Audit pupil measurement and confound context
+- [`pupil_measurement_audit_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_measurement_audit_table.md)
+  : Extract a pupil measurement-context table
+
+## Pupil model fitting, prediction, and estimands
+
+- [`specify_pupil_timecourse_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_pupil_timecourse_model.md)
+  : Specify the restricted hierarchical pupil time-course model
+- [`pupil_specification_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_specification_table.md)
+  : Convert a pupil specification to a publication-ready table
+- [`translate_pupil_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_pupil_model_to_brms.md)
+  : Translate an approved pupil model to brms
+- [`check_pupil_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_pupil_prior_predictive.md)
+  : Check the approved pupil priors predictively
+- [`fit_pupil_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_model_backend.md)
+  : Fit the restricted pupil time-course model with an approved backend
+- [`fit_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_model.md)
+  : Fit a pupil model through the fixed rstan route
+- [`fit_pupil_model_cmdstanr()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_model_cmdstanr.md)
+  : Fit a pupil model through the fixed cmdstanr route
+- [`as_pupil_prediction_draws()`](https://stefanosbalaskas.github.io/gp3bayes/reference/as_pupil_prediction_draws.md)
+  : Create a lightweight pupil prediction object from frozen draws
+- [`predict_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/predict_pupil_trajectory.md)
+  : Predict governed pupil trajectories
+- [`estimate_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_trajectory.md)
+  : Estimate posterior pupil trajectories
+- [`pupil_trajectory_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_trajectory_table.md)
+  : Convert a pupil trajectory to a table
+- [`estimate_pupil_window()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_window.md)
+  : Estimate a declared-window mean pupil response
+- [`estimate_pupil_auc()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_auc.md)
+  : Estimate area under a declared pupil-response window
+- [`estimate_pupil_peak()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_peak.md)
+  : Estimate posterior peak pupil response inside a declared window
+- [`estimate_pupil_peak_latency()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_peak_latency.md)
+  : Estimate posterior peak latency inside a declared window
+- [`pupil_condition_contrast()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_condition_contrast.md)
+  : Estimate a posterior condition-difference trajectory
+- [`as.data.frame(`*`<gp3bayes_pupil_estimand>`*`)`](https://stefanosbalaskas.github.io/gp3bayes/reference/as.data.frame.gp3bayes_pupil_estimand.md)
+  : Convert a pupil estimand to a data frame
+
+## Pupil diagnostics, validation, and sensitivity
+
+- [`diagnose_pupil_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_pupil_fit.md)
+  : Diagnose temporal and sampling behaviour of a pupil fit
+- [`pupil_residual_acf()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_residual_acf.md)
+  : Summarise residual autocorrelation for a pupil fit
+- [`check_pupil_posterior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_pupil_posterior_predictive.md)
+  : Run pupil-specific posterior predictive checks
+- [`pupil_ppc_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_ppc_table.md)
+  : Extract pupil PPC evidence tables
+- [`summarise_pupil_posterior()`](https://stefanosbalaskas.github.io/gp3bayes/reference/summarise_pupil_posterior.md)
+  : Summarise a fitted pupil posterior
+- [`create_pupil_validation_plan()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_validation_plan.md)
+  : Create an explicit pupil predictive-validation plan
+- [`validate_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_pupil_model.md)
+  : Validate a pupil model for an explicit prediction target
+- [`pupil_validation_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_validation_table.md)
+  : Extract a pupil validation table
+- [`create_pupil_sensitivity_suite()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_sensitivity_suite.md)
+  : Create a governed pupil sensitivity suite
+- [`materialize_pupil_sensitivity_scenario()`](https://stefanosbalaskas.github.io/gp3bayes/reference/materialize_pupil_sensitivity_scenario.md)
+  : Materialize one declared pupil sensitivity scenario
+- [`compare_pupil_sensitivity_estimands()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_pupil_sensitivity_estimands.md)
+  : Compare declared pupil sensitivity estimands
+- [`pupil_sensitivity_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_sensitivity_table.md)
+  : Extract pupil sensitivity scenarios or comparison results
+
+## Pupil publication graphics
+
+- [`plot_pupil_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_readiness.md)
+  : Plot pupil readiness evidence
+- [`plot_pupil_observed_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_observed_trajectory.md)
+  : Plot observed pupil trajectories
+- [`plot_pupil_posterior_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_posterior_trajectory.md)
+  : Plot posterior pupil trajectories or condition differences
+- [`plot_pupil_estimand()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_estimand.md)
+  : Plot declared-window pupil estimands
+- [`plot_pupil_ppc()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_ppc.md)
+  : Plot pupil posterior-predictive evidence
+- [`plot_pupil_residual_acf()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_residual_acf.md)
+  : Plot pupil residual autocorrelation
+- [`plot_pupil_validation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_validation.md)
+  : Plot pupil validation evidence
+- [`plot_pupil_sensitivity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_sensitivity.md)
+  : Plot pupil sensitivity scenarios or result comparisons
+- [`plot_pupil_measurement_audit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_measurement_audit.md)
+  : Plot gaze/PFE and luminance measurement-context evidence

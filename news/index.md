@@ -1,5 +1,33 @@
 # Changelog
 
+## gp3bayes 0.4.0.9000
+
+#### Bayesian dynamic pupillometry foundation
+
+- Adds a first-class, vendor-neutral pupil time-course contract with
+  verified Gazepoint schema inspection and explicit unit handling.
+- Adds deterministic pupil simulation, governed preparation, readiness
+  and measurement-context audits without silent blink interpolation,
+  smoothing, PFE correction, luminance correction, or exclusion.
+- Adds a restricted Gaussian hierarchical pupil time-course family with
+  smooth or linear trajectories, optional condition-specific
+  trajectories, participant/item hierarchy, declared covariates,
+  scale-aware priors, and an optional guarded AR(1) structure.
+- Adds backend-portable full-MCMC fitting through `brms` with `rstan` or
+  `cmdstanr`, plus prior-predictive planning/execution under the same
+  closed specification.
+- Adds posterior pupil trajectories, declared-window means, AUC, peak
+  response, peak latency, condition contrasts, threshold probabilities,
+  PPCs, temporal diagnostics, target-specific grouped/future validation,
+  and declared sensitivity scenarios.
+- Adds publication tables, `ggplot2` graphics, nine pupillometry
+  articles, focused failure-contract tests, a frozen 0.4.0.9000 API
+  manifest, and a dedicated development audit.
+- Pupil responses are not automatically interpreted as cognitive load,
+  attention, arousal, stress, emotion, surprise, or effort; causal,
+  adequacy, exclusion, and model-selection claims remain outside
+  automated package decisions.
+
 ## gp3bayes 0.3.0.9000
 
 #### Public API and integration hardening
