@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,33 @@
       <small>Source: <a href="https://github.com/stefanosbalaskas/gp3bayes/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.0" id="gp3bayes-050">gp3bayes 0.5.0<a class="anchor" aria-label="anchor" href="#gp3bayes-050"></a></h2>
+<div class="section level3">
+<h3 id="advanced-dynamic-and-measurement-aware-bayesian-pupillometry-0-5-0">Advanced dynamic and measurement-aware Bayesian pupillometry<a class="anchor" aria-label="anchor" href="#advanced-dynamic-and-measurement-aware-bayesian-pupillometry-0-5-0"></a></h3>
+<ul><li>Adds an additive advanced pupil-model specification layer while preserving the frozen 0.4 public API.</li>
+<li>Adds Gaussian and Student-t observation models with constant, condition-dependent, time-dependent, and condition-by-time residual scale specifications.</li>
+<li>Adds bounded governed residual temporal dependence through AR(1), AR(2), ARMA(1,1), and explicit ARMA specifications constrained to p &lt;= 3 and q &lt;= 2.</li>
+<li>Adds governed Gaussian-process trajectories with Matérn 3/2, Matérn 5/2, and exponentiated-quadratic kernels; approximate Hilbert-space GP bases are the scalable default and exact GP requests are subject to a complexity audit.</li>
+<li>Adds explicit known measurement-uncertainty declarations for pupil responses and covariates and MAR-oriented joint missing-value models without automatic interpolation.</li>
+<li>Adds joint binocular pupil preparation, multivariate modelling, residual eye correlation, eye-difference estimands, and agreement summaries without requiring upstream eye averaging.</li>
+<li>Adds governed PSIS-LOO, exact K-fold, predictive model weights, and explicit leave-future-out validation plans. Model comparison never chooses a substantive winner automatically.</li>
+<li>Adds an experimental nonlinear pupil response-shape model with interpretable baseline, amplitude, onset, rise, duration, and decay parameters.</li>
+<li>Adds posterior temporal derivative, dynamic condition-contrast, and prespecified threshold-duration estimands without automatic onset, changepoint, or favorable-window detection.</li>
+<li>Adds computational-budget, design-support/identifiability, temporal-dependence, measurement, missingness, predictive-calibration, and advanced-fit diagnostics.</li>
+<li>Adds posterior residual-scale, GP hyperparameter, residual-spectrum, model-card, sensitivity-suite, and publication-oriented tables and graphics.</li>
+<li>Adds deterministic advanced and binocular simulation utilities with truth stored separately from analysis data.</li>
+<li>Adds backend-free examples, plotting galleries, focused tests, and eleven advanced pupillometry articles.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="governance-boundaries-0-5-0">Governance boundaries<a class="anchor" aria-label="anchor" href="#governance-boundaries-0-5-0"></a></h3>
+<ul><li>gp3bayes 0.5 does not interpolate or otherwise preprocess missing pupil samples automatically.</li>
+<li>MAR-oriented missing-data modelling is assumption-conditional and does not establish that MAR is true.</li>
+<li>Student-t robustness does not mark individual observations as invalid outliers.</li>
+<li>Predictive comparison, stacking weights, temporal derivatives, threshold durations, and nonlinear response parameters do not establish model adequacy, causality, or cognitive/physiological states.</li>
+<li>MNAR models, overlapping-event deconvolution, automatic changepoint detection, multimodal psychophysiological latent-state inference, automated model search, and automatic cognitive-state inference remain outside the 0.5 scope.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0.9000" id="gp3bayes-0409000">gp3bayes 0.4.0.9000<a class="anchor" aria-label="anchor" href="#gp3bayes-0409000"></a></h2>
 <div class="section level4">

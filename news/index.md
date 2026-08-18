@@ -1,5 +1,64 @@
 # Changelog
 
+## gp3bayes 0.5.0
+
+### Advanced dynamic and measurement-aware Bayesian pupillometry
+
+- Adds an additive advanced pupil-model specification layer while
+  preserving the frozen 0.4 public API.
+- Adds Gaussian and Student-t observation models with constant,
+  condition-dependent, time-dependent, and condition-by-time residual
+  scale specifications.
+- Adds bounded governed residual temporal dependence through AR(1),
+  AR(2), ARMA(1,1), and explicit ARMA specifications constrained to p
+  \<= 3 and q \<= 2.
+- Adds governed Gaussian-process trajectories with Matérn 3/2, Matérn
+  5/2, and exponentiated-quadratic kernels; approximate Hilbert-space GP
+  bases are the scalable default and exact GP requests are subject to a
+  complexity audit.
+- Adds explicit known measurement-uncertainty declarations for pupil
+  responses and covariates and MAR-oriented joint missing-value models
+  without automatic interpolation.
+- Adds joint binocular pupil preparation, multivariate modelling,
+  residual eye correlation, eye-difference estimands, and agreement
+  summaries without requiring upstream eye averaging.
+- Adds governed PSIS-LOO, exact K-fold, predictive model weights, and
+  explicit leave-future-out validation plans. Model comparison never
+  chooses a substantive winner automatically.
+- Adds an experimental nonlinear pupil response-shape model with
+  interpretable baseline, amplitude, onset, rise, duration, and decay
+  parameters.
+- Adds posterior temporal derivative, dynamic condition-contrast, and
+  prespecified threshold-duration estimands without automatic onset,
+  changepoint, or favorable-window detection.
+- Adds computational-budget, design-support/identifiability,
+  temporal-dependence, measurement, missingness, predictive-calibration,
+  and advanced-fit diagnostics.
+- Adds posterior residual-scale, GP hyperparameter, residual-spectrum,
+  model-card, sensitivity-suite, and publication-oriented tables and
+  graphics.
+- Adds deterministic advanced and binocular simulation utilities with
+  truth stored separately from analysis data.
+- Adds backend-free examples, plotting galleries, focused tests, and
+  eleven advanced pupillometry articles.
+
+### Governance boundaries
+
+- gp3bayes 0.5 does not interpolate or otherwise preprocess missing
+  pupil samples automatically.
+- MAR-oriented missing-data modelling is assumption-conditional and does
+  not establish that MAR is true.
+- Student-t robustness does not mark individual observations as invalid
+  outliers.
+- Predictive comparison, stacking weights, temporal derivatives,
+  threshold durations, and nonlinear response parameters do not
+  establish model adequacy, causality, or cognitive/physiological
+  states.
+- MNAR models, overlapping-event deconvolution, automatic changepoint
+  detection, multimodal psychophysiological latent-state inference,
+  automated model search, and automatic cognitive-state inference remain
+  outside the 0.5 scope.
+
 ## gp3bayes 0.4.0.9000
 
 #### Bayesian dynamic pupillometry foundation

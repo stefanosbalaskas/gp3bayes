@@ -1,0 +1,56 @@
+# Experimental Interpretable Pupil Response Shape
+
+``` r
+
+library(gp3bayes)
+sim <- simulate_pupil_response_shape(
+  n_participants = 12,
+  trials_per_participant = 4,
+  time_points = 41,
+  condition_amplitude_ratio = 1.25,
+  condition_onset_shift = 100,
+  seed = 3060
+)
+```
+
+The 0.5 experimental family is intentionally singular rather than an
+arbitrary nonlinear-formula API. It represents a positive-amplitude
+asymmetric gated response using baseline, log-amplitude, onset,
+log-rise, log-duration, and log-decay parameters.
+
+``` r
+
+spec <- specify_pupil_response_shape_model(
+  sim$data,
+  family = "gaussian",
+  condition_effects = c("amplitude", "onset", "duration"),
+  participant_effects = c("baseline", "amplitude")
+)
+spec
+#> <gp3bayes_pupil_response_shape_specification>
+#>   EXPERIMENTAL: TRUE
+#>   Family: gaussian 
+#>   Condition effects: amplitude, onset, duration 
+#>   Fit performed: FALSE
+```
+
+``` r
+
+translated <- translate_pupil_response_shape_to_brms(spec)
+fit <- fit_pupil_response_shape_model(
+  spec,
+  backend = "cmdstanr",
+  chains = 4,
+  iter = 2500,
+  warmup = 1250,
+  cores = 2
+)
+
+pars <- estimate_pupil_response_parameters(fit)
+pupil_response_parameter_table(pars)
+plot_pupil_response_parameters(pars)
+```
+
+The parameters remain properties of this response model. gp3bayes does
+not relabel amplitude as attention, onset as surprise, or duration as
+cognitive effort.

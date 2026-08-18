@@ -845,3 +845,187 @@
   : Plot pupil sensitivity scenarios or result comparisons
 - [`plot_pupil_measurement_audit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_measurement_audit.md)
   : Plot gaze/PFE and luminance measurement-context evidence
+
+## Advanced pupillometry 0.5
+
+Advanced dynamic, robust, measurement-aware, multivariate, predictive,
+validation, sensitivity, and governance functions introduced in gp3bayes
+0.5.
+
+- [`advanced_pupil_trajectory_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/advanced_pupil_trajectory_table.md)
+  : Summarise an advanced pupil trajectory
+- [`audit_advanced_pupil_identifiability()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_advanced_pupil_identifiability.md)
+  : Audit empirical support for an advanced pupil model specification
+- [`audit_binocular_pupil_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_binocular_pupil_readiness.md)
+  : Audit binocular pupil availability and agreement descriptively
+- [`audit_pupil_computational_budget()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_computational_budget.md)
+  : Audit computational complexity before fitting an advanced pupil
+  model
+- [`audit_pupil_measurement_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_measurement_model.md)
+  : Audit a declared measurement model against data
+- [`audit_pupil_missingness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_missingness.md)
+  : Audit missingness in an advanced pupil specification
+- [`audit_pupil_predictive_calibration()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_predictive_calibration.md)
+  : Audit posterior predictive calibration on explicit evaluation data
+- [`audit_pupil_temporal_dependence()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_pupil_temporal_dependence.md)
+  : Audit empirical temporal dependence before model fitting
+- [`check_advanced_pupil_prior_predictive()`](https://stefanosbalaskas.github.io/gp3bayes/reference/check_advanced_pupil_prior_predictive.md)
+  : Check advanced pupil priors through prior-only simulation
+- [`compare_pupil_autocorrelation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_pupil_autocorrelation.md)
+  : Compare residual autocorrelation across fitted advanced models
+- [`compare_pupil_lfo()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_pupil_lfo.md)
+  : Compare executed leave-future-out validations
+- [`compare_pupil_models()`](https://stefanosbalaskas.github.io/gp3bayes/reference/compare_pupil_models.md)
+  : Compare fitted pupil models predictively
+- [`create_advanced_pupil_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_advanced_pupil_prior_specification.md)
+  : Create an advanced pupil prior specification
+- [`create_pupil_advanced_sensitivity_suite()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_advanced_sensitivity_suite.md)
+  : Create a pre-fit advanced pupillometry sensitivity suite
+- [`create_pupil_arma_spec()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_arma_spec.md)
+  : Create an explicit bounded ARMA configuration
+- [`create_pupil_gp_spec()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_gp_spec.md)
+  : Create a Gaussian-process configuration for pupil trajectories
+- [`create_pupil_lfo_plan()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_lfo_plan.md)
+  : Create an explicit leave-future-out validation plan
+- [`create_pupil_measurement_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_measurement_model.md)
+  : Create a governed measurement-uncertainty specification
+- [`create_pupil_missingness_spec()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_missingness_spec.md)
+  : Create a governed missingness specification
+- [`create_pupil_model_set()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_pupil_model_set.md)
+  : Create a named set of fitted pupil models
+- [`diagnose_advanced_pupil_fit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/diagnose_advanced_pupil_fit.md)
+  : Diagnose an advanced pupil fit
+- [`estimate_binocular_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_binocular_pupil_trajectory.md)
+  : Estimate joint binocular posterior trajectories
+- [`estimate_pupil_dynamic_contrast()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_dynamic_contrast.md)
+  : Estimate a dynamic posterior contrast between two pupil conditions
+- [`estimate_pupil_residual_scale()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_residual_scale.md)
+  : Estimate the residual-scale trajectory from a distributional model
+- [`estimate_pupil_response_parameters()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_response_parameters.md)
+  : Estimate nonlinear response-shape parameters
+- [`estimate_pupil_threshold_duration()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_threshold_duration.md)
+  : Estimate posterior duration above a prespecified dynamic threshold
+- [`estimate_pupil_trajectory_derivative()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_trajectory_derivative.md)
+  : Estimate posterior temporal derivatives of a pupil trajectory
+- [`fit_advanced_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_advanced_pupil_model.md)
+  : Fit an advanced pupil model using rstan
+- [`fit_advanced_pupil_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_advanced_pupil_model_backend.md)
+  : Fit an advanced pupil model through an approved brms backend
+- [`fit_advanced_pupil_model_cmdstanr()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_advanced_pupil_model_cmdstanr.md)
+  : Fit an advanced pupil model using cmdstanr
+- [`fit_binocular_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binocular_pupil_model.md)
+  : Fit a joint binocular pupil model
+- [`fit_pupil_response_shape_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_pupil_response_shape_model.md)
+  : Fit the experimental nonlinear response-shape model
+- [`materialize_pupil_advanced_sensitivity_scenario()`](https://stefanosbalaskas.github.io/gp3bayes/reference/materialize_pupil_advanced_sensitivity_scenario.md)
+  : Materialize one advanced sensitivity scenario
+- [`plot_advanced_pupil_simulation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_advanced_pupil_simulation.md)
+  : Plot simulated advanced pupil trajectories
+- [`plot_advanced_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_advanced_pupil_trajectory.md)
+  : Plot an advanced posterior pupil trajectory
+- [`plot_binocular_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_binocular_pupil_trajectory.md)
+  : Plot binocular posterior trajectories
+- [`plot_pupil_autocorrelation_comparison()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_autocorrelation_comparison.md)
+  : Plot residual autocorrelation comparison
+- [`plot_pupil_dynamic_contrast()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_dynamic_contrast.md)
+  : Plot a dynamic pupil condition contrast
+- [`plot_pupil_gp_hyperparameters()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_gp_hyperparameters.md)
+  : Plot Gaussian-process hyperparameters
+- [`plot_pupil_identifiability_audit()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_identifiability_audit.md)
+  : Plot advanced identifiability/design-support audit
+- [`plot_pupil_lfo()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_lfo.md)
+  : Plot leave-future-out scores
+- [`plot_pupil_measurement_uncertainty()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_measurement_uncertainty.md)
+  : Plot measurement-uncertainty audit
+- [`plot_pupil_missingness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_missingness.md)
+  : Plot missing-response fraction over time
+- [`plot_pupil_model_comparison()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_model_comparison.md)
+  : Plot predictive model comparison
+- [`plot_pupil_model_complexity()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_model_complexity.md)
+  : Plot advanced model computational complexity
+- [`plot_pupil_predictive_calibration()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_predictive_calibration.md)
+  : Plot posterior predictive calibration
+- [`plot_pupil_residual_scale()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_residual_scale.md)
+  : Plot posterior residual scale over time
+- [`plot_pupil_residual_spectrum()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_residual_spectrum.md)
+  : Plot residual spectrum
+- [`plot_pupil_response_parameters()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_response_parameters.md)
+  : Plot experimental nonlinear response parameters
+- [`plot_pupil_temporal_dependence()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_temporal_dependence.md)
+  : Plot empirical temporal-dependence audit
+- [`plot_pupil_trajectory_derivative()`](https://stefanosbalaskas.github.io/gp3bayes/reference/plot_pupil_trajectory_derivative.md)
+  : Plot posterior pupil trajectory derivative
+- [`predict_advanced_pupil_trajectory()`](https://stefanosbalaskas.github.io/gp3bayes/reference/predict_advanced_pupil_trajectory.md)
+  : Predict an advanced pupil trajectory
+- [`prepare_binocular_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/prepare_binocular_pupil_timecourse.md)
+  : Prepare binocular pupil data without averaging eyes
+- [`pupil_advanced_capabilities()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_advanced_capabilities.md)
+  : Report the gp3bayes 0.5 advanced-pupillometry capability boundary
+- [`pupil_advanced_compatibility_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_advanced_compatibility_table.md)
+  : Report governed compatibility rules for 0.5 advanced models
+- [`pupil_advanced_mapping_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_advanced_mapping_table.md)
+  : Inspect the resolved 0.5 pupil column mapping
+- [`pupil_advanced_specification_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_advanced_specification_table.md)
+  : Tabulate an advanced pupil model specification
+- [`pupil_autocorrelation_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_autocorrelation_table.md)
+  : Tabulate a temporal-dependence audit
+- [`pupil_binocular_agreement_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_binocular_agreement_table.md)
+  : Summarise binocular posterior agreement
+- [`pupil_binocular_correlation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_binocular_correlation.md)
+  : Extract posterior residual binocular correlation
+- [`pupil_binocular_difference()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_binocular_difference.md)
+  : Estimate posterior right-minus-left binocular differences
+- [`pupil_distribution_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_distribution_table.md)
+  : Tabulate a pupil distribution declaration or advanced specification
+- [`pupil_dynamic_contrast_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_dynamic_contrast_table.md)
+  : Tabulate a dynamic pupil contrast
+- [`pupil_gp_hyperparameters()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_gp_hyperparameters.md)
+  : Extract Gaussian-process hyperparameters
+- [`pupil_gp_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_gp_table.md)
+  : Tabulate GP hyperparameters
+- [`pupil_identifiability_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_identifiability_table.md)
+  : Tabulate advanced pupil identifiability/design-support audit
+- [`pupil_measurement_uncertainty_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_measurement_uncertainty_table.md)
+  : Summarise measurement uncertainty declared in a model
+- [`pupil_missingness_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_missingness_table.md)
+  : Tabulate missingness audit results
+- [`pupil_model_card()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_model_card.md)
+  : Build an auditable advanced pupil model card
+- [`pupil_model_card_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_model_card_table.md)
+  : Tabulate a pupil model card
+- [`pupil_model_comparison_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_model_comparison_table.md)
+  : Tabulate model comparison
+- [`pupil_model_weights()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_model_weights.md)
+  : Compute explicit predictive model weights
+- [`pupil_residual_scale_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_residual_scale_table.md)
+  : Tabulate posterior residual scale
+- [`pupil_residual_spectrum()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_residual_spectrum.md)
+  : Compute a descriptive residual spectrum
+- [`pupil_response_parameter_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_response_parameter_table.md)
+  : Tabulate nonlinear response parameters
+- [`pupil_trajectory_derivative_table()`](https://stefanosbalaskas.github.io/gp3bayes/reference/pupil_trajectory_derivative_table.md)
+  : Tabulate posterior pupil trajectory derivatives
+- [`score_pupil_predictions()`](https://stefanosbalaskas.github.io/gp3bayes/reference/score_pupil_predictions.md)
+  : Score posterior predictive draws against observed pupil values
+- [`simulate_advanced_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_advanced_pupil_timecourse.md)
+  : Simulate advanced dynamic pupil time courses
+- [`simulate_binocular_pupil_timecourse()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_binocular_pupil_timecourse.md)
+  : Simulate joint binocular pupil traces
+- [`simulate_pupil_response_shape()`](https://stefanosbalaskas.github.io/gp3bayes/reference/simulate_pupil_response_shape.md)
+  : Simulate data from the experimental nonlinear response-shape family
+- [`specify_advanced_pupil_timecourse_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_advanced_pupil_timecourse_model.md)
+  : Specify an advanced governed pupil time-course model
+- [`specify_binocular_pupil_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_binocular_pupil_model.md)
+  : Specify a joint binocular pupil model
+- [`specify_pupil_distribution()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_pupil_distribution.md)
+  : Declare an advanced pupil observation distribution
+- [`specify_pupil_response_shape_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/specify_pupil_response_shape_model.md)
+  : Specify the experimental nonlinear pupil response-shape model
+- [`translate_advanced_pupil_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_advanced_pupil_model_to_brms.md)
+  : Translate an advanced pupil model to brms without fitting
+- [`translate_binocular_pupil_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_binocular_pupil_model_to_brms.md)
+  : Translate a binocular specification to a brms multivariate formula
+- [`translate_pupil_response_shape_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_pupil_response_shape_to_brms.md)
+  : Translate the experimental response-shape model to brms
+- [`validate_pupil_leave_future_out()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_pupil_leave_future_out.md)
+  : Execute or materialize leave-future-out validation

@@ -41,7 +41,7 @@ A data frame containing posterior location, spread, and intervals.
 ``` r
 draws <- cbind(alpha = rnorm(200), beta = rnorm(200, 0.5))
 posterior_interval_table(draws)
-#>   variable      mean        sd     lower    median    upper
-#> 1    alpha 0.1127221 1.0326214 -1.742285 0.1440568 2.129558
-#> 2     beta 0.4579440 0.9883658 -1.250047 0.4082620 2.421420
+#>   variable        mean        sd     lower     median    upper
+#> 1    alpha -0.07697793 1.0501184 -2.117753 -0.1242940 1.948645
+#> 2     beta  0.36602203 0.8923331 -1.361916  0.3787615 2.119325
 ```

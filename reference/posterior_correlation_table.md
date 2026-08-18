@@ -37,8 +37,8 @@ A long data frame of unique posterior-draw correlations.
 ``` r
 x <- cbind(a = rnorm(100), b = rnorm(100), c = rnorm(100))
 posterior_correlation_table(x)
-#>   variable_1 variable_2 correlation  method
-#> 1          b          a  0.03816461 pearson
-#> 2          c          a -0.15600779 pearson
-#> 3          c          b -0.08591344 pearson
+#>   variable_1 variable_2  correlation  method
+#> 1          b          a -0.093611923 pearson
+#> 2          c          a -0.043078073 pearson
+#> 3          c          b -0.009627803 pearson
 ```

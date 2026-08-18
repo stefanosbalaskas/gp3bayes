@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -2929,6 +2929,631 @@
 
         </dt>
         <dd>Plot gaze/PFE and luminance measurement-context evidence</dd>
+      </dl></div><div class="section level2">
+      <h2 id="advanced-pupillometry-">Advanced pupillometry 0.5<a class="anchor" aria-label="anchor" href="#advanced-pupillometry-"></a></h2>
+
+      <div class="section-desc"><p>Advanced dynamic, robust, measurement-aware, multivariate, predictive, validation, sensitivity, and governance functions introduced in gp3bayes 0.5.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="advanced_pupil_trajectory_table.html">advanced_pupil_trajectory_table()</a></code>
+
+        </dt>
+        <dd>Summarise an advanced pupil trajectory</dd>
+
+        <dt>
+
+          <code><a href="audit_advanced_pupil_identifiability.html">audit_advanced_pupil_identifiability()</a></code>
+
+        </dt>
+        <dd>Audit empirical support for an advanced pupil model specification</dd>
+
+        <dt>
+
+          <code><a href="audit_binocular_pupil_readiness.html">audit_binocular_pupil_readiness()</a></code>
+
+        </dt>
+        <dd>Audit binocular pupil availability and agreement descriptively</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_computational_budget.html">audit_pupil_computational_budget()</a></code>
+
+        </dt>
+        <dd>Audit computational complexity before fitting an advanced pupil model</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_measurement_model.html">audit_pupil_measurement_model()</a></code>
+
+        </dt>
+        <dd>Audit a declared measurement model against data</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_missingness.html">audit_pupil_missingness()</a></code>
+
+        </dt>
+        <dd>Audit missingness in an advanced pupil specification</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_predictive_calibration.html">audit_pupil_predictive_calibration()</a></code>
+
+        </dt>
+        <dd>Audit posterior predictive calibration on explicit evaluation data</dd>
+
+        <dt>
+
+          <code><a href="audit_pupil_temporal_dependence.html">audit_pupil_temporal_dependence()</a></code>
+
+        </dt>
+        <dd>Audit empirical temporal dependence before model fitting</dd>
+
+        <dt>
+
+          <code><a href="check_advanced_pupil_prior_predictive.html">check_advanced_pupil_prior_predictive()</a></code>
+
+        </dt>
+        <dd>Check advanced pupil priors through prior-only simulation</dd>
+
+        <dt>
+
+          <code><a href="compare_pupil_autocorrelation.html">compare_pupil_autocorrelation()</a></code>
+
+        </dt>
+        <dd>Compare residual autocorrelation across fitted advanced models</dd>
+
+        <dt>
+
+          <code><a href="compare_pupil_lfo.html">compare_pupil_lfo()</a></code>
+
+        </dt>
+        <dd>Compare executed leave-future-out validations</dd>
+
+        <dt>
+
+          <code><a href="compare_pupil_models.html">compare_pupil_models()</a></code>
+
+        </dt>
+        <dd>Compare fitted pupil models predictively</dd>
+
+        <dt>
+
+          <code><a href="create_advanced_pupil_prior_specification.html">create_advanced_pupil_prior_specification()</a></code>
+
+        </dt>
+        <dd>Create an advanced pupil prior specification</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_advanced_sensitivity_suite.html">create_pupil_advanced_sensitivity_suite()</a></code>
+
+        </dt>
+        <dd>Create a pre-fit advanced pupillometry sensitivity suite</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_arma_spec.html">create_pupil_arma_spec()</a></code>
+
+        </dt>
+        <dd>Create an explicit bounded ARMA configuration</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_gp_spec.html">create_pupil_gp_spec()</a></code>
+
+        </dt>
+        <dd>Create a Gaussian-process configuration for pupil trajectories</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_lfo_plan.html">create_pupil_lfo_plan()</a></code>
+
+        </dt>
+        <dd>Create an explicit leave-future-out validation plan</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_measurement_model.html">create_pupil_measurement_model()</a></code>
+
+        </dt>
+        <dd>Create a governed measurement-uncertainty specification</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_missingness_spec.html">create_pupil_missingness_spec()</a></code>
+
+        </dt>
+        <dd>Create a governed missingness specification</dd>
+
+        <dt>
+
+          <code><a href="create_pupil_model_set.html">create_pupil_model_set()</a></code>
+
+        </dt>
+        <dd>Create a named set of fitted pupil models</dd>
+
+        <dt>
+
+          <code><a href="diagnose_advanced_pupil_fit.html">diagnose_advanced_pupil_fit()</a></code>
+
+        </dt>
+        <dd>Diagnose an advanced pupil fit</dd>
+
+        <dt>
+
+          <code><a href="estimate_binocular_pupil_trajectory.html">estimate_binocular_pupil_trajectory()</a></code>
+
+        </dt>
+        <dd>Estimate joint binocular posterior trajectories</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_dynamic_contrast.html">estimate_pupil_dynamic_contrast()</a></code>
+
+        </dt>
+        <dd>Estimate a dynamic posterior contrast between two pupil conditions</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_residual_scale.html">estimate_pupil_residual_scale()</a></code>
+
+        </dt>
+        <dd>Estimate the residual-scale trajectory from a distributional model</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_response_parameters.html">estimate_pupil_response_parameters()</a></code>
+
+        </dt>
+        <dd>Estimate nonlinear response-shape parameters</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_threshold_duration.html">estimate_pupil_threshold_duration()</a></code>
+
+        </dt>
+        <dd>Estimate posterior duration above a prespecified dynamic threshold</dd>
+
+        <dt>
+
+          <code><a href="estimate_pupil_trajectory_derivative.html">estimate_pupil_trajectory_derivative()</a></code>
+
+        </dt>
+        <dd>Estimate posterior temporal derivatives of a pupil trajectory</dd>
+
+        <dt>
+
+          <code><a href="fit_advanced_pupil_model.html">fit_advanced_pupil_model()</a></code>
+
+        </dt>
+        <dd>Fit an advanced pupil model using rstan</dd>
+
+        <dt>
+
+          <code><a href="fit_advanced_pupil_model_backend.html">fit_advanced_pupil_model_backend()</a></code>
+
+        </dt>
+        <dd>Fit an advanced pupil model through an approved brms backend</dd>
+
+        <dt>
+
+          <code><a href="fit_advanced_pupil_model_cmdstanr.html">fit_advanced_pupil_model_cmdstanr()</a></code>
+
+        </dt>
+        <dd>Fit an advanced pupil model using cmdstanr</dd>
+
+        <dt>
+
+          <code><a href="fit_binocular_pupil_model.html">fit_binocular_pupil_model()</a></code>
+
+        </dt>
+        <dd>Fit a joint binocular pupil model</dd>
+
+        <dt>
+
+          <code><a href="fit_pupil_response_shape_model.html">fit_pupil_response_shape_model()</a></code>
+
+        </dt>
+        <dd>Fit the experimental nonlinear response-shape model</dd>
+
+        <dt>
+
+          <code><a href="materialize_pupil_advanced_sensitivity_scenario.html">materialize_pupil_advanced_sensitivity_scenario()</a></code>
+
+        </dt>
+        <dd>Materialize one advanced sensitivity scenario</dd>
+
+        <dt>
+
+          <code><a href="plot_advanced_pupil_simulation.html">plot_advanced_pupil_simulation()</a></code>
+
+        </dt>
+        <dd>Plot simulated advanced pupil trajectories</dd>
+
+        <dt>
+
+          <code><a href="plot_advanced_pupil_trajectory.html">plot_advanced_pupil_trajectory()</a></code>
+
+        </dt>
+        <dd>Plot an advanced posterior pupil trajectory</dd>
+
+        <dt>
+
+          <code><a href="plot_binocular_pupil_trajectory.html">plot_binocular_pupil_trajectory()</a></code>
+
+        </dt>
+        <dd>Plot binocular posterior trajectories</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_autocorrelation_comparison.html">plot_pupil_autocorrelation_comparison()</a></code>
+
+        </dt>
+        <dd>Plot residual autocorrelation comparison</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_dynamic_contrast.html">plot_pupil_dynamic_contrast()</a></code>
+
+        </dt>
+        <dd>Plot a dynamic pupil condition contrast</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_gp_hyperparameters.html">plot_pupil_gp_hyperparameters()</a></code>
+
+        </dt>
+        <dd>Plot Gaussian-process hyperparameters</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_identifiability_audit.html">plot_pupil_identifiability_audit()</a></code>
+
+        </dt>
+        <dd>Plot advanced identifiability/design-support audit</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_lfo.html">plot_pupil_lfo()</a></code>
+
+        </dt>
+        <dd>Plot leave-future-out scores</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_measurement_uncertainty.html">plot_pupil_measurement_uncertainty()</a></code>
+
+        </dt>
+        <dd>Plot measurement-uncertainty audit</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_missingness.html">plot_pupil_missingness()</a></code>
+
+        </dt>
+        <dd>Plot missing-response fraction over time</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_model_comparison.html">plot_pupil_model_comparison()</a></code>
+
+        </dt>
+        <dd>Plot predictive model comparison</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_model_complexity.html">plot_pupil_model_complexity()</a></code>
+
+        </dt>
+        <dd>Plot advanced model computational complexity</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_predictive_calibration.html">plot_pupil_predictive_calibration()</a></code>
+
+        </dt>
+        <dd>Plot posterior predictive calibration</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_residual_scale.html">plot_pupil_residual_scale()</a></code>
+
+        </dt>
+        <dd>Plot posterior residual scale over time</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_residual_spectrum.html">plot_pupil_residual_spectrum()</a></code>
+
+        </dt>
+        <dd>Plot residual spectrum</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_response_parameters.html">plot_pupil_response_parameters()</a></code>
+
+        </dt>
+        <dd>Plot experimental nonlinear response parameters</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_temporal_dependence.html">plot_pupil_temporal_dependence()</a></code>
+
+        </dt>
+        <dd>Plot empirical temporal-dependence audit</dd>
+
+        <dt>
+
+          <code><a href="plot_pupil_trajectory_derivative.html">plot_pupil_trajectory_derivative()</a></code>
+
+        </dt>
+        <dd>Plot posterior pupil trajectory derivative</dd>
+
+        <dt>
+
+          <code><a href="predict_advanced_pupil_trajectory.html">predict_advanced_pupil_trajectory()</a></code>
+
+        </dt>
+        <dd>Predict an advanced pupil trajectory</dd>
+
+        <dt>
+
+          <code><a href="prepare_binocular_pupil_timecourse.html">prepare_binocular_pupil_timecourse()</a></code>
+
+        </dt>
+        <dd>Prepare binocular pupil data without averaging eyes</dd>
+
+        <dt>
+
+          <code><a href="pupil_advanced_capabilities.html">pupil_advanced_capabilities()</a></code>
+
+        </dt>
+        <dd>Report the gp3bayes 0.5 advanced-pupillometry capability boundary</dd>
+
+        <dt>
+
+          <code><a href="pupil_advanced_compatibility_table.html">pupil_advanced_compatibility_table()</a></code>
+
+        </dt>
+        <dd>Report governed compatibility rules for 0.5 advanced models</dd>
+
+        <dt>
+
+          <code><a href="pupil_advanced_mapping_table.html">pupil_advanced_mapping_table()</a></code>
+
+        </dt>
+        <dd>Inspect the resolved 0.5 pupil column mapping</dd>
+
+        <dt>
+
+          <code><a href="pupil_advanced_specification_table.html">pupil_advanced_specification_table()</a></code>
+
+        </dt>
+        <dd>Tabulate an advanced pupil model specification</dd>
+
+        <dt>
+
+          <code><a href="pupil_autocorrelation_table.html">pupil_autocorrelation_table()</a></code>
+
+        </dt>
+        <dd>Tabulate a temporal-dependence audit</dd>
+
+        <dt>
+
+          <code><a href="pupil_binocular_agreement_table.html">pupil_binocular_agreement_table()</a></code>
+
+        </dt>
+        <dd>Summarise binocular posterior agreement</dd>
+
+        <dt>
+
+          <code><a href="pupil_binocular_correlation.html">pupil_binocular_correlation()</a></code>
+
+        </dt>
+        <dd>Extract posterior residual binocular correlation</dd>
+
+        <dt>
+
+          <code><a href="pupil_binocular_difference.html">pupil_binocular_difference()</a></code>
+
+        </dt>
+        <dd>Estimate posterior right-minus-left binocular differences</dd>
+
+        <dt>
+
+          <code><a href="pupil_distribution_table.html">pupil_distribution_table()</a></code>
+
+        </dt>
+        <dd>Tabulate a pupil distribution declaration or advanced specification</dd>
+
+        <dt>
+
+          <code><a href="pupil_dynamic_contrast_table.html">pupil_dynamic_contrast_table()</a></code>
+
+        </dt>
+        <dd>Tabulate a dynamic pupil contrast</dd>
+
+        <dt>
+
+          <code><a href="pupil_gp_hyperparameters.html">pupil_gp_hyperparameters()</a></code>
+
+        </dt>
+        <dd>Extract Gaussian-process hyperparameters</dd>
+
+        <dt>
+
+          <code><a href="pupil_gp_table.html">pupil_gp_table()</a></code>
+
+        </dt>
+        <dd>Tabulate GP hyperparameters</dd>
+
+        <dt>
+
+          <code><a href="pupil_identifiability_table.html">pupil_identifiability_table()</a></code>
+
+        </dt>
+        <dd>Tabulate advanced pupil identifiability/design-support audit</dd>
+
+        <dt>
+
+          <code><a href="pupil_measurement_uncertainty_table.html">pupil_measurement_uncertainty_table()</a></code>
+
+        </dt>
+        <dd>Summarise measurement uncertainty declared in a model</dd>
+
+        <dt>
+
+          <code><a href="pupil_missingness_table.html">pupil_missingness_table()</a></code>
+
+        </dt>
+        <dd>Tabulate missingness audit results</dd>
+
+        <dt>
+
+          <code><a href="pupil_model_card.html">pupil_model_card()</a></code>
+
+        </dt>
+        <dd>Build an auditable advanced pupil model card</dd>
+
+        <dt>
+
+          <code><a href="pupil_model_card_table.html">pupil_model_card_table()</a></code>
+
+        </dt>
+        <dd>Tabulate a pupil model card</dd>
+
+        <dt>
+
+          <code><a href="pupil_model_comparison_table.html">pupil_model_comparison_table()</a></code>
+
+        </dt>
+        <dd>Tabulate model comparison</dd>
+
+        <dt>
+
+          <code><a href="pupil_model_weights.html">pupil_model_weights()</a></code>
+
+        </dt>
+        <dd>Compute explicit predictive model weights</dd>
+
+        <dt>
+
+          <code><a href="pupil_residual_scale_table.html">pupil_residual_scale_table()</a></code>
+
+        </dt>
+        <dd>Tabulate posterior residual scale</dd>
+
+        <dt>
+
+          <code><a href="pupil_residual_spectrum.html">pupil_residual_spectrum()</a></code>
+
+        </dt>
+        <dd>Compute a descriptive residual spectrum</dd>
+
+        <dt>
+
+          <code><a href="pupil_response_parameter_table.html">pupil_response_parameter_table()</a></code>
+
+        </dt>
+        <dd>Tabulate nonlinear response parameters</dd>
+
+        <dt>
+
+          <code><a href="pupil_trajectory_derivative_table.html">pupil_trajectory_derivative_table()</a></code>
+
+        </dt>
+        <dd>Tabulate posterior pupil trajectory derivatives</dd>
+
+        <dt>
+
+          <code><a href="score_pupil_predictions.html">score_pupil_predictions()</a></code>
+
+        </dt>
+        <dd>Score posterior predictive draws against observed pupil values</dd>
+
+        <dt>
+
+          <code><a href="simulate_advanced_pupil_timecourse.html">simulate_advanced_pupil_timecourse()</a></code>
+
+        </dt>
+        <dd>Simulate advanced dynamic pupil time courses</dd>
+
+        <dt>
+
+          <code><a href="simulate_binocular_pupil_timecourse.html">simulate_binocular_pupil_timecourse()</a></code>
+
+        </dt>
+        <dd>Simulate joint binocular pupil traces</dd>
+
+        <dt>
+
+          <code><a href="simulate_pupil_response_shape.html">simulate_pupil_response_shape()</a></code>
+
+        </dt>
+        <dd>Simulate data from the experimental nonlinear response-shape family</dd>
+
+        <dt>
+
+          <code><a href="specify_advanced_pupil_timecourse_model.html">specify_advanced_pupil_timecourse_model()</a></code>
+
+        </dt>
+        <dd>Specify an advanced governed pupil time-course model</dd>
+
+        <dt>
+
+          <code><a href="specify_binocular_pupil_model.html">specify_binocular_pupil_model()</a></code>
+
+        </dt>
+        <dd>Specify a joint binocular pupil model</dd>
+
+        <dt>
+
+          <code><a href="specify_pupil_distribution.html">specify_pupil_distribution()</a></code>
+
+        </dt>
+        <dd>Declare an advanced pupil observation distribution</dd>
+
+        <dt>
+
+          <code><a href="specify_pupil_response_shape_model.html">specify_pupil_response_shape_model()</a></code>
+
+        </dt>
+        <dd>Specify the experimental nonlinear pupil response-shape model</dd>
+
+        <dt>
+
+          <code><a href="translate_advanced_pupil_model_to_brms.html">translate_advanced_pupil_model_to_brms()</a></code>
+
+        </dt>
+        <dd>Translate an advanced pupil model to brms without fitting</dd>
+
+        <dt>
+
+          <code><a href="translate_binocular_pupil_model_to_brms.html">translate_binocular_pupil_model_to_brms()</a></code>
+
+        </dt>
+        <dd>Translate a binocular specification to a brms multivariate formula</dd>
+
+        <dt>
+
+          <code><a href="translate_pupil_response_shape_to_brms.html">translate_pupil_response_shape_to_brms()</a></code>
+
+        </dt>
+        <dd>Translate the experimental response-shape model to brms</dd>
+
+        <dt>
+
+          <code><a href="validate_pupil_leave_future_out.html">validate_pupil_leave_future_out()</a></code>
+
+        </dt>
+        <dd>Execute or materialize leave-future-out validation</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

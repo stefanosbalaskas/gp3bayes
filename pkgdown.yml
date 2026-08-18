@@ -2,24 +2,33 @@ pandoc: 3.8.3
 pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
+  advanced-dynamic-pupillometry-0-5: advanced-dynamic-pupillometry-0-5.html
   advanced-optional-workflows: advanced-optional-workflows.html
   advanced-predictive-diagnostics: advanced-predictive-diagnostics.html
+  arma-and-temporal-diagnostics: arma-and-temporal-diagnostics.html
   backend-portability: backend-portability.html
   backend-reliability: backend-reliability.html
   bayesian-dynamic-pupillometry: bayesian-dynamic-pupillometry.html
   binary-end-to-end: binary-end-to-end.html
+  binocular-pupil-models: binocular-pupil-models.html
+  computational-governance-and-model-cards: computational-governance-and-model-cards.html
   declared-prior-versus-posterior: declared-prior-versus-posterior.html
   duration-end-to-end: duration-end-to-end.html
   end-to-end-evidence-showcase: end-to-end-evidence-showcase.html
   estimands-and-sensitivity: estimands-and-sensitivity.html
   evidence-graphics-and-governance: evidence-graphics-and-governance.html
+  experimental-pupil-response-shape: experimental-pupil-response-shape.html
   fitting-pupil-timecourse-models: fitting-pupil-timecourse-models.html
+  functional-dynamics-and-predictive-calibration: functional-dynamics-and-predictive-calibration.html
+  gaussian-process-pupil-trajectories: gaussian-process-pupil-trajectories.html
   gazepoint-pupil-interoperability: gazepoint-pupil-interoperability.html
+  governed-pupil-model-comparison: governed-pupil-model-comparison.html
   grouped-loo-influence: grouped-loo-influence.html
   hierarchical-effect-atlas: hierarchical-effect-atlas.html
   hierarchical-effects-and-uncertainty: hierarchical-effects-and-uncertainty.html
   loo-influence-and-model-comparison: loo-influence-and-model-comparison.html
   loo-influence-atlas: loo-influence-atlas.html
+  measurement-error-and-missing-pupil-data: measurement-error-and-missing-pupil-data.html
   model-cards-and-reporting-inventories: model-cards-and-reporting-inventories.html
   optional-backend-installation: optional-backend-installation.html
   pathological-simulation-scenarios: pathological-simulation-scenarios.html
@@ -42,15 +51,17 @@ articles:
   recovery-diagnostics-for-publication: recovery-diagnostics-for-publication.html
   release-case-study: release-case-study.html
   reproducible-analysis-manifests: reproducible-analysis-manifests.html
+  robust-distributional-pupil-models: robust-distributional-pupil-models.html
   sbc-publication-diagnostics: sbc-publication-diagnostics.html
   sensitivity-and-recovery: sensitivity-and-recovery.html
   sensitivity-atlas: sensitivity-atlas.html
   sensitivity-evidence-workflow: sensitivity-evidence-workflow.html
   specification-closure: specification-closure.html
   stable-unified-workflow: stable-unified-workflow.html
+  synthetic-advanced-pupillometry-gallery: synthetic-advanced-pupillometry-gallery.html
   synthetic-gazepoint-pupillometry-case-study: synthetic-gazepoint-pupillometry-case-study.html
   transformation-replay-and-detailed-ppc: transformation-replay-and-detailed-ppc.html
-last_built: 2026-08-15T22:10Z
+last_built: 2026-08-18T09:31Z
 urls:
   reference: https://stefanosbalaskas.github.io/gp3bayes/reference
   article: https://stefanosbalaskas.github.io/gp3bayes/articles

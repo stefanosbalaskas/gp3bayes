@@ -35,8 +35,8 @@ the posterior probability inside the supplied interval.
 draws <- cbind(alpha = rnorm(500), beta = rnorm(500, 0.4))
 posterior_probability_table(draws, rope = c(-0.1, 0.1))
 #>       variable probability_gt_zero probability_lt_zero probability_in_rope
-#> alpha    alpha               0.490               0.510               0.098
-#> beta      beta               0.662               0.338               0.078
+#> alpha    alpha               0.518               0.482               0.056
+#> beta      beta               0.660               0.340               0.090
 #>       rope_lower rope_upper
 #> alpha       -0.1        0.1
 #> beta        -0.1        0.1

@@ -1,0 +1,81 @@
+# Governed Predictive Model Comparison
+
+``` r
+
+library(gp3bayes)
+sim <- simulate_advanced_pupil_timecourse(
+  n_participants = 12,
+  trials_per_participant = 4,
+  time_points = 31,
+  seed = 3050
+)
+
+base <- specify_advanced_pupil_timecourse_model(sim$data, temporal_structure = "smooth", family = "gaussian")
+suite <- create_pupil_advanced_sensitivity_suite(base)
+suite
+#> <gp3bayes_pupil_advanced_sensitivity_suite>
+#>   Scenarios: 10 
+#>                   scenario          dimension            value
+#>                   baseline           baseline         declared
+#>         likelihood_student             family          student
+#>            sigma_condition     residual_scale        condition
+#>                 sigma_time     residual_scale             time
+#>       sigma_condition_time     residual_scale   condition_time
+#>                     ac_ar1    autocorrelation              ar1
+#>                     ac_ar2    autocorrelation              ar2
+#>                  ac_arma11    autocorrelation           arma11
+#>            temporal_linear temporal_structure           linear
+#>  temporal_gaussian_process temporal_structure gaussian_process
+```
+
+The sensitivity suite is a pre-fit registry of alternatives. It does not
+fit or rank models.
+
+``` r
+
+robust <- materialize_pupil_advanced_sensitivity_scenario(suite, "likelihood_student")
+gp <- materialize_pupil_advanced_sensitivity_scenario(suite, "temporal_gaussian_process")
+
+fit_smooth <- fit_advanced_pupil_model_backend(base, backend = "cmdstanr")
+fit_robust <- fit_advanced_pupil_model_backend(robust, backend = "cmdstanr")
+fit_gp <- fit_advanced_pupil_model_backend(gp, backend = "cmdstanr")
+
+models <- create_pupil_model_set(
+  smooth_gaussian = fit_smooth,
+  smooth_student = fit_robust,
+  gp_gaussian = fit_gp,
+  predictive_target = "future_segment"
+)
+
+cmp <- compare_pupil_models(models, criterion = "loo")
+pupil_model_comparison_table(cmp)
+plot_pupil_model_comparison(cmp)
+pupil_model_weights(cmp, method = "stacking")
+```
+
+Weights are returned only as explicit evidence. gp3bayes does not
+automatically average predictions or declare the highest-weight model
+substantively correct.
+
+## Leave-future-out is an explicit refit workflow
+
+``` r
+
+lfo_plan <- create_pupil_lfo_plan(
+  fit_smooth,
+  initial_fraction = 0.60,
+  horizon = 5,
+  step = 5,
+  max_refits = 6
+)
+lfo_plan
+
+# No refit occurs unless execute = TRUE.
+lfo_result <- validate_pupil_leave_future_out(
+  fit_smooth,
+  lfo_plan,
+  execute = TRUE,
+  cores = 1
+)
+plot_pupil_lfo(lfo_result)
+```

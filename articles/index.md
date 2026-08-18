@@ -131,3 +131,31 @@
   Map](https://stefanosbalaskas.github.io/gp3bayes/articles/public-api-map.md):
 - [Quality Hardening and Failure
   Contracts](https://stefanosbalaskas.github.io/gp3bayes/articles/quality-hardening-and-failure-contracts.md):
+
+### Advanced pupillometry 0.5
+
+Advanced dynamic and measurement-aware Bayesian pupillometry workflows
+introduced in gp3bayes 0.5.
+
+- [Advanced Dynamic Pupillometry in gp3bayes
+  0.5](https://stefanosbalaskas.github.io/gp3bayes/articles/advanced-dynamic-pupillometry-0-5.md):
+- [Robust and Distributional Pupil
+  Models](https://stefanosbalaskas.github.io/gp3bayes/articles/robust-distributional-pupil-models.md):
+- [Bounded ARMA and Temporal
+  Diagnostics](https://stefanosbalaskas.github.io/gp3bayes/articles/arma-and-temporal-diagnostics.md):
+- [Gaussian-Process Pupil
+  Trajectories](https://stefanosbalaskas.github.io/gp3bayes/articles/gaussian-process-pupil-trajectories.md):
+- [Measurement Uncertainty and Missing Pupil
+  Data](https://stefanosbalaskas.github.io/gp3bayes/articles/measurement-error-and-missing-pupil-data.md):
+- [Joint Binocular Pupil
+  Models](https://stefanosbalaskas.github.io/gp3bayes/articles/binocular-pupil-models.md):
+- [Experimental Interpretable Pupil Response
+  Shape](https://stefanosbalaskas.github.io/gp3bayes/articles/experimental-pupil-response-shape.md):
+- [Functional Dynamics and Predictive
+  Calibration](https://stefanosbalaskas.github.io/gp3bayes/articles/functional-dynamics-and-predictive-calibration.md):
+- [Governed Predictive Model
+  Comparison](https://stefanosbalaskas.github.io/gp3bayes/articles/governed-pupil-model-comparison.md):
+- [Computational Governance and Model
+  Cards](https://stefanosbalaskas.github.io/gp3bayes/articles/computational-governance-and-model-cards.md):
+- [Synthetic Advanced Pupillometry
+  Gallery](https://stefanosbalaskas.github.io/gp3bayes/articles/synthetic-advanced-pupillometry-gallery.md):
