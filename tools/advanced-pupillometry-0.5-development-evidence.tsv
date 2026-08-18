@@ -1,0 +1,18 @@
+item	value	status
+development_version	0.5.0.9000	declared
+baseline_master	33136233203a2d7eb259df282cfb42957e34cb83	frozen input
+baseline_regular_exports	370	frozen input
+new_regular_exports	88	generated
+expected_regular_exports_after_document	458	generated
+baseline_s3_registrations	169	frozen input
+new_s3_registrations	61	generated
+expected_s3_registrations_after_document	230	generated
+r_modules	13	generated
+focused_tests	11	generated
+vignettes	11	generated
+examples	7	generated
+automatic_model_selection	FALSE	governance
+automatic_preprocessing	FALSE	governance
+automatic_cognitive_inference	FALSE	governance
+mnar_models	deferred	scope
+overlapping_event_deconvolution	deferred	scope

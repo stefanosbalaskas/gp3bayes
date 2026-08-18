@@ -1,4 +1,4 @@
-# API-CONTRACT-0.4: historical 0.3 compatibility + current 0.4 exactness
+# API-CONTRACT: historical 0.3/0.4 compatibility under the current development API
 
 .gp3bayes_manifest_path <- function(filename) {
   source_path <- testthat::test_path(
@@ -16,7 +16,7 @@
 }
 
 testthat::test_that(
-  "historical 0.3 API remains compatible and current 0.4 API is exact",
+  "historical 0.3 and 0.4 APIs remain compatible under the current development API",
   {
     old <- utils::read.delim(
       .gp3bayes_manifest_path("public-api-0.3.0.9000.tsv"),
@@ -28,6 +28,7 @@ testthat::test_that(
       stringsAsFactors = FALSE,
       check.names = FALSE
     )
+
     old <- old[order(old$function_name), , drop = FALSE]
     cur <- cur[order(cur$function_name), , drop = FALSE]
 
@@ -35,26 +36,42 @@ testthat::test_that(
     testthat::expect_equal(nrow(cur), 370L)
 
     idx <- match(old$function_name, cur$function_name)
+
     testthat::expect_false(anyNA(idx))
+
     testthat::expect_identical(
-      old$formal_names, cur$formal_names[idx]
+      old$formal_names,
+      cur$formal_names[idx]
     )
 
     ns <- asNamespace("gp3bayes")
     exports <- sort(getNamespaceExports(ns))
-    testthat::expect_identical(exports, cur$function_name)
+
+    # Frozen 0.4 is now a required subset of the current API.
+    testthat::expect_true(
+      all(cur$function_name %in% exports)
+    )
 
     actual_formals <- vapply(
-      exports,
+      cur$function_name,
       function(name) {
         f <- get(name, envir = ns, inherits = FALSE)
-        testthat::expect_true(is.function(f), info = name)
-        paste(names(formals(f)), collapse = "|")
+        testthat::expect_true(
+          is.function(f),
+          info = name
+        )
+        paste(
+          names(formals(f)),
+          collapse = "|"
+        )
       },
       character(1L)
     )
+
+    # Every frozen 0.4 formal list remains exact in current 0.5.
     testthat::expect_identical(
-      unname(actual_formals), cur$formal_names
+      unname(actual_formals),
+      cur$formal_names
     )
   }
 )

@@ -2,7 +2,8 @@ cff-version: 1.2.0
 message: "If you use gp3bayes, please cite the software using this metadata."
 type: software
 title: "gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data"
-version: 0.2.0
+version: "0.5.0"
+date-released: "2026-08-18"
 authors:
   - family-names: "Balaskas"
     given-names: "Stefanos"
@@ -13,9 +14,6 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.21518698"
     description: "Concept DOI for all gp3bayes releases."
-  - type: doi
-    value: "10.5281/zenodo.21880165"
-    description: "Version-specific DOI for the archived gp3bayes 0.2.0 release."
 doi: "10.5281/zenodo.21518698"
 url: "https://stefanosbalaskas.github.io/gp3bayes/"
 license: MIT

@@ -4,8 +4,8 @@ template:
   bootstrap: 5
 
 development:
-  mode: unreleased
-  version_tooltip: "Development documentation for gp3bayes 0.4.0.9000"
+  mode: release
+  version_tooltip: "Release documentation for gp3bayes 0.5.0"
 
 home:
   title: gp3bayes
@@ -458,6 +458,101 @@ reference:
   - plot_pupil_validation
   - plot_pupil_sensitivity
   - plot_pupil_measurement_audit
+
+- title: "Advanced pupillometry 0.5"
+  desc: >
+    Advanced dynamic, robust, measurement-aware,
+    multivariate, predictive, validation, sensitivity,
+    and governance functions introduced in gp3bayes 0.5.
+- contents:
+  - advanced_pupil_trajectory_table
+  - audit_advanced_pupil_identifiability
+  - audit_binocular_pupil_readiness
+  - audit_pupil_computational_budget
+  - audit_pupil_measurement_model
+  - audit_pupil_missingness
+  - audit_pupil_predictive_calibration
+  - audit_pupil_temporal_dependence
+  - check_advanced_pupil_prior_predictive
+  - compare_pupil_autocorrelation
+  - compare_pupil_lfo
+  - compare_pupil_models
+  - create_advanced_pupil_prior_specification
+  - create_pupil_advanced_sensitivity_suite
+  - create_pupil_arma_spec
+  - create_pupil_gp_spec
+  - create_pupil_lfo_plan
+  - create_pupil_measurement_model
+  - create_pupil_missingness_spec
+  - create_pupil_model_set
+  - diagnose_advanced_pupil_fit
+  - estimate_binocular_pupil_trajectory
+  - estimate_pupil_dynamic_contrast
+  - estimate_pupil_residual_scale
+  - estimate_pupil_response_parameters
+  - estimate_pupil_threshold_duration
+  - estimate_pupil_trajectory_derivative
+  - fit_advanced_pupil_model
+  - fit_advanced_pupil_model_backend
+  - fit_advanced_pupil_model_cmdstanr
+  - fit_binocular_pupil_model
+  - fit_pupil_response_shape_model
+  - materialize_pupil_advanced_sensitivity_scenario
+  - plot_advanced_pupil_simulation
+  - plot_advanced_pupil_trajectory
+  - plot_binocular_pupil_trajectory
+  - plot_pupil_autocorrelation_comparison
+  - plot_pupil_dynamic_contrast
+  - plot_pupil_gp_hyperparameters
+  - plot_pupil_identifiability_audit
+  - plot_pupil_lfo
+  - plot_pupil_measurement_uncertainty
+  - plot_pupil_missingness
+  - plot_pupil_model_comparison
+  - plot_pupil_model_complexity
+  - plot_pupil_predictive_calibration
+  - plot_pupil_residual_scale
+  - plot_pupil_residual_spectrum
+  - plot_pupil_response_parameters
+  - plot_pupil_temporal_dependence
+  - plot_pupil_trajectory_derivative
+  - predict_advanced_pupil_trajectory
+  - prepare_binocular_pupil_timecourse
+  - pupil_advanced_capabilities
+  - pupil_advanced_compatibility_table
+  - pupil_advanced_mapping_table
+  - pupil_advanced_specification_table
+  - pupil_autocorrelation_table
+  - pupil_binocular_agreement_table
+  - pupil_binocular_correlation
+  - pupil_binocular_difference
+  - pupil_distribution_table
+  - pupil_dynamic_contrast_table
+  - pupil_gp_hyperparameters
+  - pupil_gp_table
+  - pupil_identifiability_table
+  - pupil_measurement_uncertainty_table
+  - pupil_missingness_table
+  - pupil_model_card
+  - pupil_model_card_table
+  - pupil_model_comparison_table
+  - pupil_model_weights
+  - pupil_residual_scale_table
+  - pupil_residual_spectrum
+  - pupil_response_parameter_table
+  - pupil_trajectory_derivative_table
+  - score_pupil_predictions
+  - simulate_advanced_pupil_timecourse
+  - simulate_binocular_pupil_timecourse
+  - simulate_pupil_response_shape
+  - specify_advanced_pupil_timecourse_model
+  - specify_binocular_pupil_model
+  - specify_pupil_distribution
+  - specify_pupil_response_shape_model
+  - translate_advanced_pupil_model_to_brms
+  - translate_binocular_pupil_model_to_brms
+  - translate_pupil_response_shape_to_brms
+  - validate_pupil_leave_future_out
 articles:
 - title: Bayesian dynamic pupillometry
   contents:
@@ -532,3 +627,20 @@ articles:
   contents:
   - public-api-map
   - quality-hardening-and-failure-contracts
+
+- title: "Advanced pupillometry 0.5"
+  desc: >
+    Advanced dynamic and measurement-aware Bayesian
+    pupillometry workflows introduced in gp3bayes 0.5.
+  contents:
+  - advanced-dynamic-pupillometry-0-5
+  - robust-distributional-pupil-models
+  - arma-and-temporal-diagnostics
+  - gaussian-process-pupil-trajectories
+  - measurement-error-and-missing-pupil-data
+  - binocular-pupil-models
+  - experimental-pupil-response-shape
+  - functional-dynamics-and-predictive-calibration
+  - governed-pupil-model-comparison
+  - computational-governance-and-model-cards
+  - synthetic-advanced-pupillometry-gallery

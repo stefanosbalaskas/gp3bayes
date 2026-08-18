@@ -1,0 +1,109 @@
+---
+title: "Advanced Dynamic Pupillometry in gp3bayes 0.5"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Dynamic Pupillometry in gp3bayes 0.5}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 4.5)
+```
+
+# Scope
+
+gp3bayes 0.5 extends the governed 0.4 dynamic-pupillometry foundation without replacing its data contract. The advanced layer makes the observation distribution, residual scale, temporal dependence, temporal function class, measurement uncertainty, missingness assumptions, and predictive target explicit components of the model specification.
+
+The layer remains deliberately narrow. It does not interpolate blinks, infer cognitive states, identify causal effects, declare missingness mechanisms true, or choose a preferred model automatically.
+
+```{r}
+library(gp3bayes)
+pupil_advanced_capabilities()
+pupil_advanced_compatibility_table()
+```
+
+# A backend-free advanced workflow
+
+```{r}
+sim <- simulate_advanced_pupil_timecourse(
+  n_participants = 12,
+  trials_per_participant = 4,
+  time_points = 31,
+  family = "gaussian",
+  ar = 0.45,
+  heteroskedastic_strength = 0.35,
+  missing_fraction = 0.04,
+  seed = 2026
+)
+
+sim
+plot_advanced_pupil_simulation(sim)
+```
+
+The simulator stores the generating truth separately from the observed data. It is intended for examples and validation rather than as a physiological pupil generator.
+
+```{r}
+temporal_audit <- audit_pupil_temporal_dependence(sim$data)
+temporal_audit
+plot_pupil_temporal_dependence(temporal_audit)
+```
+
+# Declare an advanced model
+
+```{r}
+distribution <- specify_pupil_distribution(
+  family = "gaussian",
+  residual_scale = "condition_time"
+)
+
+gp <- create_pupil_gp_spec(
+  kernel = "matern32",
+  basis = "approximate",
+  k = 25
+)
+
+spec <- specify_advanced_pupil_timecourse_model(
+  prepared = sim$data,
+  temporal_structure = "gaussian_process",
+  distribution = distribution,
+  gp_spec = gp,
+  autocorrelation = "none",
+  covariates = c("baseline_pupil", "luminance"),
+  predictive_target = "future_segment"
+)
+
+spec
+pupil_advanced_specification_table(spec)
+plot_pupil_model_complexity(spec)
+```
+
+No Stan model has been compiled or fitted at this point.
+
+# Translate, fit, diagnose, and estimate
+
+Translation can be inspected without fitting when `brms` is installed.
+
+```{r eval=FALSE}
+translated <- translate_advanced_pupil_model_to_brms(spec)
+translated
+
+fit <- fit_advanced_pupil_model_backend(
+  spec,
+  backend = "cmdstanr",
+  chains = 4,
+  iter = 2000,
+  warmup = 1000,
+  cores = 2,
+  seed = 2026
+)
+
+diagnose_advanced_pupil_fit(fit)
+trajectory <- predict_advanced_pupil_trajectory(fit)
+plot_advanced_pupil_trajectory(trajectory)
+
+sigma <- estimate_pupil_residual_scale(fit)
+plot_pupil_residual_scale(sigma)
+```
+
+The fit, diagnostics, posterior trajectory, and residual-scale model answer different questions. A successful fit is not itself evidence of adequacy, robustness, or substantive validity.

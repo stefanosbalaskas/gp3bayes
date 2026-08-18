@@ -62,7 +62,7 @@ if (
     identical(
       validate_backend_environment(
         "rstan",
-        compile_test = TRUE,
+        compile_test = FALSE,
         strict = FALSE
       )$status,
       "pass"

@@ -1,0 +1,51 @@
+---
+title: "Computational Governance and Model Cards"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Computational Governance and Model Cards}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 4.5)
+```
+
+```{r}
+library(gp3bayes)
+sim <- simulate_advanced_pupil_timecourse(
+  n_participants = 10,
+  trials_per_participant = 4,
+  time_points = 35,
+  seed = 3070
+)
+
+spec <- specify_advanced_pupil_timecourse_model(
+  sim$data,
+  temporal_structure = "gaussian_process",
+  gp_spec = create_pupil_gp_spec("matern32", "approximate", k = 30),
+  residual_scale = "condition_time",
+  participant_trajectory = "none",
+  predictive_target = "new_trial_known_participant"
+)
+```
+
+# Complexity is audited before Stan
+
+```{r}
+budget <- audit_pupil_computational_budget(spec)
+budget
+plot_pupil_model_complexity(budget)
+```
+
+The complexity gate is not a statistical adequacy test. It is a reproducible guard against accidentally requesting models that combine many expensive layers or exact Gaussian processes over very large grids.
+
+# Model card
+
+```{r}
+card <- pupil_model_card(spec)
+card
+pupil_model_card_table(card)
+```
+
+A model card records family, temporal structure, residual scale, autocorrelation, data dimensions, measurement/missingness declarations, predictive target, complexity status, and governance text. It is designed to support methods supplements and audit trails without becoming a validity certificate.

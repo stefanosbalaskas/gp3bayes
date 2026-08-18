@@ -1,0 +1,459 @@
+"name"	"formals"	"inherited_from_0_4"
+"advanced_pupil_trajectory_table"	"prediction=<MISSING>; probability=0.95"	FALSE
+"analysis_bundle_table"	"x=<MISSING>"	TRUE
+"analysis_manifest_table"	"manifest=<MISSING>"	TRUE
+"apply_transformation_recipe"	"new_data=<MISSING>; recipe=<MISSING>; input_scale=c(""raw"", ""prepared""); require_outcome=FALSE; input_unit=NULL"	TRUE
+"as_pupil_prediction_draws"	"draws=<MISSING>; grid=<MISSING>; unit=<MISSING>; type=c(""expected"", ""posterior_predictive"", ""linear""); max_cells=5000000L"	TRUE
+"assess_binary_prior_sensitivity"	"fit=<MISSING>; scale_multipliers=c(tighter = 0.5, wider = 2); chains=fit$sampling$chains; iter=fit$sampling$iter; warmup=fit$sampling$warmup; cores=fit$sampling$cores; seed=fit$sampling$seed + 1000L; adapt_delta=fit$sampling$adapt_delta; max_treedepth=fit$sampling$max_treedepth; refresh=0L; maximum_standardized_shift=0.25; review_standardized_shift=0.5; retain_fits=FALSE"	TRUE
+"assess_duration_prior_sensitivity"	"fit=<MISSING>; scale_multipliers=c(tighter = 0.5, wider = 2); chains=fit$sampling$chains; iter=fit$sampling$iter; warmup=fit$sampling$warmup; cores=fit$sampling$cores; seed=fit$sampling$seed + 2000L; adapt_delta=fit$sampling$adapt_delta; max_treedepth=fit$sampling$max_treedepth; refresh=0L; maximum_standardized_shift=0.25; review_standardized_shift=0.5; retain_fits=FALSE"	TRUE
+"assess_powerscaled_sensitivity"	"fit=<MISSING>; variable=NULL; prior_selection=NULL; likelihood_selection=NULL"	TRUE
+"audit_advanced_pupil_identifiability"	"specification=<MISSING>"	FALSE
+"audit_backend_parity"	"rstan_fit=<MISSING>; cmdstanr_fit=<MISSING>; variables=NULL; mcse_multiplier=3; absolute_tolerance=0; relative_sd_tolerance=0.1"	TRUE
+"audit_binocular_pupil_readiness"	"prepared=<MISSING>"	FALSE
+"audit_design_support"	"x=<MISSING>; contract=NULL; separation=FALSE; strict_readiness=TRUE"	TRUE
+"audit_duration_boundaries"	"data=<MISSING>; contract=<MISSING>; allowed_range=NULL; censor_col=NULL; detect_candidate_columns=TRUE"	TRUE
+"audit_duration_unit_invariance"	"reference=<MISSING>; converted=<MISSING>; multiplier=<MISSING>; tolerance=0.02"	TRUE
+"audit_estimand_invariance"	"reference=<MISSING>; alternative=<MISSING>; quantity=reference$primary_quantity; tolerance=<MISSING>"	TRUE
+"audit_fixed_effect_design"	"x=<MISSING>; contract=NULL; condition_number_review=30; condition_number_fail=100; leverage_multiplier=3"	TRUE
+"audit_missingness_structure"	"x=<MISSING>; contract=NULL; review_fraction=0.05; fail_fraction=0.2"	TRUE
+"audit_model_readiness"	"data=<MISSING>; contract=<MISSING>"	TRUE
+"audit_model_readiness_strict"	"data=<MISSING>; contract=<MISSING>; condition_warning_fraction=0.1; condition_failure_fraction=0.02; identifier_unique_fraction=0.9; duration_allowed_range=NULL; censor_col=NULL; run_separation=TRUE"	TRUE
+"audit_prediction_support"	"fit=<MISSING>; newdata=<MISSING>"	TRUE
+"audit_pupil_computational_budget"	"x=<MISSING>"	FALSE
+"audit_pupil_measurement_context"	"x=<MISSING>"	TRUE
+"audit_pupil_measurement_model"	"specification=<MISSING>"	FALSE
+"audit_pupil_missingness"	"specification=<MISSING>"	FALSE
+"audit_pupil_predictive_calibration"	"fit=<MISSING>; newdata=<MISSING>; ndraws=500L; probability=0.9; population_only=FALSE; allow_new_levels=FALSE"	FALSE
+"audit_pupil_readiness"	"x=<MISSING>; contract=NULL"	TRUE
+"audit_pupil_temporal_dependence"	"x=<MISSING>; max_lag=10L"	FALSE
+"audit_random_effects_support"	"x=<MISSING>; contract=NULL; minimum_repeated_rows=2L; minimum_group_levels=2L; minimum_condition_cell_rows=2L"	TRUE
+"backend_capabilities"	""	TRUE
+"backend_environment_table"	"x=<MISSING>"	TRUE
+"backend_parity_table"	"x=<MISSING>"	TRUE
+"bayesian_backend_capabilities"	""	TRUE
+"binary_calibration_error"	"x=<MISSING>; observed=NULL; bins=10L"	TRUE
+"binary_calibration_table"	"x=<MISSING>; bins=10L; probs=c(0.025, 0.5, 0.975)"	TRUE
+"binary_calibration_uncertainty"	"fit=<MISSING>; newdata=NULL; bins=10L; include_group_effects=FALSE; ndraws=1000L; probs=c(0.025, 0.5, 0.975)"	TRUE
+"binary_calibration_uncertainty_table"	"x=<MISSING>"	TRUE
+"binary_confusion_table"	"x=<MISSING>; observed=NULL; threshold=0.5"	TRUE
+"binary_group_calibration"	"x=<MISSING>; group=<MISSING>"	TRUE
+"binary_precision_recall_curve"	"x=<MISSING>; observed=NULL; thresholds=NULL"	TRUE
+"binary_prediction_scores"	"x=<MISSING>; observed=NULL; threshold=0.5; epsilon=1e-12"	TRUE
+"binary_roc_curve"	"x=<MISSING>; observed=NULL; thresholds=NULL"	TRUE
+"binary_threshold_metrics"	"x=<MISSING>; observed=NULL; thresholds=seq(0.1, 0.9, by = 0.05)"	TRUE
+"build_model_formula"	"contract=<MISSING>"	TRUE
+"capture_gp3bayes_schema"	"x=<MISSING>; max_depth=3L"	TRUE
+"check_advanced_pupil_prior_predictive"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=2L; iter=800L; warmup=400L; cores=min(2L, chains); seed=2026"	FALSE
+"check_binary_posterior_predictive"	"fit=<MISSING>; draws=500; seed=1; pass_probability=0.8; review_probability=0.95"	TRUE
+"check_binary_ppc_details"	"fit=<MISSING>; draws=300L; seed=1L; calibration_bins=10L; sparse_cell_min=3L"	TRUE
+"check_binary_prior_predictive"	"specification=<MISSING>; draws=500; seed=1; plausible_rate=c(0.01, 0.99); boundary_probability=c(0.01, 0.99); extreme_contrast=0.8; maximum_degenerate_participant_fraction=0.5; maximum_boundary_mass=0.5; maximum_extreme_probability=0.25"	TRUE
+"check_cmdstan_backend"	"strict=FALSE"	TRUE
+"check_duration_posterior_predictive"	"fit=<MISSING>; draws=500L; seed=1L; pass_probability=0.8; review_probability=0.95"	TRUE
+"check_duration_ppc_details"	"fit=<MISSING>; draws=300L; seed=1L; quantiles=c(0.5, 0.9, 0.95); tail_threshold=NULL"	TRUE
+"check_duration_prior_predictive"	"specification=<MISSING>; draws=500L; seed=1L; plausible_median=NULL; maximum_q99=NULL; maximum_cv=5; maximum_condition_ratio=10; maximum_extreme_probability=0.25"	TRUE
+"check_model_ppc"	"fit=<MISSING>; ...=<MISSING>"	TRUE
+"check_pupil_posterior_predictive"	"fit=<MISSING>; ndraws=200L; probability=0.9; window=NULL; max_cells=3000000L"	TRUE
+"check_pupil_prior_predictive"	"specification=<MISSING>; execute=FALSE; backend=c(""rstan"", ""cmdstanr""); draws=200L; chains=2L; iter=1000L; warmup=500L; cores=min(2L, chains); seed=2026; probability=0.95; max_cells=3000000L"	TRUE
+"collect_model_evidence"	"fit=NULL; design=NULL; diagnostics=NULL; posterior=NULL; ppc=NULL; estimands=NULL; loo=NULL; kfold=NULL; sensitivity=NULL; manifest=NULL; compute=character()"	TRUE
+"compare_analysis_manifests"	"x=<MISSING>; y=<MISSING>"	TRUE
+"compare_estimand_sensitivity"	"reference=<MISSING>; alternatives=<MISSING>; quantity=reference$primary_quantity"	TRUE
+"compare_gp3bayes_schemas"	"x=<MISSING>; y=<MISSING>; compare_lengths=FALSE"	TRUE
+"compare_psis_loo"	"models=<MISSING>; moment_match=FALSE; reloo=FALSE; cores=1L"	TRUE
+"compare_pupil_autocorrelation"	"...=<MISSING>; max_lag=10L; ndraws=300L"	FALSE
+"compare_pupil_lfo"	"...=<MISSING>"	FALSE
+"compare_pupil_models"	"model_set=<MISSING>; criterion=c(""loo"", ""kfold""); K=10L; group=NULL; moment_match=FALSE; save_psis=TRUE"	FALSE
+"compare_pupil_sensitivity_estimands"	"results=<MISSING>"	TRUE
+"compute_kfold_cv"	"fit=<MISSING>; K=10L; folds=c(""random"", ""stratified"", ""grouped""); group=NULL; joint=c(""obs"", ""fold"", ""group""); save_fits=FALSE; seed=1L"	TRUE
+"compute_loo_model_weights"	"x=<MISSING>; method=c(""stacking"", ""pseudobma""); cores=1L"	TRUE
+"compute_psis_loo"	"fit=<MISSING>; moment_match=FALSE; reloo=FALSE; cores=1L; save_psis=TRUE"	TRUE
+"compute_psis_loo_from_log_lik"	"log_lik=<MISSING>; chain_id=NULL; cores=1L; save_psis=TRUE"	TRUE
+"create_advanced_pupil_prior_specification"	"specification=<MISSING>"	FALSE
+"create_analysis_bundle"	"fit=<MISSING>; newdata=NULL; ndraws=1000L; include_group_effects=FALSE; include_loo=FALSE"	TRUE
+"create_analysis_figure_set"	"x=<MISSING>"	TRUE
+"create_analysis_manifest"	"specification=NULL; fit=NULL; data=NULL; estimands=character(); sensitivity_plan=NULL; seed=NULL; label=NULL; notes=character()"	TRUE
+"create_binary_model_report"	"fit=<MISSING>; diagnostics=NULL; posterior_summary=NULL; posterior_predictive=NULL; prior_sensitivity=NULL; recovery=NULL; file=<MISSING>; overwrite=FALSE"	TRUE
+"create_brms_sbc_plan"	"specification=<MISSING>; n_sims=20L; backend=c(""rstan"", ""cmdstanr""); chains=2L; iter=1000L; warmup=500L; thin=1L; seed=1L; generator_iter=3000L; generator_warmup=2000L"	TRUE
+"create_complete_evidence_inventory"	"...=<MISSING>; label=NULL"	TRUE
+"create_contrast_coding_sensitivity_specification"	"specification=<MISSING>; condition_coding=<MISSING>; baseline=<MISSING>"	TRUE
+"create_custom_sbc_plan"	"generator_function=<MISSING>; backend=<MISSING>; n_sims=20L; generator_args=list(); seed=1L"	TRUE
+"create_diagnostic_dashboard"	"fit=NULL; analysis_bundle=NULL; model_card=NULL; loo=NULL; prior_posterior=NULL; sensitivity=NULL; recovery=NULL; sbc=NULL; label=NULL"	TRUE
+"create_diagnostic_dashboard_figures"	"x=<MISSING>"	TRUE
+"create_duration_model_report"	"fit=<MISSING>; diagnostics=NULL; posterior_summary=NULL; posterior_predictive=NULL; prior_sensitivity=NULL; recovery=NULL; file=<MISSING>; overwrite=FALSE"	TRUE
+"create_duration_unit_sensitivity_specification"	"specification=<MISSING>; multiplier=<MISSING>; new_unit=<MISSING>"	TRUE
+"create_figure_set"	"...=<MISSING>; title=""gp3bayes figure set"""	TRUE
+"create_group_deletion_sensitivity_plan"	"specification=<MISSING>; group=c(""participant"", ""item""); units=NULL; max_units=20L"	TRUE
+"create_loo_influence_atlas"	"x=<MISSING>; data=NULL; threshold=0.7"	TRUE
+"create_model_card"	"fit=<MISSING>; analysis_bundle=NULL; manifest=NULL; label=NULL"	TRUE
+"create_model_contract"	"family=<MISSING>; outcome_col=<MISSING>; participant_col=<MISSING>; item_col=NULL; trial_col=NULL; condition_col=NULL; time_col=NULL; predictors=character(); interaction=NULL; random_slope=FALSE; outcome_unit=NULL; notes=character()"	TRUE
+"create_model_evidence_report"	"evidence=<MISSING>; file=<MISSING>; overwrite=FALSE"	TRUE
+"create_model_specification"	"contract=<MISSING>; audit=<MISSING>; priors=<MISSING>"	TRUE
+"create_prediction_contrast_profile"	"fit=<MISSING>; variable=<MISSING>; contrast_variable=<MISSING>; contrast_levels=NULL; values=NULL; n=40L; at=list(); measure=c(""difference"", ""ratio"", ""odds_ratio""); include_group_effects=FALSE; ndraws=NULL; probs=c(0.025, 0.5, 0.975)"	TRUE
+"create_prediction_grid"	"x=<MISSING>; variables=NULL; at=list(); numeric_at=c(""median"", ""mean""); max_rows=5000L"	TRUE
+"create_prediction_profile"	"fit=<MISSING>; variable=<MISSING>; values=NULL; n=50L; at=list(); type=c(""expected"", ""predictive"", ""linear"", ""median""); include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL; probs=c(0.025, 0.5, 0.975); seed=1L"	TRUE
+"create_prediction_surface"	"fit=<MISSING>; x=<MISSING>; y=<MISSING>; x_values=NULL; y_values=NULL; n=30L; at=list(); type=c(""expected"", ""predictive"", ""linear"", ""median""); include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL; probs=c(0.025, 0.5, 0.975); seed=1L; max_rows=2500L"	TRUE
+"create_predictive_distribution_atlas"	"fit=<MISSING>; ndraws=500L; include_group_effects=TRUE; seed=1L"	TRUE
+"create_predictor_scaling_sensitivity_specification"	"specification=<MISSING>; predictor=<MISSING>; scale_factor=<MISSING>; coefficient_scale=<MISSING>; interaction_scale=NULL"	TRUE
+"create_prior_specification"	"contract=<MISSING>; baseline=NULL; intercept_scale=NULL; coefficient_scale=NULL; group_sd_scale=1; residual_scale=NULL; correlation_eta=2; student_df=3"	TRUE
+"create_publication_registry"	"label=NULL"	TRUE
+"create_publication_table_set"	"x=<MISSING>"	TRUE
+"create_pupil_advanced_sensitivity_suite"	"specification=<MISSING>; include=c(""likelihood"", ""residual_scale"", ""autocorrelation"", ""temporal"", ""gp_kernel"")"	FALSE
+"create_pupil_arma_spec"	"p=1L; q=0L; covariance=FALSE"	FALSE
+"create_pupil_contract"	"outcome_col=<MISSING>; participant_col=<MISSING>; trial_col=<MISSING>; time_col=<MISSING>; pupil_unit=<MISSING>; sampling_frequency=<MISSING>; time_unit=c(""seconds"", ""milliseconds""); item_col=NULL; condition_col=NULL; timestamp_col=NULL; eye=c(""unknown"", ""left"", ""right"", ""combined""); left_pupil_col=NULL; right_pupil_col=NULL; channel_audit_unit=NULL; validity_col=NULL; interpolation_col=NULL; blink_col=NULL; gaze_x_col=NULL; gaze_y_col=NULL; luminance_col=NULL; contrast_col=NULL; screen_width=NA_real_; screen_height=NA_real_; baseline_window=NULL; baseline_method=c(""unknown"", ""none"", ""subtract"", ""divide"", ""proportion_change"", ""percent_change""); baseline_applied=FALSE; pfe_corrected=FALSE; pfe_method=NULL; source_vendor=NA_character_; device_model=NA_character_; preprocessing_provenance=NA_character_; upstream_package=NA_character_; upstream_version=NA_character_; notes=character()"	TRUE
+"create_pupil_gp_spec"	"kernel=c(""matern32"", ""matern52"", ""exp_quad""); basis=c(""approximate"", ""exact""); k=30L; scale=TRUE"	FALSE
+"create_pupil_lfo_plan"	"fit=<MISSING>; initial_fraction=0.6; horizon=5L; step=5L; max_refits=8L"	FALSE
+"create_pupil_measurement_model"	"baseline_error=NULL; luminance_error=NULL; gaze_error=NULL; response_error=NULL; covariate_errors=NULL"	FALSE
+"create_pupil_missingness_spec"	"response=c(""exclude"", ""model""); predictors=character(); assumptions=""MAR""; auxiliary_predictors=character()"	FALSE
+"create_pupil_model_set"	"...=<MISSING>; predictive_target=c(""new_trial_known_participant"", ""new_participant"", ""future_segment"", ""new_sample_known_trial"")"	FALSE
+"create_pupil_sensitivity_suite"	"specification=<MISSING>; baseline_windows=list(); baseline_window_operation=NULL; baseline_operations=character(); interpolation_policy=character(); blink_adjacent_margins=numeric(); gaze_adjustment=character(); luminance_adjustment=character(); pfe_prepared=list(); smooth_basis_dimensions=integer(); autocorrelation=character(); analysis_windows=list()"	TRUE
+"create_pupil_validation_plan"	"x=<MISSING>; target=c(""new_trial_known_participant"", ""new_participant"", ""future_segment"", ""new_sample_known_trial""); K=5L; future_fraction=0.2; seed=2026"	TRUE
+"create_random_slope_sensitivity_plan"	"specification=<MISSING>"	TRUE
+"create_reporting_checklist"	"x=<MISSING>"	TRUE
+"create_sensitivity_suite_plan"	"prior_scale=FALSE; powerscale=FALSE; psis_loo=FALSE; random_slope_plan=NULL; group_deletion_plan=NULL; alternative_estimands=list(); duration_unit=NULL; prior_scale_args=list(); powerscale_args=list(); psis_args=list(); random_slope_args=list(); group_deletion_args=list()"	TRUE
+"create_transformation_recipe"	"prepared=<MISSING>"	TRUE
+"design_support_table"	"x=<MISSING>"	TRUE
+"detect_binary_separation"	"x=<MISSING>; formula=NULL; data=NULL"	TRUE
+"diagnose_advanced_pupil_fit"	"fit=<MISSING>; rhat_threshold=1.01; ess_threshold=400"	FALSE
+"diagnose_binary_fit"	"fit=<MISSING>; rhat_pass=1.01; rhat_fail=1.05; ess_per_chain_pass=100; ess_per_chain_fail=50; maximum_treedepth_fraction=0.01; ebfmi_pass=0.3; ebfmi_fail=0.2"	TRUE
+"diagnose_duration_fit"	"fit=<MISSING>; rhat_pass=1.01; rhat_fail=1.05; ess_per_chain_pass=100; ess_per_chain_fail=50; maximum_treedepth_fraction=0.01; ebfmi_pass=0.3; ebfmi_fail=0.2"	TRUE
+"diagnose_model_fit"	"fit=<MISSING>; ...=<MISSING>"	TRUE
+"diagnose_pupil_fit"	"fit=<MISSING>; ndraws=200L; max_lag=10L; max_cells=3000000L"	TRUE
+"diagnostic_dashboard_table"	"x=<MISSING>"	TRUE
+"duration_pit_table"	"x=<MISSING>"	TRUE
+"duration_prediction_scores"	"x=<MISSING>; observed=NULL"	TRUE
+"duration_qq_table"	"x=<MISSING>; probs=seq(0.05, 0.95, by = 0.05)"	TRUE
+"duration_quantile_calibration"	"x=<MISSING>; quantiles=c(0.1, 0.25, 0.5, 0.75, 0.9)"	TRUE
+"duration_tail_check"	"x=<MISSING>; threshold=<MISSING>"	TRUE
+"estimand_sensitivity_table"	"x=<MISSING>"	TRUE
+"estimate_binocular_pupil_trajectory"	"fit=<MISSING>; newdata=NULL; ndraws=500L; probability=0.95"	FALSE
+"estimate_model_estimands"	"fit=<MISSING>; ...=<MISSING>"	TRUE
+"estimate_pupil_auc"	"prediction=<MISSING>; window=<MISSING>; probability=0.95"	TRUE
+"estimate_pupil_dynamic_contrast"	"prediction=<MISSING>; contrast=<MISSING>; threshold=0; probability=0.95"	FALSE
+"estimate_pupil_peak"	"prediction=<MISSING>; window=<MISSING>; probability=0.95"	TRUE
+"estimate_pupil_peak_latency"	"prediction=<MISSING>; window=<MISSING>; probability=0.95"	TRUE
+"estimate_pupil_residual_scale"	"fit=<MISSING>; newdata=NULL; ndraws=500L; probability=0.95"	FALSE
+"estimate_pupil_response_parameters"	"fit=<MISSING>; probability=0.95"	FALSE
+"estimate_pupil_threshold_duration"	"contrast=<MISSING>; direction=c(""above"", ""below"", ""absolute""); threshold=contrast$threshold; probability=0.95"	FALSE
+"estimate_pupil_trajectory"	"prediction=<MISSING>; probability=0.95; interval=c(""pointwise"", ""simultaneous"")"	TRUE
+"estimate_pupil_trajectory_derivative"	"prediction=<MISSING>; order=1L; probability=0.95"	FALSE
+"estimate_pupil_window"	"prediction=<MISSING>; window=<MISSING>; probability=0.95"	TRUE
+"estimate_standardized_duration_estimands"	"fit=<MISSING>; target_data=NULL; target_scale=c(""prepared"", ""raw""); predictive_quantile=0.9; ndraws=NULL; include_group_effects=FALSE; seed=1L"	TRUE
+"estimate_standardized_probability_contrast"	"fit=<MISSING>; target_data=NULL; target_scale=c(""prepared"", ""raw""); ndraws=NULL; include_group_effects=FALSE"	TRUE
+"evaluate_pathological_simulation"	"x=<MISSING>"	TRUE
+"evidence_inventory_table"	"x=<MISSING>"	TRUE
+"extract_expected_predictions"	"fit=<MISSING>; newdata=NULL; include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL"	TRUE
+"extract_linear_predictions"	"fit=<MISSING>; newdata=NULL; include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL"	TRUE
+"extract_log_likelihood"	"fit=<MISSING>; newdata=NULL; include_group_effects=TRUE; ndraws=NULL"	TRUE
+"extract_posterior_draws"	"fit=<MISSING>; variables=NULL; regex=NULL; format=c(""array"", ""matrix"", ""df"", ""rvars"")"	TRUE
+"extract_posterior_predictions"	"fit=<MISSING>; newdata=NULL; include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL; seed=1L"	TRUE
+"extract_sampler_diagnostics"	"fit=<MISSING>"	TRUE
+"fit_advanced_pupil_model"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	FALSE
+"fit_advanced_pupil_model_backend"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	FALSE
+"fit_advanced_pupil_model_cmdstanr"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	FALSE
+"fit_binary_model"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=.gp3b_default_cores(chains); seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_binary_model_backend"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=.gp3b_default_cores(chains); seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_binary_model_cmdstanr"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=.gp3b_default_cores(chains); seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_binocular_pupil_model"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	FALSE
+"fit_duration_model"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=.gp3b_default_cores(chains); seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_duration_model_backend"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=.gp3b_default_cores(chains); seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_duration_model_cmdstanr"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=.gp3b_default_cores(chains); seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_pupil_model"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_pupil_model_backend"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_pupil_model_cmdstanr"	"specification=<MISSING>; chains=4L; iter=2000L; warmup=1000L; cores=min(2L, chains); seed=2026; adapt_delta=0.95; max_treedepth=12L; refresh=0L"	TRUE
+"fit_pupil_response_shape_model"	"specification=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2500L; warmup=1250L; cores=min(2L, chains); seed=2026; adapt_delta=0.97; max_treedepth=13L; refresh=0L"	FALSE
+"freeze_analysis_manifest"	"manifest=<MISSING>; file=NULL; overwrite=FALSE"	TRUE
+"freeze_gp3bayes_schema"	"schema=<MISSING>; file=NULL; overwrite=FALSE"	TRUE
+"gazepoint_pupil_mapping_table"	"x=<MISSING>"	TRUE
+"gp3bayes_specification_traceability"	""	TRUE
+"group_deletion_sensitivity_table"	"x=<MISSING>"	TRUE
+"group_effect_draws_table"	"fit=<MISSING>; groups=NULL; coefficients=NULL; ndraws=NULL; seed=1L; max_rows=1000000L"	TRUE
+"group_effect_rank_probability_table"	"fit=<MISSING>; group=<MISSING>; coefficient=""Intercept""; ndraws=1000L; seed=1L"	TRUE
+"group_effect_table"	"fit=<MISSING>; groups=NULL; probs=c(0.025, 0.975)"	TRUE
+"group_prediction_summary"	"x=<MISSING>; by=<MISSING>; probs=c(0.025, 0.5, 0.975)"	TRUE
+"grouped_prediction_check"	"fit=<MISSING>; group=<MISSING>; ndraws=1000L; probs=c(0.025, 0.5, 0.975); seed=1L"	TRUE
+"identify_identifier_like_predictors"	"data=<MISSING>; contract=<MISSING>; unique_fraction=0.9; integer_fraction=0.98; monotone_correlation=0.98"	TRUE
+"identify_loo_influential_observations"	"x=<MISSING>; threshold=NULL; data=NULL"	TRUE
+"identify_mcmc_issues"	"x=<MISSING>; rhat_threshold=1.01; min_bulk_ess=400; min_tail_ess=400; max_mcse_fraction=0.1"	TRUE
+"inspect_gazepoint_pupil_schema"	"data=<MISSING>"	TRUE
+"interaction_prior_summary"	"specification=<MISSING>"	TRUE
+"invert_transformation_recipe"	"data=<MISSING>; recipe=<MISSING>"	TRUE
+"loo_diagnostic_table"	"x=<MISSING>"	TRUE
+"loo_flagged_data"	"x=<MISSING>; threshold=0.7"	TRUE
+"loo_group_influence_table"	"x=<MISSING>; group=<MISSING>; data=NULL"	TRUE
+"loo_influence_atlas_table"	"x=<MISSING>"	TRUE
+"loo_influence_summary"	"x=<MISSING>"	TRUE
+"loo_pointwise_table"	"x=<MISSING>; data=NULL"	TRUE
+"loo_summary_table"	"x=<MISSING>"	TRUE
+"manifest_comparison_table"	"x=<MISSING>"	TRUE
+"materialize_pupil_advanced_sensitivity_scenario"	"suite=<MISSING>; scenario=<MISSING>"	FALSE
+"materialize_pupil_sensitivity_scenario"	"suite=<MISSING>; scenario_id=<MISSING>"	TRUE
+"mcmc_diagnostic_table"	"fit=<MISSING>; variables=NULL; regex=NULL"	TRUE
+"missingness_audit_table"	"x=<MISSING>"	TRUE
+"model_card_table"	"x=<MISSING>"	TRUE
+"model_comparison_table"	"x=<MISSING>"	TRUE
+"model_evidence_table"	"x=<MISSING>"	TRUE
+"model_weights_table"	"x=<MISSING>"	TRUE
+"model_workflow_status"	"x=<MISSING>"	TRUE
+"plot_advanced_pupil_simulation"	"x=<MISSING>; observed=TRUE; ...=<MISSING>"	FALSE
+"plot_advanced_pupil_trajectory"	"x=<MISSING>; probability=0.95; ...=<MISSING>"	FALSE
+"plot_autocorrelation"	"fit=<MISSING>; variables=NULL; regex=""^b_""; lags=20L"	TRUE
+"plot_backend_environment_gg"	"x=<MISSING>"	TRUE
+"plot_backend_parity_gg"	"x=<MISSING>"	TRUE
+"plot_binary_calibration"	"x=<MISSING>; bins=10L"	TRUE
+"plot_binary_calibration_uncertainty"	"x=<MISSING>"	TRUE
+"plot_binary_group_calibration"	"x=<MISSING>; group=NULL"	TRUE
+"plot_binary_precision_recall"	"x=<MISSING>; observed=NULL"	TRUE
+"plot_binary_roc"	"x=<MISSING>; observed=NULL"	TRUE
+"plot_binary_threshold_metrics"	"x=<MISSING>; observed=NULL; thresholds=seq(0.1, 0.9, by = 0.05)"	TRUE
+"plot_binocular_pupil_trajectory"	"x=<MISSING>; probability=x$probability; ...=<MISSING>"	FALSE
+"plot_design_support_gg"	"x=<MISSING>"	TRUE
+"plot_diagnostic_dashboard"	"x=<MISSING>"	TRUE
+"plot_duration_pit"	"x=<MISSING>; bins=10L"	TRUE
+"plot_duration_qq"	"x=<MISSING>"	TRUE
+"plot_duration_quantile_calibration"	"x=<MISSING>"	TRUE
+"plot_duration_tail"	"x=<MISSING>"	TRUE
+"plot_estimand_intervals"	"x=<MISSING>; quantities=NULL; probs=c(0.025, 0.5, 0.975)"	TRUE
+"plot_estimand_sensitivity_gg"	"x=<MISSING>"	TRUE
+"plot_exceedance_probability"	"x=<MISSING>"	TRUE
+"plot_group_deletion_sensitivity"	"x=<MISSING>"	TRUE
+"plot_group_effect_distribution"	"x=<MISSING>; max_levels=20L"	TRUE
+"plot_group_effect_rank_probability"	"x=<MISSING>"	TRUE
+"plot_group_effects"	"x=<MISSING>; groups=NULL"	TRUE
+"plot_group_predictions"	"x=<MISSING>; group_column=<MISSING>"	TRUE
+"plot_grouped_prediction_check"	"x=<MISSING>"	TRUE
+"plot_loo_group_elpd"	"x=<MISSING>"	TRUE
+"plot_loo_group_influence"	"x=<MISSING>"	TRUE
+"plot_loo_influence"	"x=<MISSING>"	TRUE
+"plot_loo_influence_rank"	"x=<MISSING>"	TRUE
+"plot_loo_pareto_vs_elpd"	"x=<MISSING>"	TRUE
+"plot_loo_pointwise_elpd"	"x=<MISSING>"	TRUE
+"plot_manifest_comparison_gg"	"x=<MISSING>"	TRUE
+"plot_mcmc_quality"	"x=<MISSING>"	TRUE
+"plot_missingness_gg"	"x=<MISSING>"	TRUE
+"plot_model_comparison"	"x=<MISSING>"	TRUE
+"plot_model_evidence_gg"	"x=<MISSING>"	TRUE
+"plot_model_weights"	"x=<MISSING>"	TRUE
+"plot_posterior_areas"	"x=<MISSING>; variables=NULL; regex=NULL; prob=0.5; prob_outer=0.95"	TRUE
+"plot_posterior_correlations"	"x=<MISSING>; variables=NULL; regex=NULL; method=c(""pearson"", ""spearman"")"	TRUE
+"plot_posterior_density"	"x=<MISSING>; variables=NULL; regex=NULL"	TRUE
+"plot_posterior_intervals"	"x=<MISSING>; variables=NULL; regex=NULL; prob=0.8; prob_outer=0.95"	TRUE
+"plot_posterior_pairs"	"fit=<MISSING>; variables=NULL; regex=""^b_""; max_variables=8L"	TRUE
+"plot_powerscale_sensitivity_gg"	"x=<MISSING>"	TRUE
+"plot_ppc_statistic"	"x=<MISSING>; bins=30L"	TRUE
+"plot_prediction_contrast_profile"	"x=<MISSING>"	TRUE
+"plot_prediction_draws"	"x=<MISSING>; observations=NULL; max_draws=500L"	TRUE
+"plot_prediction_gradient"	"x=<MISSING>"	TRUE
+"plot_prediction_interval_width"	"x=<MISSING>"	TRUE
+"plot_prediction_intervals"	"x=<MISSING>; max_rows=100L"	TRUE
+"plot_prediction_profile"	"x=<MISSING>"	TRUE
+"plot_prediction_rank_probabilities"	"x=<MISSING>"	TRUE
+"plot_prediction_score_uncertainty"	"x=<MISSING>"	TRUE
+"plot_prediction_support"	"x=<MISSING>"	TRUE
+"plot_prediction_surface"	"x=<MISSING>"	TRUE
+"plot_prediction_surface_uncertainty"	"x=<MISSING>"	TRUE
+"plot_predictive_atlas_statistics"	"x=<MISSING>"	TRUE
+"plot_predictive_coverage"	"x=<MISSING>"	TRUE
+"plot_predictive_quantile_envelope"	"x=<MISSING>"	TRUE
+"plot_predictive_residuals"	"x=<MISSING>"	TRUE
+"plot_prior_posterior_contraction"	"x=<MISSING>"	TRUE
+"plot_prior_posterior_density"	"x=<MISSING>; max_draws=1000L"	TRUE
+"plot_prior_posterior_intervals"	"x=<MISSING>"	TRUE
+"plot_prior_posterior_shift"	"x=<MISSING>"	TRUE
+"plot_prior_sensitivity"	"x=<MISSING>"	TRUE
+"plot_prior_sensitivity_scenarios"	"x=<MISSING>"	TRUE
+"plot_pupil_autocorrelation_comparison"	"x=<MISSING>; absolute=TRUE; ...=<MISSING>"	FALSE
+"plot_pupil_dynamic_contrast"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_estimand"	"x=<MISSING>"	TRUE
+"plot_pupil_gp_hyperparameters"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_identifiability_audit"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_lfo"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_measurement_audit"	"x=<MISSING>"	TRUE
+"plot_pupil_measurement_uncertainty"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_missingness"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_model_comparison"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_model_complexity"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_observed_trajectory"	"x=<MISSING>; summary=TRUE"	TRUE
+"plot_pupil_posterior_trajectory"	"x=<MISSING>"	TRUE
+"plot_pupil_ppc"	"x=<MISSING>; component=c(""trajectory"", ""residuals"", ""features"", ""autocorrelation"", ""heterogeneity"", ""measurement_context"")"	TRUE
+"plot_pupil_predictive_calibration"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_readiness"	"x=<MISSING>"	TRUE
+"plot_pupil_residual_acf"	"x=<MISSING>"	TRUE
+"plot_pupil_residual_scale"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_residual_spectrum"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_response_parameters"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_sensitivity"	"x=<MISSING>"	TRUE
+"plot_pupil_temporal_dependence"	"x=<MISSING>; ...=<MISSING>"	FALSE
+"plot_pupil_trajectory_derivative"	"x=<MISSING>; probability=x$probability; ...=<MISSING>"	FALSE
+"plot_pupil_validation"	"x=<MISSING>"	TRUE
+"plot_random_intercept_variance_partition"	"x=<MISSING>"	TRUE
+"plot_random_slope_sensitivity"	"x=<MISSING>"	TRUE
+"plot_rank_diagnostics"	"fit=<MISSING>; variables=NULL; regex=""^b_"""	TRUE
+"plot_recovery_bias"	"x=<MISSING>"	TRUE
+"plot_recovery_coverage"	"x=<MISSING>"	TRUE
+"plot_recovery_estimates"	"x=<MISSING>; variables=NULL"	TRUE
+"plot_recovery_fit_status"	"x=<MISSING>"	TRUE
+"plot_recovery_rmse"	"x=<MISSING>"	TRUE
+"plot_reporting_checklist"	"x=<MISSING>"	TRUE
+"plot_sampler_diagnostics"	"fit=<MISSING>"	TRUE
+"plot_sampling_diagnostics"	"fit=<MISSING>; type=c(""trace"", ""energy"", ""treedepth"", ""divergence""); variables=NULL"	TRUE
+"plot_sbc_coverage_gg"	"x=<MISSING>; variables=NULL; ...=<MISSING>"	TRUE
+"plot_sbc_ecdf_gg"	"x=<MISSING>; variables=NULL; ...=<MISSING>"	TRUE
+"plot_sbc_rank_gg"	"x=<MISSING>; variables=NULL; ...=<MISSING>"	TRUE
+"plot_sbc_simulated_vs_estimated_gg"	"x=<MISSING>; variables=NULL; ...=<MISSING>"	TRUE
+"plot_schema_comparison_gg"	"x=<MISSING>"	TRUE
+"plot_sensitivity_suite_gg"	"x=<MISSING>"	TRUE
+"plot_uncertainty_decomposition"	"x=<MISSING>; max_rows=100L"	TRUE
+"plot_variance_components"	"x=<MISSING>"	TRUE
+"posterior_correlation_table"	"x=<MISSING>; variables=NULL; regex=NULL; method=c(""pearson"", ""spearman"")"	TRUE
+"posterior_interval_table"	"x=<MISSING>; variables=NULL; regex=NULL; probs=c(0.025, 0.5, 0.975)"	TRUE
+"posterior_predictive_statistic"	"x=<MISSING>; statistic=c(""mean"", ""sd"", ""median"", ""q90"", ""q95"", ""max"", ""tail_rate""); threshold=NULL"	TRUE
+"posterior_predictive_summary_table"	"x=<MISSING>; probs=c(0.025, 0.5, 0.975)"	TRUE
+"posterior_probability_table"	"x=<MISSING>; variables=NULL; regex=NULL; rope=NULL"	TRUE
+"powerscale_sensitivity_table"	"x=<MISSING>"	TRUE
+"powerscale_sequence_for_fit"	"fit=<MISSING>; variable=NULL; prior_selection=NULL; likelihood_selection=NULL; component=""both"""	TRUE
+"ppc_statistic_table"	"x=<MISSING>"	TRUE
+"predict_advanced_pupil_trajectory"	"fit=<MISSING>; newdata=NULL; type=c(""expected"", ""posterior_predictive"", ""linear""); ndraws=500L; population_only=TRUE; allow_new_levels=FALSE; max_grid=5000L"	FALSE
+"predict_binary_probability"	"fit=<MISSING>; newdata=NULL; include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL; probs=c(0.025, 0.5, 0.975)"	TRUE
+"predict_duration"	"fit=<MISSING>; newdata=NULL; type=c(""median"", ""expected"", ""predictive""); include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL; probs=c(0.025, 0.5, 0.975); seed=1L"	TRUE
+"predict_model"	"fit=<MISSING>; newdata=NULL; type=c(""expected"", ""predictive"", ""linear"", ""median""); include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=NULL; probs=c(0.025, 0.5, 0.975); seed=1L"	TRUE
+"predict_pupil_trajectory"	"fit=<MISSING>; newdata=NULL; type=c(""expected"", ""posterior_predictive"", ""linear""); ndraws=500L; population_only=TRUE; allow_new_levels=FALSE; max_grid=5000L; max_cells=5000000L"	TRUE
+"prediction_contrast"	"x=<MISSING>; row1=<MISSING>; row2=<MISSING>; measure=c(""difference"", ""ratio"", ""odds_ratio""); probs=c(0.025, 0.5, 0.975)"	TRUE
+"prediction_contrast_profile_table"	"x=<MISSING>"	TRUE
+"prediction_draws_long"	"x=<MISSING>; max_draws=NULL; seed=1L"	TRUE
+"prediction_exceedance_probability"	"x=<MISSING>; threshold=<MISSING>; direction=c(""above"", ""below"")"	TRUE
+"prediction_gradient_table"	"x=<MISSING>; probs=c(0.025, 0.5, 0.975)"	TRUE
+"prediction_interval_width"	"x=<MISSING>"	TRUE
+"prediction_pairwise_contrasts"	"x=<MISSING>; rows=NULL; measure=c(""difference"", ""ratio""); max_rows=20L; probs=c(0.025, 0.5, 0.975)"	TRUE
+"prediction_profile_table"	"x=<MISSING>"	TRUE
+"prediction_rank_probabilities"	"x=<MISSING>; rows=NULL; direction=c(""higher"", ""lower""); max_rows=20L"	TRUE
+"prediction_score_uncertainty"	"fit=<MISSING>; newdata=NULL; include_group_effects=FALSE; ndraws=1000L; probs=c(0.025, 0.5, 0.975)"	TRUE
+"prediction_score_uncertainty_table"	"x=<MISSING>"	TRUE
+"prediction_support_table"	"x=<MISSING>"	TRUE
+"prediction_surface_table"	"x=<MISSING>"	TRUE
+"prediction_table"	"x=<MISSING>"	TRUE
+"prediction_uncertainty_decomposition"	"fit=<MISSING>; newdata=NULL; include_group_effects=FALSE; allow_new_levels=FALSE; ndraws=1000L; seed=1L"	TRUE
+"predictive_coverage_table"	"x=<MISSING>; levels=c(0.5, 0.8, 0.9, 0.95)"	TRUE
+"predictive_distribution_atlas_table"	"x=<MISSING>"	TRUE
+"predictive_quantile_envelope"	"x=<MISSING>; probabilities=seq(0.05, 0.95, by = 0.05); probs=c(0.025, 0.5, 0.975); ndraws=500L; include_group_effects=TRUE; seed=1L"	TRUE
+"predictive_residuals"	"fit=<MISSING>; type=NULL; ndraws=1000L"	TRUE
+"preflight_model_specification"	"specification=<MISSING>; ...=<MISSING>"	TRUE
+"prepare_binocular_pupil_timecourse"	"data=<MISSING>; left_col=""pupil_left""; right_col=""pupil_right""; participant_col=""participant_id""; time_col=""time_ms""; condition_col=""condition""; trial_col=""trial_id""; item_col=NULL; covariates=character()"	FALSE
+"prepare_hierarchical_binary_data"	"data=<MISSING>; contract=<MISSING>; outcome_mapping=NULL; condition_levels=NULL; condition_coding=c(-0.5, 0.5); scale_predictors=character(); scale_time=FALSE; missing=c(""error"", ""drop"")"	TRUE
+"prepare_hierarchical_duration_data"	"data=<MISSING>; contract=<MISSING>; condition_levels=NULL; condition_coding=c(-0.5, 0.5); scale_predictors=character(); scale_time=FALSE; outcome_multiplier=1; converted_unit=NULL; missing=c(""error"", ""drop"")"	TRUE
+"prepare_pupil_timecourse"	"data=<MISSING>; contract=<MISSING>; baseline_operation=c(""none"", ""subtract"", ""divide"", ""proportion_change"", ""percent_change""); baseline_window=NULL; output_unit=NULL; scale_covariates=character(); max_rows=2000000L; irregularity_review_cv=0.1"	TRUE
+"prior_posterior_bridge"	"fit=<MISSING>; variables=NULL; regex=""^(b_|sd_|cor_|sigma$)""; ndraws=4000L; probs=c(0.025, 0.5, 0.975); seed=1L"	TRUE
+"prior_posterior_distance_table"	"x=<MISSING>"	TRUE
+"prior_posterior_draws_long"	"x=<MISSING>; max_draws=1000L; seed=1L"	TRUE
+"prior_posterior_summary_table"	"x=<MISSING>"	TRUE
+"prior_sensitivity_scenario_table"	"x=<MISSING>"	TRUE
+"prior_sensitivity_table"	"x=<MISSING>"	TRUE
+"prior_specification_table"	"x=<MISSING>"	TRUE
+"publication_registry_table"	"x=<MISSING>"	TRUE
+"pupil_advanced_capabilities"	""	FALSE
+"pupil_advanced_compatibility_table"	""	FALSE
+"pupil_advanced_mapping_table"	"prepared=<MISSING>"	FALSE
+"pupil_advanced_specification_table"	"x=<MISSING>"	FALSE
+"pupil_autocorrelation_table"	"x=<MISSING>; level=c(""summary"", ""series"")"	FALSE
+"pupil_binocular_agreement_table"	"trajectory=<MISSING>; tolerance=0.1"	FALSE
+"pupil_binocular_correlation"	"fit=<MISSING>; probability=0.95"	FALSE
+"pupil_binocular_difference"	"x=<MISSING>"	FALSE
+"pupil_condition_contrast"	"prediction=<MISSING>; contrast=<MISSING>; threshold=0; probability=0.95"	TRUE
+"pupil_distribution_table"	"x=<MISSING>"	FALSE
+"pupil_dynamic_contrast_table"	"x=<MISSING>"	FALSE
+"pupil_gp_hyperparameters"	"fit=<MISSING>; probability=0.95"	FALSE
+"pupil_gp_table"	"x=<MISSING>"	FALSE
+"pupil_identifiability_table"	"x=<MISSING>"	FALSE
+"pupil_measurement_audit_table"	"x=<MISSING>"	TRUE
+"pupil_measurement_uncertainty_table"	"x=<MISSING>"	FALSE
+"pupil_missingness_table"	"x=<MISSING>"	FALSE
+"pupil_model_card"	"x=<MISSING>"	FALSE
+"pupil_model_card_table"	"x=<MISSING>"	FALSE
+"pupil_model_comparison_table"	"x=<MISSING>"	FALSE
+"pupil_model_weights"	"x=<MISSING>; method=c(""stacking"", ""pseudobma""); BB=TRUE"	FALSE
+"pupil_ppc_table"	"x=<MISSING>; component=c(""trajectory"", ""distribution"", ""features"", ""residuals"", ""residual_trajectory"", ""autocorrelation"", ""heterogeneity"", ""measurement_context"")"	TRUE
+"pupil_readiness_table"	"x=<MISSING>; component=c(""summary"", ""participant"", ""condition"", ""trial"")"	TRUE
+"pupil_residual_acf"	"x=<MISSING>; max_lag=10L; ndraws=200L"	TRUE
+"pupil_residual_scale_table"	"x=<MISSING>"	FALSE
+"pupil_residual_spectrum"	"fit=<MISSING>; ndraws=300L"	FALSE
+"pupil_response_parameter_table"	"x=<MISSING>"	FALSE
+"pupil_sensitivity_table"	"x=<MISSING>"	TRUE
+"pupil_specification_table"	"x=<MISSING>"	TRUE
+"pupil_trajectory_derivative_table"	"x=<MISSING>; probability=x$probability"	FALSE
+"pupil_trajectory_table"	"x=<MISSING>"	TRUE
+"pupil_validation_table"	"x=<MISSING>"	TRUE
+"random_intercept_variance_partition"	"fit=<MISSING>; probs=c(0.025, 0.5, 0.975)"	TRUE
+"random_intercept_variance_partition_table"	"x=<MISSING>"	TRUE
+"random_slope_sensitivity_table"	"x=<MISSING>"	TRUE
+"read_analysis_manifest"	"file=<MISSING>"	TRUE
+"read_gp3bayes_schema"	"file=<MISSING>"	TRUE
+"recovery_estimate_table"	"x=<MISSING>"	TRUE
+"recovery_fit_status_table"	"x=<MISSING>"	TRUE
+"recovery_parameter_table"	"x=<MISSING>"	TRUE
+"register_publication_figure"	"registry=<MISSING>; name=<MISSING>; figure=<MISSING>; caption=NULL; source=NULL"	TRUE
+"register_publication_table"	"registry=<MISSING>; name=<MISSING>; table=<MISSING>; caption=NULL; source=NULL"	TRUE
+"review_duration_extremes"	"data=<MISSING>; contract=<MISSING>; mad_cutoff=4; iqr_multiplier=3"	TRUE
+"run_binary_recovery"	"repetitions=20L; n_participants=30L; trials_per_participant=16L; n_items=12L; include_items=TRUE; random_slope=TRUE; seed=1001L; chains=4L; iter=1500L; warmup=750L; cores=min(chains, .gp3b_default_cores(chains)); adapt_delta=0.95; max_treedepth=12L; refresh=0L; interval_probability=0.95; minimum_repetitions=20L; maximum_standardized_bias=0.25; minimum_coverage=0.8; minimum_diagnostic_pass_fraction=0.8; continue_on_error=TRUE"	TRUE
+"run_duration_recovery"	"repetitions=20L; n_participants=30L; trials_per_participant=16L; n_items=12L; include_items=TRUE; random_slope=TRUE; baseline_median=500; outcome_unit=""milliseconds""; seed=2001L; chains=4L; iter=1500L; warmup=750L; cores=min(chains, .gp3b_default_cores(chains)); adapt_delta=0.95; max_treedepth=12L; refresh=0L; interval_probability=0.95; minimum_repetitions=20L; maximum_standardized_bias=0.25; minimum_coverage=0.8; minimum_diagnostic_pass_fraction=0.8; continue_on_error=TRUE"	TRUE
+"run_group_deletion_sensitivity"	"plan=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=1L; seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L; ndraws=NULL; retain_fits=FALSE"	TRUE
+"run_random_slope_sensitivity"	"plan=<MISSING>; backend=c(""rstan"", ""cmdstanr""); chains=4L; iter=2000L; warmup=1000L; cores=1L; seed=1L; adapt_delta=0.95; max_treedepth=12L; refresh=0L; ndraws=NULL; retain_fits=FALSE"	TRUE
+"run_sbc_plan"	"plan=<MISSING>; cores_per_fit=1L; keep_fits=FALSE; thin_ranks=NULL; cache_mode=""none""; cache_location=NULL"	TRUE
+"run_sensitivity_suite"	"fit=<MISSING>; plan=create_sensitivity_suite_plan(); reference_estimand=NULL; stop_on_error=FALSE"	TRUE
+"sampler_diagnostic_table"	"fit=<MISSING>"	TRUE
+"save_figure_set"	"x=<MISSING>; directory=<MISSING>; width=7; height=5; dpi=300; device=""png""; overwrite=FALSE"	TRUE
+"save_publication_registry_figures"	"x=<MISSING>; directory=<MISSING>; width=7; height=5; dpi=300; device=""png""; overwrite=FALSE"	TRUE
+"sbc_overview_table"	"x=<MISSING>"	TRUE
+"sbc_stats_table"	"x=<MISSING>"	TRUE
+"schema_comparison_table"	"x=<MISSING>"	TRUE
+"score_pupil_predictions"	"observed=<MISSING>; draws=<MISSING>; probability=0.9"	FALSE
+"sensitivity_suite_table"	"x=<MISSING>"	TRUE
+"simulate_advanced_pupil_timecourse"	"n_participants=24L; trials_per_participant=6L; time_points=41L; time_range=c(-500, 2500); conditions=c(""control"", ""treatment""); family=c(""gaussian"", ""student""); residual_scale=0.08; heteroskedastic_strength=0.35; ar=0.45; ma=numeric(); participant_sd=0.12; amplitude_condition=0.22; latency_condition=120; outlier_fraction=0.01; missing_fraction=0.03; measurement_error_sd=0.015; student_df=5; seed=2026"	FALSE
+"simulate_binary_pathology"	"scenario=c(""null_contrast"", ""weak_information"", ""severe_imbalance"", ""near_separation"", ""omitted_random_slope"", ""sparse_item_structure"", ""all_zero_participants"", ""rank_deficiency"", ""missing_outcomes""); seed=1L"	TRUE
+"simulate_binocular_pupil_timecourse"	"...=<MISSING>; residual_correlation=0.65; eye_bias=0.015; eye_specific_sd=0.035"	FALSE
+"simulate_declared_prior_draws"	"x=<MISSING>; variables=NULL; regex=NULL; ndraws=4000L; seed=1L"	TRUE
+"simulate_duration_pathology"	"scenario=c(""null_ratio"", ""high_group_heterogeneity"", ""weak_information"", ""severe_imbalance"", ""heavy_tailed_contamination"", ""mixture"", ""censoring"", ""incorrect_unit"", ""zero_duration"", ""negative_duration""); seed=1L"	TRUE
+"simulate_hierarchical_binary_data"	"n_participants=40; trials_per_participant=20; n_items=20; intercept=stats::qlogis(0.35); condition_effect=0.8; participant_covariate_effect=0.3; trial_covariate_effect=0.15; interaction_effect=0.25; participant_sd=0.7; item_sd=0.35; random_slope_sd=0.3; random_slope_cor=0; condition_probability=0.5; balanced_condition=TRUE; include_items=TRUE; seed=1"	TRUE
+"simulate_hierarchical_duration_data"	"n_participants=40L; trials_per_participant=20L; n_items=20L; baseline_median=500; condition_effect=log(1.15); participant_covariate_effect=log(1.08); trial_covariate_effect=log(1.04); interaction_effect=log(1.05); participant_sd=0.35; item_sd=0.2; random_slope_sd=0.15; random_slope_cor=0; residual_sd=0.4; condition_probability=0.5; balanced_condition=TRUE; include_items=TRUE; outcome_unit=""milliseconds""; seed=1L"	TRUE
+"simulate_pupil_response_shape"	"n_participants=20L; trials_per_participant=6L; time_points=41L; conditions=c(""control"", ""treatment""); baseline=3.2; amplitude=0.7; onset=250; rise=180; duration=1200; decay=260; condition_amplitude_ratio=1.2; condition_onset_shift=80; residual_sd=0.08; seed=2026"	FALSE
+"simulate_pupil_timecourse"	"n_participants=20L; trials_per_participant=12L; n_items=12L; sampling_frequency=60; time_window=c(-0.5, 2.5); baseline_window=c(-0.5, 0); conditions=c(""control"", ""treatment""); baseline_pupil=4; response_amplitude=0.45; condition_difference=0.18; peak_latency=0.9; participant_sd=0.25; item_sd=0.08; residual_sd=0.08; ar1=0.55; blink_trial_probability=0.15; blink_duration=0.12; include_gaze=TRUE; include_luminance=TRUE; gaze_drift_sd=0.002; luminance_amplitude=0.12; seed=2026; max_rows=500000L"	TRUE
+"specify_advanced_pupil_timecourse_model"	"prepared=<MISSING>; temporal_structure=c(""smooth"", ""linear"", ""gaussian_process""); family=c(""gaussian"", ""student""); residual_scale=c(""constant"", ""condition"", ""time"", ""condition_time""); distribution=NULL; smooth_basis_dimension=10L; gp_spec=create_pupil_gp_spec(); condition_trajectory=NULL; autocorrelation=c(""none"", ""ar1"", ""ar2"", ""arma11""); participant_trajectory=c(""none"", ""factor_smooth""); item_effects=NULL; covariates=character(); measurement_model=NULL; missingness_model=NULL; prior_scales=NULL; predictive_target=c(""new_trial_known_participant"", ""new_participant"", ""future_segment"", ""new_sample_known_trial""); allow_high_complexity=FALSE"	FALSE
+"specify_binary_model"	"prepared=<MISSING>; baseline=0.5; intercept_scale=1.5; coefficient_scale=0.75; group_sd_scale=1; correlation_eta=2; student_df=3"	TRUE
+"specify_binary_model_with_interaction_prior"	"prepared=<MISSING>; baseline=<MISSING>; intercept_scale=1.5; main_effect_scale=0.75; interaction_scale=0.5; group_sd_scale=1; correlation_eta=2; student_df=3"	TRUE
+"specify_binocular_pupil_model"	"prepared=<MISSING>; temporal_structure=c(""smooth"", ""linear"", ""gaussian_process""); family=c(""gaussian"", ""student""); smooth_basis_dimension=10L; gp_spec=create_pupil_gp_spec(); residual_correlation=TRUE; item_effects=NULL; prior_scales=NULL; allow_high_complexity=FALSE"	FALSE
+"specify_duration_model"	"prepared=<MISSING>; baseline=<MISSING>; intercept_scale=1; coefficient_scale=0.5; group_sd_scale=1; residual_scale=1; correlation_eta=2; student_df=3"	TRUE
+"specify_duration_model_with_interaction_prior"	"prepared=<MISSING>; baseline=<MISSING>; intercept_scale=1; main_effect_scale=0.35; interaction_scale=0.25; group_sd_scale=0.5; residual_scale=0.5; correlation_eta=2; student_df=3"	TRUE
+"specify_pupil_distribution"	"family=c(""gaussian"", ""student""); residual_scale=c(""constant"", ""condition"", ""time"", ""condition_time"")"	FALSE
+"specify_pupil_response_shape_model"	"prepared=<MISSING>; family=c(""gaussian"", ""student""); condition_effects=c(""amplitude"", ""onset"", ""duration""); participant_effects=c(""baseline"", ""amplitude""); covariates=character(); prior_scales=NULL"	FALSE
+"specify_pupil_timecourse_model"	"prepared=<MISSING>; temporal_structure=c(""smooth"", ""linear""); smooth_basis_dimension=10L; condition_trajectory=NULL; autocorrelation=c(""ar1"", ""none""); participant_trajectory=c(""none"", ""factor_smooth""); item_effects=NULL; covariates=character(); prior_scales=NULL"	TRUE
+"summarise_binary_group_variation"	"data=<MISSING>; contract=<MISSING>; group=c(""participant"", ""item"")"	TRUE
+"summarise_binary_posterior"	"fit=<MISSING>; probability=0.95; variables=NULL"	TRUE
+"summarise_condition_balance"	"data=<MISSING>; contract=<MISSING>; warning_fraction=0.1; failure_fraction=0.02"	TRUE
+"summarise_duration_posterior"	"fit=<MISSING>; probability=0.95; variables=NULL"	TRUE
+"summarise_estimand_draws"	"x=<MISSING>; quantities=NULL; probs=c(0.025, 0.5, 0.975)"	TRUE
+"summarise_mcmc_quality"	"fit=<MISSING>; ...=<MISSING>"	TRUE
+"summarise_model_posterior"	"fit=<MISSING>; ...=<MISSING>"	TRUE
+"summarise_pupil_posterior"	"fit=<MISSING>; probability=0.95"	TRUE
+"summarise_sbc_result"	"x=<MISSING>"	TRUE
+"summarise_sensitivity_suite"	"x=<MISSING>"	TRUE
+"theme_gp3bayes"	"base_size=11; base_family="""""	TRUE
+"translate_advanced_pupil_model_to_brms"	"specification=<MISSING>"	FALSE
+"translate_binary_model_to_brms"	"specification=<MISSING>"	TRUE
+"translate_binary_model_with_interaction_prior"	"specification=<MISSING>"	TRUE
+"translate_binocular_pupil_model_to_brms"	"specification=<MISSING>"	FALSE
+"translate_duration_model_to_brms"	"specification=<MISSING>"	TRUE
+"translate_duration_model_with_interaction_prior"	"specification=<MISSING>"	TRUE
+"translate_pupil_model_to_brms"	"specification=<MISSING>"	TRUE
+"translate_pupil_response_shape_to_brms"	"specification=<MISSING>"	FALSE
+"validate_analysis_manifest"	"manifest=<MISSING>; strict=FALSE"	TRUE
+"validate_backend_environment"	"backend=c(""rstan"", ""cmdstanr""); compile_test=FALSE; strict=FALSE"	TRUE
+"validate_gp3bayes_object"	"x=<MISSING>; recursive=TRUE; strict=FALSE"	TRUE
+"validate_gp3bayes_schema"	"x=<MISSING>; schema=<MISSING>; strict=FALSE; compare_lengths=FALSE"	TRUE
+"validate_prior_specification"	"priors=<MISSING>; contract=NULL"	TRUE
+"validate_publication_registry"	"x=<MISSING>"	TRUE
+"validate_pupil_leave_future_out"	"fit=<MISSING>; plan=<MISSING>; execute=FALSE; cores=1L; seed=2026"	FALSE
+"validate_pupil_model"	"fit=<MISSING>; plan=<MISSING>; execute=FALSE; ndraws=200L; max_cells=3000000L"	TRUE
+"validate_transformation_replay"	"prepared=<MISSING>; tolerance=1e-10"	TRUE
+"variance_component_table"	"fit=<MISSING>; probs=c(0.025, 0.5, 0.975)"	TRUE
+"write_analysis_bundle_report"	"x=<MISSING>; file=<MISSING>"	TRUE
+"write_diagnostic_dashboard_report"	"x=<MISSING>; file=<MISSING>; overwrite=FALSE"	TRUE
+"write_model_card"	"x=<MISSING>; file=<MISSING>; overwrite=FALSE"	TRUE
+"write_publication_registry"	"x=<MISSING>; file=<MISSING>; overwrite=FALSE"	TRUE
+"write_reproducibility_report"	"manifest=<MISSING>; file=<MISSING>; overwrite=FALSE"	TRUE

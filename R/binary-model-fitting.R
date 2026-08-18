@@ -428,7 +428,7 @@ translate_binary_model_to_brms <- function(specification) {
 #'     identical(
 #'       validate_backend_environment(
 #'         "rstan",
-#'         compile_test = TRUE,
+#'         compile_test = FALSE,
 #'         strict = FALSE
 #'       )$status,
 #'       "pass"

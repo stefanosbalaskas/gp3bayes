@@ -1,0 +1,57 @@
+---
+title: "Joint Binocular Pupil Models"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Joint Binocular Pupil Models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 4.5)
+```
+
+```{r}
+library(gp3bayes)
+sim <- simulate_binocular_pupil_timecourse(
+  n_participants = 12,
+  trials_per_participant = 4,
+  time_points = 31,
+  residual_correlation = 0.70,
+  eye_bias = 0.02,
+  seed = 3040
+)
+prep <- prepare_binocular_pupil_timecourse(sim$data)
+prep
+audit_binocular_pupil_readiness(prep)
+```
+
+No averaged pupil column is created. Left and right eyes remain separate responses.
+
+```{r}
+spec <- specify_binocular_pupil_model(
+  prep,
+  temporal_structure = "smooth",
+  family = "gaussian",
+  residual_correlation = TRUE
+)
+spec
+```
+
+```{r eval=FALSE}
+fit <- fit_binocular_pupil_model(
+  spec,
+  backend = "cmdstanr",
+  chains = 4,
+  cores = 2
+)
+
+trajectory <- estimate_binocular_pupil_trajectory(fit)
+plot_binocular_pupil_trajectory(trajectory)
+
+pupil_binocular_correlation(fit)
+pupil_binocular_difference(trajectory)
+pupil_binocular_agreement_table(trajectory, tolerance = 0.10)
+```
+
+Residual eye correlation is an association parameter. High posterior correlation does not establish that the two eyes are interchangeable or justify arbitrary eye substitution.
