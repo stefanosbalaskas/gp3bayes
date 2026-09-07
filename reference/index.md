@@ -1029,3 +1029,8 @@ validation, sensitivity, and governance functions introduced in gp3bayes
   : Translate the experimental response-shape model to brms
 - [`validate_pupil_leave_future_out()`](https://stefanosbalaskas.github.io/gp3bayes/reference/validate_pupil_leave_future_out.md)
   : Execute or materialize leave-future-out validation
+
+## SCR responsivity sensitivity
+
+- [`estimate_scr_responsivity_bayes()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.md)
+  : Bayesian retention-first SCR responsivity summary

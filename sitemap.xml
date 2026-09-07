@@ -54,6 +54,7 @@
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/reproducible-analysis-manifests.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/robust-distributional-pupil-models.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/sbc-publication-diagnostics.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/scr-responsivity-sensitivity.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/sensitivity-and-recovery.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/sensitivity-atlas.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/sensitivity-evidence-workflow.html</loc></url>
@@ -204,6 +205,7 @@
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_trajectory.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_trajectory_derivative.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_pupil_window.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_standardized_duration_estimands.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_standardized_probability_contrast.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/evaluate_pathological_simulation.html</loc></url>

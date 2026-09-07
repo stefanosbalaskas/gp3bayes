@@ -34,6 +34,8 @@
   Decisions](https://stefanosbalaskas.github.io/gp3bayes/articles/posterior-diagnostics.md):
 - [Prior Sensitivity and Simulation-Based
   Recovery](https://stefanosbalaskas.github.io/gp3bayes/articles/sensitivity-and-recovery.md):
+- [Retention-first Bayesian SCR
+  responsivity](https://stefanosbalaskas.github.io/gp3bayes/articles/scr-responsivity-sensitivity.md):
 
 ### Installation
 
