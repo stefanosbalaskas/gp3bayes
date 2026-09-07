@@ -2,6 +2,8 @@
 
 ## gp3bayes 0.5.0
 
+CRAN release: 2026-08-23
+
 ### Advanced dynamic and measurement-aware Bayesian pupillometry
 
 - Adds an additive advanced pupil-model specification layer while
