@@ -553,6 +553,9 @@ reference:
   - translate_binocular_pupil_model_to_brms
   - translate_pupil_response_shape_to_brms
   - validate_pupil_leave_future_out
+- title: SCR responsivity sensitivity
+  contents:
+  - estimate_scr_responsivity_bayes
 articles:
 - title: Bayesian dynamic pupillometry
   contents:
