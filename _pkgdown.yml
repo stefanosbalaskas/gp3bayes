@@ -573,6 +573,7 @@ articles:
   contents:
   - posterior-diagnostics
   - sensitivity-and-recovery
+  - scr-responsivity-sensitivity
 - title: Installation
   contents:
   - optional-backend-installation
