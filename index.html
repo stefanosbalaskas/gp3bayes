@@ -60,104 +60,74 @@
 </h1>
 </div>
 <p><a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><img src="https://zenodo.org/badge/1305351994.svg" alt="DOI"></a> <a href="https://CRAN.R-project.org/package=gp3bayes" class="external-link"><img src="https://www.r-pkg.org/badges/version/gp3bayes" alt="CRAN status"></a></p>
-<p><code>gp3bayes</code> is an independent R package for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data.</p>
+<p><code>gp3bayes</code> is an independent R package for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data, with a governed dynamic-pupillometry layer and explicit validation, sensitivity, prediction, and reporting infrastructure.</p>
+<p><strong>Current GitHub release:</strong> <strong>0.5.0</strong> (<code>v0.5.0</code>, 18 August 2026)</p>
+<p><a href="https://stefanosbalaskas.github.io/gp3bayes/">Website</a> · <a href="https://stefanosbalaskas.github.io/gp3bayes/reference/index.html">Reference</a> · <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/index.html">Articles</a> · <a href="https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.5.0" class="external-link">Release</a></p>
 <div class="section level2">
-<h2 id="scope">Scope<a class="anchor" aria-label="anchor" href="#scope"></a>
+<h2 id="what-gp3bayes-provides">What gp3bayes provides<a class="anchor" aria-label="anchor" href="#what-gp3bayes-provides"></a>
 </h2>
-<p>The current package version is <code>gp3bayes</code> 0.2.0.</p>
-<p>The package provides:</p>
 <ul>
-<li>explicit model contracts and standard or strict model-readiness audits;</li>
-<li>deterministic hierarchical binary and positive-duration simulation with stored truth;</li>
-<li>recorded outcome, condition, unit, missing-value, coding, and scaling decisions;</li>
-<li>reusable transformation recipes with replay, inversion, and validation;</li>
-<li>inspectable backend-independent prior specifications and prior predictive checks;</li>
-<li>restricted Bernoulli-logit and lognormal model construction;</li>
-<li>optional full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>;</li>
-<li>R-hat, bulk/tail ESS, divergence, treedepth, and energy diagnostics;</li>
-<li>family-specific posterior summaries and detailed posterior predictive checks;</li>
-<li>design-standardised binary probability contrasts and duration median, ratio, and predictive-quantile estimands;</li>
-<li>prior-scale, power-scaling, structural, deletion, contrast-coding, predictor-scaling, and duration-unit sensitivity workflows;</li>
-<li>PSIS-LOO diagnostics, influence assessment, model comparison, model weights, and optional exact K-fold validation;</li>
-<li>fixed-effects separation screening and simulation-based calibration;</li>
-<li>specification traceability and conservative structured reporting without automatic adequacy, robustness, exclusion, or model-selection claims.</li>
+<li>explicit model contracts, readiness audits, transformation replay, prior specifications, and prior-predictive checks;</li>
+<li>restricted hierarchical Bernoulli-logit and positive uncensored lognormal-duration workflows;</li>
+<li>backend-portable full-MCMC fitting through <code>brms</code> with <code>rstan</code> or <code>cmdstanr</code> where explicitly requested;</li>
+<li>posterior diagnostics, prediction, calibration, PSIS-LOO/K-fold validation, recovery, SBC, sensitivity, and publication evidence;</li>
+<li>governed dynamic pupillometry covering temporal dependence, robust distributions, Gaussian-process trajectories, measurement uncertainty, missingness, binocular modelling, response-shape models, and predictive calibration;</li>
+<li>structured model cards, evidence inventories, figures, tables, dashboards, and reproducibility manifests without automatic adequacy, robustness, exclusion, or model-selection claims.</li>
 </ul>
-<p>The approved model-family scope remains restricted to:</p>
+</div>
+<div class="section level2">
+<h2 id="september-2026-retention-first-bayesian-scr-responsivity">September 2026: retention-first Bayesian SCR responsivity<a class="anchor" aria-label="anchor" href="#september-2026-retention-first-bayesian-scr-responsivity"></a>
+</h2>
+<p>The current development branch adds <code><a href="reference/estimate_scr_responsivity_bayes.html">estimate_scr_responsivity_bayes()</a></code> for participant-level SCR responsivity accountability.</p>
+<p>The function keeps the conventional amplitude-threshold non-responder flag for provenance, estimates a Beta-Binomial posterior response probability, and sets <code>retain_for_modeling = TRUE</code> for every participant with finite trial data. Low-reactive participants are therefore retained in the primary modelling dataset, while hard exclusion can be evaluated explicitly as a sensitivity specification rather than being imposed silently during preprocessing.</p>
+<p>Posterior responsivity is a <strong>graded modelling quantity</strong>, not a diagnostic or psychological label. The implementation is dependency-light and does not claim to reproduce a Dirichlet-process mixture model.</p>
+<p>See the <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/scr-responsivity-sensitivity.html">Retention-first Bayesian SCR responsivity article</a> and <a href="https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.html"><code>estimate_scr_responsivity_bayes()</code> reference</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="bayesian-dynamic-pupillometry">Bayesian dynamic pupillometry<a class="anchor" aria-label="anchor" href="#bayesian-dynamic-pupillometry"></a>
+</h2>
+<p><code>gp3bayes</code> 0.5.0 extends the contract-first workflow with governed vendor-neutral pupil time-course analysis. Pupil data are explicitly mapped and audited; the package does not silently interpolate missing samples, infer cognitive states, or select a preferred model automatically.</p>
+<p>The 0.5 layer includes:</p>
+<ul>
+<li>Gaussian and Student-t observation models with governed residual-scale structures;</li>
+<li>AR/ARMA temporal dependence and governed Gaussian-process trajectories;</li>
+<li>measurement-error declarations and MAR-oriented missing-value models;</li>
+<li>binocular preparation and modelling without requiring upstream eye averaging;</li>
+<li>experimental nonlinear pupil response-shape models;</li>
+<li>temporal derivatives, dynamic contrasts, declared threshold-duration estimands, and posterior trajectories;</li>
+<li>PSIS-LOO, exact K-fold, leave-future-out planning, predictive calibration, model comparison, model cards, and sensitivity suites.</li>
+</ul>
+<p>Start with the <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-dynamic-pupillometry.html">Bayesian dynamic pupillometry article</a> or browse the <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/index.html">advanced pupillometry 0.5 articles</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="model-family-scope">Model-family scope<a class="anchor" aria-label="anchor" href="#model-family-scope"></a>
+</h2>
+<p>The original contract-first core remains deliberately restricted to:</p>
 <ol style="list-style-type: decimal">
-<li>hierarchical Bernoulli-logit models for binary trial-level outcomes;</li>
+<li>hierarchical Bernoulli-logit models for binary trial-level outcomes; and</li>
 <li>hierarchical lognormal models for strictly positive uncensored durations.</li>
 </ol>
-<p>Core contract, validation, simulation, preparation, transformation, specification, and prior-predictive functionality does not require Gazepoint hardware, Gazepoint exports, <code>gp3tools</code>, proprietary software, private data, or a Bayesian backend. Full-MCMC fitting requires <code>brms</code> and one supported sampling backend: <code>rstan</code> or <code>cmdstanr</code>.</p>
+<p>Advanced pupil models are separately governed by their explicit pupil specifications and evidence gates. No interface accepts unrestricted formulas or arbitrary model families under an existing approved function name.</p>
 </div>
 <div class="section level2">
-<h2 id="development-0409000-bayesian-dynamic-pupillometry">Development 0.4.0.9000: Bayesian dynamic pupillometry<a class="anchor" aria-label="anchor" href="#development-0409000-bayesian-dynamic-pupillometry"></a>
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The repository development line <code>0.4.0.9000</code> introduces a governed Bayesian dynamic-pupillometry model family. The archived stable repository release remains <code>0.2.0</code> (<code>v0.2.0</code>); the CRAN badge above reports the CRAN release separately. The <code>0.4.0.9000</code> functionality described here is development functionality and is not represented as a CRAN release.</p>
-<p>The pupil workflow consumes an explicitly mapped and audited time series rather than silently performing generic pupil preprocessing. Blink/interpolation status, baseline decisions, gaze/PFE information, luminance, contrast, units, device metadata, and upstream provenance can be declared and audited. The first approved model family is a restricted Gaussian hierarchical time-course model with package-constructed temporal structure, grouping effects, scale-aware priors, and optional declared temporal dependence.</p>
+<p>Install the exact GitHub 0.5.0 release:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pupil_simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_pupil_timecourse.html">simulate_pupil_timecourse</a></span><span class="op">(</span></span>
-<span>  n_participants <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  trials_per_participant <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  n_items <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  sampling_frequency <span class="op">=</span> <span class="fl">20</span>,</span>
-<span>  time_window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.0</span><span class="op">)</span>,</span>
-<span>  baseline_window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.2</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">2026</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">pupil_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_pupil_contract.html">create_pupil_contract</a></span><span class="op">(</span></span>
-<span>  outcome_col <span class="op">=</span> <span class="st">"pupil_mm"</span>,</span>
-<span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
-<span>  trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span>
-<span>  item_col <span class="op">=</span> <span class="st">"item_id"</span>,</span>
-<span>  condition_col <span class="op">=</span> <span class="st">"condition"</span>,</span>
-<span>  time_col <span class="op">=</span> <span class="st">"event_time"</span>,</span>
-<span>  pupil_unit <span class="op">=</span> <span class="st">"millimetres"</span>,</span>
-<span>  sampling_frequency <span class="op">=</span> <span class="fl">20</span>,</span>
-<span>  time_unit <span class="op">=</span> <span class="st">"seconds"</span>,</span>
-<span>  eye <span class="op">=</span> <span class="st">"combined"</span>,</span>
-<span>  validity_col <span class="op">=</span> <span class="st">"valid"</span>,</span>
-<span>  interpolation_col <span class="op">=</span> <span class="st">"interpolated"</span>,</span>
-<span>  blink_col <span class="op">=</span> <span class="st">"blink"</span>,</span>
-<span>  gaze_x_col <span class="op">=</span> <span class="st">"gaze_x"</span>,</span>
-<span>  gaze_y_col <span class="op">=</span> <span class="st">"gaze_y"</span>,</span>
-<span>  luminance_col <span class="op">=</span> <span class="st">"luminance"</span>,</span>
-<span>  baseline_window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.2</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>  baseline_method <span class="op">=</span> <span class="st">"none"</span>,</span>
-<span>  preprocessing_provenance <span class="op">=</span> <span class="st">"gp3bayes deterministic simulator"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">pupil_prepared</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_pupil_timecourse.html">prepare_pupil_timecourse</a></span><span class="op">(</span></span>
-<span>  <span class="va">pupil_simulation</span><span class="op">$</span><span class="va">data</span>,</span>
-<span>  <span class="va">pupil_contract</span>,</span>
-<span>  baseline_operation <span class="op">=</span> <span class="st">"subtract"</span>,</span>
-<span>  baseline_window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.2</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">pupil_readiness</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/audit_pupil_readiness.html">audit_pupil_readiness</a></span><span class="op">(</span><span class="va">pupil_prepared</span><span class="op">)</span></span>
-<span><span class="va">pupil_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/specify_pupil_timecourse_model.html">specify_pupil_timecourse_model</a></span><span class="op">(</span></span>
-<span>  <span class="va">pupil_prepared</span>,</span>
-<span>  smooth_basis_dimension <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  autocorrelation <span class="op">=</span> <span class="st">"none"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p>Model fitting is deliberately separate from preprocessing and does not itself establish convergence, model adequacy, causal identification, or a psychological interpretation of pupil change.</p>
-</div>
-<div class="section level2">
-<h2 id="id_020-stabilization-layer">0.2.0 stabilization layer<a class="anchor" aria-label="anchor" href="#id_020-stabilization-layer"></a>
-</h2>
-<p><code>gp3bayes</code> 0.2.0 adds a stable family-neutral workflow API, analysis manifests and reproducibility reports, pre-fit design-support diagnostics, unified sensitivity/evidence inventories, backend-environment and posterior-summary parity audits, and serialized-object schema checks. These layers compose the existing binary and duration workflows without adding unrestricted formulas, automatic model selection, automatic exclusion, or automatic adequacy/causal claims.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stefanosbalaskas/gp3bayes"</span>, ref <span class="op">=</span> <span class="st">"v0.5.0"</span><span class="op">)</span></span></code></pre></div>
+<p>For the current development branch, including the September 2026 SCR responsivity addition:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/audit_design_support.html">audit_design_support</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">contract</span><span class="op">)</span></span>
-<span><span class="va">manifest</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_analysis_manifest.html">create_analysis_manifest</a></span><span class="op">(</span><span class="va">specification</span>, seed <span class="op">=</span> <span class="fl">2026</span><span class="op">)</span></span>
-<span><span class="va">manifest</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/freeze_analysis_manifest.html">freeze_analysis_manifest</a></span><span class="op">(</span><span class="va">manifest</span><span class="op">)</span></span>
-<span><span class="va">capabilities</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/backend_capabilities.html">backend_capabilities</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stefanosbalaskas/gp3bayes"</span><span class="op">)</span></span></code></pre></div>
+<p>Optional Bayesian backends are only required for workflows that actually fit models.</p>
 </div>
 <div class="section level2">
-<h2 id="model-contracts">Model contracts<a class="anchor" aria-label="anchor" href="#model-contracts"></a>
+<h2 id="minimal-contract-example">Minimal contract example<a class="anchor" aria-label="anchor" href="#minimal-contract-example"></a>
 </h2>
-<p><code><a href="reference/create_model_contract.html">create_model_contract()</a></code> records the approved methodological specification and neutral column mappings for one initial model family. Creating a contract does not validate data, fit a model, or establish model adequacy.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">binary_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stefanosbalaskas.github.io/gp3bayes/">gp3bayes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
 <span>  family <span class="op">=</span> <span class="st">"binary"</span>,</span>
 <span>  outcome_col <span class="op">=</span> <span class="st">"selected"</span>,</span>
 <span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
@@ -166,233 +136,46 @@
 <span>  condition_col <span class="op">=</span> <span class="st">"condition"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">binary_contract</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_model_contract&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="do">##   Family: binary</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="do">##   Likelihood: Bernoulli</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">##   Link: logit</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">##   Outcome: selected</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">##   Participant: participant_id</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="do">##   Item: stimulus_id</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">##   Condition: condition</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">##   Random slope requested: FALSE</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">##   Fitting performed: FALSE</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/audit_model_readiness.html">audit_model_readiness</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">contract</span><span class="op">)</span></span></code></pre></div>
+<p>Creating a contract does not validate a substantive hypothesis, fit a model, or establish model adequacy.</p>
 </div>
 <div class="section level2">
-<h2 id="readiness-audits">Readiness audits<a class="anchor" aria-label="anchor" href="#readiness-audits"></a>
+<h2 id="release-validation">Release validation<a class="anchor" aria-label="anchor" href="#release-validation"></a>
 </h2>
-<p><code><a href="reference/audit_model_readiness.html">audit_model_readiness()</a></code> evaluates observable data requirements before formula construction or model fitting. Failures block progression, whereas warnings identify structures requiring review.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">binary_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  participant_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"p1"</span>, <span class="st">"p2"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,</span>
-<span>  stimulus_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"s"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  trial_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, times <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,</span>
-<span>  selected <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">readiness_audit</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/audit_model_readiness.html">audit_model_readiness</a></span><span class="op">(</span></span>
-<span>  <span class="va">binary_data</span>,</span>
-<span>  <span class="va">binary_contract</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">readiness_audit</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_readiness_audit&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="do">##   Family: binary</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="do">##   Rows: 8</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="do">##   Status: ready</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="do">##   Ready: TRUE</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="do">##   Checks: 18 passed, 0 warnings, 0 failures</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="model-specifications">Model specifications<a class="anchor" aria-label="anchor" href="#model-specifications"></a>
-</h2>
-<p><code><a href="reference/build_model_formula.html">build_model_formula()</a></code> translates the approved contract into an R formula, while <code><a href="reference/create_prior_specification.html">create_prior_specification()</a></code> records family-appropriate priors without creating backend-specific objects. A ready audit, formula, contract, and validated priors can then be combined into one inspectable model specification.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">binary_priors</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_prior_specification.html">create_prior_specification</a></span><span class="op">(</span></span>
-<span>  <span class="va">binary_contract</span>,</span>
-<span>  baseline <span class="op">=</span> <span class="fl">0.5</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_specification.html">create_model_specification</a></span><span class="op">(</span></span>
-<span>  <span class="va">binary_contract</span>,</span>
-<span>  <span class="va">readiness_audit</span>,</span>
-<span>  <span class="va">binary_priors</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_specification</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_model_specification&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">##   Family: binary</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">##   Formula: selected ~ condition + (1 | participant_id) + (1 | stimulus_id)</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">##   Readiness status: ready</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">##   Readiness warnings: 0</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##   Prior classes: Intercept, b, sd</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##   Backend: none</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">##   Fit performed: FALSE</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="hierarchical-binary-workflow-foundation">Hierarchical binary workflow foundation<a class="anchor" aria-label="anchor" href="#hierarchical-binary-workflow-foundation"></a>
-</h2>
-<p>The backend-independent binary workflow can simulate known hierarchical data-generating processes, prepare neutral long-format data, construct a restricted model specification, and evaluate prior predictive plausibility. No model is fitted and no posterior draws are produced.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">binary_simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_hierarchical_binary_data.html">simulate_hierarchical_binary_data</a></span><span class="op">(</span></span>
-<span>  n_participants <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>  trials_per_participant <span class="op">=</span> <span class="fl">8</span>,</span>
-<span>  n_items <span class="op">=</span> <span class="fl">6</span>,</span>
-<span>  random_slope_sd <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">2026</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_workflow_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
-<span>  family <span class="op">=</span> <span class="st">"binary"</span>,</span>
-<span>  outcome_col <span class="op">=</span> <span class="st">"selected"</span>,</span>
-<span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
-<span>  item_col <span class="op">=</span> <span class="st">"item_id"</span>,</span>
-<span>  trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span>
-<span>  condition_col <span class="op">=</span> <span class="st">"condition"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="st">"trial_covariate"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_prepared</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_hierarchical_binary_data.html">prepare_hierarchical_binary_data</a></span><span class="op">(</span></span>
-<span>  <span class="va">binary_simulation</span><span class="op">$</span><span class="va">data</span>,</span>
-<span>  <span class="va">binary_workflow_contract</span>,</span>
-<span>  condition_levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span>,</span>
-<span>  scale_predictors <span class="op">=</span> <span class="st">"trial_covariate"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_workflow_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/specify_binary_model.html">specify_binary_model</a></span><span class="op">(</span></span>
-<span>  <span class="va">binary_prepared</span>,</span>
-<span>  baseline <span class="op">=</span> <span class="fl">0.35</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_prior_check</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_binary_prior_predictive.html">check_binary_prior_predictive</a></span><span class="op">(</span></span>
-<span>  <span class="va">binary_workflow_specification</span>,</span>
-<span>  draws <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">2027</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binary_prior_check</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="do">## &lt;gp3bayes_binary_prior_predictive_check&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="do">##   Adequate: TRUE</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="do">##   Draws: 100</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="do">##   Failed checks: 0</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="do">##   Backend: none</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="do">##   Fit performed: FALSE</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="restricted-binary-model-fitting">Restricted binary model fitting<a class="anchor" aria-label="anchor" href="#restricted-binary-model-fitting"></a>
-</h2>
-<p><code><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms()</a></code> converts an approved package specification into a restricted Bernoulli-logit <code>brms</code> representation without compiling or fitting a model.</p>
-<p><code><a href="reference/fit_binary_model.html">fit_binary_model()</a></code> retains the original fixed <code>rstan</code> fitting route. For backend-portable full-MCMC fitting, <code><a href="reference/fit_binary_model_backend.html">fit_binary_model_backend()</a></code> accepts either <code>backend = "rstan"</code> or <code>backend = "cmdstanr"</code> while preserving the same approved family, formula, priors, and sampling contract.</p>
-<p>Neither interface accepts unrestricted formulas, arbitrary model families, alternative inference algorithms, user-supplied Stan programs, or arbitrary backend arguments.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"brms"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">backend_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/translate_binary_model_to_brms.html">translate_binary_model_to_brms</a></span><span class="op">(</span></span>
-<span>    <span class="va">binary_workflow_specification</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span>  <span class="va">backend_specification</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-<p>A returned fit does not by itself establish convergence, posterior adequacy, causal identification, or substantive validity. Those assessments require separate diagnostic and reporting gates.</p>
-</div>
-<div class="section level2">
-<h2 id="binary-posterior-validation">Binary posterior validation<a class="anchor" aria-label="anchor" href="#binary-posterior-validation"></a>
-</h2>
-<p>Approved binary fits can be assessed with conservative numerical sampling diagnostics, posterior summaries, posterior predictive checks, prior-scale sensitivity, simulation-based recovery, and structured Markdown reports. A threshold pass is not an automatic convergence or posterior-adequacy claim.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">diagnostics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/diagnose_binary_fit.html">diagnose_binary_fit</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span>
-<span><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/summarise_binary_posterior.html">summarise_binary_posterior</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span>
-<span><span class="va">predictive</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_binary_posterior_predictive.html">check_binary_posterior_predictive</a></span><span class="op">(</span><span class="va">binary_fit</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="hierarchical-lognormal-duration-workflow">Hierarchical lognormal duration workflow<a class="anchor" aria-label="anchor" href="#hierarchical-lognormal-duration-workflow"></a>
-</h2>
-<p>The duration workflow supports strictly positive, finite, uncensored durations with an explicit recorded unit. It provides deterministic simulation, preparation, inspectable priors, prior predictive checks, and restricted optional full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">duration_simulation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_hierarchical_duration_data.html">simulate_hierarchical_duration_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">2026</span><span class="op">)</span></span>
-<span><span class="va">duration_contract</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_model_contract.html">create_model_contract</a></span><span class="op">(</span></span>
-<span>  family <span class="op">=</span> <span class="st">"duration"</span>,</span>
-<span>  outcome_col <span class="op">=</span> <span class="st">"duration"</span>,</span>
-<span>  participant_col <span class="op">=</span> <span class="st">"participant_id"</span>,</span>
-<span>  item_col <span class="op">=</span> <span class="st">"item_id"</span>,</span>
-<span>  trial_col <span class="op">=</span> <span class="st">"trial_id"</span>,</span>
-<span>  condition_col <span class="op">=</span> <span class="st">"condition"</span>,</span>
-<span>  outcome_unit <span class="op">=</span> <span class="st">"milliseconds"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">duration_prepared</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_hierarchical_duration_data.html">prepare_hierarchical_duration_data</a></span><span class="op">(</span></span>
-<span>  <span class="va">duration_simulation</span><span class="op">$</span><span class="va">data</span>,</span>
-<span>  <span class="va">duration_contract</span>,</span>
-<span>  condition_levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">duration_specification</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/specify_duration_model.html">specify_duration_model</a></span><span class="op">(</span></span>
-<span>  <span class="va">duration_prepared</span>,</span>
-<span>  baseline <span class="op">=</span> <span class="fl">500</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="duration-posterior-validation">Duration posterior validation<a class="anchor" aria-label="anchor" href="#duration-posterior-validation"></a>
-</h2>
-<p>Approved lognormal duration fits support the same conservative diagnostic contract as binary fits, together with positive-scale posterior predictive checks, prior sensitivity, simulation-based recovery, and structured reports. Exponentiated population coefficients are conditional median ratios, not automatically causal effects.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">duration_diagnostics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/diagnose_duration_fit.html">diagnose_duration_fit</a></span><span class="op">(</span><span class="va">duration_fit</span><span class="op">)</span></span>
-<span><span class="va">duration_posterior</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/summarise_duration_posterior.html">summarise_duration_posterior</a></span><span class="op">(</span><span class="va">duration_fit</span><span class="op">)</span></span>
-<span><span class="va">duration_predictive</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_duration_posterior_predictive.html">check_duration_posterior_predictive</a></span><span class="op">(</span><span class="va">duration_fit</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h2>
-<p>Citation metadata are provided in both <code>CITATION.cff</code> and <code>inst/CITATION</code>. After installing the package, obtain the R-formatted citation for the installed version with:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
-<p>The repository currently represents release version <strong>0.2.0</strong>.</p>
-<p>For archived software citation:</p>
+<p>The <code>v0.5.0</code> release record reports:</p>
 <ul>
-<li>Current CRAN release: <code>gp3bayes</code> 0.1.1 — <a href="https://cran.r-project.org/package=gp3bayes" class="external-link">CRAN</a>
-</li>
-<li>Concept DOI for all releases — <a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><code>10.5281/zenodo.21518698</code></a>
-</li>
-<li>Latest archived Zenodo version currently documented in the repository: <code>gp3bayes</code> 0.2.0 — <a href="https://doi.org/10.5281/zenodo.21880165" class="external-link"><code>10.5281/zenodo.21880165</code></a>
-</li>
+<li>
+<strong>458 public exports</strong>;</li>
+<li>
+<strong>230 S3 registrations</strong>;</li>
+<li>
+<strong>458/458 frozen public signatures</strong>;</li>
+<li>
+<strong>465 Rd files</strong> and <strong>59 vignette sources</strong>;</li>
+<li>full backend-free test suite passed; and</li>
+<li>exact source-archive <code>R CMD check --as-cran</code>: <strong>0 errors, 0 warnings, 0 notes</strong>.</li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="release-status">Release status<a class="anchor" aria-label="anchor" href="#release-status"></a>
-</h2>
-<p><code>gp3bayes</code> 0.2.0 is the current package version.</p>
-<p>The 0.2.0 API provides contract-first Bernoulli-logit and lognormal-duration workflows; backend-portable full-MCMC fitting through <code>brms</code> with either <code>rstan</code> or <code>cmdstanr</code>; advanced sensitivity, PSIS-LOO, model-weighting, separation-screening, and simulation-based calibration workflows; strict specification closure; transformation replay; explicit posterior estimands; detailed posterior predictive checks; and optional exact K-fold validation.</p>
-<p>The repository release version is <code>gp3bayes</code> 0.2.0; CRAN availability is reported by the status badge above.</p>
+<p>The September SCR responsivity addition is post-0.5.0 development functionality and is not represented as part of the immutable <code>v0.5.0</code> archive.</p>
 </div>
 <div class="section level2">
 <h2 id="interpretation-boundaries">Interpretation boundaries<a class="anchor" aria-label="anchor" href="#interpretation-boundaries"></a>
 </h2>
-<p>Behavioural, gaze, pupil, and physiological measurements do not directly reveal emotion, stress, cognition, comprehension, personality, diagnosis, deception, intention, or other latent psychological states.</p>
-<p>Associations must not be described as causal effects unless the study design and target estimand justify causal interpretation.</p>
+<p>Behavioural, gaze, pupil, EDA/SCR, cardiovascular, and other physiological measurements do not directly reveal emotion, stress, cognition, comprehension, personality, diagnosis, deception, intention, or another latent psychological state.</p>
+<p>A fitted model, favorable diagnostic, posterior probability, predictive score, or model weight does not by itself establish causal identification, model adequacy, robustness, or substantive validity. Automatic participant exclusion and automatic model selection remain outside the package’s governed decision boundary.</p>
 </div>
 <div class="section level2">
-<h2 id="advanced-optional-workflows">Advanced optional workflows<a class="anchor" aria-label="anchor" href="#advanced-optional-workflows"></a>
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p><code>gp3bayes</code> 0.2.0 includes conservative optional adapters for power-scaled sensitivity through <code>priorsense</code>, PSIS-LOO diagnostics and model weights through <code>loo</code>, fixed-effects separation screening through <code>detectseparation</code>, simulation-based calibration through <code>SBC</code>, and full-MCMC backend selection between <code>rstan</code> and <code>cmdstanr</code>.</p>
-<p>Dedicated binary and duration pathology generators make documented failure cases directly reproducible.</p>
-<p>These extensions do not introduce unrestricted formulas, arbitrary model families, automatic model selection, automatic exclusion, or automatic adequacy claims.</p>
+<p>Use the citation metadata supplied with the installed package:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"gp3bayes"</span><span class="op">)</span></span></code></pre></div>
+<p>The software concept DOI is <a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><code>10.5281/zenodo.21518698</code></a>.</p>
 </div>
 <div class="section level2">
 <h2 id="licence">Licence<a class="anchor" aria-label="anchor" href="#licence"></a>
 </h2>
-<p><code>gp3bayes</code> is released under the MIT License.</p>
-</div>
-<div class="section level2">
-<h2 id="specification-closure">Specification closure<a class="anchor" aria-label="anchor" href="#specification-closure"></a>
-</h2>
-<p>The 0.2.0 API closes the remaining contract-level requirements with strict readiness audits, exact transformation replay, first-class probability/median/tail estimands, governed structural and deletion sensitivity, duration-unit invariance, detailed posterior predictive checks, and optional exact K-fold validation.</p>
-<p>These functions remain inside the two approved Bernoulli-logit and positive uncensored lognormal-duration contracts. They do not add arbitrary formulas, likelihoods, automatic model selection, automatic exclusions, or causal claims.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/audit_model_readiness_strict.html">audit_model_readiness_strict</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">contract</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/create_transformation_recipe.html">create_transformation_recipe</a></span><span class="op">(</span><span class="va">prepared</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/estimate_standardized_probability_contrast.html">estimate_standardized_probability_contrast</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/estimate_standardized_duration_estimands.html">estimate_standardized_duration_estimands</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/check_binary_ppc_details.html">check_binary_ppc_details</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/check_duration_ppc_details.html">check_duration_ppc_details</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/gp3bayes_specification_traceability.html">gp3bayes_specification_traceability</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>MIT License.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

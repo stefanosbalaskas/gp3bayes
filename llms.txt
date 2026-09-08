@@ -6,153 +6,130 @@ status](https://www.r-pkg.org/badges/version/gp3bayes)](https://CRAN.R-project.o
 
 `gp3bayes` is an independent R package for transparent, contract-first
 Bayesian workflows for repeated-measures and hierarchical behavioural
-data.
+data, with a governed dynamic-pupillometry layer and explicit
+validation, sensitivity, prediction, and reporting infrastructure.
 
-## Scope
+**Current GitHub release:** **0.5.0** (`v0.5.0`, 18 August 2026)
 
-The current package version is `gp3bayes` 0.2.0.
+[Website](https://stefanosbalaskas.github.io/gp3bayes/) ·
+[Reference](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html)
+·
+[Articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html)
+·
+[Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.5.0)
 
-The package provides:
+## What gp3bayes provides
 
-- explicit model contracts and standard or strict model-readiness
-  audits;
-- deterministic hierarchical binary and positive-duration simulation
-  with stored truth;
-- recorded outcome, condition, unit, missing-value, coding, and scaling
-  decisions;
-- reusable transformation recipes with replay, inversion, and
-  validation;
-- inspectable backend-independent prior specifications and prior
-  predictive checks;
-- restricted Bernoulli-logit and lognormal model construction;
-- optional full-MCMC fitting through `brms` with either `rstan` or
-  `cmdstanr`;
-- R-hat, bulk/tail ESS, divergence, treedepth, and energy diagnostics;
-- family-specific posterior summaries and detailed posterior predictive
-  checks;
-- design-standardised binary probability contrasts and duration median,
-  ratio, and predictive-quantile estimands;
-- prior-scale, power-scaling, structural, deletion, contrast-coding,
-  predictor-scaling, and duration-unit sensitivity workflows;
-- PSIS-LOO diagnostics, influence assessment, model comparison, model
-  weights, and optional exact K-fold validation;
-- fixed-effects separation screening and simulation-based calibration;
-- specification traceability and conservative structured reporting
-  without automatic adequacy, robustness, exclusion, or model-selection
-  claims.
+- explicit model contracts, readiness audits, transformation replay,
+  prior specifications, and prior-predictive checks;
+- restricted hierarchical Bernoulli-logit and positive uncensored
+  lognormal-duration workflows;
+- backend-portable full-MCMC fitting through `brms` with `rstan` or
+  `cmdstanr` where explicitly requested;
+- posterior diagnostics, prediction, calibration, PSIS-LOO/K-fold
+  validation, recovery, SBC, sensitivity, and publication evidence;
+- governed dynamic pupillometry covering temporal dependence, robust
+  distributions, Gaussian-process trajectories, measurement uncertainty,
+  missingness, binocular modelling, response-shape models, and
+  predictive calibration;
+- structured model cards, evidence inventories, figures, tables,
+  dashboards, and reproducibility manifests without automatic adequacy,
+  robustness, exclusion, or model-selection claims.
 
-The approved model-family scope remains restricted to:
+## September 2026: retention-first Bayesian SCR responsivity
+
+The current development branch adds
+[`estimate_scr_responsivity_bayes()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.md)
+for participant-level SCR responsivity accountability.
+
+The function keeps the conventional amplitude-threshold non-responder
+flag for provenance, estimates a Beta-Binomial posterior response
+probability, and sets `retain_for_modeling = TRUE` for every participant
+with finite trial data. Low-reactive participants are therefore retained
+in the primary modelling dataset, while hard exclusion can be evaluated
+explicitly as a sensitivity specification rather than being imposed
+silently during preprocessing.
+
+Posterior responsivity is a **graded modelling quantity**, not a
+diagnostic or psychological label. The implementation is
+dependency-light and does not claim to reproduce a Dirichlet-process
+mixture model.
+
+See the [Retention-first Bayesian SCR responsivity
+article](https://stefanosbalaskas.github.io/gp3bayes/articles/scr-responsivity-sensitivity.html)
+and [`estimate_scr_responsivity_bayes()`
+reference](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.html).
+
+## Bayesian dynamic pupillometry
+
+`gp3bayes` 0.5.0 extends the contract-first workflow with governed
+vendor-neutral pupil time-course analysis. Pupil data are explicitly
+mapped and audited; the package does not silently interpolate missing
+samples, infer cognitive states, or select a preferred model
+automatically.
+
+The 0.5 layer includes:
+
+- Gaussian and Student-t observation models with governed residual-scale
+  structures;
+- AR/ARMA temporal dependence and governed Gaussian-process
+  trajectories;
+- measurement-error declarations and MAR-oriented missing-value models;
+- binocular preparation and modelling without requiring upstream eye
+  averaging;
+- experimental nonlinear pupil response-shape models;
+- temporal derivatives, dynamic contrasts, declared threshold-duration
+  estimands, and posterior trajectories;
+- PSIS-LOO, exact K-fold, leave-future-out planning, predictive
+  calibration, model comparison, model cards, and sensitivity suites.
+
+Start with the [Bayesian dynamic pupillometry
+article](https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-dynamic-pupillometry.html)
+or browse the [advanced pupillometry 0.5
+articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html).
+
+## Model-family scope
+
+The original contract-first core remains deliberately restricted to:
 
 1.  hierarchical Bernoulli-logit models for binary trial-level outcomes;
+    and
 2.  hierarchical lognormal models for strictly positive uncensored
     durations.
 
-Core contract, validation, simulation, preparation, transformation,
-specification, and prior-predictive functionality does not require
-Gazepoint hardware, Gazepoint exports, `gp3tools`, proprietary software,
-private data, or a Bayesian backend. Full-MCMC fitting requires `brms`
-and one supported sampling backend: `rstan` or `cmdstanr`.
+Advanced pupil models are separately governed by their explicit pupil
+specifications and evidence gates. No interface accepts unrestricted
+formulas or arbitrary model families under an existing approved function
+name.
 
-## Development 0.4.0.9000: Bayesian dynamic pupillometry
+## Installation
 
-The repository development line `0.4.0.9000` introduces a governed
-Bayesian dynamic-pupillometry model family. The archived stable
-repository release remains `0.2.0` (`v0.2.0`); the CRAN badge above
-reports the CRAN release separately. The `0.4.0.9000` functionality
-described here is development functionality and is not represented as a
-CRAN release.
-
-The pupil workflow consumes an explicitly mapped and audited time series
-rather than silently performing generic pupil preprocessing.
-Blink/interpolation status, baseline decisions, gaze/PFE information,
-luminance, contrast, units, device metadata, and upstream provenance can
-be declared and audited. The first approved model family is a restricted
-Gaussian hierarchical time-course model with package-constructed
-temporal structure, grouping effects, scale-aware priors, and optional
-declared temporal dependence.
+Install the exact GitHub 0.5.0 release:
 
 ``` r
 
-pupil_simulation <- simulate_pupil_timecourse(
-  n_participants = 4,
-  trials_per_participant = 2,
-  n_items = 4,
-  sampling_frequency = 20,
-  time_window = c(-0.2, 1.0),
-  baseline_window = c(-0.2, 0),
-  seed = 2026
-)
-
-pupil_contract <- create_pupil_contract(
-  outcome_col = "pupil_mm",
-  participant_col = "participant_id",
-  trial_col = "trial_id",
-  item_col = "item_id",
-  condition_col = "condition",
-  time_col = "event_time",
-  pupil_unit = "millimetres",
-  sampling_frequency = 20,
-  time_unit = "seconds",
-  eye = "combined",
-  validity_col = "valid",
-  interpolation_col = "interpolated",
-  blink_col = "blink",
-  gaze_x_col = "gaze_x",
-  gaze_y_col = "gaze_y",
-  luminance_col = "luminance",
-  baseline_window = c(-0.2, 0),
-  baseline_method = "none",
-  preprocessing_provenance = "gp3bayes deterministic simulator"
-)
-
-pupil_prepared <- prepare_pupil_timecourse(
-  pupil_simulation$data,
-  pupil_contract,
-  baseline_operation = "subtract",
-  baseline_window = c(-0.2, 0)
-)
-
-pupil_readiness <- audit_pupil_readiness(pupil_prepared)
-pupil_specification <- specify_pupil_timecourse_model(
-  pupil_prepared,
-  smooth_basis_dimension = 5,
-  autocorrelation = "none"
-)
+install.packages("remotes")
+remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.5.0")
 ```
 
-Model fitting is deliberately separate from preprocessing and does not
-itself establish convergence, model adequacy, causal identification, or
-a psychological interpretation of pupil change.
-
-## 0.2.0 stabilization layer
-
-`gp3bayes` 0.2.0 adds a stable family-neutral workflow API, analysis
-manifests and reproducibility reports, pre-fit design-support
-diagnostics, unified sensitivity/evidence inventories,
-backend-environment and posterior-summary parity audits, and
-serialized-object schema checks. These layers compose the existing
-binary and duration workflows without adding unrestricted formulas,
-automatic model selection, automatic exclusion, or automatic
-adequacy/causal claims.
+For the current development branch, including the September 2026 SCR
+responsivity addition:
 
 ``` r
 
-design <- audit_design_support(data, contract)
-manifest <- create_analysis_manifest(specification, seed = 2026)
-manifest <- freeze_analysis_manifest(manifest)
-capabilities <- backend_capabilities()
+remotes::install_github("stefanosbalaskas/gp3bayes")
 ```
 
-## Model contracts
+Optional Bayesian backends are only required for workflows that actually
+fit models.
 
-[`create_model_contract()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_model_contract.md)
-records the approved methodological specification and neutral column
-mappings for one initial model family. Creating a contract does not
-validate data, fit a model, or establish model adequacy.
+## Minimal contract example
 
 ``` r
 
-binary_contract <- create_model_contract(
+library(gp3bayes)
+
+contract <- create_model_contract(
   family = "binary",
   outcome_col = "selected",
   participant_col = "participant_id",
@@ -161,333 +138,57 @@ binary_contract <- create_model_contract(
   condition_col = "condition"
 )
 
-binary_contract
+audit_model_readiness(data, contract)
 ```
 
-``` R
-## <gp3bayes_model_contract>
-##   Family: binary
-##   Likelihood: Bernoulli
-##   Link: logit
-##   Outcome: selected
-##   Participant: participant_id
-##   Item: stimulus_id
-##   Condition: condition
-##   Random slope requested: FALSE
-##   Fitting performed: FALSE
-```
+Creating a contract does not validate a substantive hypothesis, fit a
+model, or establish model adequacy.
 
-## Readiness audits
+## Release validation
 
-[`audit_model_readiness()`](https://stefanosbalaskas.github.io/gp3bayes/reference/audit_model_readiness.md)
-evaluates observable data requirements before formula construction or
-model fitting. Failures block progression, whereas warnings identify
-structures requiring review.
+The `v0.5.0` release record reports:
 
-``` r
+- **458 public exports**;
+- **230 S3 registrations**;
+- **458/458 frozen public signatures**;
+- **465 Rd files** and **59 vignette sources**;
+- full backend-free test suite passed; and
+- exact source-archive `R CMD check --as-cran`: **0 errors, 0 warnings,
+  0 notes**.
 
-binary_data <- data.frame(
-  participant_id = rep(c("p1", "p2"), each = 4),
-  stimulus_id = rep(paste0("s", 1:4), times = 2),
-  trial_id = rep(1:4, times = 2),
-  condition = rep(c("control", "treatment"), times = 4),
-  selected = c(0, 1, 0, 1, 1, 0, 1, 0)
-)
+The September SCR responsivity addition is post-0.5.0 development
+functionality and is not represented as part of the immutable `v0.5.0`
+archive.
 
-readiness_audit <- audit_model_readiness(
-  binary_data,
-  binary_contract
-)
+## Interpretation boundaries
 
-readiness_audit
-```
+Behavioural, gaze, pupil, EDA/SCR, cardiovascular, and other
+physiological measurements do not directly reveal emotion, stress,
+cognition, comprehension, personality, diagnosis, deception, intention,
+or another latent psychological state.
 
-``` R
-## <gp3bayes_readiness_audit>
-##   Family: binary
-##   Rows: 8
-##   Status: ready
-##   Ready: TRUE
-##   Checks: 18 passed, 0 warnings, 0 failures
-```
-
-## Model specifications
-
-[`build_model_formula()`](https://stefanosbalaskas.github.io/gp3bayes/reference/build_model_formula.md)
-translates the approved contract into an R formula, while
-[`create_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/create_prior_specification.md)
-records family-appropriate priors without creating backend-specific
-objects. A ready audit, formula, contract, and validated priors can then
-be combined into one inspectable model specification.
-
-``` r
-
-binary_priors <- create_prior_specification(
-  binary_contract,
-  baseline = 0.5
-)
-
-binary_specification <- create_model_specification(
-  binary_contract,
-  readiness_audit,
-  binary_priors
-)
-
-binary_specification
-```
-
-``` R
-## <gp3bayes_model_specification>
-##   Family: binary
-##   Formula: selected ~ condition + (1 | participant_id) + (1 | stimulus_id)
-##   Readiness status: ready
-##   Readiness warnings: 0
-##   Prior classes: Intercept, b, sd
-##   Backend: none
-##   Fit performed: FALSE
-```
-
-## Hierarchical binary workflow foundation
-
-The backend-independent binary workflow can simulate known hierarchical
-data-generating processes, prepare neutral long-format data, construct a
-restricted model specification, and evaluate prior predictive
-plausibility. No model is fitted and no posterior draws are produced.
-
-``` r
-
-binary_simulation <- simulate_hierarchical_binary_data(
-  n_participants = 12,
-  trials_per_participant = 8,
-  n_items = 6,
-  random_slope_sd = 0,
-  seed = 2026
-)
-
-binary_workflow_contract <- create_model_contract(
-  family = "binary",
-  outcome_col = "selected",
-  participant_col = "participant_id",
-  item_col = "item_id",
-  trial_col = "trial_id",
-  condition_col = "condition",
-  predictors = "trial_covariate"
-)
-
-binary_prepared <- prepare_hierarchical_binary_data(
-  binary_simulation$data,
-  binary_workflow_contract,
-  condition_levels = c("control", "treatment"),
-  scale_predictors = "trial_covariate"
-)
-
-binary_workflow_specification <- specify_binary_model(
-  binary_prepared,
-  baseline = 0.35
-)
-
-binary_prior_check <- check_binary_prior_predictive(
-  binary_workflow_specification,
-  draws = 100,
-  seed = 2027
-)
-
-binary_prior_check
-```
-
-``` R
-## <gp3bayes_binary_prior_predictive_check>
-##   Adequate: TRUE
-##   Draws: 100
-##   Failed checks: 0
-##   Backend: none
-##   Fit performed: FALSE
-```
-
-## Restricted binary model fitting
-
-[`translate_binary_model_to_brms()`](https://stefanosbalaskas.github.io/gp3bayes/reference/translate_binary_model_to_brms.md)
-converts an approved package specification into a restricted
-Bernoulli-logit `brms` representation without compiling or fitting a
-model.
-
-[`fit_binary_model()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model.md)
-retains the original fixed `rstan` fitting route. For backend-portable
-full-MCMC fitting,
-[`fit_binary_model_backend()`](https://stefanosbalaskas.github.io/gp3bayes/reference/fit_binary_model_backend.md)
-accepts either `backend = "rstan"` or `backend = "cmdstanr"` while
-preserving the same approved family, formula, priors, and sampling
-contract.
-
-Neither interface accepts unrestricted formulas, arbitrary model
-families, alternative inference algorithms, user-supplied Stan programs,
-or arbitrary backend arguments.
-
-``` r
-
-if (requireNamespace("brms", quietly = TRUE)) {
-  backend_specification <- translate_binary_model_to_brms(
-    binary_workflow_specification
-  )
-
-  backend_specification
-}
-```
-
-A returned fit does not by itself establish convergence, posterior
-adequacy, causal identification, or substantive validity. Those
-assessments require separate diagnostic and reporting gates.
-
-## Binary posterior validation
-
-Approved binary fits can be assessed with conservative numerical
-sampling diagnostics, posterior summaries, posterior predictive checks,
-prior-scale sensitivity, simulation-based recovery, and structured
-Markdown reports. A threshold pass is not an automatic convergence or
-posterior-adequacy claim.
-
-``` r
-
-diagnostics <- diagnose_binary_fit(binary_fit)
-posterior <- summarise_binary_posterior(binary_fit)
-predictive <- check_binary_posterior_predictive(binary_fit)
-```
-
-## Hierarchical lognormal duration workflow
-
-The duration workflow supports strictly positive, finite, uncensored
-durations with an explicit recorded unit. It provides deterministic
-simulation, preparation, inspectable priors, prior predictive checks,
-and restricted optional full-MCMC fitting through `brms` with either
-`rstan` or `cmdstanr`.
-
-``` r
-
-duration_simulation <- simulate_hierarchical_duration_data(seed = 2026)
-duration_contract <- create_model_contract(
-  family = "duration",
-  outcome_col = "duration",
-  participant_col = "participant_id",
-  item_col = "item_id",
-  trial_col = "trial_id",
-  condition_col = "condition",
-  outcome_unit = "milliseconds"
-)
-duration_prepared <- prepare_hierarchical_duration_data(
-  duration_simulation$data,
-  duration_contract,
-  condition_levels = c("control", "treatment")
-)
-duration_specification <- specify_duration_model(
-  duration_prepared,
-  baseline = 500
-)
-```
-
-## Duration posterior validation
-
-Approved lognormal duration fits support the same conservative
-diagnostic contract as binary fits, together with positive-scale
-posterior predictive checks, prior sensitivity, simulation-based
-recovery, and structured reports. Exponentiated population coefficients
-are conditional median ratios, not automatically causal effects.
-
-``` r
-
-duration_diagnostics <- diagnose_duration_fit(duration_fit)
-duration_posterior <- summarise_duration_posterior(duration_fit)
-duration_predictive <- check_duration_posterior_predictive(duration_fit)
-```
+A fitted model, favorable diagnostic, posterior probability, predictive
+score, or model weight does not by itself establish causal
+identification, model adequacy, robustness, or substantive validity.
+Automatic participant exclusion and automatic model selection remain
+outside the package’s governed decision boundary.
 
 ## Citation
 
-Citation metadata are provided in both `CITATION.cff` and
-`inst/CITATION`. After installing the package, obtain the R-formatted
-citation for the installed version with:
+Use the citation metadata supplied with the installed package:
 
 ``` r
 
 citation("gp3bayes")
+packageVersion("gp3bayes")
 ```
 
-The repository currently represents release version **0.2.0**.
-
-For archived software citation:
-
-- Current CRAN release: `gp3bayes` 0.1.1 —
-  [CRAN](https://cran.r-project.org/package=gp3bayes)
-- Concept DOI for all releases —
-  [`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698)
-- Latest archived Zenodo version currently documented in the repository:
-  `gp3bayes` 0.2.0 —
-  [`10.5281/zenodo.21880165`](https://doi.org/10.5281/zenodo.21880165)
-
-## Release status
-
-`gp3bayes` 0.2.0 is the current package version.
-
-The 0.2.0 API provides contract-first Bernoulli-logit and
-lognormal-duration workflows; backend-portable full-MCMC fitting through
-`brms` with either `rstan` or `cmdstanr`; advanced sensitivity,
-PSIS-LOO, model-weighting, separation-screening, and simulation-based
-calibration workflows; strict specification closure; transformation
-replay; explicit posterior estimands; detailed posterior predictive
-checks; and optional exact K-fold validation.
-
-The repository release version is `gp3bayes` 0.2.0; CRAN availability is
-reported by the status badge above.
-
-## Interpretation boundaries
-
-Behavioural, gaze, pupil, and physiological measurements do not directly
-reveal emotion, stress, cognition, comprehension, personality,
-diagnosis, deception, intention, or other latent psychological states.
-
-Associations must not be described as causal effects unless the study
-design and target estimand justify causal interpretation.
-
-## Advanced optional workflows
-
-`gp3bayes` 0.2.0 includes conservative optional adapters for
-power-scaled sensitivity through `priorsense`, PSIS-LOO diagnostics and
-model weights through `loo`, fixed-effects separation screening through
-`detectseparation`, simulation-based calibration through `SBC`, and
-full-MCMC backend selection between `rstan` and `cmdstanr`.
-
-Dedicated binary and duration pathology generators make documented
-failure cases directly reproducible.
-
-These extensions do not introduce unrestricted formulas, arbitrary model
-families, automatic model selection, automatic exclusion, or automatic
-adequacy claims.
+The software concept DOI is
+[`10.5281/zenodo.21518698`](https://doi.org/10.5281/zenodo.21518698).
 
 ## Licence
 
-`gp3bayes` is released under the MIT License.
-
-## Specification closure
-
-The 0.2.0 API closes the remaining contract-level requirements with
-strict readiness audits, exact transformation replay, first-class
-probability/median/tail estimands, governed structural and deletion
-sensitivity, duration-unit invariance, detailed posterior predictive
-checks, and optional exact K-fold validation.
-
-These functions remain inside the two approved Bernoulli-logit and
-positive uncensored lognormal-duration contracts. They do not add
-arbitrary formulas, likelihoods, automatic model selection, automatic
-exclusions, or causal claims.
-
-``` r
-
-audit_model_readiness_strict(data, contract)
-create_transformation_recipe(prepared)
-estimate_standardized_probability_contrast(fit)
-estimate_standardized_duration_estimands(fit)
-check_binary_ppc_details(fit)
-check_duration_ppc_details(fit)
-gp3bayes_specification_traceability()
-```
+MIT License.
 
 # Package index
 
