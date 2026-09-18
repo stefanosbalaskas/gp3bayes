@@ -1,0 +1,75 @@
+---
+title: "Bayesian Multilevel Gaze Mediation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bayesian Multilevel Gaze Mediation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## Model contract
+
+`gp3bayes` consumes a canonical preparation object from `eyeprocess`. It does not recreate within/between components.
+
+```{r, eval=FALSE}
+priors <- create_mediation_prior_specification(
+  coefficient_sd = 0.75,
+  group_sd_scale = 1
+)
+
+spec <- specify_multilevel_gaze_mediation(
+  prepared,
+  mediator_family = "gaussian",
+  outcome_family = "bernoulli",
+  priors = priors,
+  random_slopes = "mediator_x",
+  missingness_policy = "error"
+)
+```
+
+Paths without observed design variation are not manufactured. In a perfectly balanced within-subject manipulation, the between-person X component may be constant and the corresponding between-X paths are reported as not estimable.
+
+## Fit and diagnose
+
+```{r, eval=FALSE}
+fit <- fit_multilevel_gaze_mediation(
+  prepared,
+  mediator_family = "gaussian",
+  outcome_family = "bernoulli",
+  priors = priors,
+  random_slopes = "mediator_x",
+  missingness_policy = "error"
+)
+check_mediation_convergence(fit)
+estimate_within_indirect_effect(fit)
+posterior_predictive_check_mediation(fit)
+```
+
+Indirect effects are blocked by default after critical convergence failure. For nonlinear families the coefficient product is on the linear-predictor product scale, not a probability-scale natural indirect effect.
+
+## Extensions
+
+Serial and moderated mediation require components prepared upstream in `eyeprocess`. Do not fit arbitrary chains without defensible temporal/design ordering.
+
+
+## Prior sensitivity
+
+Do not treat the default priors as invisible. Refit the same design under a defensible narrower and wider coefficient prior, then compare the indirect-effect distribution, posterior predictive behavior, and convergence diagnostics.
+
+```{r, eval=FALSE}
+narrow <- create_mediation_prior_specification(coefficient_sd = 0.5)
+wide <- create_mediation_prior_specification(coefficient_sd = 1.5)
+
+fit_narrow <- fit_multilevel_gaze_mediation(
+  prepared, priors = narrow, random_slopes = "mediator_x"
+)
+fit_wide <- fit_multilevel_gaze_mediation(
+  prepared, priors = wide, random_slopes = "mediator_x"
+)
+```
+
+Serial and moderated extensions currently use participant random intercepts; requests for extension-specific random slopes are rejected rather than silently ignored.
