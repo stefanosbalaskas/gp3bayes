@@ -179,3 +179,25 @@ test_that("participant mediation plot refuses incomplete random-slope models", {
   )
 })
 
+
+
+test_that("model comparison refuses different ordered observations", {
+  prepared_a <- make_gp3b_mediation_prepared()
+  prepared_b <- make_gp3b_mediation_prepared()
+  prepared_b$data$outcome[[1L]] <- 1L - prepared_b$data$outcome[[1L]]
+  spec_a <- specify_multilevel_gaze_mediation(prepared_a, random_slopes = character())
+  spec_b <- specify_multilevel_gaze_mediation(prepared_b, random_slopes = character())
+  fit_a <- structure(
+    list(specification = spec_a, backend_fit = structure(list(), class = "dummy_backend")),
+    class = "gp3bayes_multilevel_mediation_fit"
+  )
+  fit_b <- structure(
+    list(specification = spec_b, backend_fit = structure(list(), class = "dummy_backend")),
+    class = "gp3bayes_multilevel_mediation_fit"
+  )
+  expect_false(.gp3b_med_same_comparison_observations(spec_a, spec_b))
+  expect_error(
+    compare_multilevel_mediation_models(a = fit_a, b = fit_b),
+    "same mediator/outcome observations"
+  )
+})

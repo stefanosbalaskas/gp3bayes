@@ -643,9 +643,46 @@ prior_predictive_check_mediation <- function(specification, ndraws = 200, seed =
 #' Compare Multilevel Mediation Models
 #'
 #' @export
+.gp3b_med_same_comparison_observations <- function(reference, candidate) {
+  if (!identical(reference$mediator_col, candidate$mediator_col) ||
+      !identical(reference$outcome_col, candidate$outcome_col)) return(FALSE)
+  if (!identical(reference$analysis_rows, candidate$analysis_rows)) return(FALSE)
+  ref_keys <- reference$data[c(reference$participant_col, reference$trial_col)]
+  cand_keys <- candidate$data[c(candidate$participant_col, candidate$trial_col)]
+  names(ref_keys) <- names(cand_keys) <- c("participant", "trial")
+  if (!identical(ref_keys, cand_keys)) return(FALSE)
+  ref_values <- reference$data[c(reference$mediator_col, reference$outcome_col)]
+  cand_values <- candidate$data[c(candidate$mediator_col, candidate$outcome_col)]
+  names(ref_values) <- names(cand_values) <- c("mediator", "outcome")
+  identical(ref_values, cand_values)
+}
+
 compare_multilevel_mediation_models <- function(...) {
   fits <- list(...)
   if (length(fits) < 2L) .gp3b_med_stop("Provide at least two fitted mediation models.")
+  for (i in seq_along(fits)) {
+    if (!inherits(fits[[i]], "gp3bayes_multilevel_mediation_fit") || is.null(fits[[i]]$backend_fit)) {
+      label <- names(fits)[[i]]
+      if (is.null(label) || is.na(label) || !nzchar(label)) label <- paste0("model_", i)
+      .gp3b_med_stop("Model `", label, "` is not a fitted mediation object.")
+    }
+  }
+  reference <- fits[[1L]]$specification
+  reference_label <- names(fits)[[1L]]
+  if (is.null(reference_label) || is.na(reference_label) || !nzchar(reference_label)) reference_label <- "model_1"
+  if (length(fits) > 1L) {
+    for (i in 2:length(fits)) {
+      if (!.gp3b_med_same_comparison_observations(reference, fits[[i]]$specification)) {
+        label <- names(fits)[[i]]
+        if (is.null(label) || is.na(label) || !nzchar(label)) label <- paste0("model_", i)
+        .gp3b_med_stop(
+          "PSIS-LOO comparison requires the same mediator/outcome observations in the same ",
+          "participant-trial order; `", label, "` does not match `", reference_label, "`. ",
+          "Do not compare fits produced from different missingness/exclusion sets."
+        )
+      }
+    }
+  }
   if (!requireNamespace("loo", quietly = TRUE)) .gp3b_med_stop("Package `loo` is required.")
   loos <- lapply(fits, function(x) brms::loo(x$backend_fit))
   loo::loo_compare(loos)
