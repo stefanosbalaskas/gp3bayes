@@ -94,3 +94,8 @@ Use `report_multilevel_gaze_mediation()` as a structured starting point, then ad
 ## API links
 
 The core workflow uses `create_mediation_prior_specification()`, `specify_multilevel_gaze_mediation()`, `fit_multilevel_gaze_mediation()`, `check_mediation_convergence()`, `posterior_predictive_check_mediation()`, `estimate_within_indirect_effect()`, `estimate_between_indirect_effect()`, `plot_indirect_effect_distribution()`, and `report_multilevel_gaze_mediation()`. Serial and moderated extensions are available through their explicitly named specification/fitting functions when the design supports those structures.
+
+
+## Model-comparison guard
+
+`compare_multilevel_mediation_models()` compares models only when the fitted mediator/outcome observations are identical and appear in the same participant-trial order. Fits produced from different missingness or exclusion sets are rejected before PSIS-LOO is computed. Refit competing models on one common analysis dataset rather than manually forcing pointwise log-likelihood arrays to align.
