@@ -556,7 +556,39 @@ reference:
 - title: SCR responsivity sensitivity
   contents:
   - estimate_scr_responsivity_bayes
+- title: Multilevel gaze mediation
+  desc: Bayesian trial-level mediation with explicit within- and between-participant estimands.
+  contents:
+  - create_mediation_prior_specification
+  - specify_multilevel_gaze_mediation
+  - fit_multilevel_gaze_mediation
+  - check_mediation_convergence
+  - prior_predictive_check_mediation
+  - posterior_predictive_check_mediation
+  - estimate_indirect_effect
+  - estimate_within_indirect_effect
+  - estimate_between_indirect_effect
+  - posterior_indirect_effect
+  - posterior_direct_effect
+  - posterior_total_effect
+  - summarise_multilevel_mediation
+  - compare_multilevel_mediation_models
+  - plot_mediation_posteriors
+  - plot_indirect_effect_distribution
+  - plot_participant_mediation_effects
+  - report_multilevel_gaze_mediation
+  - simulate_multilevel_gaze_mediation
+  - specify_multilevel_serial_gaze_mediation
+  - fit_multilevel_serial_gaze_mediation
+  - posterior_serial_indirect_effect
+  - specify_multilevel_moderated_gaze_mediation
+  - fit_multilevel_moderated_gaze_mediation
+  - posterior_conditional_indirect_effect
+
 articles:
+- title: Multilevel gaze mediation
+  contents:
+  - bayesian-multilevel-gaze-mediation
 - title: Bayesian dynamic pupillometry
   contents:
   - bayesian-dynamic-pupillometry
