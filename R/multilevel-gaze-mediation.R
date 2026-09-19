@@ -254,12 +254,12 @@ specify_multilevel_gaze_mediation <- function(
 .gp3b_med_brms_family <- function(family) {
   switch(
     family,
-    gaussian = brms::gaussian(),
+    gaussian = stats::gaussian(),
     lognormal = brms::lognormal(),
-    gamma = brms::Gamma(link = "log"),
+    gamma = stats::Gamma(link = "log"),
     beta = brms::Beta(link = "logit"),
     bernoulli = brms::bernoulli(link = "logit"),
-    poisson = brms::poisson(link = "log"),
+    poisson = stats::poisson(link = "log"),
     negative_binomial = brms::negbinomial(link = "log"),
     ordinal = brms::cumulative(link = "logit"),
     .gp3b_med_stop("Unsupported brms family `", family, "`.")
@@ -400,11 +400,16 @@ fit_multilevel_gaze_mediation <- function(
 }
 
 .gp3b_med_find_coef <- function(draws, response, coefficient) {
-  escaped <- gsub("([.\\+*?\[\]^$(){}=!<>|:\\-])", "\\\\\\1", coefficient)
-  candidates <- grep(paste0("^b_.*_", escaped, "$"), names(draws), value = TRUE)
+  coefficient_names <- names(draws)
+  coefficient_suffix <- paste0("_", coefficient)
+  candidates <- coefficient_names[
+    startsWith(coefficient_names, "b_") &
+      endsWith(coefficient_names, coefficient_suffix) &
+      coefficient_names != paste0("b_", coefficient)
+  ]
   if (!length(candidates)) {
     # univariate naming fallback
-    candidates <- grep(paste0("^b_", escaped, "$"), names(draws), value = TRUE)
+    candidates <- coefficient_names[coefficient_names == paste0("b_", coefficient)]
   }
   if (length(candidates) > 1L) {
     token <- gsub("[^[:alnum:]]", "", response)
@@ -694,9 +699,9 @@ compare_multilevel_mediation_models <- function(...) {
 plot_mediation_posteriors <- function(fit, probability = 0.95, require_convergence = TRUE) {
   summary <- summarise_multilevel_mediation(fit, probability, require_convergence)
   if (!requireNamespace("ggplot2", quietly = TRUE)) return(summary)
-  ggplot2::ggplot(summary, ggplot2::aes(x = mean, y = reorder(effect, mean))) +
+  ggplot2::ggplot(summary, ggplot2::aes(x = summary[["mean"]], y = stats::reorder(summary[["effect"]], summary[["mean"]]))) +
     ggplot2::geom_point() +
-    ggplot2::geom_errorbarh(ggplot2::aes(xmin = lower, xmax = upper), height = 0.15) +
+    ggplot2::geom_errorbarh(ggplot2::aes(xmin = summary[["lower"]], xmax = summary[["upper"]]), height = 0.15) +
     ggplot2::geom_vline(xintercept = 0, linetype = 2) +
     ggplot2::labs(x = "Posterior effect", y = NULL, title = "Multilevel mediation posterior intervals")
 }
@@ -748,7 +753,7 @@ plot_participant_mediation_effects <- function(fit) {
     .gp3b_med_stop("Package `brms` is required to extract participant-specific coefficients.")
   }
 
-  coefficients <- brms::coef(fit$backend_fit, summary = FALSE)
+  coefficients <- stats::coef(fit$backend_fit, summary = FALSE)
   participant <- spec$participant_col
   if (is.null(coefficients[[participant]])) {
     .gp3b_med_stop("Participant-level coefficient draws were unavailable from the fitted backend model.")
@@ -800,7 +805,7 @@ plot_participant_mediation_effects <- function(fit) {
     stringsAsFactors = FALSE
   )
   if (!requireNamespace("ggplot2", quietly = TRUE)) return(values)
-  ggplot2::ggplot(values, ggplot2::aes(x = participant, y = posterior_mean_indirect)) +
+  ggplot2::ggplot(values, ggplot2::aes(x = values[["participant"]], y = values[["posterior_mean_indirect"]])) +
     ggplot2::geom_point() +
     ggplot2::geom_hline(yintercept = 0, linetype = 2) +
     ggplot2::labs(

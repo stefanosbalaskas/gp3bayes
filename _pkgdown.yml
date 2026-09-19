@@ -680,3 +680,8 @@ articles:
   - governed-pupil-model-comparison
   - computational-governance-and-model-cards
   - synthetic-advanced-pupillometry-gallery
+
+- title: Ecosystem updates
+  desc: Cross-package methodological and ecosystem notes relevant to gp3bayes.
+  contents:
+  - ecosystem-update-2026-09
