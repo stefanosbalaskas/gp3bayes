@@ -60,6 +60,33 @@ article](https://stefanosbalaskas.github.io/gp3bayes/articles/scr-responsivity-s
 and [`estimate_scr_responsivity_bayes()`
 reference](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.html).
 
+## September 2026: trial-level multilevel gaze mediation
+
+The current development branch adds governed repeated-measures mediation
+for trial-level gaze/process mechanisms. The workflow consumes
+within/between components prepared upstream by `eyeprocess`; it does
+**not** silently reconstruct or aggregate the mediator inside the
+Bayesian package.
+
+The new surface supports Gaussian, lognormal, Gamma, beta, Bernoulli,
+and count mediator families; Gaussian, Bernoulli, count, and ordinal
+outcomes where supported; explicit weakly informative priors;
+participant random effects; within- and between-participant indirect
+effects; convergence gating; prior/posterior predictive checks;
+participant-specific effects when both random path slopes are estimated;
+and conservative serial/moderated extensions.
+
+For nonlinear outcomes, coefficient-product indirect effects are
+reported on the model’s linear-predictor scale and are not mislabeled as
+probability-scale natural indirect effects. Missing gaze is never
+interpreted automatically as zero, and non-estimable between-person
+paths are omitted rather than filled by priors.
+
+See the [Bayesian multilevel gaze mediation
+article](https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-multilevel-gaze-mediation.html)
+and the [mediation reference
+section](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html#multilevel-gaze-mediation).
+
 ## Bayesian dynamic pupillometry
 
 `gp3bayes` 0.5.0 extends the contract-first workflow with governed
@@ -113,7 +140,7 @@ remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.5.0")
 ```
 
 For the current development branch, including the September 2026 SCR
-responsivity addition:
+responsivity and multilevel mediation additions:
 
 ``` r
 
@@ -156,9 +183,9 @@ The `v0.5.0` release record reports:
 - exact source-archive `R CMD check --as-cran`: **0 errors, 0 warnings,
   0 notes**.
 
-The September SCR responsivity addition is post-0.5.0 development
-functionality and is not represented as part of the immutable `v0.5.0`
-archive.
+The September SCR responsivity and multilevel mediation additions are
+post-0.5.0 development functionality and are not represented as part of
+the immutable `v0.5.0` archive.
 
 ## Interpretation boundaries
 

@@ -1,0 +1,148 @@
+# Bayesian Multilevel Gaze Mediation
+
+## Model contract
+
+`gp3bayes` consumes a canonical preparation object from `eyeprocess`. It
+does not recreate within/between components.
+
+``` r
+
+priors <- create_mediation_prior_specification(
+  coefficient_sd = 0.75,
+  group_sd_scale = 1
+)
+
+spec <- specify_multilevel_gaze_mediation(
+  prepared,
+  mediator_family = "gaussian",
+  outcome_family = "bernoulli",
+  priors = priors,
+  random_slopes = "mediator_x",
+  missingness_policy = "error"
+)
+```
+
+Paths without observed design variation are not manufactured. In a
+perfectly balanced within-subject manipulation, the between-person X
+component may be constant and the corresponding between-X paths are
+reported as not estimable.
+
+## Fit and diagnose
+
+``` r
+
+fit <- fit_multilevel_gaze_mediation(
+  prepared,
+  mediator_family = "gaussian",
+  outcome_family = "bernoulli",
+  priors = priors,
+  random_slopes = "mediator_x",
+  missingness_policy = "error"
+)
+check_mediation_convergence(fit)
+estimate_within_indirect_effect(fit)
+posterior_predictive_check_mediation(fit)
+```
+
+Indirect effects are blocked by default after critical convergence
+failure. For nonlinear families the coefficient product is on the
+linear-predictor product scale, not a probability-scale natural indirect
+effect.
+
+## Extensions
+
+Serial and moderated mediation require components prepared upstream in
+`eyeprocess`. Do not fit arbitrary chains without defensible
+temporal/design ordering.
+
+## Prior sensitivity
+
+Do not treat the default priors as invisible. Refit the same design
+under a defensible narrower and wider coefficient prior, then compare
+the indirect-effect distribution, posterior predictive behavior, and
+convergence diagnostics.
+
+``` r
+
+narrow <- create_mediation_prior_specification(coefficient_sd = 0.5)
+wide <- create_mediation_prior_specification(coefficient_sd = 1.5)
+
+fit_narrow <- fit_multilevel_gaze_mediation(
+  prepared, priors = narrow, random_slopes = "mediator_x"
+)
+fit_wide <- fit_multilevel_gaze_mediation(
+  prepared, priors = wide, random_slopes = "mediator_x"
+)
+```
+
+Serial and moderated extensions currently use participant random
+intercepts; requests for extension-specific random slopes are rejected
+rather than silently ignored.
+
+## Assumptions and limitations
+
+Separating within- and between-participant paths prevents level
+conflation, but a fitted coefficient product does not automatically
+identify a causal natural indirect effect. Causal language requires a
+defensible temporal order and assumptions about exposure–mediator and
+mediator–outcome confounding. For Bernoulli, ordinal, and count
+outcomes, the implemented coefficient-product indirect effect is on the
+model’s linear-predictor product scale.
+
+Missingness policies are explicit but do not solve informative
+missingness. If gaze loss differs by condition, participant, stimulus,
+or outcome tendency, report those patterns and examine defensible
+sensitivity specifications. A passed convergence check also does not
+prove model adequacy; posterior predictive checks and prior sensitivity
+remain necessary.
+
+## Reporting example
+
+A concise report should state the trial-level observational unit,
+within/between decomposition, mediator and outcome families,
+random-effects structure, missingness and quality policy, priors,
+sampler settings, convergence diagnostics, posterior predictive checks,
+and the scale of the indirect effect.
+
+For a binary outcome, suitable wording is:
+
+> The within-participant indirect effect (`a_W * b_W`) was summarized on
+> the linear-predictor product scale. Missing gaze was not coded as
+> zero. Between-person exposure paths were reported only when the
+> observed design contained between-person exposure variation. The
+> indirect-effect summary was extracted only after the declared
+> convergence gate passed.
+
+Use
+[`report_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+as a structured starting point, then add design-specific interpretation,
+sensitivity results, and limitations. Do not convert a logit-scale
+coefficient product into a percentage-point mediated effect without a
+separately implemented predictive/counterfactual estimand.
+
+## API links
+
+The core workflow uses
+[`create_mediation_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`specify_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`fit_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`check_mediation_convergence()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`posterior_predictive_check_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`estimate_within_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`estimate_between_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+[`plot_indirect_effect_distribution()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md),
+and
+[`report_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md).
+Serial and moderated extensions are available through their explicitly
+named specification/fitting functions when the design supports those
+structures.
+
+## Model-comparison guard
+
+[`compare_multilevel_mediation_models()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+compares models only when the fitted mediator/outcome observations are
+identical and appear in the same participant-trial order. Fits produced
+from different missingness or exclusion sets are rejected before
+PSIS-LOO is computed. Refit competing models on one common analysis
+dataset rather than manually forcing pointwise log-likelihood arrays to
+align.

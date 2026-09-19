@@ -1034,3 +1034,35 @@ validation, sensitivity, and governance functions introduced in gp3bayes
 
 - [`estimate_scr_responsivity_bayes()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.md)
   : Bayesian retention-first SCR responsivity summary
+
+## Multilevel gaze mediation
+
+Bayesian trial-level mediation with explicit within- and
+between-participant estimands.
+
+- [`create_mediation_prior_specification()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`specify_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`fit_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`check_mediation_convergence()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`prior_predictive_check_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`posterior_predictive_check_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`estimate_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`estimate_within_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`estimate_between_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`posterior_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`posterior_direct_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`posterior_total_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`summarise_multilevel_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`plot_indirect_effect_distribution()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`plot_mediation_posteriors()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`plot_participant_mediation_effects()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`compare_multilevel_mediation_models()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`report_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`simulate_multilevel_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`specify_multilevel_serial_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`fit_multilevel_serial_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`posterior_serial_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`specify_multilevel_moderated_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`fit_multilevel_moderated_gaze_mediation()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  [`posterior_conditional_indirect_effect()`](https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.md)
+  : Bayesian Multilevel Gaze Mediation Workflows

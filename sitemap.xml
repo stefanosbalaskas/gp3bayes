@@ -9,11 +9,13 @@
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/backend-portability.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/backend-reliability.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-dynamic-pupillometry.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-multilevel-gaze-mediation.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/binary-end-to-end.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/binocular-pupil-models.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/computational-governance-and-model-cards.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/declared-prior-versus-posterior.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/duration-end-to-end.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/ecosystem-update-2026-09.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/end-to-end-evidence-showcase.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/estimands-and-sensitivity.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/articles/evidence-graphics-and-governance.html</loc></url>
@@ -263,6 +265,7 @@
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/model_evidence_table.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/model_weights_table.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/model_workflow_status.html</loc></url>
+<url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/multilevel-gaze-mediation.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/plot.gp3bayes_kfold_cv.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/plot.gp3bayes_strict_readiness_audit.html</loc></url>
 <url><loc>https://stefanosbalaskas.github.io/gp3bayes/reference/plot_advanced_pupil_simulation.html</loc></url>

@@ -1,5 +1,10 @@
 # Articles
 
+### Multilevel gaze mediation
+
+- [Bayesian Multilevel Gaze
+  Mediation](https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-multilevel-gaze-mediation.md):
+
 ### Bayesian dynamic pupillometry
 
 - [Bayesian dynamic pupillometry: governed
@@ -161,3 +166,10 @@ introduced in gp3bayes 0.5.
   Cards](https://stefanosbalaskas.github.io/gp3bayes/articles/computational-governance-and-model-cards.md):
 - [Synthetic Advanced Pupillometry
   Gallery](https://stefanosbalaskas.github.io/gp3bayes/articles/synthetic-advanced-pupillometry-gallery.md):
+
+### Ecosystem updates
+
+Cross-package methodological and ecosystem notes relevant to gp3bayes.
+
+- [Ecosystem update — September
+  2026](https://stefanosbalaskas.github.io/gp3bayes/articles/ecosystem-update-2026-09.md):
