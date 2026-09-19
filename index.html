@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gp3bayes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,8 +61,8 @@
 </div>
 <p><a href="https://doi.org/10.5281/zenodo.21518698" class="external-link"><img src="https://zenodo.org/badge/1305351994.svg" alt="DOI"></a> <a href="https://CRAN.R-project.org/package=gp3bayes" class="external-link"><img src="https://www.r-pkg.org/badges/version/gp3bayes" alt="CRAN status"></a></p>
 <p><code>gp3bayes</code> is an independent R package for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data, with a governed dynamic-pupillometry layer and explicit validation, sensitivity, prediction, and reporting infrastructure.</p>
-<p><strong>Current GitHub release:</strong> <strong>0.5.0</strong> (<code>v0.5.0</code>, 18 August 2026)</p>
-<p><a href="https://stefanosbalaskas.github.io/gp3bayes/">Website</a> · <a href="https://stefanosbalaskas.github.io/gp3bayes/reference/index.html">Reference</a> · <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/index.html">Articles</a> · <a href="https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.5.0" class="external-link">Release</a></p>
+<p><strong>Current GitHub release:</strong> <strong>0.6.0</strong> (<code>v0.6.0</code>, 20 September 2026)</p>
+<p><a href="https://stefanosbalaskas.github.io/gp3bayes/">Website</a> · <a href="https://stefanosbalaskas.github.io/gp3bayes/reference/index.html">Reference</a> · <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/index.html">Articles</a> · <a href="https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.6.0" class="external-link">Release</a></p>
 <div class="section level2">
 <h2 id="what-gp3bayes-provides">What gp3bayes provides<a class="anchor" aria-label="anchor" href="#what-gp3bayes-provides"></a>
 </h2>
@@ -78,7 +78,7 @@
 <div class="section level2">
 <h2 id="september-2026-retention-first-bayesian-scr-responsivity">September 2026: retention-first Bayesian SCR responsivity<a class="anchor" aria-label="anchor" href="#september-2026-retention-first-bayesian-scr-responsivity"></a>
 </h2>
-<p>The current development branch adds <code><a href="reference/estimate_scr_responsivity_bayes.html">estimate_scr_responsivity_bayes()</a></code> for participant-level SCR responsivity accountability.</p>
+<p><code>gp3bayes</code> 0.6.0 adds <code><a href="reference/estimate_scr_responsivity_bayes.html">estimate_scr_responsivity_bayes()</a></code> for participant-level SCR responsivity accountability.</p>
 <p>The function keeps the conventional amplitude-threshold non-responder flag for provenance, estimates a Beta-Binomial posterior response probability, and sets <code>retain_for_modeling = TRUE</code> for every participant with finite trial data. Low-reactive participants are therefore retained in the primary modelling dataset, while hard exclusion can be evaluated explicitly as a sensitivity specification rather than being imposed silently during preprocessing.</p>
 <p>Posterior responsivity is a <strong>graded modelling quantity</strong>, not a diagnostic or psychological label. The implementation is dependency-light and does not claim to reproduce a Dirichlet-process mixture model.</p>
 <p>See the <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/scr-responsivity-sensitivity.html">Retention-first Bayesian SCR responsivity article</a> and <a href="https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.html"><code>estimate_scr_responsivity_bayes()</code> reference</a>.</p>
@@ -86,7 +86,7 @@
 <div class="section level2">
 <h2 id="september-2026-trial-level-multilevel-gaze-mediation">September 2026: trial-level multilevel gaze mediation<a class="anchor" aria-label="anchor" href="#september-2026-trial-level-multilevel-gaze-mediation"></a>
 </h2>
-<p>The current development branch adds governed repeated-measures mediation for trial-level gaze/process mechanisms. The workflow consumes within/between components prepared upstream by <code>eyeprocess</code>; it does <strong>not</strong> silently reconstruct or aggregate the mediator inside the Bayesian package.</p>
+<p><code>gp3bayes</code> 0.6.0 adds governed repeated-measures mediation for trial-level gaze/process mechanisms. The workflow consumes within/between components prepared upstream by <code>eyeprocess</code>; it does <strong>not</strong> silently reconstruct or aggregate the mediator inside the Bayesian package.</p>
 <p>The new surface supports Gaussian, lognormal, Gamma, beta, Bernoulli, and count mediator families; Gaussian, Bernoulli, count, and ordinal outcomes where supported; explicit weakly informative priors; participant random effects; within- and between-participant indirect effects; convergence gating; prior/posterior predictive checks; participant-specific effects when both random path slopes are estimated; and conservative serial/moderated extensions.</p>
 <p>For nonlinear outcomes, coefficient-product indirect effects are reported on the model’s linear-predictor scale and are not mislabeled as probability-scale natural indirect effects. Missing gaze is never interpreted automatically as zero, and non-estimable between-person paths are omitted rather than filled by priors.</p>
 <p>See the <a href="https://stefanosbalaskas.github.io/gp3bayes/articles/bayesian-multilevel-gaze-mediation.html">Bayesian multilevel gaze mediation article</a> and the <a href="https://stefanosbalaskas.github.io/gp3bayes/reference/index.html#multilevel-gaze-mediation">mediation reference section</a>.</p>
@@ -120,11 +120,11 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Install the exact GitHub 0.5.0 release:</p>
+<p>Install the exact GitHub 0.6.0 release:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stefanosbalaskas/gp3bayes"</span>, ref <span class="op">=</span> <span class="st">"v0.5.0"</span><span class="op">)</span></span></code></pre></div>
-<p>For the current development branch, including the September 2026 SCR responsivity and multilevel mediation additions:</p>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stefanosbalaskas/gp3bayes"</span>, ref <span class="op">=</span> <span class="st">"v0.6.0"</span><span class="op">)</span></span></code></pre></div>
+<p>To install the current <code>master</code> branch:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stefanosbalaskas/gp3bayes"</span><span class="op">)</span></span></code></pre></div>
 <p>Optional Bayesian backends are only required for workflows that actually fit models.</p>
@@ -150,20 +150,19 @@
 <div class="section level2">
 <h2 id="release-validation">Release validation<a class="anchor" aria-label="anchor" href="#release-validation"></a>
 </h2>
-<p>The <code>v0.5.0</code> release record reports:</p>
+<p>The <code>v0.6.0</code> release record includes:</p>
 <ul>
 <li>
-<strong>458 public exports</strong>;</li>
+<strong>484 public exports</strong>;</li>
 <li>
 <strong>230 S3 registrations</strong>;</li>
+<li>frozen pre-0.6 public API compatibility contracts remain enforced;</li>
 <li>
-<strong>458/458 frozen public signatures</strong>;</li>
-<li>
-<strong>465 Rd files</strong> and <strong>59 vignette sources</strong>;</li>
+<strong>467 Rd files</strong> and <strong>62 vignette sources</strong>;</li>
 <li>full backend-free test suite passed; and</li>
-<li>exact source-archive <code>R CMD check --as-cran</code>: <strong>0 errors, 0 warnings, 0 notes</strong>.</li>
+<li>release-preparation <code>R CMD check --as-cran</code>: <strong>0 errors, 0 warnings, 0 notes</strong>.</li>
 </ul>
-<p>The September SCR responsivity and multilevel mediation additions are post-0.5.0 development functionality and are not represented as part of the immutable <code>v0.5.0</code> archive.</p>
+<p>The immutable <code>v0.5.0</code> archive remains unchanged; the September SCR responsivity and multilevel mediation additions form part of the 0.6.0 release scope.</p>
 </div>
 <div class="section level2">
 <h2 id="interpretation-boundaries">Interpretation boundaries<a class="anchor" aria-label="anchor" href="#interpretation-boundaries"></a>

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gp3bayes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,33 @@
       <small>Source: <a href="https://github.com/stefanosbalaskas/gp3bayes/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.6.0" id="gp3bayes-060">gp3bayes 0.6.0<a class="anchor" aria-label="anchor" href="#gp3bayes-060"></a></h2>
+<div class="section level3">
+<h3 id="multilevel-gaze-mediation-0-6-0">Multilevel gaze mediation<a class="anchor" aria-label="anchor" href="#multilevel-gaze-mediation-0-6-0"></a></h3>
+<ul><li>Adds governed Bayesian trial-level multilevel mediation for canonical within- and between-participant process components prepared upstream.</li>
+<li>Adds simple, serial, and moderated mediation specifications with explicit supported mediator/outcome families and participant random-effects contracts.</li>
+<li>Adds convergence-gated within- and between-participant indirect, direct, total, serial, and conditional indirect posterior estimands.</li>
+<li>Adds prior and posterior predictive checks, participant-specific indirect effects when both random path slopes are estimated, publication summaries, reports, and plots.</li>
+<li>Guards PSIS-LOO mediation model comparison by requiring identical mediator/outcome observations in identical participant-trial order.</li>
+<li>Nonlinear coefficient-product estimands remain explicitly identified as linear-predictor-scale quantities rather than probability-scale natural indirect effects.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="scr-responsivity-accountability-0-6-0">SCR responsivity accountability<a class="anchor" aria-label="anchor" href="#scr-responsivity-accountability-0-6-0"></a></h3>
+<ul><li>Adds retention-first Bayesian SCR responsivity estimation using a Beta-Binomial posterior response probability.</li>
+<li>Preserves conventional amplitude-threshold non-responder flags for provenance while retaining participants with finite trial data in the primary modelling set.</li>
+<li>Treats hard low-reactivity exclusion as an explicit sensitivity decision rather than a silent preprocessing rule.</li>
+<li>Responsivity summaries are graded modelling quantities and are not diagnostic, psychological, or physiological-state labels.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="release-hardening-0-6-0">Release hardening<a class="anchor" aria-label="anchor" href="#release-hardening-0-6-0"></a></h3>
+<ul><li>Adds complete Rd coverage for the public multilevel mediation API and corresponding pkgdown reference navigation.</li>
+<li>Repairs mediation coefficient-name handling for literal regex metacharacters and corrects family/coefficient namespace dispatch.</li>
+<li>Removes static-analysis issues in mediation plotting helpers without suppressing R CMD check diagnostics.</li>
+<li>Registers the September 2026 ecosystem update in the pkgdown article index.</li>
+<li>Release preparation is validated with the full local test suite, strict R CMD check, local pkgdown build, and cross-platform GitHub Actions certification.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="gp3bayes-050">gp3bayes 0.5.0<a class="anchor" aria-label="anchor" href="#gp3bayes-050"></a></h2><p class="text-muted">CRAN release: 2026-08-23</p>
 <div class="section level3">

@@ -9,14 +9,14 @@ Bayesian workflows for repeated-measures and hierarchical behavioural
 data, with a governed dynamic-pupillometry layer and explicit
 validation, sensitivity, prediction, and reporting infrastructure.
 
-**Current GitHub release:** **0.5.0** (`v0.5.0`, 18 August 2026)
+**Current GitHub release:** **0.6.0** (`v0.6.0`, 20 September 2026)
 
 [Website](https://stefanosbalaskas.github.io/gp3bayes/) ·
 [Reference](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html)
 ·
 [Articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html)
 ·
-[Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.5.0)
+[Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.6.0)
 
 ## What gp3bayes provides
 
@@ -38,7 +38,7 @@ validation, sensitivity, prediction, and reporting infrastructure.
 
 ## September 2026: retention-first Bayesian SCR responsivity
 
-The current development branch adds
+`gp3bayes` 0.6.0 adds
 [`estimate_scr_responsivity_bayes()`](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_responsivity_bayes.md)
 for participant-level SCR responsivity accountability.
 
@@ -62,8 +62,8 @@ reference](https://stefanosbalaskas.github.io/gp3bayes/reference/estimate_scr_re
 
 ## September 2026: trial-level multilevel gaze mediation
 
-The current development branch adds governed repeated-measures mediation
-for trial-level gaze/process mechanisms. The workflow consumes
+`gp3bayes` 0.6.0 adds governed repeated-measures mediation for
+trial-level gaze/process mechanisms. The workflow consumes
 within/between components prepared upstream by `eyeprocess`; it does
 **not** silently reconstruct or aggregate the mediator inside the
 Bayesian package.
@@ -131,16 +131,15 @@ name.
 
 ## Installation
 
-Install the exact GitHub 0.5.0 release:
+Install the exact GitHub 0.6.0 release:
 
 ``` r
 
 install.packages("remotes")
-remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.5.0")
+remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.6.0")
 ```
 
-For the current development branch, including the September 2026 SCR
-responsivity and multilevel mediation additions:
+To install the current `master` branch:
 
 ``` r
 
@@ -173,19 +172,19 @@ model, or establish model adequacy.
 
 ## Release validation
 
-The `v0.5.0` release record reports:
+The `v0.6.0` release record includes:
 
-- **458 public exports**;
+- **484 public exports**;
 - **230 S3 registrations**;
-- **458/458 frozen public signatures**;
-- **465 Rd files** and **59 vignette sources**;
+- frozen pre-0.6 public API compatibility contracts remain enforced;
+- **467 Rd files** and **62 vignette sources**;
 - full backend-free test suite passed; and
-- exact source-archive `R CMD check --as-cran`: **0 errors, 0 warnings,
-  0 notes**.
+- release-preparation `R CMD check --as-cran`: **0 errors, 0 warnings, 0
+  notes**.
 
-The September SCR responsivity and multilevel mediation additions are
-post-0.5.0 development functionality and are not represented as part of
-the immutable `v0.5.0` archive.
+The immutable `v0.5.0` archive remains unchanged; the September SCR
+responsivity and multilevel mediation additions form part of the 0.6.0
+release scope.
 
 ## Interpretation boundaries
 
