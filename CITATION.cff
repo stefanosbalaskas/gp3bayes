@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use gp3bayes, please cite the software using this metadata."
 type: software
 title: "gp3bayes: Contract-First Bayesian Workflows for Hierarchical Behavioural Data"
-version: "0.5.0"
-date-released: "2026-08-18"
+version: "0.6.0"
+date-released: "2026-09-20"
 authors:
   - family-names: "Balaskas"
     given-names: "Stefanos"
@@ -20,13 +20,11 @@ license: MIT
 abstract: >-
   gp3bayes provides transparent, contract-first infrastructure for Bayesian
   analysis of repeated-measures and hierarchical behavioural data. It supports
-  approved Bernoulli-logit and positive lognormal duration workflows with
-  strict readiness auditing, deterministic simulation, recorded
-  transformations, inspectable priors, prior and posterior predictive checks,
-  restricted optional full-MCMC fitting through brms with either rstan or
-  cmdstanr, sampling diagnostics, explicit posterior estimands, sensitivity
-  analysis, predictive validation, simulation-based calibration, and
-  conservative reporting.
+  governed binary, positive-duration, dynamic-pupillometry, SCR-responsivity,
+  and trial-level multilevel mediation workflows with explicit readiness and
+  provenance contracts, inspectable priors, predictive checks, restricted
+  optional full-MCMC fitting, diagnostics, posterior estimands, sensitivity
+  analysis, predictive validation, and conservative reporting.
 keywords:
   - Bayesian workflows
   - hierarchical models

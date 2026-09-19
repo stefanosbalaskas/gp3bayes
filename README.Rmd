@@ -14,9 +14,9 @@ output:
 
 `gp3bayes` is an independent R package for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data, with a governed dynamic-pupillometry layer and explicit validation, sensitivity, prediction, and reporting infrastructure.
 
-**Current GitHub release:** **0.5.0** (`v0.5.0`, 18 August 2026)
+**Current GitHub release:** **0.6.0** (`v0.6.0`, 20 September 2026)
 
-[Website](https://stefanosbalaskas.github.io/gp3bayes/) · [Reference](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html) · [Articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html) · [Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.5.0)
+[Website](https://stefanosbalaskas.github.io/gp3bayes/) · [Reference](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html) · [Articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html) · [Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.6.0)
 
 ## What gp3bayes provides
 
@@ -29,7 +29,7 @@ output:
 
 ## September 2026: retention-first Bayesian SCR responsivity
 
-The current development branch adds `estimate_scr_responsivity_bayes()` for participant-level SCR responsivity accountability.
+`gp3bayes` 0.6.0 adds `estimate_scr_responsivity_bayes()` for participant-level SCR responsivity accountability.
 
 The function keeps the conventional amplitude-threshold non-responder flag for provenance, estimates a Beta-Binomial posterior response probability, and sets `retain_for_modeling = TRUE` for every participant with finite trial data. Low-reactive participants are therefore retained in the primary modelling dataset, while hard exclusion can be evaluated explicitly as a sensitivity specification rather than being imposed silently during preprocessing.
 
@@ -39,7 +39,7 @@ See the [Retention-first Bayesian SCR responsivity article](https://stefanosbala
 
 ## September 2026: trial-level multilevel gaze mediation
 
-The current development branch adds governed repeated-measures mediation for trial-level gaze/process mechanisms. The workflow consumes within/between components prepared upstream by `eyeprocess`; it does **not** silently reconstruct or aggregate the mediator inside the Bayesian package.
+`gp3bayes` 0.6.0 adds governed repeated-measures mediation for trial-level gaze/process mechanisms. The workflow consumes within/between components prepared upstream by `eyeprocess`; it does **not** silently reconstruct or aggregate the mediator inside the Bayesian package.
 
 The new surface supports Gaussian, lognormal, Gamma, beta, Bernoulli, and count mediator families; Gaussian, Bernoulli, count, and ordinal outcomes where supported; explicit weakly informative priors; participant random effects; within- and between-participant indirect effects; convergence gating; prior/posterior predictive checks; participant-specific effects when both random path slopes are estimated; and conservative serial/moderated extensions.
 
@@ -74,14 +74,14 @@ Advanced pupil models are separately governed by their explicit pupil specificat
 
 ## Installation
 
-Install the exact GitHub 0.5.0 release:
+Install the exact GitHub 0.6.0 release:
 
 ```r
 install.packages("remotes")
-remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.5.0")
+remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.6.0")
 ```
 
-For the current development branch, including the September 2026 SCR responsivity and multilevel mediation additions:
+To install the current `master` branch:
 
 ```r
 remotes::install_github("stefanosbalaskas/gp3bayes")
@@ -110,16 +110,16 @@ Creating a contract does not validate a substantive hypothesis, fit a model, or 
 
 ## Release validation
 
-The `v0.5.0` release record reports:
+The `v0.6.0` release record includes:
 
-- **458 public exports**;
+- **484 public exports**;
 - **230 S3 registrations**;
-- **458/458 frozen public signatures**;
-- **465 Rd files** and **59 vignette sources**;
+- frozen pre-0.6 public API compatibility contracts remain enforced;
+- **467 Rd files** and **62 vignette sources**;
 - full backend-free test suite passed; and
-- exact source-archive `R CMD check --as-cran`: **0 errors, 0 warnings, 0 notes**.
+- release-preparation `R CMD check --as-cran`: **0 errors, 0 warnings, 0 notes**.
 
-The September SCR responsivity and multilevel mediation additions are post-0.5.0 development functionality and are not represented as part of the immutable `v0.5.0` archive.
+The immutable `v0.5.0` archive remains unchanged; the September SCR responsivity and multilevel mediation additions form part of the 0.6.0 release scope.
 
 ## Interpretation boundaries
 

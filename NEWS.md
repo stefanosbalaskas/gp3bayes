@@ -1,3 +1,29 @@
+# gp3bayes 0.6.0
+
+## Multilevel gaze mediation
+
+* Adds governed Bayesian trial-level multilevel mediation for canonical within- and between-participant process components prepared upstream.
+* Adds simple, serial, and moderated mediation specifications with explicit supported mediator/outcome families and participant random-effects contracts.
+* Adds convergence-gated within- and between-participant indirect, direct, total, serial, and conditional indirect posterior estimands.
+* Adds prior and posterior predictive checks, participant-specific indirect effects when both random path slopes are estimated, publication summaries, reports, and plots.
+* Guards PSIS-LOO mediation model comparison by requiring identical mediator/outcome observations in identical participant-trial order.
+* Nonlinear coefficient-product estimands remain explicitly identified as linear-predictor-scale quantities rather than probability-scale natural indirect effects.
+
+## SCR responsivity accountability
+
+* Adds retention-first Bayesian SCR responsivity estimation using a Beta-Binomial posterior response probability.
+* Preserves conventional amplitude-threshold non-responder flags for provenance while retaining participants with finite trial data in the primary modelling set.
+* Treats hard low-reactivity exclusion as an explicit sensitivity decision rather than a silent preprocessing rule.
+* Responsivity summaries are graded modelling quantities and are not diagnostic, psychological, or physiological-state labels.
+
+## Release hardening
+
+* Adds complete Rd coverage for the public multilevel mediation API and corresponding pkgdown reference navigation.
+* Repairs mediation coefficient-name handling for literal regex metacharacters and corrects family/coefficient namespace dispatch.
+* Removes static-analysis issues in mediation plotting helpers without suppressing R CMD check diagnostics.
+* Registers the September 2026 ecosystem update in the pkgdown article index.
+* Release preparation is validated with the full local test suite, strict R CMD check, local pkgdown build, and cross-platform GitHub Actions certification.
+
 # gp3bayes 0.5.0
 
 ## Advanced dynamic and measurement-aware Bayesian pupillometry

@@ -5,7 +5,7 @@ template:
 
 development:
   mode: release
-  version_tooltip: "Release documentation for gp3bayes 0.5.0"
+  version_tooltip: "Release documentation for gp3bayes 0.6.0"
 
 home:
   title: gp3bayes
