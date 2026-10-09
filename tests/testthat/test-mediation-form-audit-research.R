@@ -25,3 +25,36 @@ test_that("model-form audit is participant-clustered and reproducible", {
     d, "x", "m", "y", resamples = 25
   ), "0/1")
 })
+
+test_that("quadratic mediation recovers an analytic known-truth shift", {
+  x <- rep(c(rep(0, 5), rep(1, 5)), times = 40)
+  residual <- rep(c(-.4, -.2, 0, .2, .4), times = 80)
+  m <- .4 + .7 * x + residual
+  y <- 1 + .2 * x + .6 * m + .4 * m^2
+  d <- data.frame(participant_id = rep(seq_len(40), each = 10),
+                  x = x, m = m, y = y)
+  ans <- audit_mediation_functional_form(
+    d, "x", "m", "y", resamples = 30, seed = 17
+  )
+  vals <- stats::setNames(ans$estimates$mediator_shift_estimate,
+                          ans$estimates$model)
+  # Model-based shift at x=1, not an identified natural indirect effect.
+  expect_equal(unname(vals["quadratic"]), .84, tolerance = 1e-9)
+  expect_gt(abs(vals["linear"] - vals["quadratic"]), .1)
+  expect_equal(ans$estimates$bootstrap_successes, c(30L, 30L))
+})
+
+test_that("negative-control no-treatment mediator shift stays zero", {
+  x <- rep(c(rep(0, 5), rep(1, 5)), times = 40)
+  residual <- rep(c(-.4, -.2, 0, .2, .4), times = 80)
+  m <- .4 + residual
+  y <- 1 + .2 * x + .6 * m + .4 * m^2
+  d <- data.frame(participant_id = rep(seq_len(40), each = 10),
+                  x = x, m = m, y = y)
+  a <- audit_mediation_functional_form(
+    d, "x", "m", "y", resamples = 20, seed = 17
+  )
+  expect_true(all(abs(a$estimates$mediator_shift_estimate) < 1e-10))
+  expect_match(a$claim_boundary, "not a Bayesian posterior",
+               ignore.case = TRUE)
+})
