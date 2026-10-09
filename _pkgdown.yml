@@ -585,6 +585,10 @@ reference:
   - fit_multilevel_moderated_gaze_mediation
   - posterior_conditional_indirect_effect
 
+- title: Research mediation evidence graphics
+  contents:
+  - plot_mediation_evidence_atlas
+
 articles:
 - title: Multilevel gaze mediation
   contents:
