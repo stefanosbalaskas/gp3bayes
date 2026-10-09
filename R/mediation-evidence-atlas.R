@@ -78,7 +78,9 @@ plot_mediation_evidence_atlas <- function(
          paste(expected, collapse = ", "), call. = FALSE)
   }
   d <- data[, expected, drop = FALSE]
-  if (anyNA(d) || any(!is.finite(as.matrix(d[, setdiff(expected, "term"), drop = FALSE])))) {
+  numerical <- setdiff(expected, "term")
+  if (!all(vapply(d[numerical], is.numeric, logical(1))) ||
+      anyNA(d) || any(!is.finite(as.matrix(d[numerical])))) {
     stop("Evidence values must be finite and complete.", call. = FALSE)
   }
   if (any(!nzchar(as.character(d$term)))) {
