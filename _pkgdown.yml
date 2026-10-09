@@ -681,6 +681,10 @@ articles:
   - computational-governance-and-model-cards
   - synthetic-advanced-pupillometry-gallery
 
+- title: Mediation graphics (research)
+  contents:
+  - mediation-evidence-atlas
+
 - title: Ecosystem updates
   desc: Cross-package methodological and ecosystem notes relevant to gp3bayes.
   contents:
