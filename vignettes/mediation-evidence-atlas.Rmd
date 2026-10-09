@@ -1,0 +1,105 @@
+---
+title: "Mediation evidence atlas: effect, bootstrap, DAG figures"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Mediation evidence atlas}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Why these figures
+
+The open-source [BriDGE research package](https://github.com/gav888/BriDGE) inspired the **types** of figure adapted here: effect-size comparison, bootstrap distributions and a researcher-versus-discovered causal-edge audit. The implementation is original, and it does not replicate the original mediation estimator or offer automatic causal discovery.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+### Supplied effect estimates
+
+```{r effects, eval=requireNamespace('ggplot2', quietly=TRUE)}
+library(gp3bayes)
+est <- data.frame(
+  term = c("Gaze indirect", "Pupil indirect"),
+  estimate = c(0.12, -0.05),
+  lower = c(0.03, -0.14),
+  upper = c(0.22, 0.04)
+)
+plot_mediation_evidence_atlas(est, type = "effects")
+```
+
+### Bootstrap or posterior draws
+
+```{r draws, eval=requireNamespace('ggplot2', quietly=TRUE)}
+set.seed(2026)
+draws <- data.frame(
+  term = rep(c("Gaze", "Pupil"), each = 1000),
+  draw = c(rnorm(1000, .12, .05), rnorm(1000, -.05, .04))
+)
+plot_mediation_evidence_atlas(draws, type = "bootstrap")
+```
+
+The plotting API does not distinguish bootstrap draws from posterior draws by computation; always label their actual provenance when reporting.
+
+### Compare causal edge assumptions
+
+```{r edges, eval=requireNamespace('ggplot2', quietly=TRUE)}
+assumed <- data.frame(from = c("Treatment", "Gaze"),
+                      to = c("Gaze", "Choice"))
+learned <- data.frame(from = "Treatment", to = "Gaze")
+plot_mediation_evidence_atlas(
+  type = "dag", theory_edges = assumed, discovered_edges = learned
+)
+```
+
+**Scientific boundary:** a learned edge is not proof of causation. Retain explicit covariates, measurement timing, randomization assumptions, repeated-measures structure, uncertainty type, and the model that generated the supplied effects. No release is implied by this development vignette.
+
+
+## Linear versus nonlinear mediator-outcome sensitivity
+
+The BriDGE methods briefing motivates comparing prespecified mediator
+functional forms rather than treating the linear path assumption as automatic.
+
+```{r form-sensitivity, eval=FALSE}
+form_check <- audit_mediation_functional_form(
+  trial_level_data,
+  treatment = "condition", mediator = "pupil_change",
+  outcome = "consent_intention", participant = "participant_id",
+  resamples = 999, seed = 2026
+)
+form_check$estimates
+form_check$bootstrap_ledger
+```
+
+The analysis fits linear and quadratic Gaussian outcome models with a
+treatment-by-mediator interaction, refits them under participant resampling,
+and transparently counts failed bootstrap replicates. It does **not**
+fit a GAM, perform constrained causal discovery or establish a causal
+indirect effect. Confounding and mediator measurement error still require
+independent sensitivity checks.
+
+The `plot_mediation_evidence_atlas` plot accepts the resulting
+`bootstrap_ledger` after explicitly converting results to the
+`term` / `draw` table contract.
+
+
+## Known-truth causal-identification stress test
+
+A balanced, deterministic benchmark now checks the quadratic-model
+**model-based mediator shift** against an analytically known contrast of
+`0.84`. A zero-treatment-to-mediator control checks that the same diagnostic
+reports no mediated shift when treatment leaves the mediator unchanged.
+
+The additional latent-common-cause scenario sets
+`M = 0.4 + 0.7 X + U` and
+`Y = 1 + 0.2 X + 0.6 M + 0.4 M^2 + 0.5 U`.
+The actual effect of intervening on `M` while holding `U` fixed is
+`0.84`, but an observational quadratic mediator-outcome regression returns
+a model-implied contrast of `1.19`, a difference of `0.35`.
+This is deliberate evidence **against** treating model-fit recovery or
+a bootstrapped indirect contrast as sufficient for causal identification.
+It does not represent a Bayesian posterior, a calibrated confidence interval
+for the natural indirect effect, or an externally validated gaze dataset.
+
+These benchmarks are synthetic and remain research qualification evidence;
+they do **not** authorize a release.

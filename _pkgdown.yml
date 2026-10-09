@@ -585,6 +585,11 @@ reference:
   - fit_multilevel_moderated_gaze_mediation
   - posterior_conditional_indirect_effect
 
+- title: Research mediation evidence graphics
+  contents:
+  - plot_mediation_evidence_atlas
+  - audit_mediation_functional_form
+
 articles:
 - title: Multilevel gaze mediation
   contents:
@@ -680,6 +685,10 @@ articles:
   - governed-pupil-model-comparison
   - computational-governance-and-model-cards
   - synthetic-advanced-pupillometry-gallery
+
+- title: Mediation graphics (research)
+  contents:
+  - mediation-evidence-atlas
 
 - title: Ecosystem updates
   desc: Cross-package methodological and ecosystem notes relevant to gp3bayes.
