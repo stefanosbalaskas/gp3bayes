@@ -58,3 +58,23 @@ test_that("negative-control no-treatment mediator shift stays zero", {
   expect_match(a$claim_boundary, "Bayesian posterior claim",
                ignore.case = TRUE)
 })
+
+test_that("unmeasured mediator-outcome cause invalidates causal interpretation", {
+  x <- rep(c(rep(0, 5), rep(1, 5)), times = 40)
+  common_cause <- rep(c(-.4, -.2, 0, .2, .4), times = 80)
+  m <- .4 + .7 * x + common_cause
+  y <- 1 + .2 * x + .6 * m + .4 * m^2 + .5 * common_cause
+  d <- data.frame(participant_id = rep(seq_len(40), each = 10),
+                  x = x, m = m, y = y)
+  a <- audit_mediation_functional_form(
+    d, "x", "m", "y", resamples = 20, seed = 17
+  )
+  observational_shift <- a$estimates$mediator_shift_estimate[
+    a$estimates$model == "quadratic"
+  ]
+  # True controlled mediator shift holding U fixed is .84. This purely
+  # observational estimator recovers 1.19 instead, despite exact model fit.
+  expect_equal(unname(observational_shift), 1.19, tolerance = 1e-9)
+  expect_equal(abs(observational_shift - .84), .35, tolerance = 1e-9)
+  expect_match(a$claim_boundary, "no causal identification")
+})
