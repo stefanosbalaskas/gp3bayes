@@ -2,9 +2,9 @@
 title: "Mediation evidence atlas: effect, bootstrap, DAG figures"
 output: rmarkdown::html_vignette
 vignette: >
-  %\\VignetteIndexEntry{Mediation evidence atlas}
-  %\\VignetteEngine{knitr::rmarkdown}
-  %\\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{Mediation evidence atlas}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ## Why these figures
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 ### Supplied effect estimates
 
-```{r effects, eval=FALSE}
+```{r effects, eval=requireNamespace('ggplot2', quietly=TRUE)}
 library(gp3bayes)
 est <- data.frame(
   term = c("Gaze indirect", "Pupil indirect"),
@@ -30,7 +30,7 @@ plot_mediation_evidence_atlas(est, type = "effects")
 
 ### Bootstrap or posterior draws
 
-```{r draws, eval=FALSE}
+```{r draws, eval=requireNamespace('ggplot2', quietly=TRUE)}
 set.seed(2026)
 draws <- data.frame(
   term = rep(c("Gaze", "Pupil"), each = 1000),
@@ -43,7 +43,7 @@ The plotting API does not distinguish bootstrap draws from posterior draws by co
 
 ### Compare causal edge assumptions
 
-```{r edges, eval=FALSE}
+```{r edges, eval=requireNamespace('ggplot2', quietly=TRUE)}
 assumed <- data.frame(from = c("Treatment", "Gaze"),
                       to = c("Gaze", "Choice"))
 learned <- data.frame(from = "Treatment", to = "Gaze")
@@ -60,7 +60,7 @@ plot_mediation_evidence_atlas(
 The BriDGE methods briefing motivates comparing prespecified mediator
 functional forms rather than treating the linear path assumption as automatic.
 
-\`\`\`{r form-sensitivity, eval=FALSE}
+```{r form-sensitivity, eval=FALSE}
 form_check <- audit_mediation_functional_form(
   trial_level_data,
   treatment = "condition", mediator = "pupil_change",
@@ -69,7 +69,7 @@ form_check <- audit_mediation_functional_form(
 )
 form_check$estimates
 form_check$bootstrap_ledger
-\`\`\`
+```
 
 The analysis fits linear and quadratic Gaussian outcome models with a
 treatment-by-mediator interaction, refits them under participant resampling,
@@ -78,6 +78,6 @@ fit a GAM, perform constrained causal discovery or establish a causal
 indirect effect. Confounding and mediator measurement error still require
 independent sensitivity checks.
 
-The \`plot_mediation_evidence_atlas\` plot accepts the resulting
-\`bootstrap_ledger\` after explicitly converting results to the
-\`term\` / \`draw\` table contract.
+The `plot_mediation_evidence_atlas` plot accepts the resulting
+`bootstrap_ledger` after explicitly converting results to the
+`term` / `draw` table contract.
