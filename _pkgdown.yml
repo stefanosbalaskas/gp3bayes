@@ -681,6 +681,9 @@ articles:
   - computational-governance-and-model-cards
   - synthetic-advanced-pupillometry-gallery
 
+- title: Illustrated estimation graphics
+  contents:
+  - mediation-estimation-graphics-gallery
 - title: Ecosystem updates
   desc: Cross-package methodological and ecosystem notes relevant to gp3bayes.
   contents:
