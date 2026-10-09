@@ -588,6 +588,7 @@ reference:
 - title: Research mediation evidence graphics
   contents:
   - plot_mediation_evidence_atlas
+  - audit_mediation_functional_form
 
 articles:
 - title: Multilevel gaze mediation
