@@ -53,3 +53,31 @@ plot_mediation_evidence_atlas(
 ```
 
 **Scientific boundary:** a learned edge is not proof of causation. Retain explicit covariates, measurement timing, randomization assumptions, repeated-measures structure, uncertainty type, and the model that generated the supplied effects. No release is implied by this development vignette.
+
+
+## Linear versus nonlinear mediator-outcome sensitivity
+
+The BriDGE methods briefing motivates comparing prespecified mediator
+functional forms rather than treating the linear path assumption as automatic.
+
+\`\`\`{r form-sensitivity, eval=FALSE}
+form_check <- audit_mediation_functional_form(
+  trial_level_data,
+  treatment = "condition", mediator = "pupil_change",
+  outcome = "consent_intention", participant = "participant_id",
+  resamples = 999, seed = 2026
+)
+form_check$estimates
+form_check$bootstrap_ledger
+\`\`\`
+
+The analysis fits linear and quadratic Gaussian outcome models with a
+treatment-by-mediator interaction, refits them under participant resampling,
+and transparently counts failed bootstrap replicates. It does **not**
+fit a GAM, perform constrained causal discovery or establish a causal
+indirect effect. Confounding and mediator measurement error still require
+independent sensitivity checks.
+
+The \`plot_mediation_evidence_atlas\` plot accepts the resulting
+\`bootstrap_ledger\` after explicitly converting results to the
+\`term\` / \`draw\` table contract.
