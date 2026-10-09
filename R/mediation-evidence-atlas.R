@@ -1,3 +1,5 @@
+utils::globalVariables(c("term", "draw", "estimate", "lower", "upper", "from", "to", "status"))
+
 # Experimental, BriDGE-inspired evidence figures.
 # Standalone plotting from explicitly supplied estimates: does not infer causal
 # effects, fit a GAM, discover a DAG, or create Bayesian posterior draws.
