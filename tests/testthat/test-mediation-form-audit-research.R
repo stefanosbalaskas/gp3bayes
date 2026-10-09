@@ -55,6 +55,6 @@ test_that("negative-control no-treatment mediator shift stays zero", {
     d, "x", "m", "y", resamples = 20, seed = 17
   )
   expect_true(all(abs(a$estimates$mediator_shift_estimate) < 1e-10))
-  expect_match(a$claim_boundary, "not a Bayesian posterior",
+  expect_match(a$claim_boundary, "Bayesian posterior claim",
                ignore.case = TRUE)
 })
