@@ -31,6 +31,7 @@ articles:
   loo-influence-and-model-comparison: loo-influence-and-model-comparison.html
   loo-influence-atlas: loo-influence-atlas.html
   measurement-error-and-missing-pupil-data: measurement-error-and-missing-pupil-data.html
+  mediation-estimation-graphics-gallery: mediation-estimation-graphics-gallery.html
   model-cards-and-reporting-inventories: model-cards-and-reporting-inventories.html
   optional-backend-installation: optional-backend-installation.html
   pathological-simulation-scenarios: pathological-simulation-scenarios.html
@@ -64,7 +65,7 @@ articles:
   synthetic-advanced-pupillometry-gallery: synthetic-advanced-pupillometry-gallery.html
   synthetic-gazepoint-pupillometry-case-study: synthetic-gazepoint-pupillometry-case-study.html
   transformation-replay-and-detailed-ppc: transformation-replay-and-detailed-ppc.html
-last_built: 2026-09-19T23:05Z
+last_built: 2026-10-09T18:57Z
 urls:
   reference: https://stefanosbalaskas.github.io/gp3bayes/reference
   article: https://stefanosbalaskas.github.io/gp3bayes/articles

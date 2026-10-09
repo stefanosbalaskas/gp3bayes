@@ -18,7 +18,7 @@ bayesian_backend_capabilities()
 #>             rstan      TRUE  2.32.7   TRUE
 #>          cmdstanr      TRUE   0.9.0  FALSE
 #>               loo      TRUE  2.10.1   TRUE
-#>        priorsense      TRUE   1.2.0   TRUE
+#>        priorsense      TRUE   1.4.0   TRUE
 #>  detectseparation      TRUE   0.4.0   TRUE
 #>               SBC      TRUE 0.5.0.0   TRUE
 #>                                                     detail

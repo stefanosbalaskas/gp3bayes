@@ -1454,6 +1454,11 @@ introduced in gp3bayes 0.5.
 - [Synthetic Advanced Pupillometry
   Gallery](https://stefanosbalaskas.github.io/gp3bayes/articles/synthetic-advanced-pupillometry-gallery.md):
 
+### Illustrated estimation graphics
+
+- [Mediation evidence gallery: contrasts, uncertainty, and
+  identification](https://stefanosbalaskas.github.io/gp3bayes/articles/mediation-estimation-graphics-gallery.md):
+
 ### Ecosystem updates
 
 Cross-package methodological and ecosystem notes relevant to gp3bayes.
