@@ -1,0 +1,55 @@
+---
+title: "Mediation evidence atlas: effect, bootstrap, DAG figures"
+output: rmarkdown::html_vignette
+vignette: >
+  %\\VignetteIndexEntry{Mediation evidence atlas}
+  %\\VignetteEngine{knitr::rmarkdown}
+  %\\VignetteEncoding{UTF-8}
+---
+
+## Why these figures
+
+The open-source [BriDGE research package](https://github.com/gav888/BriDGE) inspired the **types** of figure adapted here: effect-size comparison, bootstrap distributions and a researcher-versus-discovered causal-edge audit. The implementation is original, and it does not replicate the original mediation estimator or offer automatic causal discovery.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+### Supplied effect estimates
+
+```{r effects, eval=FALSE}
+library(gp3bayes)
+est <- data.frame(
+  term = c("Gaze indirect", "Pupil indirect"),
+  estimate = c(0.12, -0.05),
+  lower = c(0.03, -0.14),
+  upper = c(0.22, 0.04)
+)
+plot_mediation_evidence_atlas(est, type = "effects")
+```
+
+### Bootstrap or posterior draws
+
+```{r draws, eval=FALSE}
+set.seed(2026)
+draws <- data.frame(
+  term = rep(c("Gaze", "Pupil"), each = 1000),
+  draw = c(rnorm(1000, .12, .05), rnorm(1000, -.05, .04))
+)
+plot_mediation_evidence_atlas(draws, type = "bootstrap")
+```
+
+The plotting API does not distinguish bootstrap draws from posterior draws by computation; always label their actual provenance when reporting.
+
+### Compare causal edge assumptions
+
+```{r edges, eval=FALSE}
+assumed <- data.frame(from = c("Treatment", "Gaze"),
+                      to = c("Gaze", "Choice"))
+learned <- data.frame(from = "Treatment", to = "Gaze")
+plot_mediation_evidence_atlas(
+  type = "dag", theory_edges = assumed, discovered_edges = learned
+)
+```
+
+**Scientific boundary:** a learned edge is not proof of causation. Retain explicit covariates, measurement timing, randomization assumptions, repeated-measures structure, uncertainty type, and the model that generated the supplied effects. No release is implied by this development vignette.
