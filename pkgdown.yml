@@ -33,6 +33,7 @@ articles:
   measurement-error-and-missing-pupil-data: measurement-error-and-missing-pupil-data.html
   mediation-estimation-graphics-gallery: mediation-estimation-graphics-gallery.html
   model-cards-and-reporting-inventories: model-cards-and-reporting-inventories.html
+  october-2026-conjugate-prior-sensitivity: october-2026-conjugate-prior-sensitivity.html
   optional-backend-installation: optional-backend-installation.html
   pathological-simulation-scenarios: pathological-simulation-scenarios.html
   posterior-diagnostics: posterior-diagnostics.html
@@ -65,7 +66,7 @@ articles:
   synthetic-advanced-pupillometry-gallery: synthetic-advanced-pupillometry-gallery.html
   synthetic-gazepoint-pupillometry-case-study: synthetic-gazepoint-pupillometry-case-study.html
   transformation-replay-and-detailed-ppc: transformation-replay-and-detailed-ppc.html
-last_built: 2026-10-09T18:57Z
+last_built: 2026-10-22T06:53Z
 urls:
   reference: https://stefanosbalaskas.github.io/gp3bayes/reference
   article: https://stefanosbalaskas.github.io/gp3bayes/articles

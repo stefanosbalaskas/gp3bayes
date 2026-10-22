@@ -171,6 +171,8 @@ introduced in gp3bayes 0.5.
 
 - [Mediation evidence gallery: contrasts, uncertainty, and
   identification](https://stefanosbalaskas.github.io/gp3bayes/articles/mediation-estimation-graphics-gallery.md):
+- [Prior sensitivity and independent information: an analytical Bayesian
+  example](https://stefanosbalaskas.github.io/gp3bayes/articles/october-2026-conjugate-prior-sensitivity.md):
 
 ### Ecosystem updates
 
