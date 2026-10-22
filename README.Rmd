@@ -14,9 +14,9 @@ output:
 
 `gp3bayes` is an independent R package for transparent, contract-first Bayesian workflows for repeated-measures and hierarchical behavioural data, with a governed dynamic-pupillometry layer and explicit validation, sensitivity, prediction, and reporting infrastructure.
 
-**Current GitHub release:** **0.6.0** (`v0.6.0`, 20 September 2026)
+**Current GitHub release:** **0.6.1** (`v0.6.1`, 22 October 2026) · **CRAN:** 0.5.0
 
-[Website](https://stefanosbalaskas.github.io/gp3bayes/) · [Reference](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html) · [Articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html) · [Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.6.0)
+[Website](https://stefanosbalaskas.github.io/gp3bayes/) · [Reference](https://stefanosbalaskas.github.io/gp3bayes/reference/index.html) · [Articles](https://stefanosbalaskas.github.io/gp3bayes/articles/index.html) · [Release](https://github.com/stefanosbalaskas/gp3bayes/releases/tag/v0.6.1)
 
 ## What gp3bayes provides
 
@@ -72,13 +72,19 @@ The original contract-first core remains deliberately restricted to:
 
 Advanced pupil models are separately governed by their explicit pupil specifications and evidence gates. No interface accepts unrestricted formulas or arbitrary model families under an existing approved function name.
 
+## October 2026 illustrated research
+
+The [exact conjugate-prior sensitivity article](https://stefanosbalaskas.github.io/gp3bayes/articles/october-2026-conjugate-prior-sensitivity.html) contains original synthetic R figures, reproducible methods and explicit inference limitations. These demonstrations do not establish empirical validation or statistical calibration.
+
+**Publication channels:** GitHub **0.6.1** (22 October 2026) and CRAN **0.5.0** (earlier published version). They are distinct sources.
+
 ## Installation
 
-Install the exact GitHub 0.6.0 release:
+Install the exact GitHub 0.6.1 release:
 
 ```r
 install.packages("remotes")
-remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.6.0")
+remotes::install_github("stefanosbalaskas/gp3bayes", ref = "v0.6.1")
 ```
 
 To install the current `master` branch:
