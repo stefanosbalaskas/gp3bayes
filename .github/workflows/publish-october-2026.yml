@@ -1,0 +1,48 @@
+name: Publish validated gp3bayes v0.6.1
+
+'on':
+  push:
+    branches: [master]
+    paths: ['.github/workflows/publish-october-2026.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          extra-repositories: |
+            https://stan-dev.r-universe.dev
+            https://r-multiverse.r-universe.dev
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+      - name: Verify exact release candidate
+        shell: bash
+        run: |
+          Rscript -e 'stopifnot(read.dcf("DESCRIPTION")[1, "Version"] == "0.6.1")'
+      - name: Build and CRAN-check the source archive
+        shell: bash
+        run: |
+          R CMD build --no-manual .
+          test -s gp3bayes_0.6.1.tar.gz
+          R CMD check --as-cran --no-manual gp3bayes_0.6.1.tar.gz
+      - name: Publish GitHub Release once
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.6.1 >/dev/null 2>&1; then
+            echo 'Release v0.6.1 already exists; not overwriting.'
+            exit 0
+          fi
+          gh release create v0.6.1 gp3bayes_0.6.1.tar.gz --target "$GITHUB_SHA" --title 'gp3bayes v0.6.1' --generate-notes
