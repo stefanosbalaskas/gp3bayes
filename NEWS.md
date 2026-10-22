@@ -1,3 +1,11 @@
+# gp3bayes 0.6.1 — release candidate (not published)
+
+## October 2026 documentation and reproducibility
+
+* Adds a conjugate normal-normal prior-sensitivity synthetic vignette with original uncertainty and precision figures. No calibration, causal, or MCMC claims; independent scientific draft PR #28 remains excluded.
+* Release gate: complete exact-source R CMD check --as-cran, review installed source tarball and cross-platform tests, audit publication metadata, then publish an immutable GitHub tag and submit to CRAN with maintainer confirmation.
+* Current CRAN baseline at candidate preparation: 0.5.0. The candidate has **not** been submitted to CRAN or published as a GitHub Release.
+
 # gp3bayes 0.6.0
 
 ## Multilevel gaze mediation

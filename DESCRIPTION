@@ -1,6 +1,6 @@
 Package: gp3bayes
 Title: Contract-First Bayesian Workflows for Hierarchical Behavioural Data
-Version: 0.6.0
+Version: 0.6.1
 Authors@R:
     person(
       given = "Stefanos",
