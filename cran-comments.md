@@ -1,38 +1,19 @@
-# CRAN submission comments
+# CRAN submission comments — RELEASE CANDIDATE, NOT SUBMITTED
 
-## Submission
+Package: gp3bayes
+Candidate source version: 0.6.1
+Currently verified CRAN version: 0.5.0
 
-This is an update to the CRAN package `gp3bayes`, from version 0.1.1 to version 0.5.0.
+## Scope
 
-## Release scope
+Conjugate Bayesian prior sensitivity example with reproducible uncertainty and precision figures; no API changes.
 
-`gp3bayes` 0.5.0 extends the package's contract-first Bayesian workflow with governed advanced pupillometry functionality while preserving the existing hierarchical binary and positive lognormal-duration workflows.
+## Release qualification (not complete)
 
-The release exposes 458 public functions and 230 S3 registrations.
+* Candidate exact-head GitHub Actions: inspect current PR run results before promotion.
+* `R CMD build` source archive: not independently generated/verified in this campaign.
+* `R CMD check --as-cran` against the exact intended submission tarball: not independently verified.
+* Reverse-dependency and cross-platform CRAN policy audit: pending release review.
+* CRAN maintainer confirmation: not requested; no CRAN submission or new GitHub Release made.
 
-The package does not automatically make causal, cognitive-state, model-adequacy, robustness, exclusion, or model-selection claims.
-
-## Validation
-
-
-* Final exact `gp3bayes_0.5.0.tar.gz` `R CMD check --as-cran`:
-  0 errors, 0 warnings, 0 notes.
-* Exact archive bytes: `916189`.
-* Exact archive MD5: `3571e36aaeac4ecb7ebb0094a2f514cf`.
-* Exact archive SHA256: `d6c9ac94ea1d9ba8fd7377fb350c3201b16fbdf91320c16d709192a33258d400`.
-* Windows 11 x64, R 4.6.1.
-* Full backend-free package test suite: PASS.
-* Frozen public API/signature contract: PASS.
-* Public exports: 458.
-* S3 registrations: 230.
-* Rd files: 465.
-* Vignette sources: 59.
-* No Stan compilation or sampling is required by the release check.
-
-## Optional repositories
-
-* `cmdstanr` is an optional Suggests dependency available from
-  `https://stan-dev.r-universe.dev`.
-* `SBC` is an optional Suggests dependency available from
-  `https://r-multiverse.r-universe.dev`.
-* Neither is required for installation or the backend-independent core.
+**Replace this draft with observed test environments and exact results before any CRAN upload.**
